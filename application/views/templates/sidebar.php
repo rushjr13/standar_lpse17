@@ -18,7 +18,7 @@
       <hr class="sidebar-divider my-0">
       <?php if($pengguna_masuk){ ?>
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
+        <li class="nav-item <?php if($judul=='Beranda'){echo 'active';} ?>">
           <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Beranda</span></a>
@@ -33,22 +33,22 @@
           </div>
 
           <!-- Nav Item - Pages Collapse Menu -->
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li class="nav-item <?php if($judul=='Pengguna'){echo 'active';} ?>">
+            <a class="nav-link" href="<?=base_url('pengguna') ?>">
               <i class="fas fa-fw fa-users"></i>
               <span>Pengguna</span>
             </a>
           </li>
           <!-- Nav Item - Pages Collapse Menu -->
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li class="nav-item <?php if($judul=='Pengaturan'){echo 'active';} ?>">
+            <a class="nav-link" href="<?=base_url('pengaturan') ?>">
               <i class="fas fa-fw fa-cogs"></i>
               <span>Pengaturan</span>
             </a>
           </li>
           <!-- Nav Item - Pages Collapse Menu -->
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li class="nav-item <?php if($judul=='Menu'){echo 'active';} ?>">
+            <a class="nav-link" href="<?=base_url('menu') ?>">
               <i class="fas fa-fw fa-list"></i>
               <span>Menu</span>
             </a>

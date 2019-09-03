@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Landing extends CI_Controller {
+class Kesalahan extends CI_Controller {
 		
 	public function index(){
 		// UMUM
@@ -10,11 +10,11 @@ class Landing extends CI_Controller {
 		$data['pengaturan'] = $this->admin->pengaturan();
 
 		// KHUSUS
-		$data['judul'] = "Beranda";
+		$data['judul'] = "Kesalahan";
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/topbar', $data);
-		$this->load->view('landing/index', $data);
+		$this->load->view('kesalahan', $data);
 		$this->load->view('templates/footer', $data);
 	}
 }

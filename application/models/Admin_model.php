@@ -122,7 +122,7 @@ class Admin_model extends CI_Model {
 
 	// CEK PENGGUNA MASUK
 	function cek_masuk(){
-		if(!$this->session->userdata('id_user_masuk')){
+		if(!$this->session->userdata('user_masuk')){
 			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 													  <i class="fa fa-fw fa-ban"></i> Akses Ditolak! Anda Harus Masuk Dulu!
 													  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -140,22 +140,21 @@ class Admin_model extends CI_Model {
 	}
 
 	// DETAIL PENGGUNA
-    function pengguna($id_pengguna){
+    function pengguna($username){
         $this->db->select('*');
         $this->db->from('pengguna');
-        $this->db->join('level', 'level.id_level = pengguna.id_level');
-        $this->db->where('pengguna.id_pengguna', $id_pengguna);
+        $this->db->where('username', $username);
         return $this->db->get()->row_array();
     }
 
     // DAFTAR PENGGUNA
-    function daftarpengguna($id_pengguna){
+    function daftarpengguna($username){
         $this->db->select('*');
         $this->db->from('pengguna');
         $this->db->join('level', 'level.id_level = pengguna.id_level');
-        $this->db->order_by('pengguna.status', 'DESC');
-        $this->db->order_by('pengguna.tgl_daftar', 'ASC');
-        $this->db->where('pengguna.id_pengguna !=', $id_pengguna);
+        $this->db->order_by('pengguna.id_level', 'ASC');
+        $this->db->order_by('pengguna.tgl_daftar', 'DESC');
+        $this->db->where('pengguna.username !=', $username);
         return $this->db->get()->result_array();
     }
 
