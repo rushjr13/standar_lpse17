@@ -175,12 +175,20 @@ class Admin_model extends CI_Model {
 		return $this->db->get();
 	}
 
+    // CEK PENGGUNA MELALUI EMAIL
+    function cek_email($email){
+        $this->db->select('*');
+        $this->db->from('pengguna');
+        $this->db->where('email', $email);
+        return $this->db->get();
+    }
+
 	// MENU
 	function menu($id_menu=null){
 		if($id_menu==null){
 			$this->db->select('*');
 			$this->db->from('menu');
-			$this->db->order_by('nama_menu', 'ASC');
+			$this->db->order_by('id_menu', 'ASC');
 			return $this->db->get()->result_array();
 		} else {
 			$this->db->select('*');
@@ -205,6 +213,7 @@ class Admin_model extends CI_Model {
         $this->db->from('akses_menu');
 		$this->db->join('menu', 'menu.id_menu = akses_menu.id_menu');
         $this->db->where('akses_menu.username', $username);
+        $this->db->order_by('akses_menu.id_menu', 'ASC');
         return $this->db->get()->result_array();
     }
 
@@ -213,7 +222,8 @@ class Admin_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('submenu');
         $this->db->where('id_menu', $id_menu);
-        $this->db->order_by('nama_submenu', 'ASC');
+        $this->db->order_by('id_menu', 'ASC');
+        $this->db->order_by('id_submenu', 'ASC');
         return $this->db->get()->result_array();
     }
 

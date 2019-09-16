@@ -1,4 +1,4 @@
-<body id="page-top">
+<body id="page-top" onload="startTime()">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -65,15 +65,14 @@
               $this->db->select('*');
               $this->db->from('submenu');
               $this->db->where('id_menu', $mn['id_menu']);
-              $this->db->order_by('id_menu', 'ASC');
-              $this->db->order_by('nama_submenu', 'ASC');
+              $this->db->order_by('id_submenu', 'ASC');
               $submenu = $this->db->get()->result_array();
             ?>
             <?php foreach ($submenu as $sm): ?>
               <!-- Nav Item - Pages Collapse Menu -->
               <li class="nav-item <?php if($judul==$sm['nama_submenu']){echo 'active';} ?>">
                 <a class="nav-link" href="<?=base_url().$sm['link'] ?>">
-                  <i class="fa fa-fw <?=$sm['icon'] ?>"></i>
+                  <!-- <i class="fa fa-fw <?=$sm['icon'] ?>"></i> -->
                   <span><?=$sm['nama_submenu'] ?></span>
                 </a>
               </li>

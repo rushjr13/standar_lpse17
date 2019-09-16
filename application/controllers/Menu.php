@@ -14,6 +14,8 @@ class Menu extends CI_Controller {
 		$user = $this->session->userdata('user_masuk');
 		$data['pengguna_masuk'] = $this->admin->pengguna($user);
 		$data['pengaturan'] = $this->admin->pengaturan();
+		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
+		$data['hari_sekarang'] = $this->admin->hari(date('l'));
 		$data['menu_akses'] = $this->admin->menu_akses($user);
 
 		// KHUSUS
@@ -96,6 +98,15 @@ class Menu extends CI_Controller {
 	}
 
 	public function submenu($id_menu=null){
+		// UMUM
+		$user = $this->session->userdata('user_masuk');
+		$data['pengguna_masuk'] = $this->admin->pengguna($user);
+		$data['pengaturan'] = $this->admin->pengaturan();
+		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
+		$data['hari_sekarang'] = $this->admin->hari(date('l'));
+		$data['menu_akses'] = $this->admin->menu_akses($user);
+
+		// KHUSUS
 		if($id_menu==null){
 			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 													  <i class="fa fa-fw fa-ban"></i> Tidak ada menu yang dipilih!
@@ -105,13 +116,6 @@ class Menu extends CI_Controller {
 													</div>');
 			redirect('menu');
 		}else{
-			// UMUM
-			$user = $this->session->userdata('user_masuk');
-			$data['pengguna_masuk'] = $this->admin->pengguna($user);
-			$data['pengaturan'] = $this->admin->pengaturan();
-			$data['menu_akses'] = $this->admin->menu_akses($user);
-
-			// KHUSUS
 			$data['judul'] = "Menu";
 			$data['subjudul'] = "Sub Menu";
 			$data['menudata'] = $this->admin->menu($id_menu);

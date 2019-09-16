@@ -17,6 +17,38 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
+            <!-- Nav Item - Tanggal -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-calendar-check fa-fw"></i>
+                <small class="text-primary"><strong><?=$hari_sekarang.', '.$tgl_sekarang ?></strong></small>
+              </a>
+            </li>
+
+            <!-- Nav Item - Waktu -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-clock fa-fw"></i>
+                <small class="text-primary"><strong><span id="txt"></span>
+                  <?php
+                    date_default_timezone_set('Asia/Makassar');
+                    $a = date ("H");
+                    if (($a>=1) && ($a<=11)){
+                      $saat = "Pagi";
+                    } else if(($a>11) && ($a<=15)) {
+                      $saat = "Siang";
+                    } else if (($a>15) && ($a<=18)) {
+                      $saat = "Sore";
+                    } else {
+                      $saat = "Malam";
+                    }
+                    echo ' '.$saat;
+                  ?>
+                </strong></small>
+              </a>
+            </li>
+
+            <?php if($pengguna_masuk){ ?>
             <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -126,7 +158,7 @@
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-              <?php if($pengguna_masuk){ ?>
+              
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$pengguna_masuk['nama_lengkap'] ?></span>
                   <img class="img-profile rounded-circle" src="<?=base_url('assets/img/pengguna/').$pengguna_masuk['foto'] ?>">
@@ -145,8 +177,12 @@
                 </div>
                 <!-- Dropdown - Informasi Pengguna End -->
               <?php }else{ ?>
+              <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="masukDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Masuk</span>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Masuk</span><i class="fa fa-fw fa-sign-in-alt"></i>
                 </a>
                 <!-- Dropdown - Masuk -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="masukDropdown">
@@ -157,7 +193,7 @@
                     <div class="form-group">
                       <input type="password" class="form-control" id="password" name="password" placeholder="Kata Sandi" required>
                     </div>
-                    <button type="submit" class="btn btn-block btn-primary">Masuk</button>
+                    <button type="submit" class="btn btn-block btn-primary">Masuk <i class="fa fa-fw fa-sign-in-alt"></i></button>
                   </form>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#daftarModal">Belum punya akun? Daftar Disini</a>

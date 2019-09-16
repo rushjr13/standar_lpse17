@@ -14,10 +14,12 @@ class Regulasi extends CI_Controller {
 		$user = $this->session->userdata('user_masuk');
 		$data['pengguna_masuk'] = $this->admin->pengguna($user);
 		$data['pengaturan'] = $this->admin->pengaturan();
+		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
+		$data['hari_sekarang'] = $this->admin->hari(date('l'));
 		$data['menu_akses'] = $this->admin->menu_akses($user);
 
 		// KHUSUS
-		$data['judul'] = "Regulasi";
+		$data['judul'] = "Informasi";
 		$data['kebijakan_umum'] = $this->admin->regulasiid('kebijakan_umum');
 		$data['kebijakan_layanan'] = $this->admin->regulasiid('kebijakan_layanan');
 		$data['kebijakan_keamanan_informasi'] = $this->admin->regulasiid('kebijakan_keamanan_informasi');
@@ -33,6 +35,8 @@ class Regulasi extends CI_Controller {
 		$user = $this->session->userdata('user_masuk');
 		$data['pengguna_masuk'] = $this->admin->pengguna($user);
 		$data['pengaturan'] = $this->admin->pengaturan();
+		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
+		$data['hari_sekarang'] = $this->admin->hari(date('l'));
 		$data['menu_akses'] = $this->admin->menu_akses($user);
 
 		// KHUSUS
@@ -50,7 +54,7 @@ class Regulasi extends CI_Controller {
 			]);
 
 			if ($this->form_validation->run() == FALSE){
-				$data['judul'] = "Regulasi";
+				$data['judul'] = "Informasi";
 				$data['regulasi'] = $this->admin->regulasiid($id_regulasi);
 				$this->load->view('templates/header', $data);
 				$this->load->view('templates/sidebar', $data);
@@ -81,11 +85,13 @@ class Regulasi extends CI_Controller {
 		$user = $this->session->userdata('user_masuk');
 		$data['pengguna_masuk'] = $this->admin->pengguna($user);
 		$data['pengaturan'] = $this->admin->pengaturan();
+		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
+		$data['hari_sekarang'] = $this->admin->hari(date('l'));
 		$data['menu_akses'] = $this->admin->menu_akses($user);
 
 		// KHUSUS
 		if($opsi==null){
-			$data['judul'] = "Perka LPSE";
+			$data['judul'] = "Regulasi";
 			$data['perka'] = $this->admin->perka();
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);

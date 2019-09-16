@@ -7,14 +7,14 @@
 		</div>
 		<div class="card-body">
 			<div class="form-group row">
-		    <label for="jabatan_st" class="col-sm-2 col-form-label">Jabatan Tambahan</label>
-		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="jabatan_st" name="jabatan_st" value="<?=$tugas_tambahan['jabatan_st'] ?>">
-		    </div>
-		  </div>
+			    <label for="jabatan_st" class="col-sm-2 col-form-label">Jabatan Tambahan</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="jabatan_st" name="jabatan_st" value="<?=$tugas_tambahan['jabatan_st'] ?>" autofocus>
+			    </div>
+			  </div>
 		  <div class="form-group">
 		    <label for="tugas_st">Tugas & Tanggung Jawab</label>
-				<textarea class="form-control ckeditor" id="tugas_st" name="tugas_st" placeholder="Tugas & Tanggung Jawab"><?=$tugas_tambahan['tugas_st'] ?></textarea>
+			<textarea class="form-control ckeditor" id="tugas_st" name="tugas_st" placeholder="Tugas & Tanggung Jawab"><?=$tugas_tambahan['tugas_st'] ?></textarea>
 		  </div>
 		</div>
 	</div>
