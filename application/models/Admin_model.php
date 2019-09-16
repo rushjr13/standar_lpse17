@@ -129,7 +129,7 @@ class Admin_model extends CI_Model {
 													    <span aria-hidden="true">&times;</span>
 													  </button>
 													</div>');
-			redirect('auth');
+			redirect('beranda');
 		}
 	}
 
@@ -180,40 +180,132 @@ class Admin_model extends CI_Model {
 		if($id_menu==null){
 			$this->db->select('*');
 			$this->db->from('menu');
-			$this->db->order_by('id_menu', 'ASC');
+			$this->db->order_by('nama_menu', 'ASC');
 			return $this->db->get()->result_array();
 		} else {
 			$this->db->select('*');
 			$this->db->from('menu');
-			$this->db->where('menu.id_menu', $id_menu);
+			$this->db->where('id_menu', $id_menu);
 			return $this->db->get()->row_array();
 		}
 	}
 
+    // AKSES MENU
+    function cek_akses($username, $id_menu){
+        $this->db->select('*');
+        $this->db->from('akses_menu');
+        $this->db->where('username', $username);
+        $this->db->where('id_menu', $id_menu);
+        return $this->db->get();
+    }
+
+    // MENU AKSES
+    function menu_akses($username){
+        $this->db->select('*');
+        $this->db->from('akses_menu');
+		$this->db->join('menu', 'menu.id_menu = akses_menu.id_menu');
+        $this->db->where('akses_menu.username', $username);
+        return $this->db->get()->result_array();
+    }
+
+    // SUB MENU BY MENU
+    function submenubymenu($id_menu){
+        $this->db->select('*');
+        $this->db->from('submenu');
+        $this->db->where('id_menu', $id_menu);
+        $this->db->order_by('nama_submenu', 'ASC');
+        return $this->db->get()->result_array();
+    }
+
 	// SUB MENU
-	function submenu($id_submenu=null){
-		if($id_submenu==null){
-			$this->db->select('*');
-			$this->db->from('submenu');
-			$this->db->join('menu', 'menu.id_menu = submenu.id_menu');
-			$this->db->order_by('submenu.id_menu', 'ASC');
-			$this->db->order_by('submenu.id_submenu', 'ASC');
-			return $this->db->get()->result_array();
-		} else {
-			$this->db->select('*');
-			$this->db->from('submenu');
-			$this->db->join('menu', 'menu.id_menu = submenu.id_menu');
-			$this->db->where('submenu.id_submenu', $id_submenu);
-			return $this->db->get()->row_array();
-		}
+	function submenu($id_submenu){
+		$this->db->select('*');
+		$this->db->from('submenu');
+		$this->db->where('id_submenu', $id_submenu);
+		return $this->db->get()->row_array();
 	}
+
+    // PERKA
+    function perka($id=null){
+        if($id==null){
+            $this->db->select('*');
+            $this->db->from('regulasi_perka');
+            $this->db->order_by('nomor', 'ASC');
+            return $this->db->get()->result_array();
+        } else {
+            $this->db->select('*');
+            $this->db->from('regulasi_perka');
+            $this->db->where('id', $id);
+            return $this->db->get()->row_array();
+        }
+    }
+
+    // REGULASI
+    function regulasi(){
+        $this->db->select('*');
+        $this->db->from('regulasi');
+        return $this->db->get()->result_array();
+    }
+
+    // REGULASI BY ID
+    function regulasiid($id_regulasi){
+        $this->db->select('*');
+        $this->db->from('regulasi');
+        $this->db->where('id_regulasi', $id_regulasi);
+        return $this->db->get()->row_array();
+    }
+
+    // STRUKTUR ORGANISASI
+    function struktur_organisasi($id_su=null){
+        if($id_su==null){
+            $this->db->select('*');
+            $this->db->from('organisasi_struktur');
+            $this->db->order_by('id_su', 'ASC');
+            return $this->db->get()->result_array();
+        } else {
+            $this->db->select('*');
+            $this->db->from('organisasi_struktur');
+            $this->db->where('id_su', $id_su);
+            return $this->db->get()->row_array();
+        }
+    }
+
+    // STRUKTUR ORGANISASI
+    function tugas_tambahan($id_st=null){
+        if($id_st==null){
+            $this->db->select('*');
+            $this->db->from('organisasi_st');
+            $this->db->order_by('id_st', 'ASC');
+            return $this->db->get()->result_array();
+        } else {
+            $this->db->select('*');
+            $this->db->from('organisasi_st');
+            $this->db->where('id_st', $id_st);
+            return $this->db->get()->row_array();
+        }
+    }
+
+    // STRUKTUR ORGANISASI SUB TUGAS
+    function subtugas_su($id_st=null){
+        if($id_st==null){
+            $this->db->select('*');
+            $this->db->from('organisasi_st');
+            $this->db->order_by('id_st', 'ASC');
+            return $this->db->get()->result_array();
+        } else {
+            $this->db->select('*');
+            $this->db->from('organisasi_st');
+            $this->db->where('id_st', $id_st);
+            return $this->db->get()->row_array();
+        }
+    }
 
 	// PEMBERITAHUAN
 	function pemberitahuan($id_pemberitahuan=null){
 		if($id_pemberitahuan==null){
 			$this->db->select('*');
 			$this->db->from('pemberitahuan');
-			$this->db->join('pengguna', 'pengguna.id_pengguna = pemberitahuan.id_pengguna');
+            $this->db->join('pengguna', 'pengguna.id_pengguna = pemberitahuan.id_pengguna');
 			$this->db->order_by('pemberitahuan.id_pemberitahuan', 'DESC');
 			return $this->db->get()->result_array();
 		} else {

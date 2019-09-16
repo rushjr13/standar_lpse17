@@ -7,7 +7,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url() ?>">
         <div class="sidebar-brand-icon rotate-n-15">
           <img src="<?=base_url('assets/img/').$pengaturan['icon'] ?>" width="40">
         </div>
@@ -19,7 +19,7 @@
       <?php if($pengguna_masuk){ ?>
         <!-- Nav Item - Dashboard -->
         <li class="nav-item <?php if($judul=='Beranda'){echo 'active';} ?>">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="<?=base_url() ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Beranda</span></a>
         </li>
@@ -57,24 +57,34 @@
           <hr class="sidebar-divider">
         <?php } ?>
         <!-- Heading -->
-          <div class="sidebar-heading">
-            STANDAR LPSE
-          </div>
-
-          <!-- Nav Item - Pages Collapse Menu -->
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="fas fa-fw fa-users"></i>
-              <span>Pengguna</span>
-            </a>
-          </li>
-
-          <hr class="sidebar-divider">
+          <?php foreach ($menu_akses as $mn): ?>
+            <div class="sidebar-heading">
+              <?=$mn['nama_menu'] ?>
+            </div>
+            <?php
+              $this->db->select('*');
+              $this->db->from('submenu');
+              $this->db->where('id_menu', $mn['id_menu']);
+              $this->db->order_by('id_menu', 'ASC');
+              $this->db->order_by('nama_submenu', 'ASC');
+              $submenu = $this->db->get()->result_array();
+            ?>
+            <?php foreach ($submenu as $sm): ?>
+              <!-- Nav Item - Pages Collapse Menu -->
+              <li class="nav-item <?php if($judul==$sm['nama_submenu']){echo 'active';} ?>">
+                <a class="nav-link" href="<?=base_url().$sm['link'] ?>">
+                  <i class="fa fa-fw <?=$sm['icon'] ?>"></i>
+                  <span><?=$sm['nama_submenu'] ?></span>
+                </a>
+              </li>
+            <?php endforeach ?>
+            <hr class="sidebar-divider">
+          <?php endforeach ?>
 
       <?php }else{ ?>
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="<?=base_url() ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Beranda</span></a>
         </li>

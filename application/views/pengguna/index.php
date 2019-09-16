@@ -74,8 +74,8 @@
         $status = 'Aktif';
       }
     ?>
-        <div class="col-md-2">
-          <div class="card-deck">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+          <div class="card-deck mb-3">
             <div class="card shadow border-<?=$warna ?>">
               <img src="<?=base_url('assets/img/pengguna/').$p['foto'] ?>" class="card-img-top">
               <div class="card-body text-center">
@@ -84,6 +84,7 @@
                 <small class="text-muted">Terdaftar sejak :<br><?=$tgl_daftar ?></small>
               </div>
               <div class="card-footer text-center">
+                <a href="<?=base_url('pengguna/akses/').$p['username'] ?>" class="btn btn-sm btn-circle btn-secondary" title="Akses Menu"><i class="fa fa-fw fa-list"></i></a>
                 <button type="button" id="status" data-toggle="modal" data-target="#statusModal" data-username="<?=$p['username'] ?>" data-nama="<?=$p['nama_lengkap'] ?>" data-status="<?=$status ?>" data-judul="<?=$title ?>" data-warna="<?=$warnaform ?>" data-icon="<?=$iconform ?>" class="btn btn-circle btn-sm btn-<?=$warna ?>" title="<?=$title ?>"><i class="<?=$icon ?>"></i></button>
                 <a href="<?=base_url('pengguna/ubah/').$p['username'] ?>" class="btn btn-sm btn-circle btn-info" title="Lihat"><i class="fa fa-fw fa-eye"></i></a>
                 <button type="button" id="hapus" data-toggle="modal" data-target="#hapusModal" data-username="<?=$p['username'] ?>" data-nama="<?=$p['nama_lengkap'] ?>" data-foto="<?=$p['foto'] ?>" class="btn btn-circle btn-sm btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>

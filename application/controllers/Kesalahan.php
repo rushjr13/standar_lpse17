@@ -2,12 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Kesalahan extends CI_Controller {
+
+	public function __construct()
+    {
+        parent::__construct();
+        $this->admin->cek_masuk();
+    }
 		
 	public function index(){
 		// UMUM
-		$id_pengguna = $this->session->userdata('id_user_masuk');
-		$data['pengguna_masuk'] = $this->admin->pengguna($id_pengguna);
+		$user = $this->session->userdata('user_masuk');
+		$data['pengguna_masuk'] = $this->admin->pengguna($user);
 		$data['pengaturan'] = $this->admin->pengaturan();
+		$data['menu_akses'] = $this->admin->menu_akses($user);
 
 		// KHUSUS
 		$data['judul'] = "Kesalahan";

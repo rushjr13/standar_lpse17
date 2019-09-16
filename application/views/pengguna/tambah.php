@@ -40,8 +40,7 @@
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="id_level">Level</label>
-                  <select class="form-control" id="id_level" name="id_level">
-                    <option value="">-- Pilih Level Pengguna --</option>
+                  <select class="form-control" id="id_level" name="id_level" placeholder="Pilih Level Pengguna">
                     <?php foreach ($level as $lvl): ?>
                       <option value="<?=$lvl['id_level'] ?>"><?=$lvl['nama_level'] ?></option>
                     <?php endforeach ?>
@@ -50,8 +49,7 @@
                 </div>
                 <div class="col-md-6">
                   <label for="status">Status</label>
-                  <select class="form-control" id="status" name="status">
-                    <option value="">-- Pilih Status Pengguna --</option>
+                  <select class="form-control" id="status" name="status" placeholder="Pilih Status Pengguna">
                     <option value="Aktif">Aktif</option>
                     <option value="Belum Aktif">Belum Aktif</option>
                   </select>

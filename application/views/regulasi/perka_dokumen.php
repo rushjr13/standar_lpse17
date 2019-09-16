@@ -1,0 +1,1 @@
+<embed width="600" height="450" src="<?=base_url('assets/file/pdf/perka/').$perka['file'] ?>#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />

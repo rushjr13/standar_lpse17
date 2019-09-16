@@ -10,6 +10,7 @@
   <meta name="author" content="">
 
   <title><?=$pengaturan['nama_web'] ?> - <?=$judul ?></title>
+  <link rel="shortcut icon" href="<?=base_url('assets/img/').$pengaturan['icon'] ?>">
 
   <!-- Custom fonts for this template-->
   <link href="<?=base_url('assets/vendor') ?>/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -17,6 +18,11 @@
 
   <!-- Custom styles for this template-->
   <link href="<?=base_url('assets/css') ?>/sb-admin-2.min.css" rel="stylesheet">
+  <link href="<?=base_url('assets/css') ?>/select2.min.css" rel="stylesheet">
+  <link href="<?=base_url('assets/css') ?>/select2-bootstrap4.min.css" rel="stylesheet">
+  <link href="<?=base_url('assets/css') ?>/select2-bootstrap4.css" rel="stylesheet">
   <link href="<?=base_url('assets/vendor') ?>/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+  <script type="text/javascript" src="<?= base_url('assets/ckeditor') ?>/ckeditor.js"></script>
 
 </head>

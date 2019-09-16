@@ -87,8 +87,7 @@
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="id_level">Level</label>
-                  <select class="form-control" id="id_level" name="id_level">
-                    <option value="">-- Pilih Level Pengguna --</option>
+                  <select class="form-control" id="id_level" name="id_level" placeholder="Pilih Level Pengguna">
                     <?php foreach ($level as $lvl): ?>
                       <option value="<?=$lvl['id_level'] ?>" <?php if($lvl['id_level']==$pengguna['id_level']){echo 'selected';} ?>><?=$lvl['nama_level'] ?></option>
                     <?php endforeach ?>
@@ -96,8 +95,7 @@
                 </div>
                 <div class="col-md-6">
                   <label for="status">Status</label>
-                  <select class="form-control" id="status" name="status">
-                    <option value="">-- Pilih Status Pengguna --</option>
+                  <select class="form-control" id="status" name="status" placeholder="Pilih Status Pengguna">
                     <option value="Aktif" <?php if($pengguna['status']=='Aktif'){echo 'selected';} ?>>Aktif</option>
                     <option value="Belum Aktif" <?php if($pengguna['status']=='Belum Aktif'){echo 'selected';} ?>>Belum Aktif</option>
                   </select>
