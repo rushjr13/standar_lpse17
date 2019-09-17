@@ -310,6 +310,32 @@ class Admin_model extends CI_Model {
         }
     }
 
+    // TUJUAN ORGANISASI
+    function tujuan_organisasi(){
+        $this->db->select('*');
+        $this->db->from('organisasi_tujuan');
+        $this->db->where('id_ot', 'tujuan');
+        return $this->db->get()->row_array();
+    }
+
+    // GAMBAR ORGANISASI
+    function gambar_organisasi(){
+        $this->db->select('*');
+        $this->db->from('organisasi_tujuan');
+        $this->db->where('id_ot', 'gambar');
+        return $this->db->get()->row_array();
+    }
+
+    // SK ORGANISASI
+    function sk_organisasi($id_sko=null){
+        if($id_sko==null){
+            $this->db->order_by('id_sko', 'ASC');
+            return $this->db->get('organisasi_sk')->result_array();
+        } else {
+            return $this->db->get_where('organisasi_sk', ['id_sko'=>$id_sko])->row_array();
+        }
+    }
+
 	// PEMBERITAHUAN
 	function pemberitahuan($id_pemberitahuan=null){
 		if($id_pemberitahuan==null){
