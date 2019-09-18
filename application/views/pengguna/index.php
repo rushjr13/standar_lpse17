@@ -5,7 +5,7 @@
     <a href="<?=base_url('pengguna/tambah') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Tambah Pengguna"><i class="fa fa-fw fa-user-plus"></i></a>
   </div>
   <div class="card-body">
-    <div class="row">
+    <div class="row justify-content-md-center">
       <?php foreach ($daftarpengguna as $p): ?>
         <?php
       date_default_timezone_set('Asia/Makassar');

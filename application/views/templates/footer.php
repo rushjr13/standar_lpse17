@@ -125,7 +125,7 @@
   <script src="<?=base_url('assets/')?>js/demo/chart-pie-demo.js"></script>
   <script src="<?=base_url('assets/')?>js/demo/datatables-demo.js"></script>
   <script src="<?=base_url('assets/')?>js/select2.min.js"></script>
-  <script src="<?php echo base_url('assets/') ?>js/jquery-1.10.2.js"></script>
+  <script src="<?=base_url('assets/') ?>js/jquery-1.10.2.js"></script>
 
 <script>
 

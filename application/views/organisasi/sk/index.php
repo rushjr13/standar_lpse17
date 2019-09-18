@@ -5,18 +5,23 @@
 				Daftar SK Organisasi LPSE
 				<a href="<?=base_url('organisasi/sk/tambah') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Tambah SK Organisasi"><i class="fa fa-fw fa-plus"></i></a>
 			</div>
-			<div class="card-body">
-				<div class="card shadow border-primary">
-					<div class="card-header bg-primary text-white">
-						<div class="row text-center">
-							<div class="col-lg-3 align-middle">NOMOR & TANGGAL SK</div>
-							<div class="col-lg-4 align-middle">NAMA SK</div>
-							<div class="col-lg-4 align-middle">TENTANG SK</div>
-							<div class="col-lg-1 align-middle">OPSI</div>
-						</div>
-					</div>
-					<div class="card-body">
-						<?php if($sk_organisasi){ ?>
+			<div class="card-body table-responsive">
+				<?php if($sk_organisasi){ ?>
+					<table class="table table-sm table-borderless table-hover" id="dataTable" width="100%" cellspacing="0">
+						<thead class="bg-dark text-white">
+							<tr>
+								<th class="align-middle">NO</th>
+								<th class="align-middle">
+									<div class="row text-center">
+										<div class="col-lg-3">NOMOR & TANGGAL SK</div>
+										<div class="col-lg-4">NAMA SK</div>
+										<div class="col-lg-4">TENTANG SK</div>
+										<div class="col-lg-1">OPSI</div>
+									</div>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
 							<?php $no=1; foreach ($sk_organisasi as $sko): ?>
 							<?php
 								date_default_timezone_set('Asia/Makassar');
@@ -52,24 +57,29 @@
 
 				        $tanggal_sko = $tgl.' '.$bulan.' '.$thn;
 							?>
-								<div class="row text-center">
-									<div class="col-lg-3 align-middle"><?=$sko['nomor_sko'] ?><br><?=$tanggal_sko ?></div>
-									<div class="col-lg-4 align-middle"><?=$sko['nama_sko'] ?></div>
-									<div class="col-lg-4 align-middle"><?=$sko['tentang_sko'] ?></div>
-									<div class="col-lg-1 align-middle">
-										<button type="button" class="btn btn-sm btn-circle btn-success" id="files" data-toggle="modal" data-target="#filesModal" data-nama="<?=$sko['nama_sko'] ?>" data-file="<?=$sko['file_sko'] ?>" title="File <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-file"></i></button>
-										<a href="<?=base_url('organisasi/sk/ubah/').$sko['id_sko'] ?>" class="btn btn-sm btn-circle btn-info" title="Ubah <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-edit"></i></a>
-										<button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$sko['id_sko'] ?>" data-nama="<?=$sko['nama_sko'] ?>" data-file="<?=$sko['file_sko'] ?>" title="Hapus <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+							<tr>
+								<td class="align-middle"><?=$no++ ?></td>
+								<td class="align-middle">
+									<div class="row text-center">
+										<div class="col-lg-3"><?=$sko['nomor_sko'] ?><br><?=$tanggal_sko ?></div>
+										<div class="col-lg-4"><?=$sko['nama_sko'] ?></div>
+										<div class="col-lg-4"><?=$sko['tentang_sko'] ?></div>
+										<div class="col-lg-1">
+											<button type="button" class="btn btn-sm btn-circle btn-success" id="files" data-toggle="modal" data-target="#filesModal" data-nama="<?=$sko['nama_sko'] ?>" data-file="<?=$sko['file_sko'] ?>" title="File <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-file"></i></button>
+											<a href="<?=base_url('organisasi/sk/ubah/').$sko['id_sko'] ?>" class="btn btn-sm btn-circle btn-info" title="Ubah <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-edit"></i></a>
+											<button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$sko['id_sko'] ?>" data-nama="<?=$sko['nama_sko'] ?>" data-file="<?=$sko['file_sko'] ?>" title="Hapus <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+										</div>
 									</div>
-								</div>
+								</td>
+							</tr>
 							<?php endforeach ?>
-						<?php }else{ ?>
-							<div class="row">
-								<div class="alert alert-secondary col-12 text-center" role="alert">Tidak ada data yang tersedia!</div>
-							</div>
-						<?php } ?>
+						</tbody>
+					</table>
+				<?php }else{ ?>
+					<div class="row">
+						<div class="alert alert-secondary col-12 text-center" role="alert">Tidak ada data yang tersedia!</div>
 					</div>
-				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</div>

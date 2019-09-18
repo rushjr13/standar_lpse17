@@ -336,6 +336,33 @@ class Admin_model extends CI_Model {
         }
     }
 
+    // ISTILAH ASET
+    function istilah(){
+        $this->db->where('id', 'istilah');
+        return $this->db->get('aset_sop')->row_array();
+    }
+
+    // SOP ASET
+    function sop_aset($id=null){
+        if($id==null){
+            $this->db->order_by('id', 'ASC');
+            $this->db->where('id !=', 'istilah');
+            return $this->db->get('aset_sop')->result_array();
+        } else {
+            return $this->db->get_where('aset_sop', ['id'=>$id])->row_array();
+        }
+    }
+
+    // ASET INFORMASI
+    function aset_informasi($id=null){
+        if($id==null){
+            $this->db->order_by('id', 'ASC');
+            return $this->db->get('aset_informasi')->result_array();
+        } else {
+            return $this->db->get_where('aset_informasi', ['id'=>$id])->row_array();
+        }
+    }
+
 	// PEMBERITAHUAN
 	function pemberitahuan($id_pemberitahuan=null){
 		if($id_pemberitahuan==null){
