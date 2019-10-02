@@ -353,13 +353,145 @@ class Admin_model extends CI_Model {
         }
     }
 
+    // ASET SK
+    function aset_sk($id=null){
+        if($id==null){
+            $this->db->order_by('tanggal', 'DESC');
+            return $this->db->get('aset_sk')->result_array();
+        } else {
+            return $this->db->get_where('aset_sk', ['id'=>$id])->row_array();
+        }
+    }
+
+    // ASET KERAHASIAAN
+    function aset_kerahasiaan($id=null){
+        if($id==null){
+            $this->db->order_by('id_rahasia', 'ASC');
+            return $this->db->get('aset_kerahasiaan')->result_array();
+        } else {
+            return $this->db->get_where('aset_kerahasiaan', ['id_rahasia'=>$id])->row_array();
+        }
+    }
+
+    // ASET INTEGRITAS
+    function aset_integritas($id=null){
+        if($id==null){
+            $this->db->order_by('id_integritas', 'ASC');
+            return $this->db->get('aset_integritas')->result_array();
+        } else {
+            return $this->db->get_where('aset_integritas', ['id_integritas'=>$id])->row_array();
+        }
+    }
+
+    // ASET KETERSEDIAAN
+    function aset_ketersediaan($id=null){
+        if($id==null){
+            $this->db->order_by('id_sedia', 'ASC');
+            return $this->db->get('aset_ketersediaan')->result_array();
+        } else {
+            return $this->db->get_where('aset_ketersediaan', ['id_sedia'=>$id])->row_array();
+        }
+    }
+
     // ASET INFORMASI
     function aset_informasi($id=null){
         if($id==null){
-            $this->db->order_by('id', 'ASC');
+            $this->db->join('aset_kerahasiaan', 'aset_kerahasiaan.id_rahasia = aset_informasi.kerahasiaan');
+            $this->db->join('aset_integritas', 'aset_integritas.id_integritas = aset_informasi.integritas');
+            $this->db->join('aset_ketersediaan', 'aset_ketersediaan.id_sedia = aset_informasi.ketersediaan');
+            $this->db->order_by('aset_informasi.id', 'ASC');
             return $this->db->get('aset_informasi')->result_array();
         } else {
             return $this->db->get_where('aset_informasi', ['id'=>$id])->row_array();
+        }
+    }
+
+    // ASET SDM
+    function aset_sdm($id=null){
+        if($id==null){
+            $this->db->join('aset_kerahasiaan', 'aset_kerahasiaan.id_rahasia = aset_sdm.kerahasiaan');
+            $this->db->join('aset_integritas', 'aset_integritas.id_integritas = aset_sdm.integritas');
+            $this->db->join('aset_ketersediaan', 'aset_ketersediaan.id_sedia = aset_sdm.ketersediaan');
+            $this->db->order_by('aset_sdm.id', 'ASC');
+            return $this->db->get('aset_sdm')->result_array();
+        } else {
+            return $this->db->get_where('aset_sdm', ['id'=>$id])->row_array();
+        }
+    }
+
+    // ASET FISIK
+    function aset_fisik($id=null){
+        if($id==null){
+            $this->db->select('*');
+            $this->db->from('aset_fisik');
+            $this->db->join('jenis_aset_fisik', 'jenis_aset_fisik.id = aset_fisik.id_jenisaset');
+            $this->db->join('klasifikasi_aset_fisik', 'klasifikasi_aset_fisik.id = aset_fisik.id_klasifikasiaset');
+            $this->db->join('aset_kerahasiaan', 'aset_kerahasiaan.id_rahasia = aset_fisik.kerahasiaan');
+            $this->db->join('aset_integritas', 'aset_integritas.id_integritas = aset_fisik.integritas');
+            $this->db->join('aset_ketersediaan', 'aset_ketersediaan.id_sedia = aset_fisik.ketersediaan');
+            $this->db->order_by('aset_fisik.idf', 'ASC');
+            return $this->db->get()->result_array();
+        } else {
+            return $this->db->get_where('aset_fisik', ['idf'=>$id])->row_array();
+        }
+    }
+
+    // JENIS ASET FISIK
+    function jenis_aset_fisik($id=null){
+        if($id==null){
+            $this->db->order_by('id', 'ASC');
+            return $this->db->get('jenis_aset_fisik')->result_array();
+        } else {
+            return $this->db->get_where('jenis_aset_fisik', ['id'=>$id])->row_array();
+        }
+    }
+
+    // KLASIFIKASI ASET FISIK
+    function klasifikasi_aset_fisik($id=null){
+        if($id==null){
+            $this->db->order_by('id', 'ASC');
+            return $this->db->get('klasifikasi_aset_fisik')->result_array();
+        } else {
+            return $this->db->get_where('klasifikasi_aset_fisik', ['id'=>$id])->row_array();
+        }
+    }
+
+    // ASET SOFTWARE
+    function aset_software($id=null){
+        if($id==null){
+            $this->db->join('aset_kerahasiaan', 'aset_kerahasiaan.id_rahasia = aset_software.kerahasiaan');
+            $this->db->join('aset_integritas', 'aset_integritas.id_integritas = aset_software.integritas');
+            $this->db->join('aset_ketersediaan', 'aset_ketersediaan.id_sedia = aset_software.ketersediaan');
+            $this->db->order_by('aset_software.ids', 'ASC');
+            return $this->db->get('aset_software')->result_array();
+        } else {
+            return $this->db->get_where('aset_software', ['ids'=>$id])->row_array();
+        }
+    }
+
+    // ASET LAYANAN
+    function aset_layanan($id=null){
+        if($id==null){
+            $this->db->join('aset_kerahasiaan', 'aset_kerahasiaan.id_rahasia = aset_layanan.kerahasiaan');
+            $this->db->join('aset_integritas', 'aset_integritas.id_integritas = aset_layanan.integritas');
+            $this->db->join('aset_ketersediaan', 'aset_ketersediaan.id_sedia = aset_layanan.ketersediaan');
+            $this->db->order_by('aset_layanan.idl', 'ASC');
+            return $this->db->get('aset_layanan')->result_array();
+        } else {
+            return $this->db->get_where('aset_layanan', ['idl'=>$id])->row_array();
+        }
+    }
+
+    // ASET INTENGIBLE
+    function aset_intangible($id=null){
+        if($id==null){
+            $this->db->join('aset_kerahasiaan', 'aset_kerahasiaan.id_rahasia = aset_intangible.kerahasiaan');
+            $this->db->join('aset_integritas', 'aset_integritas.id_integritas = aset_intangible.integritas');
+            $this->db->join('aset_ketersediaan', 'aset_ketersediaan.id_sedia = aset_intangible.ketersediaan');
+            $this->db->order_by('aset_intangible.idi', 'ASC');
+            return $this->db->get('aset_intangible')->result_array();
+        } else {
+            return $this->db->get_where('aset_intangible', ['idi'=>$id])->row_array();
         }
     }
 
