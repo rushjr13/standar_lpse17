@@ -2,208 +2,217 @@
   <table class="table table-sm table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
     <thead class="bg-dark text-white">
       <tr>
-        <th class="align-middle text-center">KODE</th>
-        <th class="align-middle text-center">NAMA PEGAWAI & IDENTITAS</th>
-        <th class="align-middle text-center">SUB KLASIFIKASI</th>
-        <th class="align-middle text-center">FUNGSI</th>
-        <th class="align-middle text-center">JABATAN</th>
-        <th class="align-middle text-center">KEAMANAN<br>INFORMASI</th>
-        <!-- <th class="align-middle text-center">KETERANGAN</th> -->
-        <th class="align-middle text-center">OPSI</th>
+        <th rowspan="2" class="align-middle text-center">NO</th>
+        <th rowspan="2" class="align-middle text-center">SUB KLASIFIKASI</th>
+        <th rowspan="2"class="align-middle text-center">DAMPAK</th>
+        <th rowspan="2"class="align-middle text-center">PENGANCAM</th>
+        <th colspan="3" class="align-middle text-center">IDENTIFIKASI RESIKO BAWAAN</th>
+        <th rowspan="2" class="align-middle text-center">OPSI</th>
+      </tr>
+      <tr>
+        <th class="align-middle text-center">KERENTANAN</th>
+        <th class="align-middle text-center">PAPARAN</th>
+        <th class="align-middle text-center">NILAI</th>
       </tr>
     </thead>
     <tbody>
-      <?php if($aset_sdm){ ?>
-        <?php $nilai=0; foreach ($aset_sdm as $as): ?>
-          <?php
-            $nilai = ($as['kerahasiaan']+$as['integritas']+$as['ketersediaan'])/3;
-
-            // NILAI
-            if($nilai>=1 && $nilai<=1.5){
-              $nl = 'Rendah';
-            }else if($nilai>=1.5 && $nilai<=2.5){
-              $nl = 'Sedang';
-            }else if($nilai>=2.5 && $nilai<=3){
-              $nl = 'Tinggi';
-            }
-          ?>
+      <?php if($resiko_sdm){ ?>
+        <?php $no=1; $nilai=0; foreach ($resiko_sdm as $rsdm): ?>
+        <?php
+          $nilai = $rsdm['dampak']*$rsdm['pengancam']*$rsdm['kerentanan']*$rsdm['paparan'];
+          if($nilai<=24){
+            $jenis_resiko = 'Rendah';
+          }else if($nilai>24 && $nilai<=64){
+            $jenis_resiko = 'Sedang';
+          }else if($nilai>64){
+            $jenis_resiko = 'Tinggi';
+          }
+        ?>
           <tr>
-            <td class="align-middle text-center"><?=$as['id'] ?></td>
-            <td class="align-middle text-center"><strong><?=$as['nama'] ?></strong><br><small><?=$as['identitas'] ?></small></td>
-            <td class="align-middle text-center"><?=$as['klasifikasi'] ?></td>
+            <td class="align-middle text-center"><?=$no++ ?></td>
+            <td class="align-middle"><?=$rsdm['kla_sdm'] ?></td>
+            <td class="align-middle text-center"><?=$rsdm['dampak'] ?><br><small>(<?=$rsdm['ekonomi'] ?>)</small></td>
+            <td class="align-middle text-center"><?=$rsdm['pengancam'] ?><br><small>(<?=$rsdm['tingkat_pengancam'] ?>)</small></td>
+            <td class="align-middle text-center"><?=$rsdm['kerentanan'] ?><br><small>(<?=$rsdm['tingkat_rentan'] ?>)</small></td>
+            <td class="align-middle text-center"><?=$rsdm['paparan'] ?><br><small>(<?=$rsdm['tingkat_paparan'] ?>)</small></td>
             <td class="align-middle text-center">
-              <!-- <small>Fungsi :</small><br><strong> --><?=$as['pemilik_fungsi'] ?><!-- </strong><hr class="mb-1 mt-1">
-              <small>Sub Fungsi :</small><br><strong><?=$as['pemilik_subfungsi'] ?></strong><hr class="mb-1 mt-1">
-              <small>Unit :</small><br><strong><?=$as['pemilik_unit'] ?></strong> -->
+              <strong><?=number_format($nilai, 0, ',','.'); ?></strong><br><small>(<?=$jenis_resiko ?>)</small>
             </td>
-            <td class="align-middle text-center">
-              <!-- <small>Jabatan :</small><br><strong> --><?=$as['jabatan'] ?><!-- </strong><hr class="mb-1 mt-1">
-              <small>No. Kontrak / NDA :</small><br><strong><?=$as['kontrak'] ?></strong><hr class="mb-1 mt-1">
-              <small>Atasan Langsung :</small><br><strong><?=$as['atasan'] ?></strong> -->
-            </td>
-            <td class="align-middle text-center">
-              <!-- Kerahasiaan : <strong><?=$as['kerahasiaan'] ?></strong> <small>(<?=$as['nama_rahasia'] ?>)</small><br>
-              Integritas : <strong><?=$as['integritas'] ?></strong> <small>(<?=$as['nama_integritas'] ?>)</small><br>
-              Ketersediaan : <strong><?=$as['ketersediaan'] ?></strong> <small>(<?=$as['nama_sedia'] ?>)</small><hr class="mb-1 mt-1"> -->
-              <strong><?=number_format($nilai, 0, ',','.'); ?></strong><br><small>(<?=$nl ?>)</small>
-            </td>
-            <!-- <td class="align-middle"><?=$as['keterangan'] ?></td> -->
+            <!-- <td class="align-middle"><?=$ai['keterangan'] ?></td> -->
             <td class="align-middle text-center">
               <button
                 type="button"
                 class="btn btn-sm btn-circle btn-success"
-                id="detailasetsdm"
+                id="detailresikosdm"
                 data-toggle="modal"
-                data-target="#detailasetsdmModal"
-                data-id="<?=$as['id'] ?>"
-                data-nama="<?=$as['nama'] ?>"
-                data-klasifikasi="<?=$as['klasifikasi'] ?>"
-                data-identitas="<?=$as['identitas'] ?>"
-                data-fungsi="<?=$as['pemilik_fungsi'] ?>"
-                data-subfungsi="<?=$as['pemilik_subfungsi'] ?>"
-                data-unit="<?=$as['pemilik_unit'] ?>"
-                data-jabatan="<?=$as['jabatan'] ?>"
-                data-kontrak="<?=$as['kontrak'] ?>"
-                data-atasan="<?=$as['atasan'] ?>"
-                data-rahasia1="<?=$as['kerahasiaan'] ?>"
-                data-rahasia2="<?=$as['nama_rahasia'] ?>"
-                data-integritas1="<?=$as['integritas'] ?>"
-                data-integritas2="<?=$as['nama_integritas'] ?>"
-                data-sedia1="<?=$as['ketersediaan'] ?>"
-                data-sedia2="<?=$as['nama_sedia'] ?>"
-                data-nilai1="<?=number_format($nilai, 0, ',','.'); ?>"
-                data-nilai2="<?=$nl ?>"
-                data-keterangan="<?=$as['keterangan'] ?>"
-                title="Detail"><i class="fa fa-fw fa-list"></i></button>
-              <a href="<?=base_url('aset/form/sdm/ubah/').$as['id'] ?>" class="btn btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusasetsdm" data-toggle="modal" data-target="#hapusasetsdmModal" data-id="<?=$as['id'] ?>" data-nama="<?=$as['nama'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+                data-target="#detailresikosdmModal"
+                data-id="<?=$rsdm['id'] ?>"
+                data-klasifikasi="<?=$rsdm['kla_sdm'] ?>"
+                data-dampak="<?=$rsdm['dampak'] ?>"
+                data-ketdampak="<?='Ekonomi : '.$rsdm['ekonomi'].'<br>Reputasi : '.$rsdm['reputasi'].'<br>Pidana : '.$rsdm['pidana'].'<br>Kinerja : '.$rsdm['kinerja'] ?>"
+                data-pengancam="<?=$rsdm['pengancam'] ?>"
+                data-tingkatpengancam="<?=$rsdm['tingkat_pengancam'] ?>"
+                data-kerentanan="<?=$rsdm['kerentanan'] ?>"
+                data-tingkatrentan="<?=$rsdm['tingkat_rentan'] ?>"
+                data-paparan="<?=$rsdm['paparan'] ?>"
+                data-tingkatpaparan="<?=$rsdm['tingkat_paparan'] ?>"
+                data-nilai="<?=$nilai ?>"
+                data-jenisresiko="<?=$jenis_resiko ?>"
+                title="Detail">
+                <i class="fa fa-fw fa-eye"></i>
+              </button>
+              <a href="<?=base_url('resiko/form/sdm/ubah/').$rsdm['id'] ?>" class="btn btn-sm btn-circle btn-info m-1" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
+              <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusresikosdm" data-toggle="modal" data-target="#hapusresikosdmModal" data-id="<?=$rsdm['id'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
             </td>
           </tr>
         <?php endforeach ?>
       <?php }else{ ?>
         <tr>
-          <td colspan="7" class="text-center">Tidak ada data yang tersedia!</td>
+          <td colspan="8" class="text-center">Tidak ada data yang tersedia!</td>
         </tr>
       <?php } ?>
     </tbody>
   </table>
 </div>
 
-<!-- Modal Hapus -->
-<div class="modal fade" id="hapusasetsdmModal" tabindex="-1" role="dialog" aria-labelledby="hapusasetsdmModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<!-- Modal Detail -->
+<div class="modal fade" id="detailresikosdmModal" tabindex="-1" role="dialog" aria-labelledby="detailresikosdmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="hapusasetsdmModalLabel">Hapus Aset SDM</h5>
+        <h5 class="modal-title" id="detailresikosdmModalLabel">Sub Klasifikasi</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form id="formhapusasetsdm" action="" method="post">
+      <div class="modal-body table-responsive">
+        <div class="card bg-gradient-success mb-3">
+          <div class="card-body">
+            <table class="table table-sm table-bordered m-0">
+              <thead class="text-center text-white">
+                <tr>
+                  <td colspan="2" class="align-middle">DAMPAK</td>
+                  <td colspan="2" class="align-middle">PENGANCAM</td>
+                </tr>
+                <tr>
+                  <td class="align-middle">KETERANGAN</td>
+                  <td class="align-middle">NILAI</td>
+                  <td class="align-middle">KETERANGAN</td>
+                  <td class="align-middle">NILAI</td>
+                </tr>
+              </thead>
+              <tbody class="text-center bg-light">
+                <tr>
+                  <th class="align-middle" id="ketdampak">-</th>
+                  <th class="align-middle" id="dampak">-</th>
+                  <th class="align-middle" id="tingkatpengancam">-</th>
+                  <th class="align-middle" id="pengancam">-</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card bg-gradient-warning mb-3">
+          <div class="card-body">
+            <table class="table table-sm table-bordered m-0">
+              <thead class="text-center text-white">
+                <tr>
+                  <td colspan="6" class="align-middle">IDENTIFIKASI RESIKO BAWAAN</td>
+                  <td rowspan="3" class="align-middle">KONTROL</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="align-middle">KERENTANAN</td>
+                  <td colspan="2" class="align-middle">PAPARAN</td>
+                  <td rowspan="2" class="align-middle">JENIS RESIKO</td>
+                  <td rowspan="2" class="align-middle">NILAI RESIKO</td>
+                </tr>
+                <tr>
+                  <td class="align-middle">KETERANGAN</td>
+                  <td class="align-middle">NILAI</td>
+                  <td class="align-middle">KETERANGAN</td>
+                  <td class="align-middle">NILAI</td>
+                </tr>
+              </thead>
+              <tbody class="text-center bg-light">
+                <tr>
+                  <th class="align-middle" id="tingkatrentan">-</th>
+                  <th class="align-middle" id="kerentanan">-</th>
+                  <th class="align-middle" id="tingkatpaparan">-</th>
+                  <th class="align-middle" id="paparan">-</th>
+                  <th class="align-middle" id="jenisresiko">-</th>
+                  <th class="align-middle" id="nilai">-</th>
+                  <th class="align-middle" id="kontrol">-</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card bg-gradient-danger">
+          <div class="card-body">
+            <table class="table table-sm table-bordered m-0">
+              <thead class="text-center text-white">
+                <tr>
+                  <td colspan="6" class="align-middle">IDENTIFIKASI RESIKO SISA</td>
+                  <td rowspan="2" colspan="3" class="align-middle">MITIGASI</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="align-middle">KERENTANAN</td>
+                  <td colspan="2" class="align-middle">PAPARAN</td>
+                  <td rowspan="2" class="align-middle">JENIS RESIKO</td>
+                  <td rowspan="2" class="align-middle">NILAI RESIKO</td>
+                </tr>
+                <tr>
+                  <td class="align-middle">KETERANGAN</td>
+                  <td class="align-middle">NILAI</td>
+                  <td class="align-middle">KETERANGAN</td>
+                  <td class="align-middle">NILAI</td>
+                  <td class="align-middle">KONTROL</td>
+                  <td class="align-middle">PIC</td>
+                  <td class="align-middle">TARGET</td>
+                </tr>
+              </thead>
+              <tbody class="text-center bg-light">
+                <tr>
+                  <th class="align-middle" id="sisatingkatrentan">-</th>
+                  <th class="align-middle" id="sisakerentanan">-</th>
+                  <th class="align-middle" id="sisatingkatpaparan">-</th>
+                  <th class="align-middle" id="sisapaparan">-</th>
+                  <th class="align-middle" id="sisajenisresiko">-</th>
+                  <th class="align-middle" id="sisanilai">-</th>
+                  <th class="align-middle" id="mitigasikontrol">-</th>
+                  <th class="align-middle" id="mitigasipic">-</th>
+                  <th class="align-middle" id="mitigasitarget">-</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Hapus -->
+<div class="modal fade" id="hapusresikosdmModal" tabindex="-1" role="dialog" aria-labelledby="hapusresikosdmModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="hapusresikosdmModalLabel">Hapus Resiko SDM</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="formhapusresikosdm" action="" method="post">
         <div class="modal-body">
           <p id="ket">Keterangan</p>
-          <input type="hidden" id="nama" name="nama">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-sm btn-circle btn-secondary" title="Batal" data-dismiss="modal"><i class="fa fa-fw fa-times"></i></button>
           <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Detail -->
-<div class="modal fade" id="detailasetsdmModal" tabindex="-1" role="dialog" aria-labelledby="detailasetsdmModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="detailasetsdmModalLabel">Detail Aset Sumber Daya Manusia (SDM)</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Tutup">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body table-responsive">
-        <table class="table table-striped table-borderless" width="100%">
-          <tbody>
-            <tr>
-              <td width="19%">Kode</td>
-              <td width="3%">:</td>
-              <th width="78%"><span id="kode">kode</span></th>
-            </tr>
-            <tr>
-              <td>Nama Pegawai</td>
-              <td>:</td>
-              <th><span id="nama">nama</span></th>
-            </tr>
-            <tr>
-              <td>Sub Klasifikasi</td>
-              <td>:</td>
-              <th><span id="klasifikasi">klasifikasi</span></th>
-            </tr>
-            <tr>
-              <td>No. Identitas / NIP</td>
-              <td>:</td>
-              <th><span id="identitas">identitas</span></th>
-            </tr>
-            <tr>
-              <td>Fungsi</td>
-              <td>:</td>
-              <th><span id="fungsi">fungsi</span></th>
-            </tr>
-            <tr>
-              <td>Sub Fungsi</td>
-              <td>:</td>
-              <th><span id="subfungsi">subfungsi</span></th>
-            </tr>
-            <tr>
-              <td>Unit Kerja</td>
-              <td>:</td>
-              <th><span id="unit">unit</span></th>
-            </tr>
-            <tr>
-              <td>Jabatan</td>
-              <td>:</td>
-              <th><span id="jabatan">jabatan</span></th>
-            </tr>
-            <tr>
-              <td>No. Kontrak / NDA</td>
-              <td>:</td>
-              <th><span id="kontrak">kontrak</span></th>
-            </tr>
-            <tr>
-              <td>Atasan Langsung</td>
-              <td>:</td>
-              <th><span id="atasan">atasan</span></th>
-            </tr>
-            <tr>
-              <td>Kerahasiaan</td>
-              <td>:</td>
-              <th><span id="rahasia1">rahasia1</span> <small id="rahasia2">rahasia2</small></th>
-            </tr>
-            <tr>
-              <td>Integritas</td>
-              <td>:</td>
-              <th><span id="integritas1">integritas1</span> <small id="integritas2">integritas2</small></th>
-            </tr>
-            <tr>
-              <td>Ketersediaan</td>
-              <td>:</td>
-              <th><span id="sedia1">sedia1</span> <small id="sedia2">sedia2</small></th>
-            </tr>
-            <tr>
-              <td>Nilai Keamanan Informasi</td>
-              <td>:</td>
-              <th><span id="nilai1">nilai1</span> <small id="nilai2">nilai2</small></th>
-            </tr>
-            <tr>
-              <td>Keterangan</td>
-              <td>:</td>
-              <th><span id="keterangan">keterangan</span></th>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
   </div>
 </div>

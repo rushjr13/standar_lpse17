@@ -33,7 +33,7 @@
       </div>
       <div class="col-md-8 m-auto">
         <h6 class="font-weight-bold">LAYANAN PENGADAAN SECARA ELEKTRONIK</h6>
-        <h4 class="alert-heading font-weight-bold">DAFTAR ASET</h4>
+        <h4 class="alert-heading font-weight-bold">DAFTAR RESIKO</h4>
       </div>
       <div class="col-md-2 m-auto">
         <img src="<?=base_url('assets/img/lpse.png') ?>" width="100%" class="img-fluid">
@@ -44,67 +44,94 @@
   </div>
 
   <div class="table-responsive">
-    <table class="table table-sm table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
-      <thead>
+    <table class="table table-sm table-striped table-hover table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <thead class="text-center">
         <tr>
-          <th rowspan="2" class="align-middle text-center">NO</th>
-          <th rowspan="2" class="align-middle text-center">KODE</th>
-          <th rowspan="2" class="align-middle text-center">NAMA ASET</th>
-          <th rowspan="2" class="align-middle text-center">SUB KLASIFIKASI</th>
-          <th rowspan="2" class="align-middle text-center">JENIS ASET</th>
-          <th rowspan="2" class="align-middle text-center">SPESIFIKASI</th>
-          <th rowspan="2" class="align-middle text-center">PEMILIK</th>
-          <th rowspan="2" class="align-middle text-center">PENYEDIA</th>
-          <th rowspan="2" class="align-middle text-center">PEMEGANG</th>
-          <th rowspan="2" class="align-middle text-center">LOKASI</th>
-          <th rowspan="2" class="align-middle text-center">MASA BERLAKU</th>
-          <th colspan="4" class="align-middle text-center">KLASIFIKASI KEAMANAN INFORMASI</th>
-          <th rowspan="2" class="align-middle text-center">KETERANGAN</th>
+          <th rowspan="3" class="align-middle">NO</th>
+          <th rowspan="3" class="align-middle">SUB KLASIFIKASI</th>
+          <th colspan="2" rowspan="2" class="align-middle">DAMPAK</th>
+          <th colspan="2" rowspan="2" class="align-middle">PENGANCAM</th>
+          <th colspan="6" class="align-middle">IDENTIFIKASI RESIKO BAWAAN</th>
+          <th rowspan="3" class="align-middle">KONTROL</th>
+          <th colspan="6" class="align-middle">IDENTIFIKASI RESIKO SISA</th>
+          <th rowspan="2" colspan="3" class="align-middle">MITIGASI</th>
         </tr>
         <tr>
-          <th class="align-middle text-center">KERAHASIAAN</th>
-          <th class="align-middle text-center">INTEGRITAS</th>
-          <th class="align-middle text-center">KETERSEDIAAN</th>
-          <th class="align-middle text-center">NILAI</th>
+          <th colspan="2" class="align-middle">KERENTANAN</th>
+          <th colspan="2" class="align-middle">PAPARAN</th>
+          <th rowspan="2" class="align-middle">JENIS RESIKO</th>
+          <th rowspan="2" class="align-middle">NILAI RESIKO</th>
+          <th colspan="2" class="align-middle">KERENTANAN</th>
+          <th colspan="2" class="align-middle">PAPARAN</th>
+          <th rowspan="2" class="align-middle">JENIS RESIKO</th>
+          <th rowspan="2" class="align-middle">NILAI RESIKO</th>
+        </tr>
+        <tr>
+          <th class="align-middle">KET</th>
+          <th class="align-middle">NILAI</th>
+          <th class="align-middle">KET</th>
+          <th class="align-middle">NILAI</th>
+          <th class="align-middle">KET</th>
+          <th class="align-middle">NILAI</th>
+          <th class="align-middle">KET</th>
+          <th class="align-middle">NILAI</th>
+          <th class="align-middle">KET</th>
+          <th class="align-middle">NILAI</th>
+          <th class="align-middle">KET</th>
+          <th class="align-middle">NILAI</th>
+          <th class="align-middle">KONTROL</th>
+          <th class="align-middle">PIC</th>
+          <th class="align-middle">TARGET</th>
         </tr>
       </thead>
-      <tbody>
-        <?php if($aset_fisik){ ?>
-          <?php $no=1; $nilai=0; foreach ($aset_fisik as $af): ?>
+      <tbody class="text-center">
+        <?php if($resiko_fisik){ ?>
+          <?php $no=1; $nilai=0; foreach ($resiko_fisik as $rfisik): ?>
             <?php
-              $nilai = ($af['kerahasiaan']+$af['integritas']+$af['ketersediaan'])/3;
-
-              // NILAI
-              if($nilai>=1 && $nilai<=1.5){
-                $nl = 'Rendah';
-              }else if($nilai>=1.5 && $nilai<=2.5){
-                $nl = 'Sedang';
-              }else if($nilai>=2.5 && $nilai<=3){
-                $nl = 'Tinggi';
+              $nilai = $rfisik['dampak']*$rfisik['pengancam']*$rfisik['kerentanan']*$rfisik['paparan'];
+              if($nilai<=24){
+                $jenis_resiko = 'Rendah';
+              }else if($nilai>24 && $nilai<=64){
+                $jenis_resiko = 'Sedang';
+              }else if($nilai>64){
+                $jenis_resiko = 'Tinggi';
               }
             ?>
             <tr>
-              <td class="align-middle text-center"><?=$no++ ?></td>
-              <td class="align-middle text-center"><?=$af['idf'] ?></td>
-              <td class="align-middle"><?=$af['nama'] ?></td>
-              <td class="align-middle text-center"><?=$af['nama_klasifikasi'] ?></td>
-              <td class="align-middle text-center"><?=$af['nama_jenisaset'] ?></td>
-              <td class="align-middle text-center"><?=$af['spesifikasi'] ?></td>
-              <td class="align-middle text-center"><?=$af['pemilik'] ?></td>
-              <td class="align-middle text-center"><?=$af['penyedia'] ?></td>
-              <td class="align-middle text-center"><?=$af['pemegang'] ?></td>
-              <td class="align-middle text-center"><?=$af['lokasi'] ?></td>
-              <td class="align-middle text-center"><?=$af['berlaku'] ?></td>
-              <td class="align-middle text-center"><strong><?=$af['kerahasiaan'] ?></strong><br><small>(<?=$af['nama_rahasia'] ?>)</small></td>
-              <td class="align-middle text-center"><strong><?=$af['integritas'] ?></strong><br><small>(<?=$af['nama_integritas'] ?>)</small></td>
-              <td class="align-middle text-center"><strong><?=$af['ketersediaan'] ?></strong><br><small>(<?=$af['nama_sedia'] ?>)</small></td>
-              <td class="align-middle text-center"><strong><?=number_format($nilai, 0, ',','.'); ?></strong><br><small>(<?=$nl ?>)</small></td>
-              <td class="align-middle"><?=$af['keterangan'] ?></td>
+              <td class="align-middle"><?=$no++ ?></td>
+              <td class="align-middle"><?=$rfisik['nama_klasifikasi'] ?><br><small class="text-primary"><small><?=$rfisik['id_rfisik'] ?></small></small></td>
+              <td class="align-middle">
+                <?php if($rfisik['dampak']==1){echo 'Tidak ada';}else{ ?>
+                  <small class="text-primary"><small>EKONOMI :</small></small><br><?=$rfisik['ekonomi'] ?><hr class="m-1">
+                  <small class="text-primary"><small>REPUTASI :</small></small><br><?=$rfisik['reputasi'] ?><hr class="m-1">
+                  <small class="text-primary"><small>PIDANA :</small></small><br><?=$rfisik['pidana'] ?><hr class="m-1">
+                  <small class="text-primary"><small>KINERJA :</small></small><br><?=$rfisik['kinerja'] ?>
+                <?php } ?>
+              </td>
+              <td class="align-middle"><?=$rfisik['dampak'] ?></td>
+              <td class="align-middle"><?=$rfisik['tingkat_pengancam'] ?></td>
+              <td class="align-middle"><?=$rfisik['pengancam'] ?></td>
+              <td class="align-middle"><?=$rfisik['tingkat_rentan'] ?></td>
+              <td class="align-middle"><?=$rfisik['kerentanan'] ?></td>
+              <td class="align-middle"><?=$rfisik['tingkat_paparan'] ?></td>
+              <td class="align-middle"><?=$rfisik['paparan'] ?></td>
+              <td class="align-middle"><?=$jenis_resiko ?></td>
+              <td class="align-middle"><?=number_format($nilai, 0, ',','.'); ?></td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
             </tr>
           <?php endforeach ?>
         <?php }else{ ?>
           <tr>
-            <td colspan="16" class="text-center">Tidak ada data yang tersedia!</td>
+            <td colspan="22" class="align-middle">Tidak ada data yang tersedia!</td>
           </tr>
         <?php } ?>
       </tbody>

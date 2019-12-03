@@ -1,97 +1,80 @@
 <div class="row justify-content-md-center">
   <div class="col-8">
-    <form action="<?=base_url('aset/form/software/ubah/').$aset_software['ids'] ?>" method="post">
+    <form action="<?=base_url('resiko/form/software/ubah/'.$resiko_software['id']) ?>" method="post">
       <div class="card shadow border-primary">
-        <div class="card-header bg-primary text-white">Ubah Aset Perangkat Lunak (Software)</div>
+        <div class="card-header bg-primary text-white">Ubah Resiko Sumber Daya Manusia(SDM)</div>
         <div class="card-body">
-          <label class="font-weight-bold">ASET SOFTWARE :</label>
           <div class="form-group row">
-            <label for="id" class="col-md-12 col-form-label">Kode Aset : <strong><?=$aset_software['ids'] ?></strong></label>
-            <input type="hidden" readonly class="form-control-plaintext font-weight-bold" id="id" name="id" value="<?=$aset_software['ids'] ?>">
+            <label for="id" class="col-sm-2 col-form-label">Kode Resiko</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext font-weight-bold" id="id" name="id" value="<?=$resiko_software['id'] ?>">
+            </div>
           </div>
           <div class="form-group row">
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Aset" value="<?=$aset_software['nama'] ?>">
-              <?php echo form_error('nama', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
-            </div>
-            <div class="col-md-6">
-              <select class="custom-select" id="klasifikasi" name="klasifikasi" required>
-                <option value="">Klasifikasi Aset</option>
-                <option value="Operating System" <?php if($aset_software['klasifikasi']=='Operating System'){echo "selected";} ?>>Operating System</option>
-                <option value="Application Server" <?php if($aset_software['klasifikasi']=='Application Server'){echo "selected";} ?>>Application Server</option>
-                <option value="Application" <?php if($aset_software['klasifikasi']=='Application'){echo "selected";} ?>>Application</option>
-                <option value="Lainnya" <?php if($aset_software['klasifikasi']=='Lainnya'){echo "selected";} ?>>Lainnya</option>
+            <label for="id" class="col-sm-2 col-form-label">Klasifikasi</label>
+            <div class="col-sm-10">
+              <select class="custom-select" id="klasifikasi" name="klasifikasi">
+                <option value="">Klasifikasi Resiko</option>
+                <?php foreach ($klasifikasi_software as $ksoftware): ?>
+                  <option value="<?=$ksoftware['id_ksw'] ?>" <?php if($resiko_software['id_ksoftware']==$ksoftware['id_ksw']){echo "selected";} ?>><?=$ksoftware['kla_sw'] ?></option>
+                <?php endforeach ?>
               </select>
               <?php echo form_error('klasifikasi', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
             </div>
           </div>
-          <hr>
-          <label class="font-weight-bold">PEMILIK ASET :</label>
           <div class="form-group row">
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="pemilik" name="pemilik" placeholder="Pemilik Aset" value="<?=$aset_software['pemilik'] ?>">
-              <?php echo form_error('pemilik', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="pemegang" name="pemegang" placeholder="Pemegang Aset" value="<?=$aset_software['pemegang'] ?>">
-              <?php echo form_error('pemegang', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
+            <label for="id" class="col-sm-2 col-form-label">Dampak</label>
+            <div class="col-sm-10">
+              <select class="custom-select" id="dampak" name="dampak">
+                <option value="">Pilih Dampak</option>
+                <?php foreach ($resiko_dampak as $rd): ?>
+                  <option value="<?=$rd['nilai'] ?>" <?php if($resiko_software['dampak']==$rd['nilai']){echo "selected";} ?>><?=$rd['nilai'] ?>. <?=$rd['ekonomi'] ?>, <?=$rd['reputasi'] ?>, <?=$rd['pidana'] ?>, <?=$rd['kinerja'] ?></option>
+                <?php endforeach ?>
+              </select>
+              <?php echo form_error('dampak', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
             </div>
           </div>
           <div class="form-group row">
-            <div class="col-md-4">
-              <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="Lokasi Aset" value="<?=$aset_software['lokasi'] ?>">
-              <?php echo form_error('lokasi', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
-            </div>
-            <div class="col-md-4">
-              <input type="date" class="form-control" id="berlaku" name="berlaku" placeholder="Masa Berlaku" value="<?=$aset_software['berlaku'] ?>">
-              <?php echo form_error('berlaku', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
-            </div>
-            <div class="col-md-4">
-              <select class="custom-select" id="hapus" name="hapus">
-                <option value="">Metode Penghapusan</option>
-                <option value="Delete Normal" <?php if($aset_software['hapus']=='Delete Normal'){echo "selected";} ?>>Delete Normal</option>
-                <option value="Lainnya" <?php if($aset_software['hapus']=='Lainnya'){echo "selected";} ?>>Lainnya</option>
+            <label for="id" class="col-sm-2 col-form-label">Pengancam</label>
+            <div class="col-sm-10">
+              <select class="custom-select" id="pengancam" name="pengancam">
+                <option value="">Pilih Pengancam</option>
+                <?php foreach ($resiko_pengancam as $rp): ?>
+                  <option value="<?=$rp['nilai'] ?>" <?php if($resiko_software['pengancam']==$rp['nilai']){echo "selected";} ?>><?=$rp['nilai'] ?>. <?=$rp['profil_pengancam'] ?></option>
+                <?php endforeach ?>
               </select>
-              <?php echo form_error('hapus', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
+              <?php echo form_error('pengancam', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
             </div>
           </div>
           <hr>
-          <label class="font-weight-bold">KLASIFIKASI KEAMANAN INFORMASI :</label>
+          <label class="font-weight-bold">IDENTIFIKASI RESIKO BAWAAN :</label>
           <div class="form-group row">
-            <div class="col-md-4">
-              <select class="custom-select" id="kerahasiaan" name="kerahasiaan">
-                <option value="">Kerahasiaan</option>
-                <?php foreach ($aset_kerahasiaan as $ar): ?>
-                  <option value="<?=$ar['id_rahasia'] ?>" <?php if($aset_software['kerahasiaan']==$ar['id_rahasia']){echo "selected";} ?>><?=$ar['id_rahasia'].' - '.$ar['nama_rahasia'] ?></option>
+            <label for="id" class="col-sm-2 col-form-label">Kerentanan</label>
+            <div class="col-sm-10">
+              <select class="custom-select" id="kerentanan" name="kerentanan">
+                <option value="">Pilih Tingkat Kerentanan</option>
+                <?php foreach ($resiko_rentan as $rr): ?>
+                  <option value="<?=$rr['nilai'] ?>" <?php if($resiko_software['kerentanan']==$rr['nilai']){echo "selected";} ?>><?=$rr['nilai'] ?>. <?=$rr['tingkat_rentan'] ?></option>
                 <?php endforeach ?>
               </select>
-              <?php echo form_error('kerahasiaan', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
-            </div>
-            <div class="col-md-4">
-              <select class="custom-select" id="integritas" name="integritas">
-                <option value="">Integritas</option>
-                <?php foreach ($aset_integritas as $ai): ?>
-                  <option value="<?=$ai['id_integritas'] ?>" <?php if($aset_software['integritas']==$ai['id_integritas']){echo "selected";} ?>><?=$ai['id_integritas'].' - '.$ai['nama_integritas'] ?></option>
-                <?php endforeach ?>
-              </select>
-              <?php echo form_error('integritas', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
-            </div>
-            <div class="col-md-4">
-              <select class="custom-select" id="ketersediaan" name="ketersediaan">
-                <option value="">Ketersediaan</option>
-                <?php foreach ($aset_ketersediaan as $as): ?>
-                  <option value="<?=$as['id_sedia'] ?>" <?php if($aset_software['ketersediaan']==$as['id_sedia']){echo "selected";} ?>><?=$as['id_sedia'].' - '.$as['nama_sedia'] ?></option>
-                <?php endforeach ?>
-              </select>
-              <?php echo form_error('ketersediaan', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
+              <?php echo form_error('kerentanan', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
             </div>
           </div>
-          <div class="form-group">
-            <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan Tambahan"><?=$aset_software['keterangan'] ?></textarea>
+          <div class="form-group row">
+            <label for="id" class="col-sm-2 col-form-label">Paparan</label>
+            <div class="col-sm-10">
+              <select class="custom-select" id="paparan" name="paparan">
+                <option value="">Pilih Tingkat Paparan</option>
+                <?php foreach ($resiko_paparan as $rpap): ?>
+                  <option value="<?=$rpap['nilai'] ?>" <?php if($resiko_software['paparan']==$rpap['nilai']){echo "selected";} ?>><?=$rpap['nilai'] ?>. <?=$rpap['contoh_paparan'] ?></option>
+                <?php endforeach ?>
+              </select>
+              <?php echo form_error('paparan', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
+            </div>
           </div>
         </div>
         <div class="card-footer text-right">
-          <a href="<?=base_url('aset/form') ?>" class="btn btn-sm btn-circle btn-secondary" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
+          <a href="<?=base_url('resiko/form') ?>" class="btn btn-sm btn-circle btn-secondary"title="Batal"><i class="fa fa-fw fa-times"></i></a>
           <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </div>

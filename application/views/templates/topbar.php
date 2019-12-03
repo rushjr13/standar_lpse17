@@ -186,18 +186,20 @@
                 </a>
                 <!-- Dropdown - Masuk -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="masukDropdown">
+                  <h5 class="text-center m-1 font-weight-bold text-primary text-uppercase text-shadow">Masuk Aplikasi</h5>
+                  <div class="dropdown-divider"></div>
                   <form class="px-3 py-2" action="<?=base_url('auth/masuk') ?>" method="post">
                     <div class="form-group">
-                      <input type="text" class="form-control" id="username" name="username" placeholder="Nama Pengguna" autofocus required>
+                      <input type="text" class="form-control text-center" id="username" name="username" placeholder="Nama Pengguna" autofocus required>
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control" id="password" name="password" placeholder="Kata Sandi" required>
+                      <input type="password" class="form-control text-center" id="password" name="password" placeholder="Kata Sandi" required>
                     </div>
                     <button type="submit" class="btn btn-block btn-primary">Masuk <i class="fa fa-fw fa-sign-in-alt"></i></button>
                   </form>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#daftarModal">Belum punya akun? Daftar Disini</a>
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#lupasandiModal">Lupa Kata Sandi?</a>
+                  <a class="dropdown-item text-center" href="#" data-toggle="modal" data-target="#daftarModal">Belum punya akun? Daftar Disini</a>
+                  <a class="dropdown-item text-center" href="#" data-toggle="modal" data-target="#lupasandiModal">Lupa Kata Sandi?</a>
                 </div>
                 <!-- Dropdown - Masuk End -->
               <?php } ?>

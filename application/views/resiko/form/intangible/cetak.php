@@ -33,66 +33,105 @@
       </div>
       <div class="col-md-8 m-auto">
         <h6 class="font-weight-bold">LAYANAN PENGADAAN SECARA ELEKTRONIK</h6>
-        <h4 class="alert-heading font-weight-bold">DAFTAR ASET</h4>
+        <h4 class="alert-heading font-weight-bold">DAFTAR RESIKO</h4>
       </div>
       <div class="col-md-2 m-auto">
         <img src="<?=base_url('assets/img/lpse.png') ?>" width="100%" class="img-fluid">
       </div>
     </div>
     <hr>
-    <p class="mb-0 font-weight-bold">LAYANAN</p>
+    <p class="mb-0 font-weight-bold">INTANGIBLE</p>
   </div>
 
   <div class="table-responsive">
-    <table class="table table-sm table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
-      <thead>
+    <table class="table table-sm table-striped table-hover table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <thead class="text-center">
         <tr>
-          <th rowspan="2" class="align-middle text-center">NO</th>
-          <th rowspan="2" class="align-middle text-center">KODE</th>
-          <th rowspan="2" class="align-middle text-center">NAMA LAYANAN</th>
-          <th rowspan="2" class="align-middle text-center">SUB KLASIFIKASI</th>
-          <th rowspan="2" class="align-middle text-center">PEMILIK</th>
-          <th colspan="4" class="align-middle text-center">KLASIFIKASI KEAMANAN INFORMASI</th>
-          <th rowspan="2" class="align-middle text-center">KETERANGAN</th>
+          <th rowspan="3" class="align-middle">NO</th>
+          <th rowspan="3" class="align-middle">SUB KLASIFIKASI</th>
+          <th colspan="2" rowspan="2" class="align-middle">DAMPAK</th>
+          <th colspan="2" rowspan="2" class="align-middle">PENGANCAM</th>
+          <th colspan="6" class="align-middle">IDENTIFIKASI RESIKO BAWAAN</th>
+          <th rowspan="3" class="align-middle">KONTROL</th>
+          <th colspan="6" class="align-middle">IDENTIFIKASI RESIKO SISA</th>
+          <th rowspan="2" colspan="3" class="align-middle">MITIGASI</th>
         </tr>
         <tr>
-          <th class="align-middle text-center">KERAHASIAAN</th>
-          <th class="align-middle text-center">INTEGRITAS</th>
-          <th class="align-middle text-center">KETERSEDIAAN</th>
-          <th class="align-middle text-center">NILAI</th>
+          <th colspan="2" class="align-middle">KERENTANAN</th>
+          <th colspan="2" class="align-middle">PAPARAN</th>
+          <th rowspan="2" class="align-middle">JENIS RESIKO</th>
+          <th rowspan="2" class="align-middle">NILAI RESIKO</th>
+          <th colspan="2" class="align-middle">KERENTANAN</th>
+          <th colspan="2" class="align-middle">PAPARAN</th>
+          <th rowspan="2" class="align-middle">JENIS RESIKO</th>
+          <th rowspan="2" class="align-middle">NILAI RESIKO</th>
+        </tr>
+        <tr>
+          <th class="align-middle">KET</th>
+          <th class="align-middle">NILAI</th>
+          <th class="align-middle">KET</th>
+          <th class="align-middle">NILAI</th>
+          <th class="align-middle">KET</th>
+          <th class="align-middle">NILAI</th>
+          <th class="align-middle">KET</th>
+          <th class="align-middle">NILAI</th>
+          <th class="align-middle">KET</th>
+          <th class="align-middle">NILAI</th>
+          <th class="align-middle">KET</th>
+          <th class="align-middle">NILAI</th>
+          <th class="align-middle">KONTROL</th>
+          <th class="align-middle">PIC</th>
+          <th class="align-middle">TARGET</th>
         </tr>
       </thead>
-      <tbody>
-        <?php if($aset_intangible){ ?>
-          <?php $no=1; $nilai=0; foreach ($aset_intangible as $ai): ?>
+      <tbody class="text-center">
+        <?php if($resiko_intangible){ ?>
+          <?php $no=1; $nilai=0; foreach ($resiko_intangible as $rintangible): ?>
             <?php
-              $nilai = ($ai['kerahasiaan']+$ai['integritas']+$ai['ketersediaan'])/3;
-
-              // NILAI
-              if($nilai>=1 && $nilai<=1.5){
-                $nl = 'Rendah';
-              }else if($nilai>=1.5 && $nilai<=2.5){
-                $nl = 'Sedang';
-              }else if($nilai>=2.5 && $nilai<=3){
-                $nl = 'Tinggi';
+              $nilai = $rintangible['dampak']*$rintangible['pengancam']*$rintangible['kerentanan']*$rintangible['paparan'];
+              if($nilai<=24){
+                $jenis_resiko = 'Rendah';
+              }else if($nilai>24 && $nilai<=64){
+                $jenis_resiko = 'Sedang';
+              }else if($nilai>64){
+                $jenis_resiko = 'Tinggi';
               }
             ?>
             <tr>
-              <td class="align-middle text-center"><?=$no++ ?></td>
-              <td class="align-middle text-center"><?=$ai['idi'] ?></td>
-              <td class="align-middle"><?=$ai['nama'] ?></td>
-              <td class="align-middle text-center"><?=$ai['klasifikasi'] ?></td>
-              <td class="align-middle text-center"><?=$ai['pemilik'] ?></td>
-              <td class="align-middle text-center"><strong><?=$ai['kerahasiaan'] ?></strong><br><small>(<?=$ai['nama_rahasia'] ?>)</small></td>
-              <td class="align-middle text-center"><strong><?=$ai['integritas'] ?></strong><br><small>(<?=$ai['nama_integritas'] ?>)</small></td>
-              <td class="align-middle text-center"><strong><?=$ai['ketersediaan'] ?></strong><br><small>(<?=$ai['nama_sedia'] ?>)</small></td>
-              <td class="align-middle text-center"><strong><?=number_format($nilai, 0, ',','.'); ?></strong><br><small>(<?=$nl ?>)</small></td>
-              <td class="align-middle text-center"><?=$ai['keterangan'] ?></td>
+              <td class="align-middle"><?=$no++ ?></td>
+              <td class="align-middle"><?=$rintangible['kla_intangible'] ?><br><small class="text-primary"><small><?=$rintangible['id'] ?></small></small></td>
+              <td class="align-middle">
+                <?php if($rintangible['dampak']==1){echo 'Tidak ada';}else{ ?>
+                  <small class="text-primary"><small>EKONOMI :</small></small><br><?=$rintangible['ekonomi'] ?><hr class="m-1">
+                  <small class="text-primary"><small>REPUTASI :</small></small><br><?=$rintangible['reputasi'] ?><hr class="m-1">
+                  <small class="text-primary"><small>PIDANA :</small></small><br><?=$rintangible['pidana'] ?><hr class="m-1">
+                  <small class="text-primary"><small>KINERJA :</small></small><br><?=$rintangible['kinerja'] ?>
+                <?php } ?>
+              </td>
+              <td class="align-middle"><?=$rintangible['dampak'] ?></td>
+              <td class="align-middle"><?=$rintangible['tingkat_pengancam'] ?></td>
+              <td class="align-middle"><?=$rintangible['pengancam'] ?></td>
+              <td class="align-middle"><?=$rintangible['tingkat_rentan'] ?></td>
+              <td class="align-middle"><?=$rintangible['kerentanan'] ?></td>
+              <td class="align-middle"><?=$rintangible['tingkat_paparan'] ?></td>
+              <td class="align-middle"><?=$rintangible['paparan'] ?></td>
+              <td class="align-middle"><?=$jenis_resiko ?></td>
+              <td class="align-middle"><?=number_format($nilai, 0, ',','.'); ?></td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
+              <td class="align-middle">-</td>
             </tr>
           <?php endforeach ?>
         <?php }else{ ?>
           <tr>
-            <td colspan="10" class="text-center">Tidak ada data yang tersedia!</td>
+            <td colspan="22" class="align-middle">Tidak ada data yang tersedia!</td>
           </tr>
         <?php } ?>
       </tbody>

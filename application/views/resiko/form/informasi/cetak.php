@@ -99,7 +99,7 @@
             ?>
             <tr>
               <td class="align-middle"><?=$no++ ?></td>
-              <td class="align-middle"><small class="text-primary"><small><?=$ri['id'] ?></small></small><br><?=$ri['kla_informasi'] ?></td>
+              <td class="align-middle"><?=$ri['kla_informasi'] ?><br><small class="text-primary"><small><?=$ri['id'] ?></small></small></td>
               <td class="align-middle">
                 <?php if($ri['dampak']==1){echo 'Tidak ada';}else{ ?>
                   <small class="text-primary"><small>EKONOMI :</small></small><br><?=$ri['ekonomi'] ?><hr class="m-1">

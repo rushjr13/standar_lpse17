@@ -74,7 +74,7 @@
           </div>
         </div>
         <div class="card-footer text-right">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <a href="<?=base_url('resiko/form') ?>" class="btn btn-sm btn-circle btn-secondary"title="Batal"><i class="fa fa-fw fa-times"></i></a>
           <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </div>

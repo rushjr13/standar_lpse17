@@ -2,76 +2,211 @@
   <table class="table table-sm table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
     <thead class="bg-dark text-white">
       <tr>
-        <th class="align-middle text-center">KODE</th>
-        <th class="align-middle text-center">NAMA ASET</th>
-        <th class="align-middle text-center">SUB KLASIFIKASI</th>
-        <th colspan="2" class="align-middle text-center">ASET</th>
-        <th class="align-middle text-center">KEAMANAN<br>INFORMASI</th>
-        <!-- <th class="align-middle text-center">KETERANGAN</th> -->
-        <th class="align-middle text-center">OPSI</th>
+        <th rowspan="2" class="align-middle text-center">NO</th>
+        <th rowspan="2" class="align-middle text-center">SUB KLASIFIKASI</th>
+        <th rowspan="2"class="align-middle text-center">DAMPAK</th>
+        <th rowspan="2"class="align-middle text-center">PENGANCAM</th>
+        <th colspan="3" class="align-middle text-center">IDENTIFIKASI RESIKO BAWAAN</th>
+        <th rowspan="2" class="align-middle text-center">OPSI</th>
+      </tr>
+      <tr>
+        <th class="align-middle text-center">KERENTANAN</th>
+        <th class="align-middle text-center">PAPARAN</th>
+        <th class="align-middle text-center">NILAI</th>
       </tr>
     </thead>
     <tbody>
-      <?php if($aset_software){ ?>
-        <?php $nilai=0; foreach ($aset_software as $as): ?>
-          <?php
-            $nilai = ($as['kerahasiaan']+$as['integritas']+$as['ketersediaan'])/3;
-
-            // NILAI
-            if($nilai>=1 && $nilai<=1.5){
-              $nl = 'Rendah';
-            }else if($nilai>=1.5 && $nilai<=2.5){
-              $nl = 'Sedang';
-            }else if($nilai>=2.5 && $nilai<=3){
-              $nl = 'Tinggi';
-            }
-          ?>
+      <?php if($resiko_software){ ?>
+        <?php $no=1; $nilai=0; foreach ($resiko_software as $rsoftware): ?>
+        <?php
+          $nilai = $rsoftware['dampak']*$rsoftware['pengancam']*$rsoftware['kerentanan']*$rsoftware['paparan'];
+          if($nilai<=24){
+            $jenis_resiko = 'Rendah';
+          }else if($nilai>24 && $nilai<=64){
+            $jenis_resiko = 'Sedang';
+          }else if($nilai>64){
+            $jenis_resiko = 'Tinggi';
+          }
+        ?>
           <tr>
-            <td class="align-middle text-center"><?=$as['ids'] ?></td>
-            <td class="align-middle text-center"><?=$as['nama'] ?></td>
-            <td class="align-middle text-center"><?=$as['klasifikasi'] ?></td>
+            <td class="align-middle text-center"><?=$no++ ?></td>
+            <td class="align-middle"><?=$rsoftware['kla_sw'] ?></td>
+            <td class="align-middle text-center"><?=$rsoftware['dampak'] ?><br><small>(<?=$rsoftware['ekonomi'] ?>)</small></td>
+            <td class="align-middle text-center"><?=$rsoftware['pengancam'] ?><br><small>(<?=$rsoftware['tingkat_pengancam'] ?>)</small></td>
+            <td class="align-middle text-center"><?=$rsoftware['kerentanan'] ?><br><small>(<?=$rsoftware['tingkat_rentan'] ?>)</small></td>
+            <td class="align-middle text-center"><?=$rsoftware['paparan'] ?><br><small>(<?=$rsoftware['tingkat_paparan'] ?>)</small></td>
             <td class="align-middle text-center">
-              <small>Pemilik :</small><br><strong><?=$as['pemilik'] ?></strong><hr class="mb-1 mt-1">
-              <small>Pemegang :</small><br><strong><?=$as['pemegang'] ?></strong><hr class="mb-1 mt-1">
-              <small>Lokasi :</small><br><strong><?=$as['lokasi'] ?></strong>
+              <strong><?=number_format($nilai, 0, ',','.'); ?></strong><br><small>(<?=$jenis_resiko ?>)</small>
             </td>
+            <!-- <td class="align-middle"><?=$ai['keterangan'] ?></td> -->
             <td class="align-middle text-center">
-              <small>Masa Berlaku :</small><br><strong><?=$as['berlaku'] ?></strong><hr class="mb-1 mt-1">
-              <small>Metode Hapus :</small><br><strong><?=$as['hapus'] ?></strong>
-            </td>
-            <td class="align-middle text-right">
-              Kerahasiaan : <strong><?=$as['kerahasiaan'] ?></strong> <small>(<?=$as['nama_rahasia'] ?>)</small><br>
-              Integritas : <strong><?=$as['integritas'] ?></strong> <small>(<?=$as['nama_integritas'] ?>)</small><br>
-              Ketersediaan : <strong><?=$as['ketersediaan'] ?></strong> <small>(<?=$as['nama_sedia'] ?>)</small><hr class="mb-1 mt-1">
-              Nilai : <strong><?=number_format($nilai, 0, ',','.'); ?></strong> <small>(<?=$nl ?>)</small>
-            </td>
-            <!-- <td class="align-middle"><?=$as['keterangan'] ?></td> -->
-            <td class="align-middle text-center">
-              <a href="<?=base_url('aset/form/software/ubah/').$as['ids'] ?>" class="btn btn-sm btn-circle btn-info m-1" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusasetsoftware" data-toggle="modal" data-target="#hapusasetsoftwareModal" data-id="<?=$as['ids'] ?>" data-nama="<?=$as['nama'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+              <button
+                type="button"
+                class="btn btn-sm btn-circle btn-success"
+                id="detailresikosoftware"
+                data-toggle="modal"
+                data-target="#detailresikosoftwareModal"
+                data-id="<?=$rsoftware['id'] ?>"
+                data-klasifikasi="<?=$rsoftware['kla_sw'] ?>"
+                data-dampak="<?=$rsoftware['dampak'] ?>"
+                data-ketdampak="<?='Ekonomi : '.$rsoftware['ekonomi'].'<br>Reputasi : '.$rsoftware['reputasi'].'<br>Pidana : '.$rsoftware['pidana'].'<br>Kinerja : '.$rsoftware['kinerja'] ?>"
+                data-pengancam="<?=$rsoftware['pengancam'] ?>"
+                data-tingkatpengancam="<?=$rsoftware['tingkat_pengancam'] ?>"
+                data-kerentanan="<?=$rsoftware['kerentanan'] ?>"
+                data-tingkatrentan="<?=$rsoftware['tingkat_rentan'] ?>"
+                data-paparan="<?=$rsoftware['paparan'] ?>"
+                data-tingkatpaparan="<?=$rsoftware['tingkat_paparan'] ?>"
+                data-nilai="<?=$nilai ?>"
+                data-jenisresiko="<?=$jenis_resiko ?>"
+                title="Detail">
+                <i class="fa fa-fw fa-eye"></i>
+              </button>
+              <a href="<?=base_url('resiko/form/software/ubah/').$rsoftware['id'] ?>" class="btn btn-sm btn-circle btn-info m-1" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
+              <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusresikosoftware" data-toggle="modal" data-target="#hapusresikosoftwareModal" data-id="<?=$rsoftware['id'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
             </td>
           </tr>
         <?php endforeach ?>
       <?php }else{ ?>
         <tr>
-          <td colspan="6" class="text-center">Tidak ada data yang tersedia!</td>
+          <td colspan="8" class="text-center">Tidak ada data yang tersedia!</td>
         </tr>
       <?php } ?>
     </tbody>
   </table>
 </div>
 
+<!-- Modal Detail -->
+<div class="modal fade" id="detailresikosoftwareModal" tabindex="-1" role="dialog" aria-labelledby="detailresikosoftwareModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="detailresikosoftwareModalLabel">Sub Klasifikasi</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body table-responsive">
+        <div class="card bg-gradient-success mb-3">
+          <div class="card-body">
+            <table class="table table-sm table-bordered m-0">
+              <thead class="text-center text-white">
+                <tr>
+                  <td colspan="2" class="align-middle">DAMPAK</td>
+                  <td colspan="2" class="align-middle">PENGANCAM</td>
+                </tr>
+                <tr>
+                  <td class="align-middle">KETERANGAN</td>
+                  <td class="align-middle">NILAI</td>
+                  <td class="align-middle">KETERANGAN</td>
+                  <td class="align-middle">NILAI</td>
+                </tr>
+              </thead>
+              <tbody class="text-center bg-light">
+                <tr>
+                  <th class="align-middle" id="ketdampak">-</th>
+                  <th class="align-middle" id="dampak">-</th>
+                  <th class="align-middle" id="tingkatpengancam">-</th>
+                  <th class="align-middle" id="pengancam">-</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card bg-gradient-warning mb-3">
+          <div class="card-body">
+            <table class="table table-sm table-bordered m-0">
+              <thead class="text-center text-white">
+                <tr>
+                  <td colspan="6" class="align-middle">IDENTIFIKASI RESIKO BAWAAN</td>
+                  <td rowspan="3" class="align-middle">KONTROL</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="align-middle">KERENTANAN</td>
+                  <td colspan="2" class="align-middle">PAPARAN</td>
+                  <td rowspan="2" class="align-middle">JENIS RESIKO</td>
+                  <td rowspan="2" class="align-middle">NILAI RESIKO</td>
+                </tr>
+                <tr>
+                  <td class="align-middle">KETERANGAN</td>
+                  <td class="align-middle">NILAI</td>
+                  <td class="align-middle">KETERANGAN</td>
+                  <td class="align-middle">NILAI</td>
+                </tr>
+              </thead>
+              <tbody class="text-center bg-light">
+                <tr>
+                  <th class="align-middle" id="tingkatrentan">-</th>
+                  <th class="align-middle" id="kerentanan">-</th>
+                  <th class="align-middle" id="tingkatpaparan">-</th>
+                  <th class="align-middle" id="paparan">-</th>
+                  <th class="align-middle" id="jenisresiko">-</th>
+                  <th class="align-middle" id="nilai">-</th>
+                  <th class="align-middle" id="kontrol">-</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card bg-gradient-danger">
+          <div class="card-body">
+            <table class="table table-sm table-bordered m-0">
+              <thead class="text-center text-white">
+                <tr>
+                  <td colspan="6" class="align-middle">IDENTIFIKASI RESIKO SISA</td>
+                  <td rowspan="2" colspan="3" class="align-middle">MITIGASI</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="align-middle">KERENTANAN</td>
+                  <td colspan="2" class="align-middle">PAPARAN</td>
+                  <td rowspan="2" class="align-middle">JENIS RESIKO</td>
+                  <td rowspan="2" class="align-middle">NILAI RESIKO</td>
+                </tr>
+                <tr>
+                  <td class="align-middle">KETERANGAN</td>
+                  <td class="align-middle">NILAI</td>
+                  <td class="align-middle">KETERANGAN</td>
+                  <td class="align-middle">NILAI</td>
+                  <td class="align-middle">KONTROL</td>
+                  <td class="align-middle">PIC</td>
+                  <td class="align-middle">TARGET</td>
+                </tr>
+              </thead>
+              <tbody class="text-center bg-light">
+                <tr>
+                  <th class="align-middle" id="sisatingkatrentan">-</th>
+                  <th class="align-middle" id="sisakerentanan">-</th>
+                  <th class="align-middle" id="sisatingkatpaparan">-</th>
+                  <th class="align-middle" id="sisapaparan">-</th>
+                  <th class="align-middle" id="sisajenisresiko">-</th>
+                  <th class="align-middle" id="sisanilai">-</th>
+                  <th class="align-middle" id="mitigasikontrol">-</th>
+                  <th class="align-middle" id="mitigasipic">-</th>
+                  <th class="align-middle" id="mitigasitarget">-</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Modal Hapus -->
-<div class="modal fade" id="hapusasetsoftwareModal" tabindex="-1" role="dialog" aria-labelledby="hapusasetsoftwareModalLabel" aria-hidden="true">
+<div class="modal fade" id="hapusresikosoftwareModal" tabindex="-1" role="dialog" aria-labelledby="hapusresikosoftwareModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="hapusasetsoftwareModalLabel">Hapus Aset Perangkat Lunak</h5>
+        <h5 class="modal-title" id="hapusresikosoftwareModalLabel">Hapus Resiko Software</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <form id="formhapusasetsoftware" action="" method="post">
+      <form id="formhapusresikosoftware" action="" method="post">
         <div class="modal-body">
           <p id="ket">Keterangan</p>
-          <input type="hidden" id="nama" name="nama">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-sm btn-circle btn-secondary" title="Batal" data-dismiss="modal"><i class="fa fa-fw fa-times"></i></button>
