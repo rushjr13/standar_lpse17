@@ -45,7 +45,7 @@ class Gangguan extends CI_Controller {
 		$this->load->view('templates/footer', $data);
 	}
 
-	public function form(){
+	public function form($opsi=null, $id=null){
 		// UMUM
 		$user = $this->session->userdata('user_masuk');
 		$data['pengguna_masuk'] = $this->admin->pengguna($user);
@@ -55,12 +55,79 @@ class Gangguan extends CI_Controller {
 		$data['menu_akses'] = $this->admin->menu_akses($user);
 
 		// KHUSUS
-		$data['judul'] = "Pencatatan Gangguan Layanan";
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
-		$this->load->view('gangguan/form/index', $data);
-		$this->load->view('templates/footer', $data);
+		if($opsi==null){
+			$data['judul'] = "Pencatatan Gangguan Layanan";
+			$data['gangguan'] = $this->gangguan->gangguan();
+			$data['gangguan_tipe'] = $this->gangguan->gangguan_tipe();
+			$data['gangguan_kategori'] = $this->gangguan->gangguan_kategori();
+			$data['gangguan_user'] = $this->gangguan->gangguan_user();
+			$data['gangguan_jenis'] = $this->gangguan->gangguan_jenis();
+			$data['gangguan_urgensi'] = $this->gangguan->gangguan_urgensi();
+			$data['gangguan_dampak'] = $this->gangguan->gangguan_dampak();
+			$data['gangguan_prioritas'] = $this->gangguan->gangguan_prioritas();
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('gangguan/form/index', $data);
+			$this->load->view('templates/footer', $data);
+		}else if($opsi=='cetak'){
+			if($id==null){
+				$data['judul'] = "Pencatatan Gangguan Layanan";
+				$data['gangguan'] = $this->gangguan->gangguan();
+				$this->load->view('gangguan/form/cetak', $data);
+			}else{
+				$data['judul'] = "Pencatatan Gangguan Layanan";
+				$data['gangguan'] = $this->gangguan->gangguan($id);
+				$this->load->view('gangguan/form/cetakid', $data);
+			}
+		}else if($opsi=='tambah'){
+			$id_gangguan = $this->input->post('id_gangguan');
+			$nama_pengguna = $this->input->post('nama_pengguna');
+			$kontak_pengguna = $this->input->post('kontak_pengguna');
+			$media_pelaporan = $this->input->post('media_pelaporan');
+			$tgl_pelaporan = $this->input->post('tgl_pelaporan');
+			$deskripsi_gangguan = $this->input->post('deskripsi_gangguan');
+			$id_tipe = $this->input->post('id_tipe');
+			$id_kategori = $this->input->post('id_kategori');
+			$id_user = $this->input->post('id_user');
+			$id_jenis = $this->input->post('id_jenis');
+			$id_urgensi = $this->input->post('id_urgensi');
+			$id_dampak = $this->input->post('id_dampak');
+			$id_prioritas = $this->input->post('id_prioritas');
+
+			$data = [
+				'id_gangguan'=>$id_gangguan,
+				'nama_pengguna'=>$nama_pengguna,
+				'kontak_pengguna'=>$kontak_pengguna,
+				'media_pelaporan'=>$media_pelaporan,
+				'tgl_pelaporan'=>$tgl_pelaporan,
+				'deskripsi_gangguan'=>$deskripsi_gangguan,
+				'id_tipe'=>$id_tipe,
+				'id_kategori'=>$id_kategori,
+				'id_user'=>$id_user,
+				'id_jenis'=>$id_jenis,
+				'id_urgensi'=>$id_urgensi,
+				'id_dampak'=>$id_dampak,
+				'id_prioritas'=>$id_prioritas,
+				'petugas_penanganan'=>'Admin',
+				'status_penanganan'=>'-',
+				'ket_penanganan'=>'-',
+				'tgl_penanganan'=>time(),
+				'solusi_penyelesaian'=>'-',
+				'tgl_penyelesaian'=>time(),
+				'status_konfirmasi'=>'Belum Diinformasikan',
+				'status_gangguan'=>'Tercatat'
+			];
+
+			$this->db->insert('gangguan', $data);
+			$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+													  <i class="fa fa-fw fa-info-circle"></i> Pencatatan Gangguan Telah ditambahkan!
+													  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+													    <span aria-hidden="true">&times;</span>
+													  </button>
+													</div>');
+			redirect('gangguan/form');
+		}
 	}
 
 	public function faq(){
