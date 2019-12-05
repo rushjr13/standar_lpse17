@@ -112,9 +112,9 @@ class Gangguan extends CI_Controller {
 				'petugas_penanganan'=>'Admin',
 				'status_penanganan'=>'-',
 				'ket_penanganan'=>'-',
-				'tgl_penanganan'=>time(),
+				'tgl_penanganan'=>date('Y-m-d',time()),
 				'solusi_penyelesaian'=>'-',
-				'tgl_penyelesaian'=>time(),
+				'tgl_penyelesaian'=>date('Y-m-d',time()),
 				'status_konfirmasi'=>'Belum Diinformasikan',
 				'status_gangguan'=>'Tercatat'
 			];
@@ -127,6 +127,72 @@ class Gangguan extends CI_Controller {
 													  </button>
 													</div>');
 			redirect('gangguan/form');
+		}else if($opsi=='tangani'){
+			if($id==null){
+				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+														  <i class="fa fa-fw fa-ban"></i> Tidak Ada Pencatatan Gangguan yang dipilih!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('gangguan/form');
+			}else{
+				$petugas_penanganan = $this->input->post('petugas_penanganan');
+				$status_penanganan = $this->input->post('status_penanganan');
+				$ket_penanganan = $this->input->post('ket_penanganan');
+				$tgl_penanganan = $this->input->post('tgl_penanganan');
+
+				$data = [
+					'petugas_penanganan'=>$petugas_penanganan,
+					'status_penanganan'=>$status_penanganan,
+					'ket_penanganan'=>$ket_penanganan,
+					'tgl_penanganan'=>$tgl_penanganan,
+					'status_gangguan'=>'Penanganan'
+				];
+
+				$this->db->set($data);
+				$this->db->where('id_gangguan', $id);
+				$this->db->update('gangguan', $data);
+				$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+														  <i class="fa fa-fw fa-info-circle"></i> Pencatatan Gangguan '.$id.' Telah ditangani!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('gangguan/form');
+			}
+		}else if($opsi=='selesaikan'){
+			if($id==null){
+				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+														  <i class="fa fa-fw fa-ban"></i> Tidak Ada Pencatatan Gangguan yang dipilih!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('gangguan/form');
+			}else{
+				$solusi_penyelesaian = $this->input->post('solusi_penyelesaian');
+				$tgl_penyelesaian = $this->input->post('tgl_penyelesaian');
+				$status_konfirmasi = $this->input->post('status_konfirmasi');
+
+				$data = [
+					'solusi_penyelesaian'=>$solusi_penyelesaian,
+					'tgl_penyelesaian'=>$tgl_penyelesaian,
+					'status_konfirmasi'=>$status_konfirmasi,
+					'status_gangguan'=>'Penyelesaian'
+				];
+
+				$this->db->set($data);
+				$this->db->where('id_gangguan', $id);
+				$this->db->update('gangguan', $data);
+				$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+														  <i class="fa fa-fw fa-info-circle"></i> Pencatatan Gangguan '.$id.' Telah diselesaikan!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('gangguan/form');
+			}
 		}
 	}
 

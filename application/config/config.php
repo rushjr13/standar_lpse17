@@ -23,7 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+// LOCAL
 $config['base_url'] = 'http://localhost/standarlpse_17/';
+
+// SERVER
+// $config['base_url'] = 'http://118.97.133.51/';
 
 /*
 |--------------------------------------------------------------------------

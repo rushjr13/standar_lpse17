@@ -77,6 +77,9 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
+	// SERVER
+	// 'password' => 'lpse17sos',
+	// LOCAL
 	'password' => '',
 	'database' => 's_lpse',
 	'dbdriver' => 'mysqli',

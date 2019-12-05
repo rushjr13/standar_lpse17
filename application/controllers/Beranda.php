@@ -5,6 +5,7 @@ class Beranda extends CI_Controller {
 
 	public function index(){
 		// UMUM
+		date_default_timezone_set('Asia/Makassar');
 		$user = $this->session->userdata('user_masuk');
 		$data['pengguna_masuk'] = $this->admin->pengguna($user);
 		$data['pengaturan'] = $this->admin->pengaturan();
