@@ -1,9 +1,9 @@
 <?php
   date_default_timezone_set('Asia/Makassar');
-  $tgl = date('d', $pengguna['tgl_daftar']);
-  $bln = date('F', $pengguna['tgl_daftar']);
-  $thn = date('Y', $pengguna['tgl_daftar']);
-  $hari = date('l', $pengguna['tgl_daftar']);
+  $tgl = date('d', $pengguna_masuk['tgl_daftar']);
+  $bln = date('F', $pengguna_masuk['tgl_daftar']);
+  $thn = date('Y', $pengguna_masuk['tgl_daftar']);
+  $hari = date('l', $pengguna_masuk['tgl_daftar']);
 
   if($bln=='January'){
       $bulan='Januari';
@@ -51,16 +51,15 @@
 ?>
 <!-- DataTales Example -->
 <div class="card border-primary shadow mb-4">
-  <form action="<?=base_url('pengguna/ubah/').$pengguna['username'] ?>" method="post" enctype="multipart/form-data">
+  <form action="<?=base_url('pengguna/profil/').$pengguna_masuk['username'] ?>" method="post" enctype="multipart/form-data">
     <div class="card-header bg-primary text-white py-3">
-      <strong><?=$pengguna['nama_lengkap'] ?></strong>
-      <a href="<?=base_url('pengguna') ?>" class="btn btn-sm btn-circle btn-danger float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
+      <strong><?=$pengguna_masuk['nama_lengkap'] ?></strong>
       <button type="submit" class="btn btn-sm btn-circle btn-info float-right mr-2" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
     </div>
     <div class="card-body">
       <div class="row">
         <div class="col-md-4">
-          <img src="<?=base_url('assets/img/pengguna/').$pengguna['foto'] ?>" class="img-fluid shadow">
+          <img src="<?=base_url('assets/img/pengguna/').$pengguna_masuk['foto'] ?>" class="img-fluid shadow">
         </div>
         <div class="col-md-8">
           <div class="card shadow">
@@ -68,17 +67,17 @@
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="username">Nama Pengguna</label>
-                  <input type="text" readonly class="form-control"  id="username" name="username" placeholder="Nama Pengguna" value="<?=$pengguna['username'] ?>">
+                  <input type="text" readonly class="form-control"  id="username" name="username" placeholder="Nama Pengguna" value="<?=$pengguna_masuk['username'] ?>">
                 </div><div class="col-md-6">
                   <label for="email">Email</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?=$pengguna['email'] ?>">
+                  <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?=$pengguna_masuk['email'] ?>">
                   <?php echo form_error('email', '<small class="text-danger" style="font-style:italic;">', '</small>'); ?>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="nama_lengkap">Nama Lengkap</label>
-                  <input type="text" class="form-control"  id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" value="<?=$pengguna['nama_lengkap'] ?>">
+                  <input type="text" class="form-control"  id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" value="<?=$pengguna_masuk['nama_lengkap'] ?>">
                   <?php echo form_error('nama_lengkap', '<small class="text-danger" style="font-style:italic;">', '</small>'); ?>
                 </div><div class="col-md-6">
                   <label for="password">Kata Sandi</label>
@@ -89,27 +88,25 @@
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="id_level">Level</label>
-                  <select class="form-control" id="id_level" name="id_level" placeholder="Pilih Level Pengguna">
+                  <select class="form-control" id="id_level" name="id_level" placeholder="Pilih Level Pengguna" readonly>
                     <?php foreach ($level as $lvl): ?>
-                      <option value="<?=$lvl['id_level'] ?>" <?php if($lvl['id_level']==$pengguna['id_level']){echo 'selected';} ?>><?=$lvl['nama_level'] ?></option>
+                      <option value="<?=$lvl['id_level'] ?>" <?php if($lvl['id_level']==$pengguna_masuk['id_level']){echo 'selected';} ?>><?=$lvl['nama_level'] ?></option>
                     <?php endforeach ?>
                   </select>
-                  <?php echo form_error('id_level', '<small class="text-danger" style="font-style:italic;">', '</small>'); ?>
                 </div>
                 <div class="col-md-6">
                   <label for="status">Status</label>
-                  <select class="form-control" id="status" name="status" placeholder="Pilih Status Pengguna">
-                    <option value="Aktif" <?php if($pengguna['status']=='Aktif'){echo 'selected';} ?>>Aktif</option>
-                    <option value="Belum Aktif" <?php if($pengguna['status']=='Belum Aktif'){echo 'selected';} ?>>Belum Aktif</option>
+                  <select class="form-control" id="status" name="status" placeholder="Pilih Status Pengguna" readonly>
+                    <option value="Aktif" <?php if($pengguna_masuk['status']=='Aktif'){echo 'selected';} ?>>Aktif</option>
+                    <option value="Belum Aktif" <?php if($pengguna_masuk['status']=='Belum Aktif'){echo 'selected';} ?>>Belum Aktif</option>
                   </select>
-                  <?php echo form_error('status', '<small class="text-danger" style="font-style:italic;">', '</small>'); ?>
                 </div>
               </div>
               <div class="form-group">
                 <label for="foto">Foto Profil</label>
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="foto" name="foto">
-                  <input type="hidden" class="form-control" id="fotolama" name="fotolama" value="<?=$pengguna['foto'] ?>">
+                  <input type="hidden" class="form-control" id="fotolama" name="fotolama" value="<?=$pengguna_masuk['foto'] ?>">
                   <label class="custom-file-label" for="foto" data-browse="Pilih Foto Profil">Pilih foto profil dengan format <strong>.jpg, .jpeg, .png!</strong></label>
                   <small id="foto" class="form-text text-muted">Kosongkan jika tidak ingin mengubah foto profil!</small>
                 </div>

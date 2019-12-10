@@ -78,7 +78,7 @@
           <div class="tab-pane fade" id="list-sosmed" role="tabpanel" aria-labelledby="list-sosmed-list">
             <h5 class="card-header bg-primary text-white">Sosial Media</h5>
             <div class="card-body row justify-content-md-center">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="facebook">Facebook</label>
                   <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Facebook" value="<?=$pengaturan['facebook'] ?>">
@@ -86,12 +86,12 @@
                 </div>
                 <div class="form-group">
                   <label for="instagram">Instagram</label>
-                  <input type="text" class="form-control" id="instagram" name="instagram" placeholder="No. Telepon" value="<?=$pengaturan['instagram'] ?>">
+                  <input type="text" class="form-control" id="instagram" name="instagram" placeholder="Instagram" value="<?=$pengaturan['instagram'] ?>">
                   <?php echo form_error('instagram', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                   <label for="twitter">Twitter</label>
-                  <input type="text" class="form-control" id="twitter" name="twitter" placeholder="No. Telepon" value="<?=$pengaturan['twitter'] ?>">
+                  <input type="text" class="form-control" id="twitter" name="twitter" placeholder="Twitter" value="<?=$pengaturan['twitter'] ?>">
                   <?php echo form_error('twitter', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
                 </div>
               </div>

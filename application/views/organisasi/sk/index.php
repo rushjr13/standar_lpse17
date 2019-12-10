@@ -141,7 +141,7 @@
         var nama = $(this).data('nama');
         var file = $(this).data('file');
         $("#filesModal #filesModalLabel").html('Dokumen '+nama);
-        $("#filesModal #framefile").attr('src',"<?php echo base_url() ?>assets/file/pdf/sk_organisasi/"+file);
+        $("#filesModal #framefile").attr('src',"<?php echo base_url() ?>uploads/pdf/sk_organisasi/"+file);
     });
 
 </script>

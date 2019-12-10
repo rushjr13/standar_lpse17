@@ -135,7 +135,7 @@ class Regulasi extends CI_Controller {
 		if($file_upload){
 			$config['allowed_types']	= 'pdf';
 			$config['max_size']			= '2048';
-			$config['upload_path']		= './assets/file/pdf/perka/';
+			$config['upload_path']		= './uploads/pdf/perka/';
 			$this->load->library('upload', $config);
 			if($this->upload->do_upload('file')){
 				$file = $this->upload->data('file_name');
@@ -153,17 +153,6 @@ class Regulasi extends CI_Controller {
 			} else {
 				echo $this->upload->display_errors();
 			}
-		}else{
-			$data = [
-				'id'=>$id,
-				'nomor'=>$nomor,
-				'tahun'=>$tahun,
-				'nama'=>$nama,
-				'tentang'=>$tentang,
-				'berlaku'=>$berlaku,
-				'berakhir'=>$berakhir,
-				'tgl_ubah'=>$tgl_ubah
-			];
 		}
 
 		$this->db->insert('regulasi_perka', $data);
@@ -201,11 +190,11 @@ class Regulasi extends CI_Controller {
 			if($file_upload){
 				$config['allowed_types']	= 'pdf';
 				$config['max_size']			= '2048';
-				$config['upload_path']		= './assets/file/pdf/perka/';
+				$config['upload_path']		= './uploads/pdf/perka/';
 				$this->load->library('upload', $config);
 				if($this->upload->do_upload('file')){
 					$file = $this->upload->data('file_name');
-					unlink(FCPATH.'assets/file/pdf/perka/'.$filelama);
+					unlink(FCPATH.'uploads/pdf/perka/'.$filelama);
 					$data = [
 						'nomor'=>$nomor,
 						'tahun'=>$tahun,
@@ -260,7 +249,7 @@ class Regulasi extends CI_Controller {
 			$nama = $this->input->post('nama');
 			$file = $this->input->post('file');
 
-			unlink(FCPATH.'assets/file/pdf/perka/'.$file);
+			unlink(FCPATH.'uploads/pdf/perka/'.$file);
 
 			$this->db->where('id', $id);
 			$this->db->delete('regulasi_perka');

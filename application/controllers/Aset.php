@@ -7,7 +7,7 @@ class Aset extends CI_Controller {
     {
         parent::__construct();
         $this->admin->cek_masuk();
-        $this->load->library('pdf');
+        // $this->load->library('pdf');
     }
 		
 	public function index(){
@@ -179,7 +179,7 @@ class Aset extends CI_Controller {
 
 			if($file_upload){
 				$config['allowed_types']	= 'pdf';
-				$config['upload_path']		= './assets/file/pdf/sk/';
+				$config['upload_path']		= './uploads/pdf/sk/';
 				$this->load->library('upload', $config);
 				if($this->upload->do_upload('file_upload')){
 					$file_name = $this->upload->data('file_name');
@@ -233,11 +233,11 @@ class Aset extends CI_Controller {
 
 			if($file_upload){
 				$config['allowed_types']	= 'pdf';
-				$config['upload_path']		= './assets/file/pdf/sk/';
+				$config['upload_path']		= './uploads/pdf/sk/';
 				$this->load->library('upload', $config);
 				if($this->upload->do_upload('file_upload')){
 					$file_name = $this->upload->data('file_name');
-					unlink(FCPATH.'assets/file/pdf/sk/'.$file_lama);
+					unlink(FCPATH.'uploads/pdf/sk/'.$file_lama);
 					$this->db->set('file', $file_name);
 				} else {
 					echo $this->upload->display_errors();
@@ -262,7 +262,7 @@ class Aset extends CI_Controller {
 			$nama = $this->input->post('nama');
 			$file = $this->input->post('file');
 
-			unlink(FCPATH.'assets/file/pdf/sk/'.$file);
+			unlink(FCPATH.'uploads/pdf/sk/'.$file);
 			$this->db->where('id', $id);
 			$this->db->delete('aset_sk');
 			$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">

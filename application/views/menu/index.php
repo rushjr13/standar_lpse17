@@ -1,5 +1,5 @@
 <div class="row justify-content-md-center">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="card border-primary shadow mb-4">
       <div class="card-header bg-primary text-white py-3">
         <strong>Daftar Menu</strong>
@@ -12,7 +12,7 @@
               <?php $no=1; foreach ($menu as $mn): ?>
                 <tr>
                   <td class="align-middle" ><?=$mn['nama_menu'] ?></td>
-                  <td class="align-middle" width="14%">
+                  <td class="align-middle text-right">
                     <a href="<?=base_url('menu/submenu/').$mn['id_menu'] ?>" class="btn btn-sm btn-circle btn-secondary" title="Sub Menu <?=$mn['nama_menu'] ?>"><i class="fa fa-fw fa-list"></i></a>
                     <button type="button" class="btn btn-sm btn-circle btn-info" id="ubah" data-toggle="modal" data-target="#ubahModal" data-id="<?=$mn['id_menu'] ?>" data-nama="<?=$mn['nama_menu'] ?>" title="Ubah <?=$mn['nama_menu'] ?>"><i class="fa fa-fw fa-edit"></i></button>
                     <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$mn['id_menu'] ?>" data-nama="<?=$mn['nama_menu'] ?>" title="Hapus <?=$mn['nama_menu'] ?>"><i class="fa fa-fw fa-trash"></i></button>

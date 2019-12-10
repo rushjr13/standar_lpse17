@@ -6,7 +6,6 @@
         </div>
         <div class="col-md-4 text-right">
             <button type="button" class="btn btn-sm btn-circle btn-primary mr-2" id="tambah" data-toggle="modal" data-target="#tambahModal" title="Tambah Regulasi"><i class="fa fa-fw fa-plus"></i></button>
-            <a href="<?=base_url('regulasi') ?>" class="btn btn-sm btn-circle btn-danger" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
         </div>
     </div>
   </div>
@@ -308,7 +307,7 @@
         var nama = $(this).data('nama');
         var file = $(this).data('file');
         $("#fileModal #fileModalLabel").html("Dokumen "+nama+" Nomor "+nomor+" Tahun "+tahun);
-        $("#fileModal #sumberfile").attr("src","<?php echo base_url() ?>assets/file/pdf/perka/"+file);
+        $("#fileModal #sumberfile").attr("src","<?php echo base_url() ?>uploads/pdf/perka/"+file);
     });
 
 </script>

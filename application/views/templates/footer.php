@@ -9,7 +9,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; <?=$pengaturan['nama_web'] ?> 2019</span>
+            <span>Copyright &copy; LPSE - Biro Pengadaan Setda Provinsi Gorontalo 2019</span>
           </div>
         </div>
       </footer>
@@ -47,7 +47,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Buat Akun Baru?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Buat Akun Baru</h5>
         </div>
         <form action="<?=base_url('auth/daftar') ?>" method="post">
           <div class="modal-body">
@@ -68,12 +68,13 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-6">
-                <div class="input-group mb-3">
+                <div class="input-group">
                   <input type="password" class="form-control" id="pass1" name="pass1" minlength="6" placeholder="Kata Sandi" aria-label="Kata Sandi" aria-describedby="btnlihatpass1" value="123456" required>
                   <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="button" id="btnlihatpass1" title="Tampilkan"><i id="icontblpass1" class="fa fa-fw fa-eye"></i></button>
                   </div>
                 </div>
+                <small class="text-muted ml-2" style="font-style: italic;">password default : 123456</small>
               </div>
               <div class="col-sm-6">
                 <input type="password" class="form-control" id="pass2" name="pass2" minlength="6" placeholder="Ulangi Kata Sandi" required>

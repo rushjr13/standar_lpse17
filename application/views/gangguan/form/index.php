@@ -54,95 +54,101 @@
 				</tr> -->
 			</thead>
 			<tbody>
-				<?php foreach ($gangguan as $gg): ?>
-					<?php
-						date_default_timezone_set('Asia/Makassar');
-						// PELAPORAN
-		        $tgl_lapor = substr($gg['tgl_pelaporan'], 8, 2);
-		        $bln_lapor = substr($gg['tgl_pelaporan'], 5, 2);
-		        $thn_lapor = substr($gg['tgl_pelaporan'], 0, 4);
+				<?php if($gangguan){ ?>
+					<?php foreach ($gangguan as $gg): ?>
+						<?php
+							date_default_timezone_set('Asia/Makassar');
+							// PELAPORAN
+			        $tgl_lapor = substr($gg['tgl_pelaporan'], 8, 2);
+			        $bln_lapor = substr($gg['tgl_pelaporan'], 5, 2);
+			        $thn_lapor = substr($gg['tgl_pelaporan'], 0, 4);
 
-		        // PENANGANAN
-		        $tgl_tangani = substr($gg['tgl_penanganan'], 8, 2);
-		        $bln_tangani = substr($gg['tgl_penanganan'], 5, 2);
-		        $thn_tangani = substr($gg['tgl_penanganan'], 0, 4);
+			        // PENANGANAN
+			        $tgl_tangani = substr($gg['tgl_penanganan'], 8, 2);
+			        $bln_tangani = substr($gg['tgl_penanganan'], 5, 2);
+			        $thn_tangani = substr($gg['tgl_penanganan'], 0, 4);
 
-		        // PELAPORAN
-		        if($bln_lapor=='01'){
-		            $bulan_lapor='Januari';
-		        } else if($bln_lapor=='02'){
-		            $bulan_lapor='Februari';
-		        } else if($bln_lapor=='03'){
-		            $bulan_lapor='Maret';
-		        } else if($bln_lapor=='04'){
-		            $bulan_lapor='April';
-		        } else if($bln_lapor=='05'){
-		            $bulan_lapor='Mei';
-		        } else if($bln_lapor=='06'){
-		            $bulan_lapor='Juni';
-		        } else if($bln_lapor=='07'){
-		            $bulan_lapor='Juli';
-		        } else if($bln_lapor=='08'){
-		            $bulan_lapor='Agustus';
-		        } else if($bln_lapor=='09'){
-		            $bulan_lapor='September';
-		        } else if($bln_lapor=='10'){
-		            $bulan_lapor='Oktober';
-		        } else if($bln_lapor=='11'){
-		            $bulan_lapor='November';
-		        } else if($bln_lapor=='12'){
-		            $bulan_lapor='Desember';
-		        }
+			        // PELAPORAN
+			        if($bln_lapor=='01'){
+			            $bulan_lapor='Januari';
+			        } else if($bln_lapor=='02'){
+			            $bulan_lapor='Februari';
+			        } else if($bln_lapor=='03'){
+			            $bulan_lapor='Maret';
+			        } else if($bln_lapor=='04'){
+			            $bulan_lapor='April';
+			        } else if($bln_lapor=='05'){
+			            $bulan_lapor='Mei';
+			        } else if($bln_lapor=='06'){
+			            $bulan_lapor='Juni';
+			        } else if($bln_lapor=='07'){
+			            $bulan_lapor='Juli';
+			        } else if($bln_lapor=='08'){
+			            $bulan_lapor='Agustus';
+			        } else if($bln_lapor=='09'){
+			            $bulan_lapor='September';
+			        } else if($bln_lapor=='10'){
+			            $bulan_lapor='Oktober';
+			        } else if($bln_lapor=='11'){
+			            $bulan_lapor='November';
+			        } else if($bln_lapor=='12'){
+			            $bulan_lapor='Desember';
+			        }
 
-		        // PENANGANAN
-		        if($bln_tangani=='01'){
-		            $bulan_tangani='Januari';
-		        } else if($bln_tangani=='02'){
-		            $bulan_tangani='Februari';
-		        } else if($bln_tangani=='03'){
-		            $bulan_tangani='Maret';
-		        } else if($bln_tangani=='04'){
-		            $bulan_tangani='April';
-		        } else if($bln_tangani=='05'){
-		            $bulan_tangani='Mei';
-		        } else if($bln_tangani=='06'){
-		            $bulan_tangani='Juni';
-		        } else if($bln_tangani=='07'){
-		            $bulan_tangani='Juli';
-		        } else if($bln_tangani=='08'){
-		            $bulan_tangani='Agustus';
-		        } else if($bln_tangani=='09'){
-		            $bulan_tangani='September';
-		        } else if($bln_tangani=='10'){
-		            $bulan_tangani='Oktober';
-		        } else if($bln_tangani=='11'){
-		            $bulan_tangani='November';
-		        } else if($bln_tangani=='12'){
-		            $bulan_tangani='Desember';
-		        }
+			        // PENANGANAN
+			        if($bln_tangani=='01'){
+			            $bulan_tangani='Januari';
+			        } else if($bln_tangani=='02'){
+			            $bulan_tangani='Februari';
+			        } else if($bln_tangani=='03'){
+			            $bulan_tangani='Maret';
+			        } else if($bln_tangani=='04'){
+			            $bulan_tangani='April';
+			        } else if($bln_tangani=='05'){
+			            $bulan_tangani='Mei';
+			        } else if($bln_tangani=='06'){
+			            $bulan_tangani='Juni';
+			        } else if($bln_tangani=='07'){
+			            $bulan_tangani='Juli';
+			        } else if($bln_tangani=='08'){
+			            $bulan_tangani='Agustus';
+			        } else if($bln_tangani=='09'){
+			            $bulan_tangani='September';
+			        } else if($bln_tangani=='10'){
+			            $bulan_tangani='Oktober';
+			        } else if($bln_tangani=='11'){
+			            $bulan_tangani='November';
+			        } else if($bln_tangani=='12'){
+			            $bulan_tangani='Desember';
+			        }
 
-		        $tgl_pelaporan = $tgl_lapor.' '.$bulan_lapor.' '.$thn_lapor;
-		        $tgl_penanganan = $tgl_tangani.' '.$bulan_tangani.' '.$thn_tangani;
-					?>
-					<tr class="text-center">
-						<td class="align-middle"><?=$gg['id_gangguan'] ?></td>
-						<td class="align-middle"><?=$gg['nama_pengguna'] ?></td>
-						<td class="align-middle"><?=$gg['kontak_pengguna'] ?></td>
-						<td class="align-middle"><?=$gg['media_pelaporan'] ?></td>
-						<td class="align-middle"><?=$tgl_pelaporan ?></td>
-						<td class="align-middle"><?=$gg['deskripsi_gangguan'] ?></td>
-						<td class="align-middle">
-							<button class="btn btn-sm rounded-circle btn-secondary" title="Klasifikasi" id="klasifikasi" data-toggle="modal" data-target="#klasifikasiModal" data-nomortiket="<?=$gg['id_gangguan'] ?>" data-namapengguna="<?=$gg['nama_pengguna'] ?>" data-tglpelaporan="<?=$tgl_pelaporan ?>" data-deskripsigangguan="<?=$gg['deskripsi_gangguan'] ?>" data-tipegangguan="<?=$gg['nama_tipe']." (".$gg['kode_tipe'].")" ?>" data-kategorigangguan="<?=$gg['nama_kategori']." (".$gg['kode_kategori'].")" ?>" data-usergangguan="<?=$gg['nama_user']." (".$gg['kode_user'].")" ?>" data-jenisgangguan="<?=$gg['nama_jenis']." (".$gg['kode_jenis'].")" ?>" data-urgensigangguan="<?=$gg['nama_urgensi']." (".$gg['kode_urgensi'].")" ?>" data-dampakgangguan="<?=$gg['nama_dampak']." (".$gg['kode_dampak'].")" ?>" data-prioritasgangguan="<?=$gg['nama_prioritas']." (".$gg['kode_prioritas'].")" ?>"><i class="fa fa-fw fa-list"></i></button>
-							<?php if($gg['status_gangguan']=='Tercatat'){ ?>
-								<button class="btn btn-sm rounded-circle btn-danger" id="tangani" title="Tangani" data-toggle="modal" data-target="#tanganiModal" data-id_gangguan="<?=$gg['id_gangguan'] ?>" data-nama_pengguna="<?=$gg['nama_pengguna'] ?>" data-tgl_pelaporan="<?=$tgl_pelaporan ?>" data-deskripsi_gangguan="<?=$gg['deskripsi_gangguan'] ?>"><i class="fa fa-fw fa-paper-plane"></i></button>
-							<?php }else if($gg['status_gangguan']=='Penanganan'){ ?>
-								<button class="btn btn-sm rounded-circle btn-success"id="selesaikan" title="Selesaikan" data-toggle="modal" data-target="#selesaikanModal" data-id_gangguan="<?=$gg['id_gangguan'] ?>" data-nama_pengguna="<?=$gg['nama_pengguna'] ?>" data-tgl_pelaporan="<?=$tgl_pelaporan ?>" data-deskripsi_gangguan="<?=$gg['deskripsi_gangguan'] ?>" data-petugas_penanganan="<?=$gg['petugas_penanganan'] ?>" data-status_penanganan="<?=$gg['status_penanganan'] ?>" data-ket_penanganan="<?=$gg['ket_penanganan'] ?>" data-tgl_penanganan="<?=$tgl_penanganan ?>"><i class="fa fa-fw fa-paper-plane"></i></button>
-							<?php }else{ ?>
-								<a href="<?=base_url('gangguan/form/cetak/').$gg['id_gangguan'] ?>" class="btn btn-sm rounded-circle btn-primary" title="Rincian"><i class="fa fa-fw fa-eye"></i></button>
-							<?php } ?>
-						</td>
+			        $tgl_pelaporan = $tgl_lapor.' '.$bulan_lapor.' '.$thn_lapor;
+			        $tgl_penanganan = $tgl_tangani.' '.$bulan_tangani.' '.$thn_tangani;
+						?>
+						<tr class="text-center">
+							<td class="align-middle"><?=$gg['id_gangguan'] ?></td>
+							<td class="align-middle"><?=$gg['nama_pengguna'] ?></td>
+							<td class="align-middle"><?=$gg['kontak_pengguna'] ?></td>
+							<td class="align-middle"><?=$gg['media_pelaporan'] ?></td>
+							<td class="align-middle"><?=$tgl_pelaporan ?></td>
+							<td class="align-middle"><?=$gg['deskripsi_gangguan'] ?></td>
+							<td class="align-middle">
+								<button class="btn btn-sm rounded-circle btn-secondary" title="Klasifikasi" id="klasifikasi" data-toggle="modal" data-target="#klasifikasiModal" data-nomortiket="<?=$gg['id_gangguan'] ?>" data-namapengguna="<?=$gg['nama_pengguna'] ?>" data-tglpelaporan="<?=$tgl_pelaporan ?>" data-deskripsigangguan="<?=$gg['deskripsi_gangguan'] ?>" data-tipegangguan="<?=$gg['nama_tipe']." (".$gg['kode_tipe'].")" ?>" data-kategorigangguan="<?=$gg['nama_kategori']." (".$gg['kode_kategori'].")" ?>" data-usergangguan="<?=$gg['nama_user']." (".$gg['kode_user'].")" ?>" data-jenisgangguan="<?=$gg['nama_jenis']." (".$gg['kode_jenis'].")" ?>" data-urgensigangguan="<?=$gg['nama_urgensi']." (".$gg['kode_urgensi'].")" ?>" data-dampakgangguan="<?=$gg['nama_dampak']." (".$gg['kode_dampak'].")" ?>" data-prioritasgangguan="<?=$gg['nama_prioritas']." (".$gg['kode_prioritas'].")" ?>"><i class="fa fa-fw fa-list"></i></button>
+								<?php if($gg['status_gangguan']=='Tercatat'){ ?>
+									<button class="btn btn-sm rounded-circle btn-danger" id="tangani" title="Tangani" data-toggle="modal" data-target="#tanganiModal" data-id_gangguan="<?=$gg['id_gangguan'] ?>" data-nama_pengguna="<?=$gg['nama_pengguna'] ?>" data-tgl_pelaporan="<?=$tgl_pelaporan ?>" data-deskripsi_gangguan="<?=$gg['deskripsi_gangguan'] ?>"><i class="fa fa-fw fa-paper-plane"></i></button>
+								<?php }else if($gg['status_gangguan']=='Penanganan'){ ?>
+									<button class="btn btn-sm rounded-circle btn-success"id="selesaikan" title="Selesaikan" data-toggle="modal" data-target="#selesaikanModal" data-id_gangguan="<?=$gg['id_gangguan'] ?>" data-nama_pengguna="<?=$gg['nama_pengguna'] ?>" data-tgl_pelaporan="<?=$tgl_pelaporan ?>" data-deskripsi_gangguan="<?=$gg['deskripsi_gangguan'] ?>" data-petugas_penanganan="<?=$gg['petugas_penanganan'] ?>" data-status_penanganan="<?=$gg['status_penanganan'] ?>" data-ket_penanganan="<?=$gg['ket_penanganan'] ?>" data-tgl_penanganan="<?=$tgl_penanganan ?>"><i class="fa fa-fw fa-paper-plane"></i></button>
+								<?php }else{ ?>
+									<a href="<?=base_url('gangguan/form/cetak/').$gg['id_gangguan'] ?>" target="_blank" class="btn btn-sm rounded-circle btn-primary" title="Rincian"><i class="fa fa-fw fa-eye"></i></button>
+								<?php } ?>
+							</td>
+						</tr>
+					<?php endforeach ?>
+				<?php }else{ ?>
+					<tr>
+						<th colspan="7" class="text-center">Tidak ada data yang tersedia!</th>
 					</tr>
-				<?php endforeach ?>
+				<?php } ?>
 			</tbody>
 		</table>
 	</div>
@@ -490,7 +496,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <iframe src="<?=base_url('assets/file/pdf/gangguan/form_gangguan.pdf') ?>" width="100%" height="750"></iframe>
+        <iframe src="<?=base_url('uploads/pdf/gangguan/form_gangguan.pdf') ?>" width="100%" height="750"></iframe>
       </div>
     </div>
   </div>

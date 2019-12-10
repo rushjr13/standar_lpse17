@@ -96,6 +96,13 @@ class Gangguan_model extends CI_Model {
             $this->db->order_by('gangguan.id_gangguan', 'DESC');
             return $this->db->get('gangguan')->result_array();
         } else {
+            $this->db->join('gangguan_tipe', 'gangguan_tipe.id_tipe = gangguan.id_tipe');
+            $this->db->join('gangguan_kategori', 'gangguan_kategori.id_kategori = gangguan.id_kategori');
+            $this->db->join('gangguan_user', 'gangguan_user.id_user = gangguan.id_user');
+            $this->db->join('gangguan_jenis', 'gangguan_jenis.id_jenis = gangguan.id_jenis');
+            $this->db->join('gangguan_urgensi', 'gangguan_urgensi.id_urgensi = gangguan.id_urgensi');
+            $this->db->join('gangguan_dampak', 'gangguan_dampak.id_dampak = gangguan.id_dampak');
+            $this->db->join('gangguan_prioritas', 'gangguan_prioritas.id_prioritas = gangguan.id_prioritas');
             return $this->db->get_where('gangguan', ['id_gangguan'=>$id])->row_array();
         }
     }

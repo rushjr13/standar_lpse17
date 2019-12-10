@@ -1,5 +1,5 @@
 <div class="row justify-content-md-center">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="card border-primary shadow mb-4">
       <div class="card-header bg-primary text-white py-3">
         <strong><?=$menudata['nama_menu'] ?></strong>
@@ -13,7 +13,7 @@
               <?php $no=1; foreach ($submenubymenu as $sm): ?>
                 <tr>
                   <td class="align-middle" ><i class="fa fa-fw <?=$sm['icon'] ?>"></i> <?=$sm['nama_submenu'] ?><br><small><?=base_url().$sm['link'] ?></small></td>
-                  <td class="align-middle" width="10%">
+                  <td class="align-middle text-right">
                     <button type="button" class="btn btn-sm btn-circle btn-info" id="ubah" data-toggle="modal" data-target="#ubahModal" data-id="<?=$sm['id_submenu'] ?>" data-menu="<?=$sm['id_menu'] ?>" data-nama="<?=$sm['nama_submenu'] ?>" data-link="<?=$sm['link'] ?>" data-icon="<?=$sm['icon'] ?>" title="Ubah <?=$sm['nama_submenu'] ?>"><i class="fa fa-fw fa-edit"></i></button>
                     <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$sm['id_submenu'] ?>" data-menu="<?=$sm['id_menu'] ?>" data-nama="<?=$sm['nama_submenu'] ?>" title="Hapus <?=$sm['nama_submenu'] ?>"><i class="fa fa-fw fa-trash"></i></button>
                   </td>

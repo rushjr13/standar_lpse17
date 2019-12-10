@@ -453,7 +453,7 @@ class Organisasi extends CI_Controller {
 
 				if($file_sko_upload){
 					$config['allowed_types']	= 'pdf';
-					$config['upload_path']		= './assets/file/pdf/sk_organisasi/';
+					$config['upload_path']		= './uploads/pdf/sk_organisasi/';
 					$this->load->library('upload', $config);
 					if($this->upload->do_upload('file_sko')){
 						$file_sko = $this->upload->data('file_name');
@@ -521,11 +521,11 @@ class Organisasi extends CI_Controller {
 
 					if($file_sko_upload){
 						$config['allowed_types']	= 'pdf';
-						$config['upload_path']		= './assets/file/pdf/sk_organisasi/';
+						$config['upload_path']		= './uploads/pdf/sk_organisasi/';
 						$this->load->library('upload', $config);
 						if($this->upload->do_upload('file_sko')){
 							$file_sko = $this->upload->data('file_name');
-							unlink(FCPATH.'assets/file/pdf/sk_organisasi/'.$file_lama_sko);
+							unlink(FCPATH.'uploads/pdf/sk_organisasi/'.$file_lama_sko);
 							$data = [
 								'nomor_sko'=>$nomor_sko,
 								'tanggal_sko'=>$tanggal_sko,
@@ -571,7 +571,7 @@ class Organisasi extends CI_Controller {
 				$nama_sko = $this->input->post('nama_sko');
 				$file_sko = $this->input->post('file_sko');
 
-				unlink(FCPATH.'assets/file/pdf/sk_organisasi/'.$file_sko);
+				unlink(FCPATH.'uploads/pdf/sk_organisasi/'.$file_sko);
 
 				$this->db->where('id_sko', $id);
 				$this->db->delete('organisasi_sk');

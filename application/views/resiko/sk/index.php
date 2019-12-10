@@ -329,7 +329,7 @@
         var nama = $(this).data('nama');
         var file = $(this).data('file');
         $("#fileModal #fileModalLabel").html('File '+nama+' Nomor '+nomor+' tanggal '+tanggal);
-        $("#fileModal #framefile").attr('src', '<?=base_url('assets/file/pdf/sk/') ?>'+file);
+        $("#fileModal #framefile").attr('src', '<?=base_url('uploads/pdf/sk/') ?>'+file);
     });
 
     $(document).on("click", "#hapus", function() {

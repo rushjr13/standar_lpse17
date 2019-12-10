@@ -92,82 +92,74 @@
         </tr>
       </thead>
       <tbody>
-        <?php if($gangguan){ ?>
-          <?php foreach ($gangguan as $gg): ?>
-            <?php if($gg['status_gangguan']=='Tercatat'){ ?>
-              <tr class="text-center text-danger small">
-                <td class="align-middle"><?=$gg['id_gangguan'] ?></td>
-                <td class="align-middle"><?=$gg['nama_pengguna'] ?></td>
-                <td class="align-middle"><?=$gg['kontak_pengguna'] ?></td>
-                <td class="align-middle"><?=$gg['media_pelaporan'] ?></td>
-                <td class="align-middle"><?=$gg['tgl_pelaporan'] ?></td>
-                <td class="align-middle"><?=$gg['deskripsi_gangguan'] ?></td>
-                <td class="align-middle"><?=$gg['kode_tipe'] ?></td>
-                <td class="align-middle"><?=$gg['kode_kategori'] ?></td>
-                <td class="align-middle"><?=$gg['kode_user'] ?></td>
-                <td class="align-middle"><?=$gg['kode_jenis'] ?></td>
-                <td class="align-middle"><?=$gg['kode_urgensi'] ?></td>
-                <td class="align-middle"><?=$gg['kode_dampak'] ?></td>
-                <td class="align-middle"><?=$gg['kode_prioritas'] ?></td>
-                <td class="align-middle"><?=$gg['petugas_penanganan'] ?></td>
-                <td class="align-middle"><?=$gg['status_penanganan'] ?></td>
-                <td class="align-middle"><?=$gg['ket_penanganan'] ?></td>
-                <td class="align-middle"><?=$gg['tgl_penanganan'] ?></td>
-                <td class="align-middle"><?=$gg['solusi_penyelesaian'] ?></td>
-                <td class="align-middle"><?=$gg['tgl_penyelesaian'] ?></td>
-                <td class="align-middle"><?=$gg['status_konfirmasi'] ?></td>
-              </tr>
-            <?php }else if($gg['status_gangguan']=='Penanganan'){ ?>
-              <tr class="text-center text-success small">
-                <td class="align-middle"><?=$gg['id_gangguan'] ?></td>
-                <td class="align-middle"><?=$gg['nama_pengguna'] ?></td>
-                <td class="align-middle"><?=$gg['kontak_pengguna'] ?></td>
-                <td class="align-middle"><?=$gg['media_pelaporan'] ?></td>
-                <td class="align-middle"><?=$gg['tgl_pelaporan'] ?></td>
-                <td class="align-middle"><?=$gg['deskripsi_gangguan'] ?></td>
-                <td class="align-middle"><?=$gg['kode_tipe'] ?></td>
-                <td class="align-middle"><?=$gg['kode_kategori'] ?></td>
-                <td class="align-middle"><?=$gg['kode_user'] ?></td>
-                <td class="align-middle"><?=$gg['kode_jenis'] ?></td>
-                <td class="align-middle"><?=$gg['kode_urgensi'] ?></td>
-                <td class="align-middle"><?=$gg['kode_dampak'] ?></td>
-                <td class="align-middle"><?=$gg['kode_prioritas'] ?></td>
-                <td class="align-middle"><?=$gg['petugas_penanganan'] ?></td>
-                <td class="align-middle"><?=$gg['status_penanganan'] ?></td>
-                <td class="align-middle"><?=$gg['ket_penanganan'] ?></td>
-                <td class="align-middle"><?=$gg['tgl_penanganan'] ?></td>
-                <td class="align-middle"><?=$gg['solusi_penyelesaian'] ?></td>
-                <td class="align-middle"><?=$gg['tgl_penyelesaian'] ?></td>
-                <td class="align-middle"><?=$gg['status_konfirmasi'] ?></td>
-              </tr>
-            <?php }else{ ?>
-              <tr class="text-center small">
-                <td class="align-middle"><?=$gg['id_gangguan'] ?></td>
-                <td class="align-middle"><?=$gg['nama_pengguna'] ?></td>
-                <td class="align-middle"><?=$gg['kontak_pengguna'] ?></td>
-                <td class="align-middle"><?=$gg['media_pelaporan'] ?></td>
-                <td class="align-middle"><?=$gg['tgl_pelaporan'] ?></td>
-                <td class="align-middle"><?=$gg['deskripsi_gangguan'] ?></td>
-                <td class="align-middle"><?=$gg['kode_tipe'] ?></td>
-                <td class="align-middle"><?=$gg['kode_kategori'] ?></td>
-                <td class="align-middle"><?=$gg['kode_user'] ?></td>
-                <td class="align-middle"><?=$gg['kode_jenis'] ?></td>
-                <td class="align-middle"><?=$gg['kode_urgensi'] ?></td>
-                <td class="align-middle"><?=$gg['kode_dampak'] ?></td>
-                <td class="align-middle"><?=$gg['kode_prioritas'] ?></td>
-                <td class="align-middle"><?=$gg['petugas_penanganan'] ?></td>
-                <td class="align-middle"><?=$gg['status_penanganan'] ?></td>
-                <td class="align-middle"><?=$gg['ket_penanganan'] ?></td>
-                <td class="align-middle"><?=$gg['tgl_penanganan'] ?></td>
-                <td class="align-middle"><?=$gg['solusi_penyelesaian'] ?></td>
-                <td class="align-middle"><?=$gg['tgl_penyelesaian'] ?></td>
-                <td class="align-middle"><?=$gg['status_konfirmasi'] ?></td>
-              </tr>
-            <?php } ?>
-          <?php endforeach ?>
+        <?php if($gangguan['status_gangguan']=='Tercatat'){ ?>
+          <tr class="text-center text-danger small">
+            <td class="align-middle"><?=$gangguan['id_gangguan'] ?></td>
+            <td class="align-middle"><?=$gangguan['nama_pengguna'] ?></td>
+            <td class="align-middle"><?=$gangguan['kontak_pengguna'] ?></td>
+            <td class="align-middle"><?=$gangguan['media_pelaporan'] ?></td>
+            <td class="align-middle"><?=$gangguan['tgl_pelaporan'] ?></td>
+            <td class="align-middle"><?=$gangguan['deskripsi_gangguan'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_tipe'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_kategori'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_user'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_jenis'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_urgensi'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_dampak'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_prioritas'] ?></td>
+            <td class="align-middle"><?=$gangguan['petugas_penanganan'] ?></td>
+            <td class="align-middle"><?=$gangguan['status_penanganan'] ?></td>
+            <td class="align-middle"><?=$gangguan['ket_penanganan'] ?></td>
+            <td class="align-middle"><?=$gangguan['tgl_penanganan'] ?></td>
+            <td class="align-middle"><?=$gangguan['solusi_penyelesaian'] ?></td>
+            <td class="align-middle"><?=$gangguan['tgl_penyelesaian'] ?></td>
+            <td class="align-middle"><?=$gangguan['status_konfirmasi'] ?></td>
+          </tr>
+        <?php }else if($gangguan['status_gangguan']=='Penanganan'){ ?>
+          <tr class="text-center text-success small">
+            <td class="align-middle"><?=$gangguan['id_gangguan'] ?></td>
+            <td class="align-middle"><?=$gangguan['nama_pengguna'] ?></td>
+            <td class="align-middle"><?=$gangguan['kontak_pengguna'] ?></td>
+            <td class="align-middle"><?=$gangguan['media_pelaporan'] ?></td>
+            <td class="align-middle"><?=$gangguan['tgl_pelaporan'] ?></td>
+            <td class="align-middle"><?=$gangguan['deskripsi_gangguan'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_tipe'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_kategori'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_user'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_jenis'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_urgensi'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_dampak'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_prioritas'] ?></td>
+            <td class="align-middle"><?=$gangguan['petugas_penanganan'] ?></td>
+            <td class="align-middle"><?=$gangguan['status_penanganan'] ?></td>
+            <td class="align-middle"><?=$gangguan['ket_penanganan'] ?></td>
+            <td class="align-middle"><?=$gangguan['tgl_penanganan'] ?></td>
+            <td class="align-middle"><?=$gangguan['solusi_penyelesaian'] ?></td>
+            <td class="align-middle"><?=$gangguan['tgl_penyelesaian'] ?></td>
+            <td class="align-middle"><?=$gangguan['status_konfirmasi'] ?></td>
+          </tr>
         <?php }else{ ?>
-          <tr>
-            <th colspan="20" class="text-center">Tidak ada data yang tersedia!</th>
+          <tr class="text-center small">
+            <td class="align-middle"><?=$gangguan['id_gangguan'] ?></td>
+            <td class="align-middle"><?=$gangguan['nama_pengguna'] ?></td>
+            <td class="align-middle"><?=$gangguan['kontak_pengguna'] ?></td>
+            <td class="align-middle"><?=$gangguan['media_pelaporan'] ?></td>
+            <td class="align-middle"><?=$gangguan['tgl_pelaporan'] ?></td>
+            <td class="align-middle"><?=$gangguan['deskripsi_gangguan'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_tipe'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_kategori'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_user'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_jenis'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_urgensi'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_dampak'] ?></td>
+            <td class="align-middle"><?=$gangguan['kode_prioritas'] ?></td>
+            <td class="align-middle"><?=$gangguan['petugas_penanganan'] ?></td>
+            <td class="align-middle"><?=$gangguan['status_penanganan'] ?></td>
+            <td class="align-middle"><?=$gangguan['ket_penanganan'] ?></td>
+            <td class="align-middle"><?=$gangguan['tgl_penanganan'] ?></td>
+            <td class="align-middle"><?=$gangguan['solusi_penyelesaian'] ?></td>
+            <td class="align-middle"><?=$gangguan['tgl_penyelesaian'] ?></td>
+            <td class="align-middle"><?=$gangguan['status_konfirmasi'] ?></td>
           </tr>
         <?php } ?>
       </tbody>
@@ -177,9 +169,13 @@
   <div class="alert my-1">
     <h6 class="alert-heading">Keterangan :</h6>
     <ul class="small">
-      <li class="text-danger"><?=$this->db->get_where('gangguan', ['status_gangguan'=>'Tercatat'])->num_rows(); ?> Gangguan/Masalah Tercatat tapi belum ditangani</li>
-      <li class="text-success"><?=$this->db->get_where('gangguan', ['status_gangguan'=>'Penanganan'])->num_rows(); ?> Gangguan/Masalah Tercatat dan sudah ditangani tapi belum ada penyelesaian</li>
-      <li><?=$this->db->get_where('gangguan', ['status_gangguan'=>'Penyelesaian'])->num_rows(); ?> Gangguan/Masalah selesai</li>
+      <?php if($gangguan['status_gangguan']=='Tercatat'){ ?>
+        <li class="text-danger">Gangguan / Masalah tercatat tetapi belum ada penanganan</li>
+      <?php }else if($gangguan['status_gangguan']=='Penanganan'){ ?>
+        <li class="text-success">Gangguan / Masalah tercatat dan sudah ditangani tetapi belum ada penyelesaian</li>
+      <?php }else{ ?>
+        <li class="text-dark">Gangguan / Masalah selesai</li>
+      <?php } ?>
     </ul>
   </div>
 
