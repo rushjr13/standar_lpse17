@@ -1,5 +1,5 @@
 <div class="row justify-content-md-center">
-  <div class="col-md-6">
+  <div class="col-lg-6">
     <div class="card border-primary shadow mb-4">
       <div class="card-header bg-primary text-white py-3">
         <strong>Menu Yang Dapat Diakses Oleh <?=$pengguna['nama_lengkap'] ?></strong>

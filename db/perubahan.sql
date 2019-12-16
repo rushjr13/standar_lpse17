@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2019 at 06:39 AM
+-- Generation Time: Dec 11, 2019 at 08:18 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -37,10 +37,10 @@ CREATE TABLE `perubahan` (
   `deskripsi_perubahan` text NOT NULL,
   `tgl_berlakuperubahan` date NOT NULL,
   `mt_perubahan` text NOT NULL,
-  `jenis_perubahan` enum('Aplikasi','Infrasturktur','Layanan') DEFAULT NULL,
+  `jenis_perubahan` text DEFAULT NULL,
   `kategori_perubahan` enum('Emergency','Normal') DEFAULT NULL,
   `dampak_lingkungan` text DEFAULT NULL,
-  `sumber` enum('Software','Hardware','SDM') DEFAULT NULL,
+  `sumber` text DEFAULT NULL,
   `deskripsi_ujicoba` text DEFAULT NULL,
   `deskripsi_rollback` text DEFAULT NULL,
   `status_permintaan` enum('Setuju','Tidak Setuju') DEFAULT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE `perubahan` (
 --
 
 INSERT INTO `perubahan` (`id_perubahan`, `tgl_permohonanperubahan`, `nama_pemohon`, `kontak_pemohon`, `instansi_pemohon`, `deskripsi_perubahan`, `tgl_berlakuperubahan`, `mt_perubahan`, `jenis_perubahan`, `kategori_perubahan`, `dampak_lingkungan`, `sumber`, `deskripsi_ujicoba`, `deskripsi_rollback`, `status_permintaan`, `ket_statuspermintaan`, `jadwal_perubahan`, `petugas_implementasi`, `test_perubahan`, `implementasi_perubahan`, `tgl_implementasi`, `status_perubahan`, `pengelola_perubahan`, `tgl_update`) VALUES
-('UB1576041329', '2019-12-04', 'Rahmanto Gani, ST', '0852', 'Biro Pengadaan Setda Provinsi Gorontalo', 'Permohonan Migrasi Server dan Instalasi SPSE versi 4 dan latihannya', '2019-12-04', 'Server yang digunakan saat ini tidak lagi berfungsi secara normal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-11', NULL, NULL, NULL, '2019-12-11', 'Tercatat', 'admin', 1576042668);
+('UB1576041329', '2019-12-04', 'Rahmanto Gani, ST', '0852', 'Biro Pengadaan Setda Provinsi Gorontalo', 'Permohonan Migrasi Server dan Instalasi SPSE versi 4 dan latihannya', '2019-12-04', 'Server yang digunakan saat ini tidak lagi berfungsi secara normal', 'Aplikasi, Infrastruktur', 'Emergency', 'Mempengaruhi kinerja pengguna', 'Software, Hardware', 'Sering terjadi error', '-', NULL, NULL, '2019-12-11', NULL, NULL, NULL, '2019-12-11', 'Evaluasi', 'Administrator', 1576048506);
 
 --
 -- Indexes for dumped tables

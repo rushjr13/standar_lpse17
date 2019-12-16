@@ -63,18 +63,18 @@
 							<td class="align-middle"><?=$ubah['deskripsi_perubahan']  ?></td>
 							<td class="align-middle" width="7%">
 								<?php if($ubah['status_perubahan']=='Tercatat'){ ?>
-									<button type="button" class="btn btn-sm btn-circle btn-warning" title="Evaluasi"><i class="fa fa-fw fa-pencil-alt"></i></button>
+									<a href="<?=base_url('perubahan/form/evaluasi/').$ubah['id_perubahan'] ?>" class="btn btn-sm btn-circle btn-warning" title="Evaluasi"><i class="fa fa-fw fa-pencil-alt"></i></a>
 									<button type="button" class="btn btn-sm btn-circle btn-info" id="ubah_permohonan" title="Ubah Data Permohonan" data-toggle="modal" data-target="#ubah_permohonanModal" data-id="<?=$ubah['id_perubahan']  ?>" data-tglpermohonan="<?=$ubah['tgl_permohonanperubahan']  ?>" data-namapemohon="<?=$ubah['nama_pemohon']  ?>" data-kontakpemohon="<?=$ubah['kontak_pemohon']  ?>" data-instansipemohon="<?=$ubah['instansi_pemohon']  ?>" data-deskripsiperubahan="<?=$ubah['deskripsi_perubahan']  ?>" data-tglberlaku="<?=$ubah['tgl_berlakuperubahan']  ?>" data-mtperubahan="<?=$ubah['mt_perubahan']  ?>"><i class="fa fa-fw fa-edit"></i></button>
 									<button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" title="Hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$ubah['id_perubahan'] ?>"><i class="fa fa-fw fa-trash"></i></button>
 								<?php }else if($ubah['status_perubahan']=='Evaluasi'){ ?>
-									<button type="button" class="btn btn-sm btn-circle btn-success" title="Persetujuan"><i class="fa fa-fw fa-pencil-alt"></i></button>
-									<button type="button" class="btn btn-sm btn-circle btn-info" id="ubah_evaluasi" title="Ubah Data Evaluasi"><i class="fa fa-fw fa-edit"></i></button>
+									<a href="<?=base_url('perubahan/form/persetujuan/').$ubah['id_perubahan'] ?>" class="btn btn-sm btn-circle btn-success" title="Persetujuan"><i class="fa fa-fw fa-pencil-alt"></i></a>
+									<a href="<?=base_url('perubahan/form/ubah_evaluasi/').$ubah['id_perubahan'] ?>" class="btn btn-sm btn-circle btn-info" title="Ubah Data Evaluasi"><i class="fa fa-fw fa-edit"></i></a>
 								<?php }else if($ubah['status_perubahan']=='Persetujuan'){ ?>
-									<button type="button" class="btn btn-sm btn-circle btn-primary" title="Implementasi"><i class="fa fa-fw fa-paper-plane"></i></button>
-									<button type="button" class="btn btn-sm btn-circle btn-info" id="ubah_persetujuan" title="Ubah Data Persetujuan"><i class="fa fa-fw fa-edit"></i></button>
+									<a href="<?=base_url('perubahan/form/implementasi/').$ubah['id_perubahan'] ?>" class="btn btn-sm btn-circle btn-primary" title="Implementasi"><i class="fa fa-fw fa-paper-plane"></i></a>
+									<a href="<?=base_url('perubahan/form/ubah_persetujuan/').$ubah['id_perubahan'] ?>" class="btn btn-sm btn-circle btn-info" id="ubah_persetujuan" title="Ubah Data Persetujuan"><i class="fa fa-fw fa-edit"></i></a>
 								<?php }else if($ubah['status_perubahan']=='Implementasi'){ ?>
-									<button type="button" class="btn btn-sm btn-circle btn-secondary" title="Lihat"><i class="fa fa-fw fa-eye"></i></button>
-									<button type="button" class="btn btn-sm btn-circle btn-info" id="ubah_implementasi" title="Ubah Data Implementasi"><i class="fa fa-fw fa-edit"></i></button>
+									<a href="<?=base_url('perubahan/form/data_perubahan/').$ubah['id_perubahan'] ?>" class="btn btn-sm btn-circle btn-secondary" title="Lihat" target="_blank"><i class="fa fa-fw fa-eye"></i></a>
+									<a href="<?=base_url('perubahan/form/ubah_implementasi/').$ubah['id_perubahan'] ?>" class="btn btn-sm btn-circle btn-info" id="ubah_implementasi" title="Ubah Data Implementasi"><i class="fa fa-fw fa-edit"></i></a>
 								<?php } ?>
 							</td>
 						</tr>
