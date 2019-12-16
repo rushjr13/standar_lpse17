@@ -136,5 +136,6 @@ $autoload['model'] = array(
 	'Admin_model'=>'admin',
 	'Resiko_model'=>'resiko',
 	'Gangguan_model'=>'gangguan',
-	'Perubahan_model'=>'perubahan'
+	'Perubahan_model'=>'perubahan',
+	'Kapasitas_model'=>'kapasitas'
 );
