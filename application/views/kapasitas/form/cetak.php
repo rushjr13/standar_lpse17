@@ -47,15 +47,36 @@
     <li class="font-weight-bold">PENDAHULUAN</li>
     <ul>
       <li class="font-weight-bold">Latar Belakang</li>
+      <div class="text-justify"><?=$kapasitas_laporan['latar_belakang'] ?></div>
       <li class="font-weight-bold">Ruang Lingkup</li>
+      <div class="text-justify"><?=$kapasitas_laporan['ruang_lingkup'] ?></div>
       <li class="font-weight-bold">Metode Pengumpulan Data</li>
+      <div class="text-justify"><?=$kapasitas_laporan['metode'] ?></div>
       <li class="font-weight-bold">Asumsi-Asumsi Yang Digunakan</li>
+      <div class="text-justify"><?=$kapasitas_laporan['asumsi'] ?></div>
     </ul>
     <li class="font-weight-bold">RINGKASAN LAYANAN</li>
+    <ul>
+      <li class="font-weight-bold">Laporan Layanan Saat Ini</li>
+      <div class="text-justify"><?=$kapasitas_laporan['laporan_saat_ini'] ?></div>
+      <li class="font-weight-bold">Prediksi Layanan Yang Akan Datang</li>
+      <div class="text-justify"><?=$kapasitas_laporan['prediksi_akan_datang'] ?></div>
+    </ul>
     <li class="font-weight-bold">RINGKASAN KOMPONEN PENDUKUNG LAYANAN</li>
+    <ul>
+      <li class="font-weight-bold">Laporan Penggunaan Komponen Layanan Pendukung</li>
+      <div class="text-justify"><?=$kapasitas_laporan['laporan_pakai_komponen'] ?></div>
+      <li class="font-weight-bold">Analisis Trend Penggunaan Komponen Pendukung Layanan Untuk Jangka Pendek, Menengah dan Panjang</li>
+      <div class="text-justify"><?=$kapasitas_laporan['analisis_trend'] ?></div>
+      <li class="font-weight-bold">Prediksi Kebutuhan Komponen Pendukung Layanan</li>
+      <div class="text-justify"><?=$kapasitas_laporan['prediksi_kebutuhan'] ?></div>
+    </ul>
     <li class="font-weight-bold">PILIHAN PENINGKATAN LAYANAN</li>
+    <div class="text-justify"><?=$kapasitas_laporan['pilihan_peningkatan_layanan'] ?></div>
     <li class="font-weight-bold">PREDIKSI PEMBIAYAAN</li>
+    <div class="text-justify"><?=$kapasitas_laporan['prediksi_pembiayaan'] ?></div>
     <li class="font-weight-bold">REKOMENDASI TERKAIT RENCANA KAPASITAS</li>
+    <div class="text-justify"><?=$kapasitas_laporan['rekomendasi_kapasitas'] ?></div>
   </ol>
 
 
