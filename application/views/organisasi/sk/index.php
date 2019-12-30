@@ -3,7 +3,9 @@
 		<div class="card shadow border-primary">
 			<div class="card-header bg-primary text-white">
 				Daftar SK Organisasi LPSE
-				<a href="<?=base_url('organisasi/sk/tambah') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Tambah SK Organisasi"><i class="fa fa-fw fa-plus"></i></a>
+				<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+					<a href="<?=base_url('organisasi/sk/tambah') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Tambah SK Organisasi"><i class="fa fa-fw fa-plus"></i></a>
+        <?php } ?>
 			</div>
 			<div class="card-body table-responsive">
 				<?php if($sk_organisasi){ ?>
@@ -66,8 +68,10 @@
 										<div class="col-lg-4"><?=$sko['tentang_sko'] ?></div>
 										<div class="col-lg-1">
 											<button type="button" class="btn btn-sm btn-circle btn-success" id="files" data-toggle="modal" data-target="#filesModal" data-nama="<?=$sko['nama_sko'] ?>" data-file="<?=$sko['file_sko'] ?>" title="File <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-file"></i></button>
-											<a href="<?=base_url('organisasi/sk/ubah/').$sko['id_sko'] ?>" class="btn btn-sm btn-circle btn-info" title="Ubah <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-edit"></i></a>
-											<button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$sko['id_sko'] ?>" data-nama="<?=$sko['nama_sko'] ?>" data-file="<?=$sko['file_sko'] ?>" title="Hapus <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+											<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+												<a href="<?=base_url('organisasi/sk/ubah/').$sko['id_sko'] ?>" class="btn btn-sm btn-circle btn-info" title="Ubah <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-edit"></i></a>
+												<button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$sko['id_sko'] ?>" data-nama="<?=$sko['nama_sko'] ?>" data-file="<?=$sko['file_sko'] ?>" title="Hapus <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+				              <?php } ?>
 										</div>
 									</div>
 								</td>
@@ -91,9 +95,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="filesModalLabel">Dokumen</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <a href="<?=base_url('organisasi/sk') ?>" class="close">
           <span aria-hidden="true">&times;</span>
-        </button>
+        </a>
       </div>
       <div class="modal-body">
         <embed src="" id="framefile" width="100%" height="750px"></embed>

@@ -57,7 +57,7 @@
               
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$pengguna_masuk['nama_lengkap'] ?></span>
-                  <img class="img-profile rounded-circle" src="<?=base_url('assets/img/pengguna/').$pengguna_masuk['foto'] ?>">
+                  <img class="img-profile shadow-sm rounded-circle" src="<?=base_url('assets/img/pengguna/').$pengguna_masuk['foto'] ?>">
                 </a>
                 <!-- Dropdown - Informasi Pengguna -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -86,12 +86,12 @@
                   <div class="dropdown-divider"></div>
                   <form class="px-3 py-2" action="<?=base_url('auth/masuk') ?>" method="post">
                     <div class="form-group">
-                      <input type="text" class="form-control text-center" id="username" name="username" placeholder="Nama Pengguna" autofocus required>
+                      <input type="text" class="form-control shadow-sm text-center" id="username" name="username" placeholder="Nama Pengguna" autofocus required>
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control text-center" id="password" name="password" placeholder="Kata Sandi" required>
+                      <input type="password" class="form-control shadow-sm text-center" id="password" name="password" placeholder="Kata Sandi" required>
                     </div>
-                    <button type="submit" class="btn btn-block btn-primary">Masuk <i class="fa fa-fw fa-sign-in-alt"></i></button>
+                    <button type="submit" class="btn btn-block btn-primary shadow-sm">Masuk <i class="fa fa-fw fa-sign-in-alt"></i></button>
                   </form>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item text-center" href="#" data-toggle="modal" data-target="#daftarModal">Belum punya akun? Daftar Disini</a>

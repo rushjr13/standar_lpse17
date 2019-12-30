@@ -3,7 +3,7 @@
     <div class="card border-primary shadow mb-4">
       <div class="card-header bg-primary text-white py-3">
         <strong>Daftar Menu</strong>
-        <button type="button" class="btn btn-sm btn-circle btn-primary float-right" id="tambah" data-toggle="modal" data-target="#tambahModal" title="Tambah Menu"><i class="fa fa-fw fa-plus"></i></button>
+        <button type="button" class="btn btn-sm btn-circle btn-primary float-right shadow-sm" id="tambah" data-toggle="modal" data-target="#tambahModal" title="Tambah Menu"><i class="fa fa-fw fa-plus"></i></button>
       </div>
       <div class="card-body">
         <?php if($menu){ ?>
@@ -13,9 +13,9 @@
                 <tr>
                   <td class="align-middle" ><?=$mn['nama_menu'] ?></td>
                   <td class="align-middle text-right">
-                    <a href="<?=base_url('menu/submenu/').$mn['id_menu'] ?>" class="btn btn-sm btn-circle btn-secondary" title="Sub Menu <?=$mn['nama_menu'] ?>"><i class="fa fa-fw fa-list"></i></a>
-                    <button type="button" class="btn btn-sm btn-circle btn-info" id="ubah" data-toggle="modal" data-target="#ubahModal" data-id="<?=$mn['id_menu'] ?>" data-nama="<?=$mn['nama_menu'] ?>" title="Ubah <?=$mn['nama_menu'] ?>"><i class="fa fa-fw fa-edit"></i></button>
-                    <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$mn['id_menu'] ?>" data-nama="<?=$mn['nama_menu'] ?>" title="Hapus <?=$mn['nama_menu'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+                    <a href="<?=base_url('menu/submenu/').$mn['id_menu'] ?>" class="btn btn-sm btn-circle btn-secondary shadow-sm" title="Sub Menu <?=$mn['nama_menu'] ?>"><i class="fa fa-fw fa-list"></i></a>
+                    <button type="button" class="btn btn-sm btn-circle btn-info shadow-sm" id="ubah" data-toggle="modal" data-target="#ubahModal" data-id="<?=$mn['id_menu'] ?>" data-nama="<?=$mn['nama_menu'] ?>" title="Ubah <?=$mn['nama_menu'] ?>"><i class="fa fa-fw fa-edit"></i></button>
+                    <button type="button" class="btn btn-sm btn-circle btn-danger shadow-sm" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$mn['id_menu'] ?>" data-nama="<?=$mn['nama_menu'] ?>" title="Hapus <?=$mn['nama_menu'] ?>"><i class="fa fa-fw fa-trash"></i></button>
                   </td>
                 </tr>
               <?php endforeach ?>
@@ -38,11 +38,11 @@
       </div>
       <form id="formtambah" action="<?=base_url('menu/tambah') ?>" method="post">
         <div class="modal-body">
-          <input class="form-control" type="text" id="nama_menu" name="nama_menu" placeholder="Nama Menu" required>
+          <input class="form-control shadow-sm" type="text" id="nama_menu" name="nama_menu" placeholder="Nama Menu" required>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" id="tblstatus" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" id="tblstatus" class="btn btn-sm btn-circle btn-primary shadow-sm" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -62,8 +62,8 @@
           <input class="form-control" type="hidden" id="nama_menu" name="nama_menu">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-danger shadow-sm" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
     </div>
@@ -79,11 +79,11 @@
       </div>
       <form id="formubah" action="" method="post">
         <div class="modal-body">
-          <input class="form-control" type="text" id="nama_menu" name="nama_menu" placeholder="Nama Menu" required>
+          <input class="form-control shadow-sm" type="text" id="nama_menu" name="nama_menu" placeholder="Nama Menu" required>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" id="tblstatus" class="btn btn-sm btn-circle btn-info" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" id="tblstatus" class="btn btn-sm btn-circle btn-info shadow-sm" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>

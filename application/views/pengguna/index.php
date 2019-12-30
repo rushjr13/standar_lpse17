@@ -2,7 +2,7 @@
 <div class="card border-primary shadow mb-4">
   <div class="card-header bg-primary text-white py-3">
     <strong>Data Pengguna</strong>
-    <a href="<?=base_url('pengguna/tambah') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Tambah Pengguna"><i class="fa fa-fw fa-user-plus"></i></a>
+    <a href="<?=base_url('pengguna/tambah') ?>" class="btn btn-sm btn-circle btn-primary float-right shadow-sm" title="Tambah Pengguna"><i class="fa fa-fw fa-user-plus"></i></a>
   </div>
   <div class="card-body">
     <div class="row justify-content-md-center">
@@ -76,18 +76,18 @@
     ?>
         <div class="col-12 col-sm-6 col-md-4 col-lg-2">
           <div class="card-deck mb-3">
-            <div class="card shadow border-<?=$warna ?>">
-              <img src="<?=base_url('assets/img/pengguna/').$p['foto'] ?>" class="card-img-top">
+            <div class="card shadow-sm border-<?=$warna ?>">
+              <img src="<?=base_url('assets/img/pengguna/').$p['foto'] ?>" class="card-img-top shadow-sm rounded-circle">
               <div class="card-body text-center">
                 <h5 class="card-title"><span class="font-weight-bold"><?=$p['nama_lengkap'] ?></span></h5>
                 <p class="card-text"><?=$p['email'] ?></p>
                 <small class="text-muted">Terdaftar sejak :<br><?=$tgl_daftar ?></small>
               </div>
               <div class="card-footer text-center">
-                <a href="<?=base_url('pengguna/akses/').$p['username'] ?>" class="btn btn-sm btn-circle btn-secondary" title="Akses Menu"><i class="fa fa-fw fa-list"></i></a>
-                <button type="button" id="status" data-toggle="modal" data-target="#statusModal" data-username="<?=$p['username'] ?>" data-nama="<?=$p['nama_lengkap'] ?>" data-status="<?=$status ?>" data-judul="<?=$title ?>" data-warna="<?=$warnaform ?>" data-icon="<?=$iconform ?>" class="btn btn-circle btn-sm btn-<?=$warna ?>" title="<?=$title ?>"><i class="<?=$icon ?>"></i></button>
-                <a href="<?=base_url('pengguna/ubah/').$p['username'] ?>" class="btn btn-sm btn-circle btn-info" title="Lihat"><i class="fa fa-fw fa-eye"></i></a>
-                <button type="button" id="hapus" data-toggle="modal" data-target="#hapusModal" data-username="<?=$p['username'] ?>" data-nama="<?=$p['nama_lengkap'] ?>" data-foto="<?=$p['foto'] ?>" class="btn btn-circle btn-sm btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+                <a href="<?=base_url('pengguna/akses/').$p['username'] ?>" class="btn btn-sm btn-circle btn-secondary shadow-sm" title="Akses Menu"><i class="fa fa-fw fa-list"></i></a>
+                <button type="button" id="status" data-toggle="modal" data-target="#statusModal" data-username="<?=$p['username'] ?>" data-nama="<?=$p['nama_lengkap'] ?>" data-status="<?=$status ?>" data-judul="<?=$title ?>" data-warna="<?=$warnaform ?>" data-icon="<?=$iconform ?>" class="btn btn-circle btn-sm btn-<?=$warna ?> shadow-sm" title="<?=$title ?>"><i class="<?=$icon ?>"></i></button>
+                <a href="<?=base_url('pengguna/ubah/').$p['username'] ?>" class="btn btn-sm btn-circle btn-info shadow-sm" title="Lihat"><i class="fa fa-fw fa-eye"></i></a>
+                <button type="button" id="hapus" data-toggle="modal" data-target="#hapusModal" data-username="<?=$p['username'] ?>" data-nama="<?=$p['nama_lengkap'] ?>" data-foto="<?=$p['foto'] ?>" class="btn btn-circle btn-sm btn-danger shadow-sm" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
               </div>
             </div>
           </div>
@@ -111,8 +111,8 @@
           <input class="form-control" type="hidden" id="foto" name="foto">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-danger shadow-sm" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
     </div>
@@ -134,8 +134,8 @@
           <input class="form-control" type="hidden" id="judul" name="judul">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" id="tblstatus" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash" id="iconstatus"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" id="tblstatus" class="btn btn-sm btn-circle btn-danger shadow-sm" title="Hapus"><i class="fa fa-fw fa-trash" id="iconstatus"></i></button>
         </div>
       </form>
     </div>

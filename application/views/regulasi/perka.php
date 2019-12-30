@@ -1,13 +1,9 @@
 <div class="card shadow border-primary">
   <div class="card-header bg-primary text-white">
-    <div class="row">
-        <div class="col-md-8">
-            Regulasi Peraturan Kepala LPSE
-        </div>
-        <div class="col-md-4 text-right">
-            <button type="button" class="btn btn-sm btn-circle btn-primary mr-2" id="tambah" data-toggle="modal" data-target="#tambahModal" title="Tambah Regulasi"><i class="fa fa-fw fa-plus"></i></button>
-        </div>
-    </div>
+    Regulasi Peraturan Kepala LPSE
+    <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+        <button type="button" class="btn btn-sm btn-circle btn-primary mr-2 float-right" id="tambah" data-toggle="modal" data-target="#tambahModal" title="Tambah Regulasi"><i class="fa fa-fw fa-plus"></i></button>
+    <?php } ?>
   </div>
   <div class="card-body table-responsive">
     <?php if($perka){ ?>
@@ -15,7 +11,7 @@
             <thead>
                 <tr class="bg-primary text-white">
                     <th>
-                        <div class="row  text-center align-items-center">
+                        <div class="row text-center align-items-center">
                             <div class="col-lg-1">Nomor/Tahun</div>
                             <div class="col-lg-3">Nama Regulasi</div>
                             <div class="col-lg-3">Tentang</div>
@@ -103,8 +99,10 @@
                             <div class="col-lg-2 p-2"><?=$tgl_berakhir ?></div>
                             <div class="col-lg-1 p-2">
                                 <button type="button" class="btn btn-sm btn-circle btn-success" id="file" data-toggle="modal" data-target="#fileModal" data-nomor="<?=$pk['nomor'] ?>" data-tahun="<?=$pk['tahun'] ?>" data-nama="<?=$pk['nama'] ?>" data-file="<?=$pk['file'] ?>" title="Dokumen"><i class="fa fa-fw fa-file"></i></button>
+                                <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
                                     <button type="button" class="btn btn-sm btn-circle btn-info" id="ubah" data-toggle="modal" data-target="#ubahModal" data-id="<?=$pk['id'] ?>" data-nomor="<?=$pk['nomor'] ?>" data-tahun="<?=$pk['tahun'] ?>" data-nama="<?=$pk['nama'] ?>" data-tentang="<?=$pk['tentang'] ?>" data-berlaku="<?=$pk['berlaku'] ?>" data-berakhir="<?=$pk['berakhir'] ?>" data-file="<?=$pk['file'] ?>" title="Ubah <?=$pk['nama'] ?>"><i class="fa fa-fw fa-edit"></i></button>
                                     <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$pk['id'] ?>" data-nomor="<?=$pk['nomor'] ?>" data-tahun="<?=$pk['tahun'] ?>" data-nama="<?=$pk['nama'] ?>" data-file="<?=$pk['file'] ?>" title="Hapus <?=$pk['nama'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+                                <?php } ?>
                             </div>
                         </div>
                     </td>

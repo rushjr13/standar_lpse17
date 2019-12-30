@@ -16,8 +16,10 @@
       	<div class="card shadow border-primary">
       		<div class="card-header bg-primary text-white">
       			Form Pencatatan Resiko Informasi
-            <a href="<?=base_url('resiko/form/informasi/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Informasi"><i class="fa fa-fw fa-print"></i></a>
-            <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_informasiModal" title="Tambah Resiko Informasi"><i class="fa fa-fw fa-plus"></i></button>
+            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <a href="<?=base_url('resiko/form/informasi/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Informasi"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_informasiModal" title="Tambah Resiko Informasi"><i class="fa fa-fw fa-plus"></i></button>
+            <?php } ?>
       		</div>
       		<div class="card-body">
       			<?php include 'informasi/tabel.php'; ?>
@@ -30,8 +32,10 @@
       	<div class="card shadow border-primary">
       		<div class="card-header bg-primary text-white">
       			Form Pencatatan Resiko Sumber Daya Manusia (SDM)
-            <a href="<?=base_url('resiko/form/sdm/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko SDM"><i class="fa fa-fw fa-print"></i></a>
-            <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_sdmModal" title="Tambah Resiko Sumber Daya Manusia (SDM)"><i class="fa fa-fw fa-plus"></i></button>
+            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <a href="<?=base_url('resiko/form/sdm/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko SDM"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_sdmModal" title="Tambah Resiko Sumber Daya Manusia (SDM)"><i class="fa fa-fw fa-plus"></i></button>
+            <?php } ?>
       		</div>
       		<div class="card-body">
             <?php include 'sdm/tabel.php'; ?>
@@ -44,8 +48,10 @@
       	<div class="card shadow border-primary">
       		<div class="card-header bg-primary text-white">
       			Form Pencatatan Resiko Fisik
-            <a href="<?=base_url('resiko/form/fisik/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Fisik"><i class="fa fa-fw fa-print"></i></a>
-            <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_fisikModal" title="Tambah Resiko Fisik"><i class="fa fa-fw fa-plus"></i></button>
+            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <a href="<?=base_url('resiko/form/fisik/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Fisik"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_fisikModal" title="Tambah Resiko Fisik"><i class="fa fa-fw fa-plus"></i></button>
+            <?php } ?>
       		</div>
       		<div class="card-body">
       			<?php include 'fisik/tabel.php'; ?>
@@ -58,8 +64,10 @@
       	<div class="card shadow border-primary">
       		<div class="card-header bg-primary text-white">
       			Form Pencatatan Resiko Software
-            <a href="<?=base_url('resiko/form/software/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Perangkat Lunak (Software)"><i class="fa fa-fw fa-print"></i></a>
-            <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_softwareModal" title="Tambah Resiko Perangkat Lunak (Software)"><i class="fa fa-fw fa-plus"></i></button>
+            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <a href="<?=base_url('resiko/form/software/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Perangkat Lunak (Software)"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_softwareModal" title="Tambah Resiko Perangkat Lunak (Software)"><i class="fa fa-fw fa-plus"></i></button>
+            <?php } ?>
       		</div>
       		<div class="card-body">
       			<?php include 'software/tabel.php'; ?>
@@ -72,8 +80,10 @@
       	<div class="card shadow border-primary">
       		<div class="card-header bg-primary text-white">
       			Form Pencatatan Resiko Layanan
-            <a href="<?=base_url('resiko/form/layanan/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Layanan"><i class="fa fa-fw fa-print"></i></a>
-            <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_layananModal" title="Tambah Resiko Layanan"><i class="fa fa-fw fa-plus"></i></button>
+            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <a href="<?=base_url('resiko/form/layanan/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Layanan"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_layananModal" title="Tambah Resiko Layanan"><i class="fa fa-fw fa-plus"></i></button>
+            <?php } ?>
       		</div>
       		<div class="card-body">
       			<?php include 'layanan/tabel.php'; ?>
@@ -86,8 +96,10 @@
       	<div class="card shadow border-primary">
       		<div class="card-header bg-primary text-white">
       			Form Pencatatan Resiko Intagible
-            <a href="<?=base_url('resiko/form/intangible/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Layanan"><i class="fa fa-fw fa-print"></i></a>
-            <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_intangibleModal" title="Tambah Resiko Layanan"><i class="fa fa-fw fa-plus"></i></button>
+            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <a href="<?=base_url('resiko/form/intangible/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Layanan"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_intangibleModal" title="Tambah Resiko Layanan"><i class="fa fa-fw fa-plus"></i></button>
+            <?php } ?>
       		</div>
       		<div class="card-body">
       			<?php include 'intangible/tabel.php'; ?>

@@ -1,7 +1,9 @@
 <div class="card shadow border-primary mb-3">
 	<div class="card-header bg-primary text-white">
 		Pencatatan SDM
-		<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah Pencatatan SDM"><i class="fa fa-fw fa-plus"></i></button>
+		<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+			<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah Pencatatan SDM"><i class="fa fa-fw fa-plus"></i></button>
+		<?php } ?>
 	</div>
 	<div class="card-body table-responsive small">
 		<table class="table table-sm table-bordered table-striped" width="100%" cellspacing="0">

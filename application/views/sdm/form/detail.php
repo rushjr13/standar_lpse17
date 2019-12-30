@@ -57,7 +57,9 @@
 		<div class="card shadow border-primary mb-3">
 			<div class="card-header bg-primary text-white">
 				Pelatihan
-				<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahpelatihanModal" title="Tambah Pelatihan"><i class="fa fa-fw fa-plus"></i></button>
+				<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+					<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahpelatihanModal" title="Tambah Pelatihan"><i class="fa fa-fw fa-plus"></i></button>
+				<?php } ?>
 			</div>
 			<div class="card-body table-responsive small">
 				<table class="table table-sm table-bordered table-hover table-striped m-0" width="100%">
@@ -67,7 +69,9 @@
 							<th class="align-middle">PELATIHAN</th>
 							<th class="align-middle">TINGKATAN</th>
 							<th class="align-middle">WAKTU</th>
-							<th class="align-middle" width="10%">OPSI</th>
+							<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+								<th class="align-middle" width="10%">OPSI</th>
+							<?php } ?>
 						</tr>
 					</thead>
 					<tbody>
@@ -78,15 +82,21 @@
 									<td class="align-middle text-center"><?=$slth['pelatihan']  ?></td>
 									<td class="align-middle text-center"><?=$slth['tingkatan']  ?></td>
 									<td class="align-middle text-center"><?=$slth['waktu']  ?></td>
-									<td class="align-middle text-center">
-										<button type="button" class="btn btn-sm btn-circle btn-info" id="ubahpelatihan" data-id="<?=$slth['id_pelatihan'] ?>" data-idsdm="<?=$slth['id_sdm'] ?>" data-pelatihan="<?=$slth['pelatihan'] ?>" data-tingkatan="<?=$slth['tingkatan'] ?>" data-waktu="<?=$slth['waktu'] ?>" data-toggle="modal" data-target="#ubahpelatihanModal" title="Ubah"><i class="fa fa-fw fa-edit"></i></button>
-										<button type="button" class="btn btn-sm btn-circle btn-danger" id="hapuspelatihan" data-id="<?=$slth['id_pelatihan'] ?>" data-idsdm="<?=$slth['id_sdm'] ?>" data-pelatihan="<?=$slth['pelatihan'] ?>" data-toggle="modal" data-target="#hapuspelatihanModal" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
-									</td>
+									<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+										<td class="align-middle text-center">
+											<button type="button" class="btn btn-sm btn-circle btn-info" id="ubahpelatihan" data-id="<?=$slth['id_pelatihan'] ?>" data-idsdm="<?=$slth['id_sdm'] ?>" data-pelatihan="<?=$slth['pelatihan'] ?>" data-tingkatan="<?=$slth['tingkatan'] ?>" data-waktu="<?=$slth['waktu'] ?>" data-toggle="modal" data-target="#ubahpelatihanModal" title="Ubah"><i class="fa fa-fw fa-edit"></i></button>
+											<button type="button" class="btn btn-sm btn-circle btn-danger" id="hapuspelatihan" data-id="<?=$slth['id_pelatihan'] ?>" data-idsdm="<?=$slth['id_sdm'] ?>" data-pelatihan="<?=$slth['pelatihan'] ?>" data-toggle="modal" data-target="#hapuspelatihanModal" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+										</td>
+									<?php } ?>
 								</tr>
 							<?php endforeach ?>
 						<?php }else{ ?>
 							<tr>
-								<td class="align-middle text-center" colspan="5">Tidak Ada Data Tersedia!</td>
+								<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+									<td class="align-middle text-center" colspan="5">Tidak Ada Data Tersedia!</td>
+								<?php }else{ ?>
+									<td class="align-middle text-center" colspan="4">Tidak Ada Data Tersedia!</td>
+								<?php } ?>
 							</tr>
 						<?php } ?>
 					</tbody>

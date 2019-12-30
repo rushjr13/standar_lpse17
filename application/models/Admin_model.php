@@ -217,6 +217,14 @@ class Admin_model extends CI_Model {
         return $this->db->get()->result_array();
     }
 
+    // AKSES MENU
+    function akses_menu($id_menu){
+        $this->db->select('*');
+        $this->db->from('akses_menu');
+        $this->db->where('id_menu', $id_menu);
+        return $this->db->get()->row_array();
+    }
+
     // SUB MENU BY MENU
     function submenubymenu($id_menu){
         $this->db->select('*');
@@ -234,6 +242,39 @@ class Admin_model extends CI_Model {
 		$this->db->where('id_submenu', $id_submenu);
 		return $this->db->get()->row_array();
 	}
+
+    function menu_segmen($link){
+        $this->db->select('*');
+        $this->db->from('submenu');
+        $this->db->where('link', $link);
+        return $this->db->get()->row_array();
+    }
+
+    // PENGUMUMAN
+    function pengumuman($id_pengumuman=null){
+        if($id_pengumuman==null){
+            $this->db->select('*');
+            $this->db->from('pengumuman');
+            $this->db->order_by('id_pengumuman', 'DESC');
+            $this->db->order_by('status_pengumuman', 'DESC');
+            return $this->db->get()->result_array();
+        } else {
+            $this->db->select('*');
+            $this->db->from('pengumuman');
+            $this->db->where('id_pengumuman', $id_pengumuman);
+            return $this->db->get()->row_array();
+        }
+    }
+
+    // PENGUMUMAN BERANDA
+    function pengumuman5($id_pengumuman=null){
+        $this->db->select('*');
+        $this->db->from('pengumuman');
+        $this->db->where('status_pengumuman', 1);
+        $this->db->order_by('id_pengumuman', 'DESC');
+        $this->db->limit(5);
+        return $this->db->get()->result_array();
+    }
 
     // PERKA
     function perka($id=null){

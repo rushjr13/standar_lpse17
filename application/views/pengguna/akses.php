@@ -3,7 +3,7 @@
     <div class="card border-primary shadow mb-4">
       <div class="card-header bg-primary text-white py-3">
         <strong>Menu Yang Dapat Diakses Oleh <?=$pengguna['nama_lengkap'] ?></strong>
-        <a href="<?=base_url('pengguna') ?>" class="btn btn-sm btn-circle btn-secondary float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
+        <a href="<?=base_url('pengguna') ?>" class="btn btn-sm btn-circle btn-secondary float-right shadow-sm" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
       </div>
       <div class="card-body">
         <?php if($menu){ ?>
@@ -21,9 +21,9 @@
                       $akses =  $this->db->get()->row_array();
                     ?>
                     <?php if($akses){ ?>
-                      <a href="<?=base_url('menu/akses/').$pengguna['username'].'/'.$mn['id_menu'].'/off' ?>" class="btn btn-sm btn-circle btn-success" title="Akses Menu Diberikan"><i class="fa fa-fw fa-check"></i></a>
+                      <a href="<?=base_url('menu/akses/').$pengguna['username'].'/'.$mn['id_menu'].'/off' ?>" class="btn btn-sm btn-circle btn-success shadow-sm" title="Akses Menu Diberikan"><i class="fa fa-fw fa-check"></i></a>
                     <?php }else{ ?>
-                      <a href="<?=base_url('menu/akses/').$pengguna['username'].'/'.$mn['id_menu'].'/on' ?>" class="btn btn-sm btn-circle btn-danger" title="Akses Menu Tidak Diberikan"><i class="fa fa-fw fa-power-off"></i></a>
+                      <a href="<?=base_url('menu/akses/').$pengguna['username'].'/'.$mn['id_menu'].'/on' ?>" class="btn btn-sm btn-circle btn-danger shadow-sm" title="Akses Menu Tidak Diberikan"><i class="fa fa-fw fa-power-off"></i></a>
                     <?php } ?>
                   </td>
                 </tr>

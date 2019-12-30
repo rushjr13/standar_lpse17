@@ -13,8 +13,9 @@
       	<div class="card shadow border-primary">
       		<div class="card-header bg-primary text-white">
       			Resiko Layanan
-      			<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah SOP Pengelolaan Resiko Layanan"><i class="fa fa-fw fa-plus"></i></button>
-      			<button type="button" class="btn btn-sm btn-circle btn-primary float-right mr-2" id="editresiko" data-toggle="modal" data-target="#editresikoModal" title="Edit Daftar Istilah Pengelolaan Resiko Layanan"><i class="fa fa-fw fa-edit"></i></button>
+            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+        			<button type="button" class="btn btn-sm btn-circle btn-primary float-right mr-2" id="editresiko" data-toggle="modal" data-target="#editresikoModal" title="Edit Daftar Istilah Pengelolaan Resiko Layanan"><i class="fa fa-fw fa-edit"></i></button>
+            <?php } ?>
       		</div>
       		<div class="card-body">
       			<?=$istilah['isi'] ?>
@@ -26,7 +27,9 @@
 	      	<div class="card shadow border-primary">
 	      		<div class="card-header bg-primary text-white">
 	      			<?=$sopr['nama'] ?>
-	      			<a href="<?=base_url('resiko/edit/').$sopr['id'] ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Edit <?=$sopr['nama'] ?>"><i class="fa fa-fw fa-edit"></i></a>
+              <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+  	      			<a href="<?=base_url('resiko/edit/').$sopr['id'] ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Edit <?=$sopr['nama'] ?>"><i class="fa fa-fw fa-edit"></i></a>
+              <?php } ?>
 	      		</div>
 	      		<div class="card-body">
 	      			<?=$sopr['isi'] ?>

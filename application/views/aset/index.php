@@ -13,8 +13,10 @@
       	<div class="card shadow border-primary">
       		<div class="card-header bg-primary text-white">
       			Aset
-      			<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah SOP Pengelolaan Aset"><i class="fa fa-fw fa-plus"></i></button>
-      			<button type="button" class="btn btn-sm btn-circle btn-primary float-right mr-2" id="editaset" data-toggle="modal" data-target="#editasetModal" title="Edit Daftar Istilah Pengelolaan Aset"><i class="fa fa-fw fa-edit"></i></button>
+            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+        			<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah SOP Pengelolaan Aset"><i class="fa fa-fw fa-plus"></i></button>
+        			<button type="button" class="btn btn-sm btn-circle btn-primary float-right mr-2" id="editaset" data-toggle="modal" data-target="#editasetModal" title="Edit Daftar Istilah Pengelolaan Aset"><i class="fa fa-fw fa-edit"></i></button>
+            <?php } ?>
       		</div>
       		<div class="card-body">
       			<?=$istilah['isi'] ?>
@@ -26,8 +28,10 @@
 	      	<div class="card shadow border-primary">
 	      		<div class="card-header bg-primary text-white">
 	      			Prosedur Pengelolaan Aset <?=$sopa['nama'] ?>
-	      			<button type="button" class="btn btn-sm btn-circle btn-primary float-right" id="hapussop" data-toggle="modal" data-target="#hapussopModal" data-id="<?=$sopa['id'] ?>" data-nama="<?=$sopa['nama'] ?>" title="Hapus SOP Pengelolaan Aset ini"><i class="fa fa-fw fa-trash"></i></button>
-	      			<a href="<?=base_url('aset/edit/').$sopa['id'] ?>" class="btn btn-sm btn-circle btn-primary float-right mr-2" title="Edit SOP Pengelolaan Aset ini"><i class="fa fa-fw fa-edit"></i></a>
+              <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+  	      			<button type="button" class="btn btn-sm btn-circle btn-primary float-right" id="hapussop" data-toggle="modal" data-target="#hapussopModal" data-id="<?=$sopa['id'] ?>" data-nama="<?=$sopa['nama'] ?>" title="Hapus SOP Pengelolaan Aset ini"><i class="fa fa-fw fa-trash"></i></button>
+  	      			<a href="<?=base_url('aset/edit/').$sopa['id'] ?>" class="btn btn-sm btn-circle btn-primary float-right mr-2" title="Edit SOP Pengelolaan Aset ini"><i class="fa fa-fw fa-edit"></i></a>
+              <?php } ?>
 	      		</div>
 	      		<div class="card-body">
 	      			<?=$sopa['isi'] ?>

@@ -61,8 +61,10 @@
                 title="Detail">
                 <i class="fa fa-fw fa-eye"></i>
               </button>
-              <a href="<?=base_url('resiko/form/sdm/ubah/').$rsdm['id'] ?>" class="btn btn-sm btn-circle btn-info m-1" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusresikosdm" data-toggle="modal" data-target="#hapusresikosdmModal" data-id="<?=$rsdm['id'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+              <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+                <a href="<?=base_url('resiko/form/sdm/ubah/').$rsdm['id'] ?>" class="btn btn-sm btn-circle btn-info m-1" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
+                <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusresikosdm" data-toggle="modal" data-target="#hapusresikosdmModal" data-id="<?=$rsdm['id'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+              <?php } ?>
             </td>
           </tr>
         <?php endforeach ?>

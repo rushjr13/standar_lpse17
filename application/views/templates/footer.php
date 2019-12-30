@@ -35,8 +35,8 @@
         </div>
         <div class="modal-body">Pilih tombol "Keluar" jika anda ingin keluar dari aplikasi dan mengakhiri sesi anda</div>
         <div class="modal-footer">
-          <button class="btn btn-sm btn-circle btn-secondary" type="button" data-dismiss="modal" title="batal"><i class="fa fa-fw fa-times"></i></button>
-          <a class="btn btn-sm btn-circle btn-danger" href="<?=base_url('auth/keluar') ?>" title="Keluar"><i class="fa fa-fw fa-power-off"></i></a>
+          <button class="btn btn-sm btn-circle btn-secondary shadow-sm" type="button" data-dismiss="modal" title="batal"><i class="fa fa-fw fa-times"></i></button>
+          <a class="btn btn-sm btn-circle btn-danger shadow-sm" href="<?=base_url('auth/keluar') ?>" title="Keluar"><i class="fa fa-fw fa-power-off"></i></a>
         </div>
       </div>
     </div>
@@ -53,37 +53,37 @@
           <div class="modal-body">
             <div class="form-group row">
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="username" name="username" placeholder="Nama Pengguna" required>
+                <input type="text" class="form-control shadow-sm" id="username" name="username" placeholder="Nama Pengguna" required>
                 <small class="text-muted ml-2" style="font-style: italic;">Nama Pengguna tanpa spasi dan diawali dengan huruf!</small>
               </div>
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" required>
+                <input type="text" class="form-control shadow-sm" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" required>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-12">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Alamat Email" required>
+                <input type="email" class="form-control shadow-sm" id="email" name="email" placeholder="Alamat Email" required>
                 <small class="text-muted ml-2" style="font-style: italic;">contoh : namaanda@email.com</small>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-6">
                 <div class="input-group">
-                  <input type="password" class="form-control" id="pass1" name="pass1" minlength="6" placeholder="Kata Sandi" aria-label="Kata Sandi" aria-describedby="btnlihatpass1" value="123456" required>
+                  <input type="password" class="form-control shadow-sm" id="pass1" name="pass1" minlength="6" placeholder="Kata Sandi" aria-label="Kata Sandi" aria-describedby="btnlihatpass1" value="123456" required>
                   <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="btnlihatpass1" title="Tampilkan"><i id="icontblpass1" class="fa fa-fw fa-eye"></i></button>
+                    <button class="btn btn-outline-secondary shadow-sm" type="button" id="btnlihatpass1" title="Tampilkan"><i id="icontblpass1" class="fa fa-fw fa-eye"></i></button>
                   </div>
                 </div>
                 <small class="text-muted ml-2" style="font-style: italic;">password default : 123456</small>
               </div>
               <div class="col-sm-6">
-                <input type="password" class="form-control" id="pass2" name="pass2" minlength="6" placeholder="Ulangi Kata Sandi" required>
+                <input type="password" class="form-control shadow-sm" id="pass2" name="pass2" minlength="6" placeholder="Ulangi Kata Sandi" required>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-sm btn-circle btn-secondary" type="button" data-dismiss="modal" title="batal"><i class="fa fa-fw fa-times"></i></button>
-            <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Daftar"><i class="fa fa-fw fa-user-plus"></i></button>
+            <button class="btn btn-sm btn-circle btn-secondary shadow-sm" type="button" data-dismiss="modal" title="batal"><i class="fa fa-fw fa-times"></i></button>
+            <button type="submit" class="btn btn-sm btn-circle btn-primary shadow-sm" title="Daftar"><i class="fa fa-fw fa-user-plus"></i></button>
           </div>
         </form>
       </div>
@@ -99,8 +99,8 @@
         </div>
         <div class="modal-body">Lupa Kata Sandi Anda</div>
         <div class="modal-footer">
-          <button class="btn btn-sm btn-circle btn-secondary" type="button" data-dismiss="modal" title="batal"><i class="fa fa-fw fa-times"></i></button>
-          <a class="btn btn-sm btn-circle btn-success" href="<?=base_url() ?>" title="Kirim"><i class="fa fa-fw fa-paper-plane"></i></a>
+          <button class="btn btn-sm btn-circle btn-secondary shadow-sm" type="button" data-dismiss="modal" title="batal"><i class="fa fa-fw fa-times"></i></button>
+          <a class="btn btn-sm btn-circle btn-info shadow-sm" href="<?=base_url() ?>" title="Kirim"><i class="fa fa-fw fa-paper-plane"></i></a>
         </div>
       </div>
     </div>

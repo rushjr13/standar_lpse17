@@ -1,7 +1,9 @@
 <div class="card shadow border-primary">
 	<div class="card-header bg-primary text-white">
 		SK Koordinator Aset
-		<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah SK Koordinator Aset"><i class="fa fa-fw fa-plus"></i></button>
+    <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+  		<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah SK Koordinator Aset"><i class="fa fa-fw fa-plus"></i></button>
+    <?php } ?>
 	</div>
 	<div class="card-body table-responsive">
 		<table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
@@ -12,7 +14,9 @@
           <th class="align-middle text-center">NAMA</th>
           <th class="align-middle text-center">TENTANG</th>
           <th class="align-middle text-center">MASA BERLAKU</th>
-          <th class="align-middle text-center">OPSI</th>
+          <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <th class="align-middle text-center">OPSI</th>
+          <?php } ?>
         </tr>
       </thead>
       <tbody>
@@ -126,15 +130,21 @@
               <td class="align-middle text-center"><a href="#" id="file" data-toggle="modal" data-target="#fileModal" title="Lihat File <?=$sk['file'] ?>" data-nomor="<?=$sk['nomor'] ?>" data-tanggal="<?=$tanggal_sk ?>" data-nama="<?=$sk['nama'] ?>" data-file="<?=$sk['file'] ?>"><?=$sk['nama'] ?></a></td>
               <td class="align-middle text-center"><?=$sk['tentang'] ?></td>
               <td class="align-middle text-center"><?=$tanggal_berlaku ?><br>s.d.<br><?=$tanggal_berakhir ?></td>
-              <td class="align-middle text-center">
-                <button tipe="button" class="btn btn-sm btn-circle btn-info" id="ubah" data-toggle="modal" data-target="#ubahModal" title="Ubah" data-id="<?=$sk['id'] ?>" data-nomor="<?=$sk['nomor'] ?>" data-tanggal="<?=$sk['tanggal'] ?>" data-nama="<?=$sk['nama'] ?>" data-tentang="<?=$sk['tentang'] ?>" data-berlaku="<?=$sk['berlaku'] ?>" data-berakhir="<?=$sk['berakhir'] ?>" data-file="<?=$sk['file'] ?>"><i class="fa fa-fw fa-edit"></i></button>
-                <button tipe="button" class="btn btn-sm btn-circle btn-danger" id="hapus" data-toggle="modal" data-target="#hapusModal" title="Hapus" data-id="<?=$sk['id'] ?>" data-nomor="<?=$sk['nomor'] ?>" data-tanggal="<?=$tanggal_sk ?>" data-nama="<?=$sk['nama'] ?>" data-file="<?=$sk['file'] ?>"><i class="fa fa-fw fa-trash"></i></button>
-              </td>
+              <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+                <td class="align-middle text-center">
+                  <button tipe="button" class="btn btn-sm btn-circle btn-info" id="ubah" data-toggle="modal" data-target="#ubahModal" title="Ubah" data-id="<?=$sk['id'] ?>" data-nomor="<?=$sk['nomor'] ?>" data-tanggal="<?=$sk['tanggal'] ?>" data-nama="<?=$sk['nama'] ?>" data-tentang="<?=$sk['tentang'] ?>" data-berlaku="<?=$sk['berlaku'] ?>" data-berakhir="<?=$sk['berakhir'] ?>" data-file="<?=$sk['file'] ?>"><i class="fa fa-fw fa-edit"></i></button>
+                  <button tipe="button" class="btn btn-sm btn-circle btn-danger" id="hapus" data-toggle="modal" data-target="#hapusModal" title="Hapus" data-id="<?=$sk['id'] ?>" data-nomor="<?=$sk['nomor'] ?>" data-tanggal="<?=$tanggal_sk ?>" data-nama="<?=$sk['nama'] ?>" data-file="<?=$sk['file'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+                </td>
+              <?php } ?>
             </tr>
           <?php endforeach ?>
         <?php }else{ ?>
           <tr>
+            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
             <td colspan="7" class="align-middle text-center">Tidak ada data yang tersedia!</td>
+            <?php }else{ ?>
+            <td colspan="6" class="align-middle text-center">Tidak ada data yang tersedia!</td>
+            <?php } ?>
           </tr>
         <?php } ?>
       </tbody>
@@ -307,9 +317,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="fileModalLabel">File SK Koordinator Aset</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <a href="<?=base_url('aset/sk') ?>" class="close">
           <span aria-hidden="true">&times;</span>
-        </button>
+        </a>
       </div>
       <div class="modal-body">
         <div class="embed-responsive embed-responsive-16by9">

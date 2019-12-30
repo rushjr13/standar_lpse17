@@ -10,7 +10,9 @@
         <th class="align-middle text-center">MASA BERLAKU</th>
         <th class="align-middle text-center">KEAMANAN INFORMASI</th>
         <!-- <th class="align-middle text-center">KETERANGAN</th> -->
-        <th class="align-middle text-center">OPSI</th>
+        <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+          <th class="align-middle text-center">OPSI</th>
+        <?php } ?>
       </tr>
     </thead>
     <tbody>
@@ -42,15 +44,21 @@
               Nilai : <strong><?=number_format($nilai, 0, ',','.'); ?></strong> <small>(<?=$nl ?>)</small>
             </td>
             <!-- <td class="align-middle"><?=$ai['keterangan'] ?></td> -->
-            <td class="align-middle text-center">
-              <a href="<?=base_url('aset/form/informasi/ubah/').$ai['id'] ?>" class="btn btn-sm btn-circle btn-info m-1" title="Ubah Aset Informasi <?=$ai['nama'] ?>"><i class="fa fa-fw fa-edit"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-danger m-1" id="hapusasetinformasi" data-toggle="modal" data-target="#hapusasetinformasiModal" data-id="<?=$ai['id'] ?>" data-nama="<?=$ai['nama'] ?>" title="Hapus Aset Informasi <?=$ai['nama'] ?>"><i class="fa fa-fw fa-trash"></i></button>
-            </td>
+            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <td class="align-middle text-center">
+                <a href="<?=base_url('aset/form/informasi/ubah/').$ai['id'] ?>" class="btn btn-sm btn-circle btn-info m-1" title="Ubah Aset Informasi <?=$ai['nama'] ?>"><i class="fa fa-fw fa-edit"></i></a>
+                <button type="button" class="btn btn-sm btn-circle btn-danger m-1" id="hapusasetinformasi" data-toggle="modal" data-target="#hapusasetinformasiModal" data-id="<?=$ai['id'] ?>" data-nama="<?=$ai['nama'] ?>" title="Hapus Aset Informasi <?=$ai['nama'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+              </td>
+            <?php } ?>
           </tr>
         <?php endforeach ?>
       <?php }else{ ?>
         <tr>
-          <td colspan="8" class="text-center">Tidak ada data yang tersedia!</td>
+          <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <td colspan="8" class="text-center">Tidak ada data yang tersedia!</td>
+          <?php }else{ ?>
+            <td colspan="7" class="text-center">Tidak ada data yang tersedia!</td>
+          <?php } ?>
         </tr>
       <?php } ?>
     </tbody>

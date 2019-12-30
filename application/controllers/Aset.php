@@ -17,8 +17,11 @@ class Aset extends CI_Controller {
 		$data['pengaturan'] = $this->admin->pengaturan();
 		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
-		
-		$data['menu_akses'] = $this->admin->menu_akses($user);
+		$data['menu'] = $this->admin->menu();
+		$link = $this->uri->segment('1');
+		$menu_segmen = $this->admin->menu_segmen($link);
+		$id_menu = $menu_segmen['id_menu'];
+		$data['akses_menu'] = $this->admin->akses_menu($id_menu);
 
 		// KHUSUS
 		$data['judul'] = "SOP Aset Layanan";
@@ -78,8 +81,11 @@ class Aset extends CI_Controller {
 			$data['pengaturan'] = $this->admin->pengaturan();
 			$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
 			$data['hari_sekarang'] = $this->admin->hari(date('l'));
-			
-		$data['menu_akses'] = $this->admin->menu_akses($user);
+			$data['menu'] = $this->admin->menu();
+			$link = $this->uri->segment('1');
+			$menu_segmen = $this->admin->menu_segmen($link);
+			$id_menu = $menu_segmen['id_menu'];
+			$data['akses_menu'] = $this->admin->akses_menu($id_menu);
 
 			// KHUSUS
 			$data['judul'] = "SOP Aset Layanan";
@@ -156,8 +162,11 @@ class Aset extends CI_Controller {
 		$data['pengaturan'] = $this->admin->pengaturan();
 		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
-		
-		$data['menu_akses'] = $this->admin->menu_akses($user);
+		$data['menu'] = $this->admin->menu();
+		$link = $this->uri->segment('1');
+		$menu_segmen = $this->admin->menu_segmen($link);
+		$id_menu = $menu_segmen['id_menu'];
+		$data['akses_menu'] = $this->admin->akses_menu($id_menu);
 
 		// KHUSUS
 		if($opsi==null){
@@ -285,8 +294,11 @@ class Aset extends CI_Controller {
 		$data['pengaturan'] = $this->admin->pengaturan();
 		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
-		
-		$data['menu_akses'] = $this->admin->menu_akses($user);
+		$data['menu'] = $this->admin->menu();
+		$link = $this->uri->segment('1');
+		$menu_segmen = $this->admin->menu_segmen($link);
+		$id_menu = $menu_segmen['id_menu'];
+		$data['akses_menu'] = $this->admin->akses_menu($id_menu);
 
 		// KHUSUS
 		if($aset==null){

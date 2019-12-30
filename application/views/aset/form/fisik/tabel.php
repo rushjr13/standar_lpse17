@@ -75,14 +75,20 @@
                 data-nilai2="<?=$nl ?>"
                 data-keterangan="<?=$af['keterangan'] ?>"
                 title="Detail"><i class="fa fa-fw fa-list"></i></button>
-              <a href="<?=base_url('aset/form/fisik/ubah/').$af['idf'] ?>" class="btn btn-sm btn-circle btn-info m-1" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusasetfisik" data-toggle="modal" data-target="#hapusasetfisikModal" data-id="<?=$af['idf'] ?>" data-nama="<?=$af['nama'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+              <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+                <a href="<?=base_url('aset/form/fisik/ubah/').$af['idf'] ?>" class="btn btn-sm btn-circle btn-info m-1" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
+                <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusasetfisik" data-toggle="modal" data-target="#hapusasetfisikModal" data-id="<?=$af['idf'] ?>" data-nama="<?=$af['nama'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+              <?php } ?>
             </td>
           </tr>
         <?php endforeach ?>
       <?php }else{ ?>
         <tr>
-          <td colspan="12" class="text-center">Tidak ada data yang tersedia!</td>
+          <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <td colspan="12" class="text-center">Tidak ada data yang tersedia!</td>
+          <?php }else{ ?>
+            <td colspan="11" class="text-center">Tidak ada data yang tersedia!</td>
+          <?php } ?>
         </tr>
       <?php } ?>
     </tbody>

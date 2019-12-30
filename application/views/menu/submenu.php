@@ -3,8 +3,8 @@
     <div class="card border-primary shadow mb-4">
       <div class="card-header bg-primary text-white py-3">
         <strong><?=$menudata['nama_menu'] ?></strong>
-        <a href="<?=base_url('menu') ?>" class="btn btn-sm btn-circle btn-secondary float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
-        <button type="button" class="btn btn-sm btn-circle btn-primary float-right mr-1" id="tambah" data-toggle="modal" data-target="#tambahModal" title="Tambah <?=$subjudul.' '.$menudata['nama_menu'] ?>"><i class="fa fa-fw fa-plus"></i></button>
+        <a href="<?=base_url('menu') ?>" class="btn btn-sm btn-circle btn-secondary float-right shadow-sm" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
+        <button type="button" class="btn btn-sm btn-circle btn-primary float-right mr-1 shadow-sm" id="tambah" data-toggle="modal" data-target="#tambahModal" title="Tambah <?=$subjudul.' '.$menudata['nama_menu'] ?>"><i class="fa fa-fw fa-plus"></i></button>
       </div>
       <div class="card-body">
         <?php if($submenubymenu){ ?>
@@ -14,8 +14,8 @@
                 <tr>
                   <td class="align-middle" ><i class="fa fa-fw <?=$sm['icon'] ?>"></i> <?=$sm['nama_submenu'] ?><br><small><?=base_url().$sm['link'] ?></small></td>
                   <td class="align-middle text-right">
-                    <button type="button" class="btn btn-sm btn-circle btn-info" id="ubah" data-toggle="modal" data-target="#ubahModal" data-id="<?=$sm['id_submenu'] ?>" data-menu="<?=$sm['id_menu'] ?>" data-nama="<?=$sm['nama_submenu'] ?>" data-link="<?=$sm['link'] ?>" data-icon="<?=$sm['icon'] ?>" title="Ubah <?=$sm['nama_submenu'] ?>"><i class="fa fa-fw fa-edit"></i></button>
-                    <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$sm['id_submenu'] ?>" data-menu="<?=$sm['id_menu'] ?>" data-nama="<?=$sm['nama_submenu'] ?>" title="Hapus <?=$sm['nama_submenu'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+                    <button type="button" class="btn btn-sm btn-circle btn-info shadow-sm" id="ubah" data-toggle="modal" data-target="#ubahModal" data-id="<?=$sm['id_submenu'] ?>" data-menu="<?=$sm['id_menu'] ?>" data-nama="<?=$sm['nama_submenu'] ?>" data-link="<?=$sm['link'] ?>" data-icon="<?=$sm['icon'] ?>" title="Ubah <?=$sm['nama_submenu'] ?>"><i class="fa fa-fw fa-edit"></i></button>
+                    <button type="button" class="btn btn-sm btn-circle btn-danger shadow-sm" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$sm['id_submenu'] ?>" data-menu="<?=$sm['id_menu'] ?>" data-nama="<?=$sm['nama_submenu'] ?>" title="Hapus <?=$sm['nama_submenu'] ?>"><i class="fa fa-fw fa-trash"></i></button>
                   </td>
                 </tr>
               <?php endforeach ?>
@@ -41,26 +41,26 @@
           <div class="form-group row">
             <label for="nama_submenu" class="col-sm-3 col-form-label">Nama Sub Menu</label>
             <div class="col-sm-9">
-              <input class="form-control" type="text" id="nama_submenu" name="nama_submenu" placeholder="Nama Sub Menu" required>
+              <input class="form-control shadow-sm" type="text" id="nama_submenu" name="nama_submenu" placeholder="Nama Sub Menu" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="link" class="col-sm-3 col-form-label">URL/Link Sub Menu</label>
             <div class="col-sm-9">
-              <input class="form-control" type="text" id="link" name="link" placeholder="URL/Link Sub Menu" required>
+              <input class="form-control shadow-sm" type="text" id="link" name="link" placeholder="URL/Link Sub Menu" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="icon" class="col-sm-3 col-form-label">Icon</label>
             <div class="col-sm-9">
-              <input class="form-control" type="text" id="icon" name="icon" placeholder="Icon" required>
+              <input class="form-control shadow-sm" type="text" id="icon" name="icon" placeholder="Icon" required>
               <small class="text-muted ml-2">Pilih Icon dari <a href="https://fontawesome.com/icons" target="_blank">Font Awesome</a></small>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" id="tblstatus" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" id="tblstatus" class="btn btn-sm btn-circle btn-primary shadow-sm" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -77,11 +77,11 @@
       <form id="formhapus" action="" method="post">
         <div class="modal-body">
           <p id="ket">Keterangan</p>
-          <input class="form-control" type="hidden" id="nama_submenu" name="nama_submenu">
+          <input class="form-control shadow-sm" type="hidden" id="nama_submenu" name="nama_submenu">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-danger shadow-sm" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
     </div>
@@ -100,26 +100,26 @@
           <div class="form-group row">
             <label for="nama_submenu" class="col-sm-3 col-form-label">Nama Sub Menu</label>
             <div class="col-sm-9">
-              <input class="form-control" type="text" id="nama_submenu" name="nama_submenu" placeholder="Nama Sub Menu" required>
+              <input class="form-control shadow-sm" type="text" id="nama_submenu" name="nama_submenu" placeholder="Nama Sub Menu" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="link" class="col-sm-3 col-form-label">URL/Link Sub Menu</label>
             <div class="col-sm-9">
-              <input class="form-control" type="text" id="link" name="link" placeholder="URL/Link Sub Menu" required>
+              <input class="form-control shadow-sm" type="text" id="link" name="link" placeholder="URL/Link Sub Menu" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="icon" class="col-sm-3 col-form-label">Icon</label>
             <div class="col-sm-9">
-              <input class="form-control" type="text" id="icon" name="icon" placeholder="Icon" required>
+              <input class="form-control shadow-sm" type="text" id="icon" name="icon" placeholder="Icon" required>
               <small class="text-muted ml-2">Pilih Icon dari <a href="https://fontawesome.com/icons" target="_blank">Font Awesome</a></small>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" id="tblstatus" class="btn btn-sm btn-circle btn-info" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" id="tblstatus" class="btn btn-sm btn-circle btn-info shadow-sm" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>

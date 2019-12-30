@@ -1,7 +1,9 @@
 <div class="card border-primary shadow">
 	<div class="card-header bg-primary text-white">
 		Pencatatan Kapasitas Layanan
-		<a href="<?=base_url('kapasitas/form/tambah') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Tambah Pencatatan Kapasitas Layanan"><i class="fa fa-fw fa-plus"></i></a>
+		<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+			<a href="<?=base_url('kapasitas/form/tambah') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Tambah Pencatatan Kapasitas Layanan"><i class="fa fa-fw fa-plus"></i></a>
+		<?php } ?>
 	</div>
 	<div class="card-body table-responsive">
 		<small>
@@ -63,9 +65,13 @@
 									<td class="align-middle"><?=$kp['perkiraan_resource'] ?></td>
 									<td class="align-middle"><?=$kp['tindak_lanjut'] ?></td>
 									<td class="align-middle text-center" width="7%">
-										<a href="<?=base_url('kapasitas/form/laporan/').$kp['id_kapasitas'] ?>" class="btn btn-sm btn-circle btn-success" title="Laporan"><i class="fa fa-fw fa-file"></i></a>
-										<a href="<?=base_url('kapasitas/form/ubah/').$kp['id_kapasitas'] ?>" class="btn btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
-										<button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" title="Hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$kp['id_kapasitas'] ?>" data-item="<?=$kp['item'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+										<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+											<a href="<?=base_url('kapasitas/form/laporan/').$kp['id_kapasitas'] ?>" class="btn btn-sm btn-circle btn-success" title="Laporan"><i class="fa fa-fw fa-file"></i></a>
+											<a href="<?=base_url('kapasitas/form/ubah/').$kp['id_kapasitas'] ?>" class="btn btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
+											<button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" title="Hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$kp['id_kapasitas'] ?>" data-item="<?=$kp['item'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+										<?php }else{ ?>
+											<a href="<?=base_url('kapasitas/form/cetak/').$kp['id_kapasitas'] ?>" class="btn btn-sm btn-circle btn-success" title="Laporan"><i class="fa fa-fw fa-print"></i></a>
+										<?php } ?>
 									</td>
 								</tr>
 							<?php endforeach ?>

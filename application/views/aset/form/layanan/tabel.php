@@ -9,7 +9,9 @@
         <th class="align-middle text-center">KONTRAK / SLA</th>
         <th class="align-middle text-center">KEAMANAN<br>INFORMASI</th>
         <th class="align-middle text-center">KETERANGAN</th>
-        <th class="align-middle text-center">OPSI</th>
+        <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+          <th class="align-middle text-center">OPSI</th>
+        <?php } ?>
       </tr>
     </thead>
     <tbody>
@@ -48,15 +50,21 @@
               Nilai : <strong><?=number_format($nilai, 0, ',','.'); ?></strong> <small>(<?=$nl ?>)</small>
             </td>
             <td class="align-middle text-center"><?=$al['keterangan'] ?></td>
-            <td class="align-middle text-center">
-              <a href="<?=base_url('aset/form/layanan/ubah/').$al['idl'] ?>" class="btn btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusasetlayanan" data-toggle="modal" data-target="#hapusasetlayananModal" data-id="<?=$al['idl'] ?>" data-nama="<?=$al['nama'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
-            </td>
+            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <td class="align-middle text-center">
+                <a href="<?=base_url('aset/form/layanan/ubah/').$al['idl'] ?>" class="btn btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
+                <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusasetlayanan" data-toggle="modal" data-target="#hapusasetlayananModal" data-id="<?=$al['idl'] ?>" data-nama="<?=$al['nama'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+              </td>
+            <?php } ?>
           </tr>
         <?php endforeach ?>
       <?php }else{ ?>
         <tr>
-          <td colspan="7" class="text-center">Tidak ada data yang tersedia!</td>
+          <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <td colspan="7" class="text-center">Tidak ada data yang tersedia!</td>
+          <?php }else{ ?>
+            <td colspan="6" class="text-center">Tidak ada data yang tersedia!</td>
+          <?php } ?>
         </tr>
       <?php } ?>
     </tbody>

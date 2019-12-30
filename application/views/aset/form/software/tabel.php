@@ -8,7 +8,9 @@
         <th colspan="2" class="align-middle text-center">ASET</th>
         <th class="align-middle text-center">KEAMANAN<br>INFORMASI</th>
         <!-- <th class="align-middle text-center">KETERANGAN</th> -->
-        <th class="align-middle text-center">OPSI</th>
+        <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+          <th class="align-middle text-center">OPSI</th>
+        <?php } ?>
       </tr>
     </thead>
     <tbody>
@@ -46,15 +48,21 @@
               Nilai : <strong><?=number_format($nilai, 0, ',','.'); ?></strong> <small>(<?=$nl ?>)</small>
             </td>
             <!-- <td class="align-middle"><?=$as['keterangan'] ?></td> -->
-            <td class="align-middle text-center">
-              <a href="<?=base_url('aset/form/software/ubah/').$as['ids'] ?>" class="btn btn-sm btn-circle btn-info m-1" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusasetsoftware" data-toggle="modal" data-target="#hapusasetsoftwareModal" data-id="<?=$as['ids'] ?>" data-nama="<?=$as['nama'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
-            </td>
+            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <td class="align-middle text-center">
+                <a href="<?=base_url('aset/form/software/ubah/').$as['ids'] ?>" class="btn btn-sm btn-circle btn-info m-1" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
+                <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusasetsoftware" data-toggle="modal" data-target="#hapusasetsoftwareModal" data-id="<?=$as['ids'] ?>" data-nama="<?=$as['nama'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+              </td>
+            <?php } ?>
           </tr>
         <?php endforeach ?>
       <?php }else{ ?>
         <tr>
-          <td colspan="6" class="text-center">Tidak ada data yang tersedia!</td>
+          <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <td colspan="6" class="text-center">Tidak ada data yang tersedia!</td>
+          <?php }else{ ?>
+            <td colspan="5" class="text-center">Tidak ada data yang tersedia!</td>
+          <?php } ?>
         </tr>
       <?php } ?>
     </tbody>

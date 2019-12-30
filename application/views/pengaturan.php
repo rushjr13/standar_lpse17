@@ -19,24 +19,24 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="nama_web">Nama Aplikasi / Website</label>
-                  <input type="text" class="form-control" id="nama_web" name="nama_web" placeholder="Nama Aplikasi / Website" value="<?=$pengaturan['nama_web'] ?>">
+                  <input type="text" class="form-control shadow-sm" id="nama_web" name="nama_web" placeholder="Nama Aplikasi / Website" value="<?=$pengaturan['nama_web'] ?>">
                   <?php echo form_error('nama_web', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                   <label for="alias">Nama Alias Aplikasi / Website</label>
-                  <input type="text" class="form-control" id="alias" name="alias" placeholder="Nama Alias Aplikasi / Website" value="<?=$pengaturan['alias'] ?>">
+                  <input type="text" class="form-control shadow-sm" id="alias" name="alias" placeholder="Nama Alias Aplikasi / Website" value="<?=$pengaturan['alias'] ?>">
                   <?php echo form_error('alias', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                   <label for="url">URL / Link Aplikasi / Website</label>
-                  <input type="text" class="form-control" id="url" name="url" placeholder="URL / Link Aplikasi / Website" value="<?=$pengaturan['url'] ?>">
+                  <input type="text" class="form-control shadow-sm" id="url" name="url" placeholder="URL / Link Aplikasi / Website" value="<?=$pengaturan['url'] ?>">
                   <?php echo form_error('url', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
                 </div>
               </div>
               <div class="col-md-8">
                 <div class="form-group">
                   <label for="info">Informasi Aplikasi</label>
-                  <textarea rows="5" class="form-control ckeditor" id="info" name="info" placeholder="Alamat Lengkap"><?=$pengaturan['info'] ?></textarea>
+                  <textarea rows="5" class="form-control shadow-sm ckeditor" id="info" name="info" placeholder="Alamat Lengkap"><?=$pengaturan['info'] ?></textarea>
                   <?php echo form_error('info', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
                 </div>
               </div>
@@ -50,24 +50,24 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="email">Alamat Email</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Alamat Email" value="<?=$pengaturan['email'] ?>">
+                  <input type="text" class="form-control shadow-sm" id="email" name="email" placeholder="Alamat Email" value="<?=$pengaturan['email'] ?>">
                   <?php echo form_error('email', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                   <label for="telpon">No. Telepon</label>
-                  <input type="text" class="form-control" id="telpon" name="telpon" placeholder="No. Telepon" value="<?=$pengaturan['telpon'] ?>">
+                  <input type="text" class="form-control shadow-sm" id="telpon" name="telpon" placeholder="No. Telepon" value="<?=$pengaturan['telpon'] ?>">
                   <?php echo form_error('telpon', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                   <label for="jam_kerja">Jam Pelayanan</label>
-                  <input type="text" class="form-control" id="jam_kerja" name="jam_kerja" placeholder="Jam Pelayanan" value="<?=$pengaturan['jam_kerja'] ?>">
+                  <input type="text" class="form-control shadow-sm" id="jam_kerja" name="jam_kerja" placeholder="Jam Pelayanan" value="<?=$pengaturan['jam_kerja'] ?>">
                   <?php echo form_error('jam_kerja', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
                 </div>
               </div>
               <div class="col-md-8">
                 <div class="form-group">
                   <label for="alamat">Alamat Lengkap</label>
-                  <textarea rows="5" class="form-control ckeditor" id="alamat" name="alamat" placeholder="Alamat Lengkap"><?=$pengaturan['alamat'] ?></textarea>
+                  <textarea rows="5" class="form-control shadow-sm ckeditor" id="alamat" name="alamat" placeholder="Alamat Lengkap"><?=$pengaturan['alamat'] ?></textarea>
                   <?php echo form_error('alamat', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
                 </div>
               </div>
@@ -81,17 +81,17 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="facebook">Facebook</label>
-                  <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Facebook" value="<?=$pengaturan['facebook'] ?>">
+                  <input type="text" class="form-control shadow-sm" id="facebook" name="facebook" placeholder="Facebook" value="<?=$pengaturan['facebook'] ?>">
                   <?php echo form_error('facebook', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                   <label for="instagram">Instagram</label>
-                  <input type="text" class="form-control" id="instagram" name="instagram" placeholder="Instagram" value="<?=$pengaturan['instagram'] ?>">
+                  <input type="text" class="form-control shadow-sm" id="instagram" name="instagram" placeholder="Instagram" value="<?=$pengaturan['instagram'] ?>">
                   <?php echo form_error('instagram', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                   <label for="twitter">Twitter</label>
-                  <input type="text" class="form-control" id="twitter" name="twitter" placeholder="Twitter" value="<?=$pengaturan['twitter'] ?>">
+                  <input type="text" class="form-control shadow-sm" id="twitter" name="twitter" placeholder="Twitter" value="<?=$pengaturan['twitter'] ?>">
                   <?php echo form_error('twitter', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
                 </div>
               </div>
@@ -107,7 +107,7 @@
               </div>
               <div class="form-group">
                 <label for="map">URL Google Map</label>
-                <input type="text" class="form-control" id="map" name="map" placeholder="URL Google Map" value="<?=$pengaturan['map'] ?>">
+                <input type="text" class="form-control shadow-sm" id="map" name="map" placeholder="URL Google Map" value="<?=$pengaturan['map'] ?>">
                 <?php echo form_error('map', '<small class="text-danger" style="font-style:italic;"><i class="fa fa-fw fa-exclamation"></i>', '</small>'); ?>
               </div>
             </div>
@@ -124,7 +124,7 @@
                   </div>
                   <div class="card-body">
                     <div class="text-center">
-                      <img src="<?=base_url('assets/img/').$pengaturan['icon'] ?>" width="100%" class="img-fluid img-thumbnail shadow">
+                      <img src="<?=base_url('assets/img/').$pengaturan['icon'] ?>" width="100%" class="img-fluid img-thumbnail shadow-sm">
                     </div>
                   </div>
                 </div>
@@ -136,7 +136,7 @@
                   </div>
                   <div class="card-body">
                     <div class="text-center">
-                      <img src="<?=base_url('assets/img/').$pengaturan['logo'] ?>" width="100%" class="img-fluid img-thumbnail shadow">
+                      <img src="<?=base_url('assets/img/').$pengaturan['logo'] ?>" width="100%" class="img-fluid img-thumbnail shadow-sm">
                     </div>
                   </div>
                 </div>
@@ -145,8 +145,8 @@
                     <div class="form-group">
                       <label for="logo">Logo</label>
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="logo" name="logo">
-                        <input type="hidden" class="custom-file-input" id="logolama" name="logolama" value="<?=$pengaturan['logo'] ?>">
+                        <input type="file" class="custom-file-input shadow-sm" id="logo" name="logo">
+                        <input type="hidden" class="custom-file-input shadow-sm" id="logolama" name="logolama" value="<?=$pengaturan['logo'] ?>">
                         <label class="custom-file-label" for="logo" data-browse="Pilih Logo">Pilih Logo dengan format <strong>.png, .jpg, .jpeg</strong>!</label>
                         <small class="form-text text-muted">Logo saat ini : <?=$pengaturan['logo'] ?></small>
                       </div>
@@ -154,8 +154,8 @@
                     <div class="form-group">
                       <label for="icon">Icon</label>
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="icon" name="icon">
-                        <input type="hidden" class="custom-file-input" id="iconlama" name="iconlama" value="<?=$pengaturan['icon'] ?>">
+                        <input type="file" class="custom-file-input shadow-sm" id="icon" name="icon">
+                        <input type="hidden" class="custom-file-input shadow-sm" id="iconlama" name="iconlama" value="<?=$pengaturan['icon'] ?>">
                         <label class="custom-file-label" for="icon" data-browse="Pilih Icon">Pilih Icon dengan format <strong>.png, .jpg, .jpeg</strong>!</label>
                         <small class="form-text text-muted">Icon saat ini : <?=$pengaturan['icon'] ?></small>
                       </div>
@@ -167,8 +167,8 @@
           </div>
         </div>
         <div class="card-footer">
-          <button type="reset" class="btn btn-sm btn-circle btn-secondary float-right" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary float-right mr-2" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="reset" class="btn btn-sm btn-circle btn-secondary float-right shadow-sm" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-primary float-right mr-2 shadow-sm" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </div>
     </form>

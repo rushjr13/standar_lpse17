@@ -3,7 +3,9 @@
     <div class="card shadow border-primary mb-3">
       <div class="card-header bg-primary text-white">
         Kebijakan Umum
-        <a href="<?=base_url('regulasi/edit/kebijakan_umum') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Perbarui Regulasi Kebijakan Umum"><i class="fa fa-fw fa-edit"></i></a>
+        <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+          <a href="<?=base_url('regulasi/edit/kebijakan_umum') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Perbarui Regulasi Kebijakan Umum"><i class="fa fa-fw fa-edit"></i></a>
+        <?php } ?>
       </div>
       <div class="card-body">
         <?=$kebijakan_umum['isi_regulasi'] ?>
@@ -13,7 +15,9 @@
     <div class="card shadow border-primary mb-3">
       <div class="card-header bg-primary text-white">
         Kebijakan Layanan
-        <a href="<?=base_url('regulasi/edit/kebijakan_layanan') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Perbarui Regulasi Kebijakan Layanan"><i class="fa fa-fw fa-edit"></i></a>
+        <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+          <a href="<?=base_url('regulasi/edit/kebijakan_layanan') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Perbarui Regulasi Kebijakan Layanan"><i class="fa fa-fw fa-edit"></i></a>
+        <?php } ?>
       </div>
       <div class="card-body">
         <?=$kebijakan_layanan['isi_regulasi'] ?>
@@ -25,7 +29,9 @@
     <div class="card shadow border-primary mb-3">
       <div class="card-header bg-primary text-white">
         Kebijakan Keamanan Informasi
-        <a href="<?=base_url('regulasi/edit/kebijakan_keamanan_informasi') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Perbarui Regulasi Kebijakan Keamanan Informasi"><i class="fa fa-fw fa-edit"></i></a>
+        <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+          <a href="<?=base_url('regulasi/edit/kebijakan_keamanan_informasi') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Perbarui Regulasi Kebijakan Keamanan Informasi"><i class="fa fa-fw fa-edit"></i></a>
+        <?php } ?>
       </div>
       <div class="card-body">
         <?=$kebijakan_keamanan_informasi['isi_regulasi'] ?>
