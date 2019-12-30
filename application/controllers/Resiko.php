@@ -16,6 +16,7 @@ class Resiko extends CI_Controller {
 		$data['pengaturan'] = $this->admin->pengaturan();
 		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
+		
 		$data['menu_akses'] = $this->admin->menu_akses($user);
 
 		// KHUSUS
@@ -45,7 +46,8 @@ class Resiko extends CI_Controller {
 			$data['pengaturan'] = $this->admin->pengaturan();
 			$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
 			$data['hari_sekarang'] = $this->admin->hari(date('l'));
-			$data['menu_akses'] = $this->admin->menu_akses($user);
+			
+		$data['menu_akses'] = $this->admin->menu_akses($user);
 
 			// KHUSUS
 			$data['judul'] = "SOP Resiko Layanan";
@@ -97,6 +99,7 @@ class Resiko extends CI_Controller {
 		$data['pengaturan'] = $this->admin->pengaturan();
 		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
+		
 		$data['menu_akses'] = $this->admin->menu_akses($user);
 
 		// KHUSUS
@@ -225,6 +228,7 @@ class Resiko extends CI_Controller {
 		$data['pengaturan'] = $this->admin->pengaturan();
 		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
+		
 		$data['menu_akses'] = $this->admin->menu_akses($user);
 
 		// KHUSUS

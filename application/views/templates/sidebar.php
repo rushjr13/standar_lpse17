@@ -25,10 +25,10 @@
         </li>
 
         <!-- Divider -->
-        <hr class="sidebar-divider">
+        <hr class="sidebar-divider mb-0">
         <?php if($pengguna_masuk['id_level']==1){ ?>
           <!-- Heading -->
-          <div class="sidebar-heading">
+          <div class="sidebar-heading mt-3">
             ADMIN
           </div>
 
@@ -56,21 +56,6 @@
           
           <hr class="sidebar-divider mb-0">
 
-          <!-- Nav Item - Pages Collapse Menu -->
-          <!-- <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-              <i class="fas fa-fw fa-cog"></i>
-              <span>Components</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
-              </div>
-            </div>
-          </li> -->
-
         <?php } ?>
         <!-- Heading -->
           <?php foreach ($menu_akses as $mn): ?>
@@ -96,16 +81,9 @@
                 <?php endforeach ?>
               </div>
             </div>
-              <!-- Nav Item - Pages Collapse Menu -->
-                <!-- <li class="nav-item <?php if($judul==$sm['nama_submenu']){echo 'active';} ?>">
-                  <a class="nav-link" href="<?=base_url().$sm['link'] ?>">
-                    <i class="fa fa-fw <?=$sm['icon'] ?>"></i>
-                    <span><?=$sm['nama_submenu'] ?></span>
-                  </a>
-                </li> -->
             <hr class="sidebar-divider mb-0">
-          <?php endforeach ?>
           </li>
+          <?php endforeach ?>
 
       <?php }else{ ?>
         <!-- Nav Item - Dashboard -->

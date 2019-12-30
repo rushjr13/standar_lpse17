@@ -17,6 +17,7 @@ class Perubahan extends CI_Controller {
 		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
 		$data['menu_akses'] = $this->admin->menu_akses($user);
+		
 
 		// KHUSUS
 		$data['judul'] = "SOP Perubahan";
