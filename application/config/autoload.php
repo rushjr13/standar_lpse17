@@ -138,5 +138,6 @@ $autoload['model'] = array(
 	'Gangguan_model'=>'gangguan',
 	'Perubahan_model'=>'perubahan',
 	'Kapasitas_model'=>'kapasitas',
-	'Sdm_model'=>'sdm'
+	'Sdm_model'=>'sdm',
+	'Keamanan_model'=>'keamanan',
 );
