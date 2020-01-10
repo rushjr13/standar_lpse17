@@ -1,18 +1,18 @@
 <div class="row justify-content-md-center">
-  <div class="col-md-12">
+  <div class="col-xl-6">
     <div class="card border-primary shadow mb-4">
-      <div class="card-header bg-primary text-white py-3">
-        <strong><?=$menudata['nama_menu'] ?></strong>
+      <div class="card-header shadow-sm bg-primary text-white py-3">
+        <strong>Sub Menu <?=$menudata['nama_menu'] ?></strong>
         <a href="<?=base_url('menu') ?>" class="btn btn-sm btn-circle btn-secondary float-right shadow-sm" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
         <button type="button" class="btn btn-sm btn-circle btn-primary float-right mr-1 shadow-sm" id="tambah" data-toggle="modal" data-target="#tambahModal" title="Tambah <?=$subjudul.' '.$menudata['nama_menu'] ?>"><i class="fa fa-fw fa-plus"></i></button>
       </div>
-      <div class="card-body">
+      <div class="card-body table-responsive">
         <?php if($submenubymenu){ ?>
-          <table class="table table-sm table-borderless table-hover" id="dataTable" width="100%" cellspacing="0">
+          <table class="table shadow-sm table-striped table-sm table-borderless table-hover m-0" id="dataTable" width="100%" cellspacing="0">
             <tbody>
               <?php $no=1; foreach ($submenubymenu as $sm): ?>
                 <tr>
-                  <td class="align-middle" ><i class="fa fa-fw <?=$sm['icon'] ?>"></i> <?=$sm['nama_submenu'] ?><br><small><?=base_url().$sm['link'] ?></small></td>
+                  <td class="align-middle" ><i class="fa fa-fw <?=$sm['icon'] ?>"></i> <?=$sm['nama_submenu'] ?><br><small class="text-wrap"><?=base_url().$sm['link'] ?></small></td>
                   <td class="align-middle text-right">
                     <button type="button" class="btn btn-sm btn-circle btn-info shadow-sm" id="ubah" data-toggle="modal" data-target="#ubahModal" data-id="<?=$sm['id_submenu'] ?>" data-menu="<?=$sm['id_menu'] ?>" data-nama="<?=$sm['nama_submenu'] ?>" data-link="<?=$sm['link'] ?>" data-icon="<?=$sm['icon'] ?>" title="Ubah <?=$sm['nama_submenu'] ?>"><i class="fa fa-fw fa-edit"></i></button>
                     <button type="button" class="btn btn-sm btn-circle btn-danger shadow-sm" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$sm['id_submenu'] ?>" data-menu="<?=$sm['id_menu'] ?>" data-nama="<?=$sm['nama_submenu'] ?>" title="Hapus <?=$sm['nama_submenu'] ?>"><i class="fa fa-fw fa-trash"></i></button>

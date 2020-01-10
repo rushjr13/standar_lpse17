@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-3">
     <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-aset-list" data-toggle="list" href="#list-aset" role="tab" aria-controls="aset">Aset</a>
+      <a class="list-group-item shadow-sm list-group-item-action active" id="list-aset-list" data-toggle="list" href="#list-aset" role="tab" aria-controls="aset">Aset</a>
       <?php foreach ($sop_aset as $sopa): ?>
-	      <a class="list-group-item list-group-item-action" id="list-<?=$sopa['id'] ?>-list" data-toggle="list" href="#list-<?=$sopa['id'] ?>" role="tab" aria-controls="<?=$sopa['id'] ?>">Prosedur Pengelolaan Aset <?=$sopa['nama'] ?></a>
+	      <a class="list-group-item shadow-sm list-group-item-action" id="list-<?=$sopa['id'] ?>-list" data-toggle="list" href="#list-<?=$sopa['id'] ?>" role="tab" aria-controls="<?=$sopa['id'] ?>">Prosedur Pengelolaan Aset <?=$sopa['nama'] ?></a>
       <?php endforeach ?>
     </div>
   </div>
@@ -11,11 +11,11 @@
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="list-aset" role="tabpanel" aria-labelledby="list-aset-list">
       	<div class="card shadow border-primary">
-      		<div class="card-header bg-primary text-white">
+      		<div class="card-header bg-primary shadow-sm text-white">
       			Aset
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-        			<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah SOP Pengelolaan Aset"><i class="fa fa-fw fa-plus"></i></button>
-        			<button type="button" class="btn btn-sm btn-circle btn-primary float-right mr-2" id="editaset" data-toggle="modal" data-target="#editasetModal" title="Edit Daftar Istilah Pengelolaan Aset"><i class="fa fa-fw fa-edit"></i></button>
+        			<button type="button" class="btn btn-sm btn-circle btn-primary float-right shadow-sm" data-toggle="modal" data-target="#tambahModal" title="Tambah SOP Pengelolaan Aset"><i class="fa fa-fw fa-plus"></i></button>
+        			<button type="button" class="btn btn-sm btn-circle btn-primary float-right mr-2 shadow-sm" id="editaset" data-toggle="modal" data-target="#editasetModal" title="Edit Daftar Istilah Pengelolaan Aset"><i class="fa fa-fw fa-edit"></i></button>
             <?php } ?>
       		</div>
       		<div class="card-body">
@@ -26,11 +26,11 @@
       <?php foreach ($sop_aset as $sopa): ?>
       	<div class="tab-pane fade show" id="list-<?=$sopa['id'] ?>" role="tabpanel" aria-labelledby="list-<?=$sopa['id'] ?>-list">
 	      	<div class="card shadow border-primary">
-	      		<div class="card-header bg-primary text-white">
+	      		<div class="card-header shadow-sm bg-primary text-white">
 	      			Prosedur Pengelolaan Aset <?=$sopa['nama'] ?>
               <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-  	      			<button type="button" class="btn btn-sm btn-circle btn-primary float-right" id="hapussop" data-toggle="modal" data-target="#hapussopModal" data-id="<?=$sopa['id'] ?>" data-nama="<?=$sopa['nama'] ?>" title="Hapus SOP Pengelolaan Aset ini"><i class="fa fa-fw fa-trash"></i></button>
-  	      			<a href="<?=base_url('aset/edit/').$sopa['id'] ?>" class="btn btn-sm btn-circle btn-primary float-right mr-2" title="Edit SOP Pengelolaan Aset ini"><i class="fa fa-fw fa-edit"></i></a>
+  	      			<button type="button" class="btn btn-sm btn-circle btn-primary float-right shadow-sm" id="hapussop" data-toggle="modal" data-target="#hapussopModal" data-id="<?=$sopa['id'] ?>" data-nama="<?=$sopa['nama'] ?>" title="Hapus SOP Pengelolaan Aset ini"><i class="fa fa-fw fa-trash"></i></button>
+  	      			<a href="<?=base_url('aset/edit/').$sopa['id'] ?>" class="btn btn-sm btn-circle btn-primary float-right mr-2 shadow-sm" title="Edit SOP Pengelolaan Aset ini"><i class="fa fa-fw fa-edit"></i></a>
               <?php } ?>
 	      		</div>
 	      		<div class="card-body">
@@ -55,17 +55,17 @@
 				  <div class="form-group row">
 				    <label for="nama" class="col-sm-2 col-form-label">Nama SOP</label>
 				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="nama" name="nama" required>
+				      <input type="text" class="form-control shadow-sm" id="nama" name="nama" required>
 				    </div>
 				  </div>
 				  <div class="form-group">
 				    <label for="isi">Isi SOP</label>
-				    <textarea class="form-control ckeditor" id="isi" name="isi" rows="3"></textarea>
+				    <textarea class="form-control shadow-sm ckeditor" id="isi" name="isi" rows="3"></textarea>
 				  </div>
 				</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-primary shadow-sm" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -84,17 +84,17 @@
 				  <div class="form-group row">
 				    <label for="nama" class="col-sm-2 col-form-label">Nama SOP</label>
 				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="nama" name="nama" value="<?=$istilah['nama'] ?>" required>
+				      <input type="text" class="form-control shadow-sm" id="nama" name="nama" value="<?=$istilah['nama'] ?>" required>
 				    </div>
 				  </div>
 				  <div class="form-group">
 				    <label for="isi">Isi SOP</label>
-				    <textarea class="form-control ckeditor" id="isi" name="isi" rows="3"><?=$istilah['isi'] ?></textarea>
+				    <textarea class="form-control shadow-sm ckeditor" id="isi" name="isi" rows="3"><?=$istilah['isi'] ?></textarea>
 				  </div>
 				</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" id="tblubahstruktur" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" id="tblubahstruktur" class="btn btn-sm btn-circle btn-primary shadow-sm" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -111,11 +111,11 @@
       <form id="formhapussop" action="" method="post" enctype="multipart/form-data">
         <div class="modal-body">
 				  <p id="ket">Keterangan</p>
-          <input class="form-control" type="hidden" id="nama" name="nama">
+          <input class="form-control shadow-sm" type="hidden" id="nama" name="nama">
 				</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-danger shadow-sm" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
     </div>

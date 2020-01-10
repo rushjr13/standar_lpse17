@@ -94,6 +94,57 @@ class Sdm extends CI_Controller {
 													  </button>
 													</div>');
 			redirect('sdm/form');
+		}else if($opsi=='ubah'){
+			if($id==null){
+				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+														  <i class="fa fa-fw fa-ban"></i> Tidak Ada SDM yang dipilih!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('sdm/form');
+			}else{
+				$data=[
+					'nama'=>$this->input->post('nama'),
+					'jabatan'=>$this->input->post('jabatan'),
+					'kompetensi_kebutuhan'=>$this->input->post('kompetensi_kebutuhan'),
+					'tingkatan_kebutuhan'=>$this->input->post('tingkatan_kebutuhan'),
+					'kompetensi_saat_ini'=>$this->input->post('kompetensi_saat_ini'),
+					'tingkatan_saat_ini'=>$this->input->post('tingkatan_saat_ini'),
+					'kebutuhan_pelatihan'=>$this->input->post('kebutuhan_pelatihan'),
+				];
+				$this->db->set($data);
+				$this->db->where('id_sdm', $id);
+				$this->db->update('sdm');
+				$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+														  <i class="fa fa-fw fa-info-circle"></i> Pencatatan SDM Telah diperbarui!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('sdm/form');
+			}
+		}else if($opsi=='hapus'){
+			if($id==null){
+				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+														  <i class="fa fa-fw fa-ban"></i> Tidak Ada SDM yang dipilih!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('sdm/form');
+			}else{
+				$this->db->delete('sdm', ['id_sdm'=>$id]);
+				$this->db->delete('sdm_dokumen', ['id_sdm'=>$id]);
+				$this->db->delete('sdm_pelatihan', ['id_sdm'=>$id]);
+				$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+														  <i class="fa fa-fw fa-info-circle"></i> Pencatatan SDM telah dihapus!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('sdm/form');
+			}
 		}else if($opsi=='detail'){
 			if($id==null){
 				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">

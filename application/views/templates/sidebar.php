@@ -63,34 +63,6 @@
           
           <hr class="sidebar-divider mb-0">
 
-          <!-- Heading -->
-          <?php foreach ($menu as $mn): ?>
-             <!-- Nav Item - Pages Collapse Menu -->
-          <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse<?=$mn['id_menu'] ?>" aria-expanded="true" aria-controls="collapseTwo">
-              <span class="text-wrap"><?=$mn['nama_menu'] ?></span>
-            </a>
-            <!-- <div class="sidebar-heading">
-              <?=$mn['nama_menu'] ?>
-            </div> -->
-            <div id="collapse<?=$mn['id_menu'] ?>" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <?php
-                  $this->db->select('*');
-                  $this->db->from('submenu');
-                  $this->db->where('id_menu', $mn['id_menu']);
-                  $this->db->order_by('id_submenu', 'ASC');
-                  $submenu = $this->db->get()->result_array();
-                ?>
-                <?php foreach ($submenu as $sm): ?>
-                  <a class="collapse-item text-wrap" href="<?=base_url().$sm['link'] ?>" <?php if($judul==$sm['nama_submenu']){echo 'active';} ?>><?=$sm['nama_submenu'] ?></a>
-                <?php endforeach ?>
-              </div>
-            </div>
-            <hr class="sidebar-divider mb-0">
-          </li>
-          <?php endforeach ?>
-
         <?php } ?>
           <!-- Heading -->
           <?php foreach ($menu as $mn): ?>

@@ -4,17 +4,17 @@
 			<div class="card-header bg-primary text-white">
 				Daftar SK Organisasi LPSE
 				<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-					<a href="<?=base_url('organisasi/sk/tambah') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Tambah SK Organisasi"><i class="fa fa-fw fa-plus"></i></a>
+					<a href="<?=base_url('organisasi/sk/tambah') ?>" class="btn btn-sm btn-circle btn-primary shadow-sm float-right" title="Tambah SK Organisasi"><i class="fa fa-fw fa-plus"></i></a>
         <?php } ?>
 			</div>
 			<div class="card-body table-responsive">
 				<?php if($sk_organisasi){ ?>
-					<table class="table table-sm table-borderless table-hover" id="dataTable" width="100%" cellspacing="0">
-						<thead class="bg-dark text-white">
+					<table class="table table-sm table-borderless table-hover shadow-sm" id="dataTable" width="100%" cellspacing="0">
+						<thead class="bg-primary text-white">
 							<tr>
-								<th class="align-middle">NO</th>
+								<th class="align-middle text-center" width="3%">NO</th>
 								<th class="align-middle">
-									<div class="row text-center">
+									<div class="row text-center align-items-center">
 										<div class="col-lg-3">NOMOR & TANGGAL SK</div>
 										<div class="col-lg-4">NAMA SK</div>
 										<div class="col-lg-4">TENTANG SK</div>
@@ -60,17 +60,17 @@
 				        $tanggal_sko = $tgl.' '.$bulan.' '.$thn;
 							?>
 							<tr>
-								<td class="align-middle"><?=$no++ ?></td>
+								<td class="align-middle text-center"><?=$no++ ?></td>
 								<td class="align-middle">
-									<div class="row text-center">
+									<div class="row text-center align-items-center">
 										<div class="col-lg-3"><?=$sko['nomor_sko'] ?><br><?=$tanggal_sko ?></div>
 										<div class="col-lg-4"><?=$sko['nama_sko'] ?></div>
 										<div class="col-lg-4"><?=$sko['tentang_sko'] ?></div>
 										<div class="col-lg-1">
-											<button type="button" class="btn btn-sm btn-circle btn-success" id="files" data-toggle="modal" data-target="#filesModal" data-nama="<?=$sko['nama_sko'] ?>" data-file="<?=$sko['file_sko'] ?>" title="File <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-file"></i></button>
+											<button type="button" class="btn btn-sm btn-circle btn-success shadow-sm" id="files" data-toggle="modal" data-target="#filesModal" data-nama="<?=$sko['nama_sko'] ?>" data-file="<?=$sko['file_sko'] ?>" title="File <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-file"></i></button>
 											<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-												<a href="<?=base_url('organisasi/sk/ubah/').$sko['id_sko'] ?>" class="btn btn-sm btn-circle btn-info" title="Ubah <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-edit"></i></a>
-												<button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$sko['id_sko'] ?>" data-nama="<?=$sko['nama_sko'] ?>" data-file="<?=$sko['file_sko'] ?>" title="Hapus <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+												<a href="<?=base_url('organisasi/sk/ubah/').$sko['id_sko'] ?>" class="btn btn-sm btn-circle btn-info shadow-sm" title="Ubah <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-edit"></i></a>
+												<button type="button" class="btn btn-sm btn-circle btn-danger shadow-sm" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$sko['id_sko'] ?>" data-nama="<?=$sko['nama_sko'] ?>" data-file="<?=$sko['file_sko'] ?>" title="Hapus <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-trash"></i></button>
 				              <?php } ?>
 										</div>
 									</div>
@@ -81,7 +81,7 @@
 					</table>
 				<?php }else{ ?>
 					<div class="row">
-						<div class="alert alert-secondary col-12 text-center" role="alert">Tidak ada data yang tersedia!</div>
+						<div class="alert alert-secondary col-12 text-center shadow-sm" role="alert">Tidak ada data yang tersedia!</div>
 					</div>
 				<?php } ?>
 			</div>
@@ -100,7 +100,7 @@
         </a>
       </div>
       <div class="modal-body">
-        <embed src="" id="framefile" width="100%" height="750px"></embed>
+        <iframe id="framefile" class="embed-responsive-item" src="" allowfullscreen width="100%" height="750px"></iframe>
       </div>
     </div>
   </div>
@@ -115,13 +115,13 @@
       </div>
       <form id="formhapus" action="" method="post">
         <div class="modal-body">
-          <p id="ket">Keterangan</p>
+          <p id="ket" class="text-center">Keterangan</p>
           <input class="form-control" type="hidden" id="nama_sko" name="nama_sko">
           <input class="form-control" type="hidden" id="file_sko" name="file_sko">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-danger shadow-sm" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
     </div>

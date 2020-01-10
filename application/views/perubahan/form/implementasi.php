@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-lg-5">
 		<div class="card shadow mb-3 border-primary">
-			<div class="card-header bg-primary text-white">Permintaan Perubahan</div>
+			<div class="card-header shadow-sm bg-primary text-white">Permintaan Perubahan</div>
 			<div class="card-body table-responsive">
 				<table class="table table-sm table-borderless" width="100%">
 					<tbody>
@@ -118,7 +118,7 @@
 			</div>
 		</div>
 		<div class="card shadow mb-3 border-primary">
-			<div class="card-header bg-primary text-white">Evaluasi Permintaan Perubahan</div>
+			<div class="card-header shadow-sm bg-primary text-white">Evaluasi Permintaan Perubahan</div>
 			<div class="card-body table-responsive">
 				<table class="table table-sm table-borderless" width="100%">
 					<tbody>
@@ -157,7 +157,7 @@
 			</div>
 		</div>
 		<div class="card shadow mb-3 border-primary">
-			<div class="card-header bg-primary text-white">Persetujuan Permintaan Perubahan</div>
+			<div class="card-header shadow-sm bg-primary text-white">Persetujuan Permintaan Perubahan</div>
 			<div class="card-body table-responsive">
 				<table class="table table-sm table-borderless" width="100%">
 					<tbody>
@@ -223,37 +223,37 @@
 	<div class="col-lg-7">
 		<div class="card shadow border-primary mb-3">
 			<form action="<?=base_url('perubahan/form/implementasi/').$perubahan['id_perubahan'] ?>" method="post">
-				<div class="card-header bg-primary text-white">
+				<div class="card-header shadow-sm bg-primary text-white">
 					Implementasi Permintaan Perubahan
-					<a href="<?=base_url('perubahan/form') ?>" class="btn btn-sm btn-circle btn-danger float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
-					<button type="submit" class="btn btn-sm btn-circle btn-info float-right mr-2" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+					<a href="<?=base_url('perubahan/form') ?>" class="btn shadow-sm btn-sm btn-circle btn-danger float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
+					<button type="submit" class="btn shadow-sm btn-sm btn-circle btn-info float-right mr-2" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
 				</div>
 				<div class="card-body">
 				  <div class="form-group row">
 				    <label for="test_perubahan" class="col-sm-4 col-form-label">Hasil Tes Perubahan</label>
 				    <div class="col-sm-8">
-				      <textarea class="form-control" id="test_perubahan" name="test_perubahan" placeholder="Hasil Tes Perubahan" autofocus><?=set_value('test_perubahan') ?></textarea>
+				      <textarea class="form-control shadow-sm" id="test_perubahan" name="test_perubahan" placeholder="Hasil Tes Perubahan" autofocus><?=set_value('test_perubahan') ?></textarea>
 				      <?php echo form_error('test_perubahan', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
 				    </div>
 				  </div>
 				  <div class="form-group row">
 				    <label for="implementasi_perubahan" class="col-sm-4 col-form-label">Hasil Implementasi Perubahan</label>
 				    <div class="col-sm-8">
-				      <textarea class="form-control" id="implementasi_perubahan" name="implementasi_perubahan" placeholder="Hasil Implementasi Perubahan"><?=set_value('implementasi_perubahan') ?></textarea>
+				      <textarea class="form-control shadow-sm" id="implementasi_perubahan" name="implementasi_perubahan" placeholder="Hasil Implementasi Perubahan"><?=set_value('implementasi_perubahan') ?></textarea>
 				      <?php echo form_error('implementasi_perubahan', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
 				    </div>
 				  </div>
 				  <div class="form-group row">
 				    <label for="tgl_implementasi" class="col-sm-4 col-form-label">Tanggal Implementasi</label>
 				    <div class="col-sm-8">
-				      <input type="date" class="form-control" id="tgl_implementasi" name="tgl_implementasi" value="<?=date('Y-m-d', time()) ?>">
+				      <input type="date" class="form-control shadow-sm" id="tgl_implementasi" name="tgl_implementasi" value="<?=date('Y-m-d', time()) ?>">
 				      <?php echo form_error('tgl_implementasi', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
 				    </div>
 				  </div>
 				  <div class="form-group row">
 				    <label for="petugas_implementasi" class="col-sm-4 col-form-label">Petugas Implementasi</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="petugas_implementasi" name="petugas_implementasi" placeholder="Petugas Implementasi" value="<?=$perubahan['petugas_implementasi'] ?>">
+				      <input type="text" class="form-control shadow-sm" id="petugas_implementasi" name="petugas_implementasi" placeholder="Petugas Implementasi" value="<?=$perubahan['petugas_implementasi'] ?>">
 				      <?php echo form_error('petugas_implementasi', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
 				    </div>
 				  </div>

@@ -1,14 +1,14 @@
 <div class="card border-primary shadow">
-	<div class="card-header bg-primary text-white">
+	<div class="card-header shadow-sm bg-primary text-white">
 		Pencatatan Kapasitas Layanan
 		<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-			<a href="<?=base_url('kapasitas/form/tambah') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Tambah Pencatatan Kapasitas Layanan"><i class="fa fa-fw fa-plus"></i></a>
+			<a href="<?=base_url('kapasitas/form/tambah') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" title="Tambah Pencatatan Kapasitas Layanan"><i class="fa fa-fw fa-plus"></i></a>
 		<?php } ?>
 	</div>
 	<div class="card-body table-responsive">
 		<small>
-			<table class="table table-sm table-bordered table-striped table-hover" width="100%" cellspacing="0">
-				<thead class="bg-secondary text-white text-center">
+			<table class="table shadow-sm table-sm table-bordered table-striped table-hover" width="100%" cellspacing="0">
+				<thead class="bg-primary text-white text-center">
 					<tr>
 						<th class="align-middle" rowspan="3">NO</th>
 						<th class="align-middle" rowspan="3">ITEM</th>
@@ -51,26 +51,26 @@
 								<tr>
 									<td class="align-middle"><?=$kp['id_kk'].'.'.$no++ ?></td>
 									<td class="align-middle"><?=$kp['item'] ?></td>
-									<td class="align-middle"><?=$kp['batasan'] ?></td>
-									<td class="align-middle"><?=$kp['waktu_pantau'] ?></td>
-									<td class="align-middle"><?=$kp['utilitas'] ?></td>
-									<td class="align-middle"><?=$kp['kondisi_p1'] ?></td>
-									<td class="align-middle"><?=$kp['kondisi_p2'] ?></td>
-									<td class="align-middle"><?=$kp['kondisi_p3'] ?></td>
-									<td class="align-middle"><?=$kp['kondisi_p4'] ?></td>
-									<td class="align-middle"><?=$kp['perkiraan_p1'] ?></td>
-									<td class="align-middle"><?=$kp['perkiraan_p2'] ?></td>
-									<td class="align-middle"><?=$kp['perkiraan_p3'] ?></td>
-									<td class="align-middle"><?=$kp['perkiraan_p4'] ?></td>
-									<td class="align-middle"><?=$kp['perkiraan_resource'] ?></td>
+									<td class="align-middle text-center"><?=$kp['batasan'] ?></td>
+									<td class="align-middle text-center"><?=$kp['waktu_pantau'] ?></td>
+									<td class="align-middle text-center"><?=$kp['utilitas'] ?></td>
+									<td class="align-middle text-center"><?=$kp['kondisi_p1'] ?></td>
+									<td class="align-middle text-center"><?=$kp['kondisi_p2'] ?></td>
+									<td class="align-middle text-center"><?=$kp['kondisi_p3'] ?></td>
+									<td class="align-middle text-center"><?=$kp['kondisi_p4'] ?></td>
+									<td class="align-middle text-center"><?=$kp['perkiraan_p1'] ?></td>
+									<td class="align-middle text-center"><?=$kp['perkiraan_p2'] ?></td>
+									<td class="align-middle text-center"><?=$kp['perkiraan_p3'] ?></td>
+									<td class="align-middle text-center"><?=$kp['perkiraan_p4'] ?></td>
+									<td class="align-middle text-center"><?=$kp['perkiraan_resource'] ?></td>
 									<td class="align-middle"><?=$kp['tindak_lanjut'] ?></td>
 									<td class="align-middle text-center" width="7%">
 										<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-											<a href="<?=base_url('kapasitas/form/laporan/').$kp['id_kapasitas'] ?>" class="btn btn-sm btn-circle btn-success" title="Laporan"><i class="fa fa-fw fa-file"></i></a>
-											<a href="<?=base_url('kapasitas/form/ubah/').$kp['id_kapasitas'] ?>" class="btn btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
-											<button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" title="Hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$kp['id_kapasitas'] ?>" data-item="<?=$kp['item'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+											<a href="<?=base_url('kapasitas/form/laporan/').$kp['id_kapasitas'] ?>" class="btn shadow-sm btn-sm btn-circle btn-success" title="Laporan"><i class="fa fa-fw fa-file"></i></a>
+											<a href="<?=base_url('kapasitas/form/ubah/').$kp['id_kapasitas'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
+											<button type="button" class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapus" title="Hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$kp['id_kapasitas'] ?>" data-item="<?=$kp['item'] ?>"><i class="fa fa-fw fa-trash"></i></button>
 										<?php }else{ ?>
-											<a href="<?=base_url('kapasitas/form/cetak/').$kp['id_kapasitas'] ?>" class="btn btn-sm btn-circle btn-success" title="Laporan"><i class="fa fa-fw fa-print"></i></a>
+											<a href="<?=base_url('kapasitas/form/cetak/').$kp['id_kapasitas'] ?>" class="btn shadow-sm btn-sm btn-circle btn-success" title="Laporan"><i class="fa fa-fw fa-print"></i></a>
 										<?php } ?>
 									</td>
 								</tr>
@@ -87,7 +87,7 @@
 	</div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Hapus -->
 <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="hapusModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -98,11 +98,11 @@
 	      <div class="modal-body">
 	        <input type="hidden" id="id_kapasitas" name="id_kapasitas">
 	        <input type="hidden" id="item" name="item">
-	        <p id="kethapus">keterangan</p>
+	        <p id="kethapus" class="text-center">keterangan</p>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-	        <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+	        <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+	        <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
 	      </div>
       </form>
     </div>

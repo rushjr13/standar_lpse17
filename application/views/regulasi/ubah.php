@@ -1,9 +1,9 @@
 <form action="<?=base_url('regulasi/edit/').$regulasi['id_regulasi'] ?>" method="post">
 	<div class="card shadow border-primary">
-	  <div class="card-header bg-primary text-white">
+	  <div class="card-header shadow-sm bg-primary text-white">
 	    <?=$regulasi['nama_regulasi'] ?>
-	    <a href="<?=base_url('regulasi') ?>" class="btn btn-sm btn-circle btn-danger float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
-	    <button type="submit" class="btn btn-sm btn-circle btn-info float-right mr-2" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+	    <a href="<?=base_url('regulasi') ?>" class="btn btn-sm btn-circle btn-danger shadow-sm float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
+	    <button type="submit" class="btn btn-sm btn-circle btn-info shadow-sm float-right mr-2" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
 	  </div>
 	  <div class="card-body">
 	  	<input type="hidden" name="nama_regulasi" value="<?=$regulasi['nama_regulasi'] ?>">

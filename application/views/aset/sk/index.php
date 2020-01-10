@@ -1,21 +1,21 @@
 <div class="card shadow border-primary">
-	<div class="card-header bg-primary text-white">
+	<div class="card-header shadow-sm bg-primary text-white">
 		SK Koordinator Aset
     <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-  		<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah SK Koordinator Aset"><i class="fa fa-fw fa-plus"></i></button>
+  		<button type="button" class="btn btn-sm btn-circle btn-primary shadow-sm float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah SK Koordinator Aset"><i class="fa fa-fw fa-plus"></i></button>
     <?php } ?>
 	</div>
 	<div class="card-body table-responsive">
-		<table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
-      <thead class="bg-dark text-white">
+		<table class="table table-sm table-borderless table-striped table-hover shadow-sm" id="dataTable" width="100%" cellspacing="0">
+      <thead class="bg-primary text-white">
         <tr>
-          <th class="align-middle text-center">NO</th>
+          <th class="align-middle text-center" width="3%">NO</th>
           <th class="align-middle text-center">NOMOR<br>TANGGAL</th>
           <th class="align-middle text-center">NAMA</th>
           <th class="align-middle text-center">TENTANG</th>
           <th class="align-middle text-center">MASA BERLAKU</th>
           <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-            <th class="align-middle text-center">OPSI</th>
+            <th class="align-middle text-center" width="6%">OPSI</th>
           <?php } ?>
         </tr>
       </thead>
@@ -127,13 +127,13 @@
             <tr>
               <td class="align-middle text-center"><?=$no++ ?></td>
               <td class="align-middle text-center"><?=$sk['nomor'] ?><br><?=$tanggal_sk ?></td>
-              <td class="align-middle text-center"><a href="#" id="file" data-toggle="modal" data-target="#fileModal" title="Lihat File <?=$sk['file'] ?>" data-nomor="<?=$sk['nomor'] ?>" data-tanggal="<?=$tanggal_sk ?>" data-nama="<?=$sk['nama'] ?>" data-file="<?=$sk['file'] ?>"><?=$sk['nama'] ?></a></td>
+              <td class="align-middle text-center"><button id="file" class="btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#fileModal" title="Lihat File <?=$sk['file'] ?>" data-nomor="<?=$sk['nomor'] ?>" data-tanggal="<?=$tanggal_sk ?>" data-nama="<?=$sk['nama'] ?>" data-file="<?=$sk['file'] ?>"><i class="fa fa-w fa-file-pdf"></i> <?=$sk['nama'] ?></button></td>
               <td class="align-middle text-center"><?=$sk['tentang'] ?></td>
               <td class="align-middle text-center"><?=$tanggal_berlaku ?><br>s.d.<br><?=$tanggal_berakhir ?></td>
               <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
                 <td class="align-middle text-center">
-                  <button tipe="button" class="btn btn-sm btn-circle btn-info" id="ubah" data-toggle="modal" data-target="#ubahModal" title="Ubah" data-id="<?=$sk['id'] ?>" data-nomor="<?=$sk['nomor'] ?>" data-tanggal="<?=$sk['tanggal'] ?>" data-nama="<?=$sk['nama'] ?>" data-tentang="<?=$sk['tentang'] ?>" data-berlaku="<?=$sk['berlaku'] ?>" data-berakhir="<?=$sk['berakhir'] ?>" data-file="<?=$sk['file'] ?>"><i class="fa fa-fw fa-edit"></i></button>
-                  <button tipe="button" class="btn btn-sm btn-circle btn-danger" id="hapus" data-toggle="modal" data-target="#hapusModal" title="Hapus" data-id="<?=$sk['id'] ?>" data-nomor="<?=$sk['nomor'] ?>" data-tanggal="<?=$tanggal_sk ?>" data-nama="<?=$sk['nama'] ?>" data-file="<?=$sk['file'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+                  <button tipe="button" class="btn btn-sm btn-circle btn-info shadow-sm" id="ubah" data-toggle="modal" data-target="#ubahModal" title="Ubah" data-id="<?=$sk['id'] ?>" data-nomor="<?=$sk['nomor'] ?>" data-tanggal="<?=$sk['tanggal'] ?>" data-nama="<?=$sk['nama'] ?>" data-tentang="<?=$sk['tentang'] ?>" data-berlaku="<?=$sk['berlaku'] ?>" data-berakhir="<?=$sk['berakhir'] ?>" data-file="<?=$sk['file'] ?>"><i class="fa fa-fw fa-edit"></i></button>
+                  <button tipe="button" class="btn btn-sm btn-circle btn-danger shadow-sm" id="hapus" data-toggle="modal" data-target="#hapusModal" title="Hapus" data-id="<?=$sk['id'] ?>" data-nomor="<?=$sk['nomor'] ?>" data-tanggal="<?=$tanggal_sk ?>" data-nama="<?=$sk['nama'] ?>" data-file="<?=$sk['file'] ?>"><i class="fa fa-fw fa-trash"></i></button>
                 </td>
               <?php } ?>
             </tr>
@@ -170,48 +170,48 @@
           <div class="form-group row">
             <label for="nomor" class="col-sm-2 col-form-label">Nomor SK</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="nomor" name="nomor" placeholder="Nomor SK" required>
+              <input type="text" class="form-control shadow-sm" id="nomor" name="nomor" placeholder="Nomor SK" required>
             </div>
             <label for="tanggal" class="col-sm-2 col-form-label text-right">Tanggal SK</label>
             <div class="col-sm-4">
-              <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?=date('Y-m-d') ?>" required>
+              <input type="date" class="form-control shadow-sm" id="tanggal" name="tanggal" value="<?=date('Y-m-d') ?>" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="nama" class="col-sm-2 col-form-label">Nama SK</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama SK" required>
+              <input type="text" class="form-control shadow-sm" id="nama" name="nama" placeholder="Nama SK" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="tentang" class="col-sm-2 col-form-label">Tentang</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="tentang" name="tentang" placeholder="SK Tentang" required>
+              <input type="text" class="form-control shadow-sm" id="tentang" name="tentang" placeholder="SK Tentang" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="berlaku" class="col-sm-2 col-form-label">Tanggal Berlaku</label>
             <div class="col-sm-4">
-              <input type="date" class="form-control" id="berlaku" name="berlaku" value="<?=date('Y-m-d') ?>" required>
+              <input type="date" class="form-control shadow-sm" id="berlaku" name="berlaku" value="<?=date('Y-m-d') ?>" required>
             </div>
             <label for="berakhir" class="col-sm-2 col-form-label text-right">Tanggal Berakhir</label>
             <div class="col-sm-4">
-              <input type="date" class="form-control" id="berakhir" name="berakhir" value="<?=date('Y-m-d') ?>" required>
+              <input type="date" class="form-control shadow-sm" id="berakhir" name="berakhir" value="<?=date('Y-m-d') ?>" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="file_upload" class="col-sm-2 col-form-label">File</label>
             <div class="col-sm-10">
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="file_upload" name="file_upload" required>
-                <label class="custom-file-label" for="file_upload" data-browse="Pilih File">Pilih file dengan format <strong>.pdf</strong>!</label>
+                <input type="file" class="custom-file-input shadow-sm" id="file_upload" name="file_upload" required>
+                <label class="custom-file-label shadow-sm" for="file_upload" data-browse="Pilih File">Pilih file dengan format <strong>.pdf</strong>!</label>
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-primary shadow-sm" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -236,50 +236,50 @@
           <div class="form-group row">
             <label for="nomor" class="col-sm-2 col-form-label">Nomor SK</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="nomor" name="nomor" placeholder="Nomor SK" required>
+              <input type="text" class="form-control shadow-sm" id="nomor" name="nomor" placeholder="Nomor SK" required>
             </div>
             <label for="tanggal" class="col-sm-2 col-form-label text-right">Tanggal SK</label>
             <div class="col-sm-4">
-              <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+              <input type="date" class="form-control shadow-sm" id="tanggal" name="tanggal" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="nama" class="col-sm-2 col-form-label">Nama SK</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama SK" required>
+              <input type="text" class="form-control shadow-sm" id="nama" name="nama" placeholder="Nama SK" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="tentang" class="col-sm-2 col-form-label">Tentang</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="tentang" name="tentang" placeholder="SK Tentang" required>
+              <input type="text" class="form-control shadow-sm" id="tentang" name="tentang" placeholder="SK Tentang" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="berlaku" class="col-sm-2 col-form-label">Tanggal Berlaku</label>
             <div class="col-sm-4">
-              <input type="date" class="form-control" id="berlaku" name="berlaku" required>
+              <input type="date" class="form-control shadow-sm" id="berlaku" name="berlaku" required>
             </div>
             <label for="berakhir" class="col-sm-2 col-form-label text-right">Tanggal Berakhir</label>
             <div class="col-sm-4">
-              <input type="date" class="form-control" id="berakhir" name="berakhir" required>
+              <input type="date" class="form-control shadow-sm" id="berakhir" name="berakhir" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="file_upload" class="col-sm-2 col-form-label">File</label>
-            <input type="hidden" class="form-control" id="file_lama" name="file_lama" required>
+            <input type="hidden" class="form-control shadow-sm" id="file_lama" name="file_lama" required>
             <div class="col-sm-10">
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="file_upload" name="file_upload">
-                <label class="custom-file-label" for="file_upload" data-browse="Pilih File">Pilih file dengan format <strong>.pdf</strong>!</label>
+                <input type="file" class="custom-file-input shadow-sm" id="file_upload" name="file_upload">
+                <label class="custom-file-label shadow-sm" for="file_upload" data-browse="Pilih File">Pilih file dengan format <strong>.pdf</strong>!</label>
                 <small class="text-info ml-2" style="font-style: italic;">Kosongkan jika tidak ingin mengubah file sk!</small>
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-primary shadow-sm" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -288,7 +288,7 @@
 
 <!-- Modal Hapus SK -->
 <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="hapusModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="hapusModalLabel">Hapus SK Koordinator Aset</h5>
@@ -303,8 +303,8 @@
           <input type="hidden" readonly class="form-control-plaintext font-weight-bold" id="file" name="file">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-danger shadow-sm" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
     </div>
@@ -322,9 +322,7 @@
         </a>
       </div>
       <div class="modal-body">
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe id="framefile" class="embed-responsive-item" src="" allowfullscreen></iframe>
-        </div>
+        <iframe id="framefile" class="embed-responsive-item" src="" allowfullscreen width="100%" height="750px"></iframe>
       </div>
     </div>
   </div>

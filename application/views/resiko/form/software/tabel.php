@@ -1,13 +1,13 @@
 <div class="table-responsive">
-  <table class="table table-sm table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
-    <thead class="bg-dark text-white">
+  <table class="table shadow-sm table-sm table-hover table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead class="bg-primary text-white">
       <tr>
-        <th rowspan="2" class="align-middle text-center">NO</th>
+        <th rowspan="2" class="align-middle text-center" width="3%">NO</th>
         <th rowspan="2" class="align-middle text-center">SUB KLASIFIKASI</th>
         <th rowspan="2"class="align-middle text-center">DAMPAK</th>
         <th rowspan="2"class="align-middle text-center">PENGANCAM</th>
         <th colspan="3" class="align-middle text-center">IDENTIFIKASI RESIKO BAWAAN</th>
-        <th rowspan="2" class="align-middle text-center">OPSI</th>
+        <th rowspan="2" class="align-middle text-center" width="9%">OPSI</th>
       </tr>
       <tr>
         <th class="align-middle text-center">KERENTANAN</th>
@@ -42,7 +42,7 @@
             <td class="align-middle text-center">
               <button
                 type="button"
-                class="btn btn-sm btn-circle btn-success"
+                class="btn shadow-sm btn-sm btn-circle btn-success"
                 id="detailresikosoftware"
                 data-toggle="modal"
                 data-target="#detailresikosoftwareModal"
@@ -62,8 +62,8 @@
                 <i class="fa fa-fw fa-eye"></i>
               </button>
               <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-                <a href="<?=base_url('resiko/form/software/ubah/').$rsoftware['id'] ?>" class="btn btn-sm btn-circle btn-info m-1" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
-                <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusresikosoftware" data-toggle="modal" data-target="#hapusresikosoftwareModal" data-id="<?=$rsoftware['id'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+                <a href="<?=base_url('resiko/form/software/ubah/').$rsoftware['id'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
+                <button type="button" class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapusresikosoftware" data-toggle="modal" data-target="#hapusresikosoftwareModal" data-id="<?=$rsoftware['id'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
               <?php } ?>
             </td>
           </tr>
@@ -88,9 +88,9 @@
         </button>
       </div>
       <div class="modal-body table-responsive">
-        <div class="card bg-gradient-success mb-3">
+        <div class="card bg-gradient-success mb-3 shadow-sm">
           <div class="card-body">
-            <table class="table table-sm table-bordered m-0">
+            <table class="table shadow-sm table-sm table-bordered m-0">
               <thead class="text-center text-white">
                 <tr>
                   <td colspan="2" class="align-middle">DAMPAK</td>
@@ -115,9 +115,9 @@
           </div>
         </div>
 
-        <div class="card bg-gradient-warning mb-3">
+        <div class="card bg-gradient-warning mb-3 shadow-sm">
           <div class="card-body">
-            <table class="table table-sm table-bordered m-0">
+            <table class="table shadow-sm table-sm table-bordered m-0">
               <thead class="text-center text-white">
                 <tr>
                   <td colspan="6" class="align-middle">IDENTIFIKASI RESIKO BAWAAN</td>
@@ -151,9 +151,9 @@
           </div>
         </div>
 
-        <div class="card bg-gradient-danger">
+        <div class="card bg-gradient-danger shadow-sm">
           <div class="card-body">
-            <table class="table table-sm table-bordered m-0">
+            <table class="table shadow-sm table-sm table-bordered m-0">
               <thead class="text-center text-white">
                 <tr>
                   <td colspan="6" class="align-middle">IDENTIFIKASI RESIKO SISA</td>
@@ -208,11 +208,11 @@
       </div>
       <form id="formhapusresikosoftware" action="" method="post">
         <div class="modal-body">
-          <p id="ket">Keterangan</p>
+          <p id="ket" class="text-center">Keterangan</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" title="Batal" data-dismiss="modal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" title="Batal" data-dismiss="modal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
     </div>

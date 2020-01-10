@@ -1,13 +1,13 @@
 <div class="row justify-content-md-center">
-  <div class="col-md-12">
+  <div class="col-xl-6">
     <div class="card border-primary shadow mb-4">
-      <div class="card-header bg-primary text-white py-3">
+      <div class="card-header shadow-sm bg-primary text-white py-3">
         <strong>Daftar Menu</strong>
         <button type="button" class="btn btn-sm btn-circle btn-primary float-right shadow-sm" id="tambah" data-toggle="modal" data-target="#tambahModal" title="Tambah Menu"><i class="fa fa-fw fa-plus"></i></button>
       </div>
-      <div class="card-body">
+      <div class="card-body table-responsive">
         <?php if($menu){ ?>
-          <table class="table table-sm table-borderless table-hover" id="dataTable" width="100%" cellspacing="0">
+          <table class="table shadow-sm table-striped table-sm table-borderless table-hover m-0" id="dataTable" width="100%" cellspacing="0">
             <tbody>
               <?php $no=1; foreach ($menu as $mn): ?>
                 <tr>

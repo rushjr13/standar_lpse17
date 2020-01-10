@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-2">
     <div class="list-group" id="list-tab" role="tablist">
-	      <a class="list-group-item list-group-item-action active" id="list-informasi-list" data-toggle="list" href="#list-informasi" role="tab" aria-controls="informasi">Informasi</a>
-	      <a class="list-group-item list-group-item-action" id="list-sdm-list" data-toggle="list" href="#list-sdm" role="tab" aria-controls="sdm">Sumber Daya Manusia (SDM)</a>
-	      <a class="list-group-item list-group-item-action" id="list-fisik-list" data-toggle="list" href="#list-fisik" role="tab" aria-controls="fisik">Fisik</a>
-	      <a class="list-group-item list-group-item-action" id="list-software-list" data-toggle="list" href="#list-software" role="tab" aria-controls="software">Software</a>
-	      <a class="list-group-item list-group-item-action" id="list-layanan-list" data-toggle="list" href="#list-layanan" role="tab" aria-controls="layanan">Layanan</a>
-	      <a class="list-group-item list-group-item-action" id="list-intangible-list" data-toggle="list" href="#list-intangible" role="tab" aria-controls="intangible">Intangible</a>
+	      <a class="list-group-item shadow-sm list-group-item-action active" id="list-informasi-list" data-toggle="list" href="#list-informasi" role="tab" aria-controls="informasi">Informasi</a>
+	      <a class="list-group-item shadow-sm list-group-item-action" id="list-sdm-list" data-toggle="list" href="#list-sdm" role="tab" aria-controls="sdm">Sumber Daya Manusia (SDM)</a>
+	      <a class="list-group-item shadow-sm list-group-item-action" id="list-fisik-list" data-toggle="list" href="#list-fisik" role="tab" aria-controls="fisik">Fisik</a>
+	      <a class="list-group-item shadow-sm list-group-item-action" id="list-software-list" data-toggle="list" href="#list-software" role="tab" aria-controls="software">Software</a>
+	      <a class="list-group-item shadow-sm list-group-item-action" id="list-layanan-list" data-toggle="list" href="#list-layanan" role="tab" aria-controls="layanan">Layanan</a>
+	      <a class="list-group-item shadow-sm list-group-item-action" id="list-intangible-list" data-toggle="list" href="#list-intangible" role="tab" aria-controls="intangible">Intangible</a>
     </div>
   </div>
   <div class="col-10">
@@ -14,11 +14,11 @@
     	<!-- INFORMASI -->
       <div class="tab-pane fade show active" id="list-informasi" role="tabpanel" aria-labelledby="list-informasi-list">
       	<div class="card shadow border-primary">
-      		<div class="card-header bg-primary text-white">
+      		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Aset Informasi
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-              <a href="<?=base_url('aset/form/informasi/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Informasi"><i class="fa fa-fw fa-print"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_informasiModal" title="Tambah Aset Informasi"><i class="fa fa-fw fa-plus"></i></button>
+              <a href="<?=base_url('aset/form/informasi/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Informasi"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_informasiModal" title="Tambah Aset Informasi"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
       		</div>
       		<div class="card-body">
@@ -30,11 +30,11 @@
       <!-- SDM -->
       <div class="tab-pane fade show" id="list-sdm" role="tabpanel" aria-labelledby="list-sdm-list">
       	<div class="card shadow border-primary">
-      		<div class="card-header bg-primary text-white">
+      		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Aset Sumber Daya Manusia (SDM)
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-              <a href="<?=base_url('aset/form/sdm/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset SDM"><i class="fa fa-fw fa-print"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_sdmModal" title="Tambah Aset Sumber Daya Manusia (SDM)"><i class="fa fa-fw fa-plus"></i></button>
+              <a href="<?=base_url('aset/form/sdm/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset SDM"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_sdmModal" title="Tambah Aset Sumber Daya Manusia (SDM)"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
       		</div>
       		<div class="card-body">
@@ -46,11 +46,11 @@
       <!-- FISIK -->
       <div class="tab-pane fade show" id="list-fisik" role="tabpanel" aria-labelledby="list-fisik-list">
       	<div class="card shadow border-primary">
-      		<div class="card-header bg-primary text-white">
+      		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Aset Fisik
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-              <a href="<?=base_url('aset/form/fisik/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Fisik"><i class="fa fa-fw fa-print"></i></a>
-              <a href="<?=base_url('aset/form/fisik/tambah') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Tambah Aset Fisik"><i class="fa fa-fw fa-plus"></i></a>
+              <a href="<?=base_url('aset/form/fisik/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Fisik"><i class="fa fa-fw fa-print"></i></a>
+              <a href="<?=base_url('aset/form/fisik/tambah') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" title="Tambah Aset Fisik"><i class="fa fa-fw fa-plus"></i></a>
             <?php } ?>
       		</div>
       		<div class="card-body">
@@ -62,11 +62,11 @@
       <!-- SOFTWARE -->
       <div class="tab-pane fade show" id="list-software" role="tabpanel" aria-labelledby="list-software-list">
       	<div class="card shadow border-primary">
-      		<div class="card-header bg-primary text-white">
+      		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Aset Software
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-              <a href="<?=base_url('aset/form/software/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Perangkat Lunak (Software)"><i class="fa fa-fw fa-print"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_softwareModal" title="Tambah Aset Perangkat Lunak (Software)"><i class="fa fa-fw fa-plus"></i></button>
+              <a href="<?=base_url('aset/form/software/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Perangkat Lunak (Software)"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_softwareModal" title="Tambah Aset Perangkat Lunak (Software)"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
       		</div>
       		<div class="card-body">
@@ -78,11 +78,11 @@
       <!-- LAYANAN -->
       <div class="tab-pane fade show" id="list-layanan" role="tabpanel" aria-labelledby="list-layanan-list">
       	<div class="card shadow border-primary">
-      		<div class="card-header bg-primary text-white">
+      		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Aset Layanan
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-              <a href="<?=base_url('aset/form/layanan/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Layanan"><i class="fa fa-fw fa-print"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_layananModal" title="Tambah Aset Layanan"><i class="fa fa-fw fa-plus"></i></button>
+              <a href="<?=base_url('aset/form/layanan/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Layanan"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_layananModal" title="Tambah Aset Layanan"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
       		</div>
       		<div class="card-body">
@@ -94,11 +94,11 @@
       <!-- INTANGIBLE -->
       <div class="tab-pane fade show" id="list-intangible" role="tabpanel" aria-labelledby="list-intangible-list">
       	<div class="card shadow border-primary">
-      		<div class="card-header bg-primary text-white">
+      		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Aset Intagible
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-              <a href="<?=base_url('aset/form/intangible/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Layanan"><i class="fa fa-fw fa-print"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_intangibleModal" title="Tambah Aset Layanan"><i class="fa fa-fw fa-plus"></i></button>
+              <a href="<?=base_url('aset/form/intangible/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Layanan"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_intangibleModal" title="Tambah Aset Layanan"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
       		</div>
       		<div class="card-body">
@@ -127,7 +127,7 @@
             </div>
             <label for="id" class="col-sm-2 col-form-label text-right">Klasifikasi</label>
             <div class="col-sm-4">
-              <select class="custom-select" id="klasifikasi" name="klasifikasi" required>
+              <select class="custom-select shadow-sm" id="klasifikasi" name="klasifikasi" required>
                 <option value="">Klasifikasi Aset</option>
                 <option value="Dokumen Tertulis Internal">Dokumen Tertulis Internal</option>
               </select>
@@ -136,30 +136,30 @@
           <div class="form-group row">
             <label for="nama" class="col-sm-2 col-form-label">Nama Aset</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Aset" required>
+              <input type="text" class="form-control shadow-sm" id="nama" name="nama" placeholder="Nama Aset" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="format" class="col-sm-2 col-form-label">Format Penyimpanan</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="format" name="format" placeholder="Format Penyimpanan" required>
+              <input type="text" class="form-control shadow-sm" id="format" name="format" placeholder="Format Penyimpanan" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="pemilik" class="col-sm-2 col-form-label">Pemilik Aset</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="pemilik" name="pemilik" placeholder="Pemilik Aset" required>
+              <input type="text" class="form-control shadow-sm" id="pemilik" name="pemilik" placeholder="Pemilik Aset" required>
             </div>
             <label for="berlaku" class="col-sm-2 col-form-label text-right">Masa Berlaku</label>
             <div class="col-sm-4">
-              <input type="date" class="form-control" id="berlaku" name="berlaku" placeholder="Masa Berlaku" value="<?=date('Y-m-d') ?>" required>
+              <input type="date" class="form-control shadow-sm" id="berlaku" name="berlaku" placeholder="Masa Berlaku" value="<?=date('Y-m-d') ?>" required>
             </div>
           </div>
           <hr>
           <label class="font-weight-bold">KLASIFIKASI KEAMANAN INFORMASI :</label>
           <div class="form-group row">
             <div class="col-sm-4">
-              <select class="custom-select" id="kerahasiaan" name="kerahasiaan" required>
+              <select class="custom-select shadow-sm" id="kerahasiaan" name="kerahasiaan" required>
                 <option value="">Kerahasiaan</option>
                 <?php foreach ($aset_kerahasiaan as $ar): ?>
                   <option value="<?=$ar['id_rahasia'] ?>"><?=$ar['id_rahasia'].' - '.$ar['nama_rahasia'] ?></option>
@@ -167,7 +167,7 @@
               </select>
             </div>
             <div class="col-sm-4">
-              <select class="custom-select" id="integritas" name="integritas" required>
+              <select class="custom-select shadow-sm" id="integritas" name="integritas" required>
                 <option value="">Integritas</option>
                 <?php foreach ($aset_integritas as $ai): ?>
                   <option value="<?=$ai['id_integritas'] ?>"><?=$ai['id_integritas'].' - '.$ai['nama_integritas'] ?></option>
@@ -175,7 +175,7 @@
               </select>
             </div>
             <div class="col-sm-4">
-              <select class="custom-select" id="ketersediaan" name="ketersediaan" required>
+              <select class="custom-select shadow-sm" id="ketersediaan" name="ketersediaan" required>
                 <option value="">Ketersediaan</option>
                 <?php foreach ($aset_ketersediaan as $as): ?>
                   <option value="<?=$as['id_sedia'] ?>"><?=$as['id_sedia'].' - '.$as['nama_sedia'] ?></option>
@@ -185,13 +185,13 @@
           </div>
           <div class="form-group row">
             <div class="col-sm-12">
-              <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan Tambahan"></textarea>
+              <textarea class="form-control shadow-sm" id="keterangan" name="keterangan" placeholder="Keterangan Tambahan"></textarea>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -212,7 +212,7 @@
             <label for="id" class="col-md-6 col-form-label">Kode Aset : <strong>SDM<?=time() ?></strong></label>
             <input type="hidden" readonly class="form-control-plaintext font-weight-bold" id="id" name="id" value="SDM<?=time() ?>">
             <div class="col-md-6">
-              <select class="custom-select" id="klasifikasi" name="klasifikasi" required>
+              <select class="custom-select shadow-sm" id="klasifikasi" name="klasifikasi" required>
                 <option value="">Klasifikasi Aset</option>
                 <option value="Pegawai Tetap">Pegawai Tetap</option>
                 <option value="Pegawai Tidak Tetap">Pegawai Tidak Tetap</option>
@@ -223,36 +223,36 @@
           </div>
           <div class="form-group row">
             <div class="col-md-6">
-              <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Pegawai" required>
+              <input type="text" class="form-control shadow-sm" id="nama" name="nama" placeholder="Nama Pegawai" required>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="identitas" name="identitas" placeholder="No. Identitas / NIP" required>
+              <input type="text" class="form-control shadow-sm" id="identitas" name="identitas" placeholder="No. Identitas / NIP" required>
             </div>
           </div>
           <hr>
           <label class="font-weight-bold">PEMILIK ASET :</label>
           <div class="form-group row">
             <div class="col-md-4">
-              <input type="text" class="form-control" id="pemilik_fungsi" name="pemilik_fungsi" placeholder="Fungsi" required>
+              <input type="text" class="form-control shadow-sm" id="pemilik_fungsi" name="pemilik_fungsi" placeholder="Fungsi" required>
             </div>
             <div class="col-md-4">
-              <input type="text" class="form-control" id="pemilik_subfungsi" name="pemilik_subfungsi" placeholder="Sub Fungsi" required>
+              <input type="text" class="form-control shadow-sm" id="pemilik_subfungsi" name="pemilik_subfungsi" placeholder="Sub Fungsi" required>
             </div>
             <div class="col-md-4">
-              <input type="text" class="form-control" id="pemilik_unit" name="pemilik_unit" placeholder="Unit" required>
+              <input type="text" class="form-control shadow-sm" id="pemilik_unit" name="pemilik_unit" placeholder="Unit" required>
             </div>
           </div>
           <hr>
           <label class="font-weight-bold">KEPEGAWAIAN :</label>
           <div class="form-group row">
             <div class="col-md-4">
-              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Jabatan" required>
+              <input type="text" class="form-control shadow-sm" id="jabatan" name="jabatan" placeholder="Jabatan" required>
             </div>
             <div class="col-md-4">
-              <input type="text" class="form-control" id="kontrak" name="kontrak" placeholder="No. Kontrak/NDA" required>
+              <input type="text" class="form-control shadow-sm" id="kontrak" name="kontrak" placeholder="No. Kontrak/NDA" required>
             </div>
             <div class="col-md-4">
-              <input type="text" class="form-control" id="atasan" name="atasan" placeholder="Atasan Langsung" required>
+              <input type="text" class="form-control shadow-sm" id="atasan" name="atasan" placeholder="Atasan Langsung" required>
             </div>
             <div class="col-sm-10">
             </div>
@@ -261,7 +261,7 @@
           <label class="font-weight-bold">KLASIFIKASI KEAMANAN INFORMASI :</label>
           <div class="form-group row">
             <div class="col-sm-4">
-              <select class="custom-select" id="kerahasiaan" name="kerahasiaan" required>
+              <select class="custom-select shadow-sm" id="kerahasiaan" name="kerahasiaan" required>
                 <option value="">Kerahasiaan</option>
                 <?php foreach ($aset_kerahasiaan as $ar): ?>
                   <option value="<?=$ar['id_rahasia'] ?>"><?=$ar['id_rahasia'].' - '.$ar['nama_rahasia'] ?></option>
@@ -269,7 +269,7 @@
               </select>
             </div>
             <div class="col-sm-4">
-              <select class="custom-select" id="integritas" name="integritas" required>
+              <select class="custom-select shadow-sm" id="integritas" name="integritas" required>
                 <option value="">Integritas</option>
                 <?php foreach ($aset_integritas as $ai): ?>
                   <option value="<?=$ai['id_integritas'] ?>"><?=$ai['id_integritas'].' - '.$ai['nama_integritas'] ?></option>
@@ -277,7 +277,7 @@
               </select>
             </div>
             <div class="col-sm-4">
-              <select class="custom-select" id="ketersediaan" name="ketersediaan" required>
+              <select class="custom-select shadow-sm" id="ketersediaan" name="ketersediaan" required>
                 <option value="">Ketersediaan</option>
                 <?php foreach ($aset_ketersediaan as $as): ?>
                   <option value="<?=$as['id_sedia'] ?>"><?=$as['id_sedia'].' - '.$as['nama_sedia'] ?></option>
@@ -286,12 +286,12 @@
             </div>
           </div>
           <div class="form-group">
-            <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan Tambahan"></textarea>
+            <textarea class="form-control shadow-sm" id="keterangan" name="keterangan" placeholder="Keterangan Tambahan"></textarea>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -314,10 +314,10 @@
           </div>
           <div class="form-group row">
             <div class="col-md-6">
-              <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Aset" required>
+              <input type="text" class="form-control shadow-sm" id="nama" name="nama" placeholder="Nama Aset" required>
             </div>
             <div class="col-md-6">
-              <select class="custom-select" id="klasifikasi" name="klasifikasi" required>
+              <select class="custom-select shadow-sm" id="klasifikasi" name="klasifikasi" required>
                 <option value="">Klasifikasi Aset</option>
                 <option value="Operating System">Operating System</option>
                 <option value="Application Server">Application Server</option>
@@ -330,21 +330,21 @@
           <label class="font-weight-bold">PEMILIK ASET :</label>
           <div class="form-group row">
             <div class="col-md-6">
-              <input type="text" class="form-control" id="pemilik" name="pemilik" placeholder="Pemilik Aset" required>
+              <input type="text" class="form-control shadow-sm" id="pemilik" name="pemilik" placeholder="Pemilik Aset" required>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="pemegang" name="pemegang" placeholder="Pemegang Aset" required>
+              <input type="text" class="form-control shadow-sm" id="pemegang" name="pemegang" placeholder="Pemegang Aset" required>
             </div>
           </div>
           <div class="form-group row">
             <div class="col-md-4">
-              <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="Lokasi Aset" required>
+              <input type="text" class="form-control shadow-sm" id="lokasi" name="lokasi" placeholder="Lokasi Aset" required>
             </div>
             <div class="col-md-4">
-              <input type="date" class="form-control" id="berlaku" name="berlaku" placeholder="Masa Berlaku" value="<?=date('Y-m-d') ?>" required>
+              <input type="date" class="form-control shadow-sm" id="berlaku" name="berlaku" placeholder="Masa Berlaku" value="<?=date('Y-m-d') ?>" required>
             </div>
             <div class="col-md-4">
-              <select class="custom-select" id="hapus" name="hapus" required>
+              <select class="custom-select shadow-sm" id="hapus" name="hapus" required>
                 <option value="">Metode Penghapusan</option>
                 <option value="Delete Normal">Delete Normal</option>
                 <option value="Lainnya">Lainnya</option>
@@ -355,7 +355,7 @@
           <label class="font-weight-bold">KLASIFIKASI KEAMANAN INFORMASI :</label>
           <div class="form-group row">
             <div class="col-sm-4">
-              <select class="custom-select" id="kerahasiaan" name="kerahasiaan" required>
+              <select class="custom-select shadow-sm" id="kerahasiaan" name="kerahasiaan" required>
                 <option value="">Kerahasiaan</option>
                 <?php foreach ($aset_kerahasiaan as $ar): ?>
                   <option value="<?=$ar['id_rahasia'] ?>"><?=$ar['id_rahasia'].' - '.$ar['nama_rahasia'] ?></option>
@@ -363,7 +363,7 @@
               </select>
             </div>
             <div class="col-sm-4">
-              <select class="custom-select" id="integritas" name="integritas" required>
+              <select class="custom-select shadow-sm" id="integritas" name="integritas" required>
                 <option value="">Integritas</option>
                 <?php foreach ($aset_integritas as $ai): ?>
                   <option value="<?=$ai['id_integritas'] ?>"><?=$ai['id_integritas'].' - '.$ai['nama_integritas'] ?></option>
@@ -371,7 +371,7 @@
               </select>
             </div>
             <div class="col-sm-4">
-              <select class="custom-select" id="ketersediaan" name="ketersediaan" required>
+              <select class="custom-select shadow-sm" id="ketersediaan" name="ketersediaan" required>
                 <option value="">Ketersediaan</option>
                 <?php foreach ($aset_ketersediaan as $as): ?>
                   <option value="<?=$as['id_sedia'] ?>"><?=$as['id_sedia'].' - '.$as['nama_sedia'] ?></option>
@@ -380,12 +380,12 @@
             </div>
           </div>
           <div class="form-group">
-            <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan Tambahan"></textarea>
+            <textarea class="form-control shadow-sm" id="keterangan" name="keterangan" placeholder="Keterangan Tambahan"></textarea>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -407,10 +407,10 @@
           </div>
           <div class="form-group row">
             <div class="col-md-6">
-              <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Aset" required>
+              <input type="text" class="form-control shadow-sm" id="nama" name="nama" placeholder="Nama Aset" required>
             </div>
             <div class="col-md-6">
-              <select class="custom-select" id="klasifikasi" name="klasifikasi" required>
+              <select class="custom-select shadow-sm" id="klasifikasi" name="klasifikasi" required>
                 <option value="">Klasifikasi Aset</option>
                 <option value="Jaringan Internet Khusus">Jaringan Internet Khusus</option>
                 <option value="Jaringan Internet Umum">Jaringan Internet Umum</option>
@@ -425,35 +425,35 @@
           <label class="font-weight-bold">ASET :</label>
           <div class="form-group row">
             <div class="col-md-4">
-              <input type="text" class="form-control" id="pemilik" name="pemilik" placeholder="Pemilik Aset" required>
+              <input type="text" class="form-control shadow-sm" id="pemilik" name="pemilik" placeholder="Pemilik Aset" required>
             </div>
             <div class="col-md-4">
-              <input type="text" class="form-control" id="pemegang" name="pemegang" placeholder="Pemegang Aset" required>
+              <input type="text" class="form-control shadow-sm" id="pemegang" name="pemegang" placeholder="Pemegang Aset" required>
             </div>
             <div class="col-md-4">
-              <input type="text" class="form-control" id="penyedia" name="penyedia" placeholder="Penyedia Aset" required>
+              <input type="text" class="form-control shadow-sm" id="penyedia" name="penyedia" placeholder="Penyedia Aset" required>
             </div>
           </div>
           <hr>
           <label class="font-weight-bold">KONTRAK / SLA :</label>
           <div class="form-group row">
             <div class="col-md-6">
-              <input type="text" class="form-control" id="nomor" name="nomor" placeholder="No. Kontrak / SLA" required>
+              <input type="text" class="form-control shadow-sm" id="nomor" name="nomor" placeholder="No. Kontrak / SLA" required>
             </div>
             <div class="col-md-6">
-              <input type="date" class="form-control" id="berlaku" name="berlaku" placeholder="Masa Berlaku" value="<?=date('Y-m-d') ?>" required>
+              <input type="date" class="form-control shadow-sm" id="berlaku" name="berlaku" placeholder="Masa Berlaku" value="<?=date('Y-m-d') ?>" required>
             </div>
           </div>
           <div class="form-group row">
             <div class="col-md-12">
-              <textarea class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi Layanan" required></textarea>
+              <textarea class="form-control shadow-sm" id="deskripsi" name="deskripsi" placeholder="Deskripsi Layanan" required></textarea>
             </div>
           </div>
           <hr>
           <label class="font-weight-bold">KLASIFIKASI KEAMANAN INFORMASI :</label>
           <div class="form-group row">
             <div class="col-sm-4">
-              <select class="custom-select" id="kerahasiaan" name="kerahasiaan" required>
+              <select class="custom-select shadow-sm" id="kerahasiaan" name="kerahasiaan" required>
                 <option value="">Kerahasiaan</option>
                 <?php foreach ($aset_kerahasiaan as $ar): ?>
                   <option value="<?=$ar['id_rahasia'] ?>"><?=$ar['id_rahasia'].' - '.$ar['nama_rahasia'] ?></option>
@@ -461,7 +461,7 @@
               </select>
             </div>
             <div class="col-sm-4">
-              <select class="custom-select" id="integritas" name="integritas" required>
+              <select class="custom-select shadow-sm" id="integritas" name="integritas" required>
                 <option value="">Integritas</option>
                 <?php foreach ($aset_integritas as $ai): ?>
                   <option value="<?=$ai['id_integritas'] ?>"><?=$ai['id_integritas'].' - '.$ai['nama_integritas'] ?></option>
@@ -469,7 +469,7 @@
               </select>
             </div>
             <div class="col-sm-4">
-              <select class="custom-select" id="ketersediaan" name="ketersediaan" required>
+              <select class="custom-select shadow-sm" id="ketersediaan" name="ketersediaan" required>
                 <option value="">Ketersediaan</option>
                 <?php foreach ($aset_ketersediaan as $as): ?>
                   <option value="<?=$as['id_sedia'] ?>"><?=$as['id_sedia'].' - '.$as['nama_sedia'] ?></option>
@@ -478,12 +478,12 @@
             </div>
           </div>
           <div class="form-group">
-            <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan Tambahan"></textarea>
+            <textarea class="form-control shadow-sm" id="keterangan" name="keterangan" placeholder="Keterangan Tambahan"></textarea>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -505,10 +505,10 @@
           </div>
           <div class="form-group row">
             <div class="col-md-6">
-              <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Aset" required>
+              <input type="text" class="form-control shadow-sm" id="nama" name="nama" placeholder="Nama Aset" required>
             </div>
             <div class="col-md-6">
-              <select class="custom-select" id="klasifikasi" name="klasifikasi" required>
+              <select class="custom-select shadow-sm" id="klasifikasi" name="klasifikasi" required>
                 <option value="">Klasifikasi Aset</option>
                 <option value="Layanan-Layanan">Layanan-Layanan</option>
                 <option value="Lainnya">Lainnya</option>
@@ -517,14 +517,14 @@
           </div>
           <div class="form-group row">
             <div class="col-md-12">
-              <input type="text" class="form-control" id="pemilik" name="pemilik" placeholder="Pemilik Aset" required>
+              <input type="text" class="form-control shadow-sm" id="pemilik" name="pemilik" placeholder="Pemilik Aset" required>
             </div>
           </div>
           <hr>
           <label class="font-weight-bold">KLASIFIKASI KEAMANAN INFORMASI :</label>
           <div class="form-group row">
             <div class="col-sm-4">
-              <select class="custom-select" id="kerahasiaan" name="kerahasiaan" required>
+              <select class="custom-select shadow-sm" id="kerahasiaan" name="kerahasiaan" required>
                 <option value="">Kerahasiaan</option>
                 <?php foreach ($aset_kerahasiaan as $ar): ?>
                   <option value="<?=$ar['id_rahasia'] ?>"><?=$ar['id_rahasia'].' - '.$ar['nama_rahasia'] ?></option>
@@ -532,7 +532,7 @@
               </select>
             </div>
             <div class="col-sm-4">
-              <select class="custom-select" id="integritas" name="integritas" required>
+              <select class="custom-select shadow-sm" id="integritas" name="integritas" required>
                 <option value="">Integritas</option>
                 <?php foreach ($aset_integritas as $ai): ?>
                   <option value="<?=$ai['id_integritas'] ?>"><?=$ai['id_integritas'].' - '.$ai['nama_integritas'] ?></option>
@@ -540,7 +540,7 @@
               </select>
             </div>
             <div class="col-sm-4">
-              <select class="custom-select" id="ketersediaan" name="ketersediaan" required>
+              <select class="custom-select shadow-sm" id="ketersediaan" name="ketersediaan" required>
                 <option value="">Ketersediaan</option>
                 <?php foreach ($aset_ketersediaan as $as): ?>
                   <option value="<?=$as['id_sedia'] ?>"><?=$as['id_sedia'].' - '.$as['nama_sedia'] ?></option>
@@ -549,12 +549,12 @@
             </div>
           </div>
           <div class="form-group">
-            <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan Tambahan"></textarea>
+            <textarea class="form-control shadow-sm" id="keterangan" name="keterangan" placeholder="Keterangan Tambahan"></textarea>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>

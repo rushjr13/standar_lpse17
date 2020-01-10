@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-lg-5">
 		<div class="card shadow mb-3 border-primary">
-			<div class="card-header bg-primary text-white">Permintaan Perubahan</div>
+			<div class="card-header shadow-sm bg-primary text-white">Permintaan Perubahan</div>
 			<div class="card-body table-responsive">
 				<table class="table table-sm table-borderless" width="100%">
 					<tbody>
@@ -118,7 +118,7 @@
 			</div>
 		</div>
 		<div class="card shadow mb-3 border-primary">
-			<div class="card-header bg-primary text-white">Evaluasi Permintaan Perubahan</div>
+			<div class="card-header shadow-sm bg-primary text-white">Evaluasi Permintaan Perubahan</div>
 			<div class="card-body table-responsive">
 				<table class="table table-sm table-borderless" width="100%">
 					<tbody>
@@ -160,16 +160,16 @@
 	<div class="col-lg-7">
 		<div class="card shadow border-primary mb-3">
 			<form action="<?=base_url('perubahan/form/persetujuan/').$perubahan['id_perubahan'] ?>" method="post">
-				<div class="card-header bg-primary text-white">
+				<div class="card-header shadow-sm bg-primary text-white">
 					Persetujuan Permintaan Perubahan
-					<a href="<?=base_url('perubahan/form') ?>" class="btn btn-sm btn-circle btn-danger float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
-					<button type="submit" class="btn btn-sm btn-circle btn-info float-right mr-2" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+					<a href="<?=base_url('perubahan/form') ?>" class="btn shadow-sm btn-sm btn-circle btn-danger float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
+					<button type="submit" class="btn shadow-sm btn-sm btn-circle btn-info float-right mr-2" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
 				</div>
 				<div class="card-body">
 				  <div class="form-group row">
 				    <label for="status_permintaan" class="col-sm-4 col-form-label">Status Permintaan</label>
 				    <div class="col-sm-8">
-				      <select class="form-control" id="status_permintaan" name="status_permintaan" value="<?=set_value('status_permintaan') ?>">
+				      <select class="form-control shadow-sm" id="status_permintaan" name="status_permintaan" value="<?=set_value('status_permintaan') ?>">
 					      <option value="">-- Status Permintaan --</option>
 					      <option value="Setuju">Setuju</option>
 					      <option value="Tidak Setuju">Tidak Setuju</option>
@@ -180,21 +180,21 @@
 				  <div class="form-group row">
 				    <label for="ket_statuspermintaan" class="col-sm-4 col-form-label">Keterangan</label>
 				    <div class="col-sm-8">
-				      <textarea class="form-control" id="ket_statuspermintaan" name="ket_statuspermintaan" placeholder="Keterangan" value="<?=set_value('ket_statuspermintaan') ?>" autofocus></textarea>
+				      <textarea class="form-control shadow-sm" id="ket_statuspermintaan" name="ket_statuspermintaan" placeholder="Keterangan" value="<?=set_value('ket_statuspermintaan') ?>" autofocus></textarea>
 				      <?php echo form_error('ket_statuspermintaan', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
 				    </div>
 				  </div>
 				  <div class="form-group row">
 				    <label for="jadwal_perubahan" class="col-sm-4 col-form-label">Jadwal Perubahan (Tanggal)</label>
 				    <div class="col-sm-8">
-				      <input type="date" class="form-control" id="jadwal_perubahan" name="jadwal_perubahan" value="<?=date('Y-m-d', time()) ?>">
+				      <input type="date" class="form-control shadow-sm" id="jadwal_perubahan" name="jadwal_perubahan" value="<?=date('Y-m-d', time()) ?>">
 				      <?php echo form_error('jadwal_perubahan', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
 				    </div>
 				  </div>
 				  <div class="form-group row">
 				    <label for="petugas_implementasi" class="col-sm-4 col-form-label">Penugasan Untuk Implementasi (Nama)</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="petugas_implementasi" name="petugas_implementasi" placeholder="Penugasan Untuk Implementasi (Nama)" value="<?=set_value('petugas_implementasi') ?>">
+				      <input type="text" class="form-control shadow-sm" id="petugas_implementasi" name="petugas_implementasi" placeholder="Penugasan Untuk Implementasi (Nama)" value="<?=set_value('petugas_implementasi') ?>">
 				      <?php echo form_error('petugas_implementasi', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
 				    </div>
 				  </div>

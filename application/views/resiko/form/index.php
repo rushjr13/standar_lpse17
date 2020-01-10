@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-2">
     <div class="list-group" id="list-tab" role="tablist">
-	      <a class="list-group-item list-group-item-action active" id="list-informasi-list" data-toggle="list" href="#list-informasi" role="tab" aria-controls="informasi">Informasi</a>
-	      <a class="list-group-item list-group-item-action" id="list-sdm-list" data-toggle="list" href="#list-sdm" role="tab" aria-controls="sdm">Sumber Daya Manusia (SDM)</a>
-	      <a class="list-group-item list-group-item-action" id="list-fisik-list" data-toggle="list" href="#list-fisik" role="tab" aria-controls="fisik">Fisik</a>
-	      <a class="list-group-item list-group-item-action" id="list-software-list" data-toggle="list" href="#list-software" role="tab" aria-controls="software">Software</a>
-	      <a class="list-group-item list-group-item-action" id="list-layanan-list" data-toggle="list" href="#list-layanan" role="tab" aria-controls="layanan">Layanan</a>
-	      <a class="list-group-item list-group-item-action" id="list-intangible-list" data-toggle="list" href="#list-intangible" role="tab" aria-controls="intangible">Intangible</a>
+	      <a class="list-group-item shadow-sm list-group-item-action active" id="list-informasi-list" data-toggle="list" href="#list-informasi" role="tab" aria-controls="informasi">Informasi</a>
+	      <a class="list-group-item shadow-sm list-group-item-action" id="list-sdm-list" data-toggle="list" href="#list-sdm" role="tab" aria-controls="sdm">Sumber Daya Manusia (SDM)</a>
+	      <a class="list-group-item shadow-sm list-group-item-action" id="list-fisik-list" data-toggle="list" href="#list-fisik" role="tab" aria-controls="fisik">Fisik</a>
+	      <a class="list-group-item shadow-sm list-group-item-action" id="list-software-list" data-toggle="list" href="#list-software" role="tab" aria-controls="software">Software</a>
+	      <a class="list-group-item shadow-sm list-group-item-action" id="list-layanan-list" data-toggle="list" href="#list-layanan" role="tab" aria-controls="layanan">Layanan</a>
+	      <a class="list-group-item shadow-sm list-group-item-action" id="list-intangible-list" data-toggle="list" href="#list-intangible" role="tab" aria-controls="intangible">Intangible</a>
     </div>
   </div>
   <div class="col-10">
@@ -14,11 +14,11 @@
     	<!-- INFORMASI -->
       <div class="tab-pane fade show active" id="list-informasi" role="tabpanel" aria-labelledby="list-informasi-list">
       	<div class="card shadow border-primary">
-      		<div class="card-header bg-primary text-white">
+      		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Resiko Informasi
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-              <a href="<?=base_url('resiko/form/informasi/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Informasi"><i class="fa fa-fw fa-print"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_informasiModal" title="Tambah Resiko Informasi"><i class="fa fa-fw fa-plus"></i></button>
+              <a href="<?=base_url('resiko/form/informasi/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Informasi"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_informasiModal" title="Tambah Resiko Informasi"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
       		</div>
       		<div class="card-body">
@@ -30,11 +30,11 @@
       <!-- SDM -->
       <div class="tab-pane fade show" id="list-sdm" role="tabpanel" aria-labelledby="list-sdm-list">
       	<div class="card shadow border-primary">
-      		<div class="card-header bg-primary text-white">
+      		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Resiko Sumber Daya Manusia (SDM)
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-              <a href="<?=base_url('resiko/form/sdm/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko SDM"><i class="fa fa-fw fa-print"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_sdmModal" title="Tambah Resiko Sumber Daya Manusia (SDM)"><i class="fa fa-fw fa-plus"></i></button>
+              <a href="<?=base_url('resiko/form/sdm/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko SDM"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_sdmModal" title="Tambah Resiko Sumber Daya Manusia (SDM)"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
       		</div>
       		<div class="card-body">
@@ -46,11 +46,11 @@
       <!-- FISIK -->
       <div class="tab-pane fade show" id="list-fisik" role="tabpanel" aria-labelledby="list-fisik-list">
       	<div class="card shadow border-primary">
-      		<div class="card-header bg-primary text-white">
+      		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Resiko Fisik
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-              <a href="<?=base_url('resiko/form/fisik/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Fisik"><i class="fa fa-fw fa-print"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_fisikModal" title="Tambah Resiko Fisik"><i class="fa fa-fw fa-plus"></i></button>
+              <a href="<?=base_url('resiko/form/fisik/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Fisik"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_fisikModal" title="Tambah Resiko Fisik"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
       		</div>
       		<div class="card-body">
@@ -62,11 +62,11 @@
       <!-- SOFTWARE -->
       <div class="tab-pane fade show" id="list-software" role="tabpanel" aria-labelledby="list-software-list">
       	<div class="card shadow border-primary">
-      		<div class="card-header bg-primary text-white">
+      		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Resiko Software
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-              <a href="<?=base_url('resiko/form/software/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Perangkat Lunak (Software)"><i class="fa fa-fw fa-print"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_softwareModal" title="Tambah Resiko Perangkat Lunak (Software)"><i class="fa fa-fw fa-plus"></i></button>
+              <a href="<?=base_url('resiko/form/software/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Perangkat Lunak (Software)"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_softwareModal" title="Tambah Resiko Perangkat Lunak (Software)"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
       		</div>
       		<div class="card-body">
@@ -78,11 +78,11 @@
       <!-- LAYANAN -->
       <div class="tab-pane fade show" id="list-layanan" role="tabpanel" aria-labelledby="list-layanan-list">
       	<div class="card shadow border-primary">
-      		<div class="card-header bg-primary text-white">
+      		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Resiko Layanan
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-              <a href="<?=base_url('resiko/form/layanan/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Layanan"><i class="fa fa-fw fa-print"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_layananModal" title="Tambah Resiko Layanan"><i class="fa fa-fw fa-plus"></i></button>
+              <a href="<?=base_url('resiko/form/layanan/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Layanan"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_layananModal" title="Tambah Resiko Layanan"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
       		</div>
       		<div class="card-body">
@@ -94,11 +94,11 @@
       <!-- INTANGIBLE -->
       <div class="tab-pane fade show" id="list-intangible" role="tabpanel" aria-labelledby="list-intangible-list">
       	<div class="card shadow border-primary">
-      		<div class="card-header bg-primary text-white">
+      		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Resiko Intagible
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-              <a href="<?=base_url('resiko/form/intangible/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Layanan"><i class="fa fa-fw fa-print"></i></a>
-              <button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_intangibleModal" title="Tambah Resiko Layanan"><i class="fa fa-fw fa-plus"></i></button>
+              <a href="<?=base_url('resiko/form/intangible/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Resiko Layanan"><i class="fa fa-fw fa-print"></i></a>
+              <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahresiko_intangibleModal" title="Tambah Resiko Layanan"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
       		</div>
       		<div class="card-body">
@@ -128,7 +128,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Klasifikasi</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="klasifikasi" name="klasifikasi" required>
+              <select class="custom-select shadow-sm" id="klasifikasi" name="klasifikasi" required>
                 <option value="">Klasifikasi Resiko</option>
                 <?php foreach ($klasifikasi_informasi as $ki): ?>
                   <option value="<?=$ki['id_ki'] ?>"><?=$ki['kla_informasi'] ?></option>
@@ -139,7 +139,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Dampak</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="dampak" name="dampak" required>
+              <select class="custom-select shadow-sm" id="dampak" name="dampak" required>
                 <option value="">Pilih Dampak</option>
                 <?php foreach ($resiko_dampak as $rd): ?>
                   <option value="<?=$rd['nilai'] ?>"><?=$rd['nilai'] ?>. <?=$rd['ekonomi'] ?>, <?=$rd['reputasi'] ?>, <?=$rd['pidana'] ?>, <?=$rd['kinerja'] ?></option>
@@ -150,7 +150,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Pengancam</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="pengancam" name="pengancam" required>
+              <select class="custom-select shadow-sm" id="pengancam" name="pengancam" required>
                 <option value="">Pilih Pengancam</option>
                 <?php foreach ($resiko_pengancam as $rp): ?>
                   <option value="<?=$rp['nilai'] ?>"><?=$rp['nilai'] ?>. <?=$rp['profil_pengancam'] ?></option>
@@ -163,7 +163,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Kerentanan</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="kerentanan" name="kerentanan" required>
+              <select class="custom-select shadow-sm" id="kerentanan" name="kerentanan" required>
                 <option value="">Pilih Tingkat Kerentanan</option>
                 <?php foreach ($resiko_rentan as $rr): ?>
                   <option value="<?=$rr['nilai'] ?>"><?=$rr['nilai'] ?>. <?=$rr['tingkat_rentan'] ?></option>
@@ -174,7 +174,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Paparan</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="paparan" name="paparan" required>
+              <select class="custom-select shadow-sm" id="paparan" name="paparan" required>
                 <option value="">Pilih Tingkat Paparan</option>
                 <?php foreach ($resiko_paparan as $rpap): ?>
                   <option value="<?=$rpap['nilai'] ?>"><?=$rpap['nilai'] ?>. <?=$rpap['contoh_paparan'] ?></option>
@@ -184,8 +184,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -210,7 +210,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Klasifikasi</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="klasifikasi" name="klasifikasi" required>
+              <select class="custom-select shadow-sm" id="klasifikasi" name="klasifikasi" required>
                 <option value="">Klasifikasi Resiko</option>
                 <?php foreach ($klasifikasi_sdm as $ksdm): ?>
                   <option value="<?=$ksdm['id_ksdm'] ?>"><?=$ksdm['kla_sdm'] ?></option>
@@ -221,7 +221,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Dampak</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="dampak" name="dampak" required>
+              <select class="custom-select shadow-sm" id="dampak" name="dampak" required>
                 <option value="">Pilih Dampak</option>
                 <?php foreach ($resiko_dampak as $rd): ?>
                   <option value="<?=$rd['nilai'] ?>"><?=$rd['nilai'] ?>. <?=$rd['ekonomi'] ?>, <?=$rd['reputasi'] ?>, <?=$rd['pidana'] ?>, <?=$rd['kinerja'] ?></option>
@@ -232,7 +232,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Pengancam</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="pengancam" name="pengancam" required>
+              <select class="custom-select shadow-sm" id="pengancam" name="pengancam" required>
                 <option value="">Pilih Pengancam</option>
                 <?php foreach ($resiko_pengancam as $rp): ?>
                   <option value="<?=$rp['nilai'] ?>"><?=$rp['nilai'] ?>. <?=$rp['profil_pengancam'] ?></option>
@@ -245,7 +245,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Kerentanan</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="kerentanan" name="kerentanan" required>
+              <select class="custom-select shadow-sm" id="kerentanan" name="kerentanan" required>
                 <option value="">Pilih Tingkat Kerentanan</option>
                 <?php foreach ($resiko_rentan as $rr): ?>
                   <option value="<?=$rr['nilai'] ?>"><?=$rr['nilai'] ?>. <?=$rr['tingkat_rentan'] ?></option>
@@ -256,7 +256,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Paparan</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="paparan" name="paparan" required>
+              <select class="custom-select shadow-sm" id="paparan" name="paparan" required>
                 <option value="">Pilih Tingkat Paparan</option>
                 <?php foreach ($resiko_paparan as $rpap): ?>
                   <option value="<?=$rpap['nilai'] ?>"><?=$rpap['nilai'] ?>. <?=$rpap['contoh_paparan'] ?></option>
@@ -266,8 +266,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -292,7 +292,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Klasifikasi</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="klasifikasi" name="klasifikasi" required>
+              <select class="custom-select shadow-sm" id="klasifikasi" name="klasifikasi" required>
                 <option value="">Klasifikasi Resiko</option>
                 <?php foreach ($klasifikasi_aset_fisik as $kfisik): ?>
                   <option value="<?=$kfisik['id'] ?>"><?=$kfisik['nama_klasifikasi'] ?></option>
@@ -303,7 +303,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Dampak</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="dampak" name="dampak" required>
+              <select class="custom-select shadow-sm" id="dampak" name="dampak" required>
                 <option value="">Pilih Dampak</option>
                 <?php foreach ($resiko_dampak as $rd): ?>
                   <option value="<?=$rd['nilai'] ?>"><?=$rd['nilai'] ?>. <?=$rd['ekonomi'] ?>, <?=$rd['reputasi'] ?>, <?=$rd['pidana'] ?>, <?=$rd['kinerja'] ?></option>
@@ -314,7 +314,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Pengancam</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="pengancam" name="pengancam" required>
+              <select class="custom-select shadow-sm" id="pengancam" name="pengancam" required>
                 <option value="">Pilih Pengancam</option>
                 <?php foreach ($resiko_pengancam as $rp): ?>
                   <option value="<?=$rp['nilai'] ?>"><?=$rp['nilai'] ?>. <?=$rp['profil_pengancam'] ?></option>
@@ -327,7 +327,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Kerentanan</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="kerentanan" name="kerentanan" required>
+              <select class="custom-select shadow-sm" id="kerentanan" name="kerentanan" required>
                 <option value="">Pilih Tingkat Kerentanan</option>
                 <?php foreach ($resiko_rentan as $rr): ?>
                   <option value="<?=$rr['nilai'] ?>"><?=$rr['nilai'] ?>. <?=$rr['tingkat_rentan'] ?></option>
@@ -338,7 +338,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Paparan</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="paparan" name="paparan" required>
+              <select class="custom-select shadow-sm" id="paparan" name="paparan" required>
                 <option value="">Pilih Tingkat Paparan</option>
                 <?php foreach ($resiko_paparan as $rpap): ?>
                   <option value="<?=$rpap['nilai'] ?>"><?=$rpap['nilai'] ?>. <?=$rpap['contoh_paparan'] ?></option>
@@ -348,8 +348,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -374,7 +374,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Klasifikasi</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="klasifikasi" name="klasifikasi" required>
+              <select class="custom-select shadow-sm" id="klasifikasi" name="klasifikasi" required>
                 <option value="">Klasifikasi Resiko</option>
                 <?php foreach ($klasifikasi_software as $ksoftware): ?>
                   <option value="<?=$ksoftware['id_ksw'] ?>"><?=$ksoftware['kla_sw'] ?></option>
@@ -385,7 +385,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Dampak</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="dampak" name="dampak" required>
+              <select class="custom-select shadow-sm" id="dampak" name="dampak" required>
                 <option value="">Pilih Dampak</option>
                 <?php foreach ($resiko_dampak as $rd): ?>
                   <option value="<?=$rd['nilai'] ?>"><?=$rd['nilai'] ?>. <?=$rd['ekonomi'] ?>, <?=$rd['reputasi'] ?>, <?=$rd['pidana'] ?>, <?=$rd['kinerja'] ?></option>
@@ -396,7 +396,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Pengancam</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="pengancam" name="pengancam" required>
+              <select class="custom-select shadow-sm" id="pengancam" name="pengancam" required>
                 <option value="">Pilih Pengancam</option>
                 <?php foreach ($resiko_pengancam as $rp): ?>
                   <option value="<?=$rp['nilai'] ?>"><?=$rp['nilai'] ?>. <?=$rp['profil_pengancam'] ?></option>
@@ -409,7 +409,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Kerentanan</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="kerentanan" name="kerentanan" required>
+              <select class="custom-select shadow-sm" id="kerentanan" name="kerentanan" required>
                 <option value="">Pilih Tingkat Kerentanan</option>
                 <?php foreach ($resiko_rentan as $rr): ?>
                   <option value="<?=$rr['nilai'] ?>"><?=$rr['nilai'] ?>. <?=$rr['tingkat_rentan'] ?></option>
@@ -420,7 +420,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Paparan</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="paparan" name="paparan" required>
+              <select class="custom-select shadow-sm" id="paparan" name="paparan" required>
                 <option value="">Pilih Tingkat Paparan</option>
                 <?php foreach ($resiko_paparan as $rpap): ?>
                   <option value="<?=$rpap['nilai'] ?>"><?=$rpap['nilai'] ?>. <?=$rpap['contoh_paparan'] ?></option>
@@ -430,8 +430,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -456,7 +456,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Klasifikasi</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="klasifikasi" name="klasifikasi" required>
+              <select class="custom-select shadow-sm" id="klasifikasi" name="klasifikasi" required>
                 <option value="">Klasifikasi Resiko</option>
                 <?php foreach ($klasifikasi_layanan as $klayanan): ?>
                   <option value="<?=$klayanan['id_kl'] ?>"><?=$klayanan['kla_layanan'] ?></option>
@@ -467,7 +467,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Dampak</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="dampak" name="dampak" required>
+              <select class="custom-select shadow-sm" id="dampak" name="dampak" required>
                 <option value="">Pilih Dampak</option>
                 <?php foreach ($resiko_dampak as $rd): ?>
                   <option value="<?=$rd['nilai'] ?>"><?=$rd['nilai'] ?>. <?=$rd['ekonomi'] ?>, <?=$rd['reputasi'] ?>, <?=$rd['pidana'] ?>, <?=$rd['kinerja'] ?></option>
@@ -478,7 +478,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Pengancam</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="pengancam" name="pengancam" required>
+              <select class="custom-select shadow-sm" id="pengancam" name="pengancam" required>
                 <option value="">Pilih Pengancam</option>
                 <?php foreach ($resiko_pengancam as $rp): ?>
                   <option value="<?=$rp['nilai'] ?>"><?=$rp['nilai'] ?>. <?=$rp['profil_pengancam'] ?></option>
@@ -491,7 +491,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Kerentanan</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="kerentanan" name="kerentanan" required>
+              <select class="custom-select shadow-sm" id="kerentanan" name="kerentanan" required>
                 <option value="">Pilih Tingkat Kerentanan</option>
                 <?php foreach ($resiko_rentan as $rr): ?>
                   <option value="<?=$rr['nilai'] ?>"><?=$rr['nilai'] ?>. <?=$rr['tingkat_rentan'] ?></option>
@@ -502,7 +502,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Paparan</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="paparan" name="paparan" required>
+              <select class="custom-select shadow-sm" id="paparan" name="paparan" required>
                 <option value="">Pilih Tingkat Paparan</option>
                 <?php foreach ($resiko_paparan as $rpap): ?>
                   <option value="<?=$rpap['nilai'] ?>"><?=$rpap['nilai'] ?>. <?=$rpap['contoh_paparan'] ?></option>
@@ -512,8 +512,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -538,7 +538,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Klasifikasi</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="klasifikasi" name="klasifikasi" required>
+              <select class="custom-select shadow-sm" id="klasifikasi" name="klasifikasi" required>
                 <option value="">Klasifikasi Resiko</option>
                 <?php foreach ($klasifikasi_intangible as $kintangible): ?>
                   <option value="<?=$kintangible['id_in'] ?>"><?=$kintangible['kla_intangible'] ?></option>
@@ -549,7 +549,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Dampak</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="dampak" name="dampak" required>
+              <select class="custom-select shadow-sm" id="dampak" name="dampak" required>
                 <option value="">Pilih Dampak</option>
                 <?php foreach ($resiko_dampak as $rd): ?>
                   <option value="<?=$rd['nilai'] ?>"><?=$rd['nilai'] ?>. <?=$rd['ekonomi'] ?>, <?=$rd['reputasi'] ?>, <?=$rd['pidana'] ?>, <?=$rd['kinerja'] ?></option>
@@ -560,7 +560,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Pengancam</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="pengancam" name="pengancam" required>
+              <select class="custom-select shadow-sm" id="pengancam" name="pengancam" required>
                 <option value="">Pilih Pengancam</option>
                 <?php foreach ($resiko_pengancam as $rp): ?>
                   <option value="<?=$rp['nilai'] ?>"><?=$rp['nilai'] ?>. <?=$rp['profil_pengancam'] ?></option>
@@ -573,7 +573,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Kerentanan</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="kerentanan" name="kerentanan" required>
+              <select class="custom-select shadow-sm" id="kerentanan" name="kerentanan" required>
                 <option value="">Pilih Tingkat Kerentanan</option>
                 <?php foreach ($resiko_rentan as $rr): ?>
                   <option value="<?=$rr['nilai'] ?>"><?=$rr['nilai'] ?>. <?=$rr['tingkat_rentan'] ?></option>
@@ -584,7 +584,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Paparan</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="paparan" name="paparan" required>
+              <select class="custom-select shadow-sm" id="paparan" name="paparan" required>
                 <option value="">Pilih Tingkat Paparan</option>
                 <?php foreach ($resiko_paparan as $rpap): ?>
                   <option value="<?=$rpap['nilai'] ?>"><?=$rpap['nilai'] ?>. <?=$rpap['contoh_paparan'] ?></option>
@@ -594,8 +594,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>

@@ -88,7 +88,7 @@ class Regulasi extends CI_Controller {
 		}
 	}
 
-	public function perka($opsi=null, $id=null){
+	public function perka(){
 		// UMUM
 		$user = $this->session->userdata('user_masuk');
 		$data['pengguna_masuk'] = $this->admin->pengguna($user);
@@ -102,33 +102,13 @@ class Regulasi extends CI_Controller {
 		$data['akses_menu'] = $this->admin->akses_menu($id_menu);
 
 		// KHUSUS
-		if($opsi==null){
-			$data['judul'] = "Regulasi";
-			$data['perka'] = $this->admin->perka();
-			$this->load->view('templates/header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
-			$this->load->view('regulasi/perka', $data);
-			$this->load->view('templates/footer', $data);
-		}else if($opsi=='dokumen'){
-			if($id==null){
-				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-														  <i class="fa fa-fw fa-ban"></i> Tidak ada regulasi perka yang dipilih!
-														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-														    <span aria-hidden="true">&times;</span>
-														  </button>
-														</div>');
-				redirect('regulasi/perka');
-			}else{
-				$data['judul'] = "Regulasi";
-				$data['perka'] = $this->admin->perka($id);
-				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
-				$this->load->view('templates/topbar', $data);
-				$this->load->view('regulasi/perka_dokumen', $data);
-				$this->load->view('templates/footer', $data);
-			}
-		}
+		$data['judul'] = "Regulasi";
+		$data['perka'] = $this->admin->perka();
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('regulasi/perka', $data);
+		$this->load->view('templates/footer', $data);
 	}
 
 	public function tambahperka(){

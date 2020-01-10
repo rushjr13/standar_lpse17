@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-lg-5">
 		<div class="card shadow mb-3 border-primary">
-			<div class="card-header bg-primary text-white">Permintaan Perubahan</div>
+			<div class="card-header shadow-sm bg-primary text-white">Permintaan Perubahan</div>
 			<div class="card-body table-responsive">
 				<table class="table table-sm table-borderless" width="100%">
 					<tbody>
@@ -121,23 +121,23 @@
 	<div class="col-lg-7">
 		<div class="card shadow border-primary mb-3">
 			<form action="<?=base_url('perubahan/form/evaluasi/').$perubahan['id_perubahan'] ?>" method="post">
-				<div class="card-header bg-primary text-white">
+				<div class="card-header shadow-sm bg-primary text-white">
 					Evaluasi Permintaan Perubahan
-					<a href="<?=base_url('perubahan/form') ?>" class="btn btn-sm btn-circle btn-danger float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
-					<button type="submit" class="btn btn-sm btn-circle btn-info float-right mr-2" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+					<a href="<?=base_url('perubahan/form') ?>" class="btn shadow-sm btn-sm btn-circle btn-danger float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
+					<button type="submit" class="btn shadow-sm btn-sm btn-circle btn-info float-right mr-2" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
 				</div>
 				<div class="card-body">
 					<div class="form-group row">
 				    <label for="jenis_perubahan" class="col-sm-4 col-form-label">Jenis Perubahan</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="jenis_perubahan" name="jenis_perubahan" placeholder="Aplikasi, Infrastruktur, Layanan" value="<?=set_value('jenis_perubahan') ?>" autofocus>
+				      <input type="text" class="form-control shadow-sm" id="jenis_perubahan" name="jenis_perubahan" placeholder="Aplikasi, Infrastruktur, Layanan" value="<?=set_value('jenis_perubahan') ?>" autofocus>
 					    <?php echo form_error('jenis_perubahan', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
 				    </div>
 				  </div>
 				  <div class="form-group row">
 				    <label for="kategori_perubahan" class="col-sm-4 col-form-label">Kategori Perubahan</label>
 				    <div class="col-sm-8">
-				      <select class="form-control" id="kategori_perubahan" name="kategori_perubahan" value="<?=set_value('kategori_perubahan') ?>">
+				      <select class="form-control shadow-sm" id="kategori_perubahan" name="kategori_perubahan" value="<?=set_value('kategori_perubahan') ?>">
 					      <option value="">-- Kategori Perubahan --</option>
 					      <option value="Emergency">Emergency</option>
 					      <option value="Normal">Normal</option>
@@ -148,28 +148,28 @@
 				  <div class="form-group row">
 				    <label for="dampak_lingkungan" class="col-sm-4 col-form-label">Dampak Terhadap Lingkungan</label>
 				    <div class="col-sm-8">
-				      <textarea class="form-control" id="dampak_lingkungan" name="dampak_lingkungan" placeholder="Dampak Terhadap Lingkungan" value="<?=set_value('dampak_lingkungan') ?>"></textarea>
+				      <textarea class="form-control shadow-sm" id="dampak_lingkungan" name="dampak_lingkungan" placeholder="Dampak Terhadap Lingkungan" value="<?=set_value('dampak_lingkungan') ?>"></textarea>
 				      <?php echo form_error('dampak_lingkungan', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
 				    </div>
 				  </div>
 				  <div class="form-group row">
 				    <label for="sumber" class="col-sm-4 col-form-label">Sumber Yang Dibutuhkan</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="sumber" name="sumber" placeholder="Software, Hardware, SDM" value="<?=set_value('sumber') ?>">
+				      <input type="text" class="form-control shadow-sm" id="sumber" name="sumber" placeholder="Software, Hardware, SDM" value="<?=set_value('sumber') ?>">
 				      <?php echo form_error('sumber', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
 				    </div>
 				  </div>
 				  <div class="form-group row">
 				    <label for="deskripsi_ujicoba" class="col-sm-4 col-form-label">Deskripsi Rencana Uji Coba</label>
 				    <div class="col-sm-8">
-				      <textarea class="form-control" id="deskripsi_ujicoba" name="deskripsi_ujicoba" placeholder="Deskripsi Rencana Uji Coba" value="<?=set_value('deskripsi_ujicoba') ?>"></textarea>
+				      <textarea class="form-control shadow-sm" id="deskripsi_ujicoba" name="deskripsi_ujicoba" placeholder="Deskripsi Rencana Uji Coba" value="<?=set_value('deskripsi_ujicoba') ?>"></textarea>
 				      <?php echo form_error('deskripsi_ujicoba', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
 				    </div>
 				  </div>
 				  <div class="form-group row">
 				    <label for="deskripsi_rollback" class="col-sm-4 col-form-label">Deskripsi <em>Roll Back</em></label>
 				    <div class="col-sm-8">
-				      <textarea class="form-control" id="deskripsi_rollback" name="deskripsi_rollback" placeholder="Deskripsi Roll Back" value="<?=set_value('deskripsi_rollback') ?>"></textarea>
+				      <textarea class="form-control shadow-sm" id="deskripsi_rollback" name="deskripsi_rollback" placeholder="Deskripsi Roll Back" value="<?=set_value('deskripsi_rollback') ?>"></textarea>
 				      <?php echo form_error('deskripsi_rollback', '<small class="text-danger ml-2" style="font-style:italic;">', '</small>'); ?>
 				    </div>
 				  </div>

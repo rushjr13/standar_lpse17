@@ -4,8 +4,8 @@
 		<button type="button" class="btn btn-sm btn-circle btn-primary shadow-sm float-right" data-toggle="modal" data-target="#tambahModal" title="Buat Pengumuman"><i class="fa fa-fw fa-plus"></i></button>
 	</div>
 	<div class="card-body table-responsive">
-		<table class="table table-sm table-bordered table-hover table-striped" id="dataTables" cellspacing="0" width="100%">
-			<thead class="bg-secondary text-white text-center">
+		<table class="table shadow-sm table-sm table-bordered table-hover table-striped" id="dataTables" cellspacing="0" width="100%">
+			<thead class="bg-primary text-white text-center">
 				<tr>
 					<th class="align-center" width="3%">NO</th>
 					<th class="align-center" width="13%">TANGGAL</th>

@@ -1,6 +1,6 @@
 <div class="table-responsive">
-  <table class="table table-sm table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
-    <thead class="bg-dark text-white">
+  <table class="table shadow-sm table-hover table-sm table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead class="bg-primary text-white">
       <tr>
         <th class="align-middle text-center">KODE</th>
         <th class="align-middle text-center">NAMA ASET</th>
@@ -10,7 +10,7 @@
         <th class="align-middle text-center">PENGADAAN</th> -->
         <th class="align-middle text-center">KEAMANAN<br>INFORMASI</th>
         <!-- <th class="align-middle text-center">KETERANGAN</th> -->
-        <th class="align-middle text-center">OPSI</th>
+        <th class="align-middle text-center" width="9%">OPSI</th>
       </tr>
     </thead>
     <tbody>
@@ -51,7 +51,7 @@
             <td class="align-middle text-center">
               <button
                 type="button"
-                class="btn btn-sm btn-circle btn-success"
+                class="btn shadow-sm btn-sm btn-circle btn-success"
                 id="detailasetfisik"
                 data-toggle="modal"
                 data-target="#detailasetfisikModal"
@@ -76,8 +76,8 @@
                 data-keterangan="<?=$af['keterangan'] ?>"
                 title="Detail"><i class="fa fa-fw fa-list"></i></button>
               <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-                <a href="<?=base_url('aset/form/fisik/ubah/').$af['idf'] ?>" class="btn btn-sm btn-circle btn-info m-1" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
-                <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusasetfisik" data-toggle="modal" data-target="#hapusasetfisikModal" data-id="<?=$af['idf'] ?>" data-nama="<?=$af['nama'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+                <a href="<?=base_url('aset/form/fisik/ubah/').$af['idf'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
+                <button type="button" class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapusasetfisik" data-toggle="modal" data-target="#hapusasetfisikModal" data-id="<?=$af['idf'] ?>" data-nama="<?=$af['nama'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
               <?php } ?>
             </td>
           </tr>
@@ -104,12 +104,12 @@
       </div>
       <form id="formhapusasetfisik" action="" method="post">
         <div class="modal-body">
-          <p id="ket">Keterangan</p>
+          <p id="ket" class="text-center">Keterangan</p>
           <input type="hidden" id="nama" name="nama">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" title="Batal" data-dismiss="modal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" title="Batal" data-dismiss="modal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
     </div>
@@ -127,7 +127,7 @@
         </button>
       </div>
       <div class="modal-body table-responsive">
-        <table class="table table-striped table-borderless" width="100%">
+        <table class="table shadow-sm table-striped table-borderless" width="100%">
           <tbody>
             <tr>
               <td width="19%">Kode</td>

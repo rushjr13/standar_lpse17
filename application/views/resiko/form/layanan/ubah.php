@@ -2,7 +2,7 @@
   <div class="col-8">
     <form action="<?=base_url('resiko/form/layanan/ubah/'.$resiko_layanan['id']) ?>" method="post">
       <div class="card shadow border-primary">
-        <div class="card-header bg-primary text-white">Ubah Resiko Layanan</div>
+        <div class="card-header shadow-sm bg-primary text-white">Ubah Resiko Layanan</div>
         <div class="card-body">
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Kode Resiko</label>
@@ -13,7 +13,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Klasifikasi</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="klasifikasi" name="klasifikasi">
+              <select class="custom-select shadow-sm" id="klasifikasi" name="klasifikasi">
                 <option value="">Klasifikasi Resiko</option>
                 <?php foreach ($klasifikasi_layanan as $klayanan): ?>
                   <option value="<?=$klayanan['id_kl'] ?>" <?php if($resiko_layanan['id_kl']==$klayanan['id_kl']){echo "selected";} ?>><?=$klayanan['kla_layanan'] ?></option>
@@ -25,7 +25,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Dampak</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="dampak" name="dampak">
+              <select class="custom-select shadow-sm" id="dampak" name="dampak">
                 <option value="">Pilih Dampak</option>
                 <?php foreach ($resiko_dampak as $rd): ?>
                   <option value="<?=$rd['nilai'] ?>" <?php if($resiko_layanan['dampak']==$rd['nilai']){echo "selected";} ?>><?=$rd['nilai'] ?>. <?=$rd['ekonomi'] ?>, <?=$rd['reputasi'] ?>, <?=$rd['pidana'] ?>, <?=$rd['kinerja'] ?></option>
@@ -37,7 +37,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Pengancam</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="pengancam" name="pengancam">
+              <select class="custom-select shadow-sm" id="pengancam" name="pengancam">
                 <option value="">Pilih Pengancam</option>
                 <?php foreach ($resiko_pengancam as $rp): ?>
                   <option value="<?=$rp['nilai'] ?>" <?php if($resiko_layanan['pengancam']==$rp['nilai']){echo "selected";} ?>><?=$rp['nilai'] ?>. <?=$rp['profil_pengancam'] ?></option>
@@ -51,7 +51,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Kerentanan</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="kerentanan" name="kerentanan">
+              <select class="custom-select shadow-sm" id="kerentanan" name="kerentanan">
                 <option value="">Pilih Tingkat Kerentanan</option>
                 <?php foreach ($resiko_rentan as $rr): ?>
                   <option value="<?=$rr['nilai'] ?>" <?php if($resiko_layanan['kerentanan']==$rr['nilai']){echo "selected";} ?>><?=$rr['nilai'] ?>. <?=$rr['tingkat_rentan'] ?></option>
@@ -63,7 +63,7 @@
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">Paparan</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="paparan" name="paparan">
+              <select class="custom-select shadow-sm" id="paparan" name="paparan">
                 <option value="">Pilih Tingkat Paparan</option>
                 <?php foreach ($resiko_paparan as $rpap): ?>
                   <option value="<?=$rpap['nilai'] ?>" <?php if($resiko_layanan['paparan']==$rpap['nilai']){echo "selected";} ?>><?=$rpap['nilai'] ?>. <?=$rpap['contoh_paparan'] ?></option>
@@ -74,8 +74,8 @@
           </div>
         </div>
         <div class="card-footer text-right">
-          <a href="<?=base_url('resiko/form') ?>" class="btn btn-sm btn-circle btn-secondary"title="Batal"><i class="fa fa-fw fa-times"></i></a>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <a href="<?=base_url('resiko/form') ?>" class="btn shadow-sm btn-sm btn-circle btn-secondary"title="Batal"><i class="fa fa-fw fa-times"></i></a>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </div>
     </form>

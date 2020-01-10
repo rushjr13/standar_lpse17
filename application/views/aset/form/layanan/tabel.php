@@ -1,6 +1,6 @@
 <div class="table-responsive">
-  <table class="table table-sm table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
-    <thead class="bg-dark text-white">
+  <table class="table shadow-sm table-hover table-sm table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead class="bg-primary text-white">
       <tr>
         <th class="align-middle text-center">KODE</th>
         <th class="align-middle text-center">NAMA LAYANAN</th>
@@ -10,7 +10,7 @@
         <th class="align-middle text-center">KEAMANAN<br>INFORMASI</th>
         <th class="align-middle text-center">KETERANGAN</th>
         <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-          <th class="align-middle text-center">OPSI</th>
+          <th class="align-middle text-center" width="6%">OPSI</th>
         <?php } ?>
       </tr>
     </thead>
@@ -52,8 +52,8 @@
             <td class="align-middle text-center"><?=$al['keterangan'] ?></td>
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
               <td class="align-middle text-center">
-                <a href="<?=base_url('aset/form/layanan/ubah/').$al['idl'] ?>" class="btn btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
-                <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusasetlayanan" data-toggle="modal" data-target="#hapusasetlayananModal" data-id="<?=$al['idl'] ?>" data-nama="<?=$al['nama'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+                <a href="<?=base_url('aset/form/layanan/ubah/').$al['idl'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
+                <button type="button" class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapusasetlayanan" data-toggle="modal" data-target="#hapusasetlayananModal" data-id="<?=$al['idl'] ?>" data-nama="<?=$al['nama'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
               </td>
             <?php } ?>
           </tr>
@@ -61,9 +61,9 @@
       <?php }else{ ?>
         <tr>
           <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-            <td colspan="7" class="text-center">Tidak ada data yang tersedia!</td>
+            <td colspan="8" class="text-center">Tidak ada data yang tersedia!</td>
           <?php }else{ ?>
-            <td colspan="6" class="text-center">Tidak ada data yang tersedia!</td>
+            <td colspan="7" class="text-center">Tidak ada data yang tersedia!</td>
           <?php } ?>
         </tr>
       <?php } ?>
@@ -83,12 +83,12 @@
       </div>
       <form id="formhapusasetlayanan" action="" method="post">
         <div class="modal-body">
-          <p id="ket">Keterangan</p>
+          <p id="ket" class="text-center">Keterangan</p>
           <input type="hidden" id="nama" name="nama">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" title="Batal" data-dismiss="modal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" title="Batal" data-dismiss="modal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
     </div>

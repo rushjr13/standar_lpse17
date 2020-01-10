@@ -73,33 +73,33 @@
                 </div>
                 <!-- Dropdown - Informasi Pengguna End -->
               <?php }else{ ?>
-              <div class="topbar-divider d-none d-sm-block"></div>
+                <div class="topbar-divider d-none d-sm-block"></div>
 
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="masukDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Masuk</span><i class="fa fa-fw fa-sign-in-alt"></i>
-                </a>
-                <!-- Dropdown - Masuk -->
-                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="masukDropdown">
-                  <h5 class="text-center m-1 font-weight-bold text-primary text-uppercase text-shadow">Masuk Aplikasi</h5>
-                  <div class="dropdown-divider"></div>
-                  <form class="px-3 py-2" action="<?=base_url('auth/masuk') ?>" method="post">
-                    <div class="form-group">
-                      <input type="text" class="form-control shadow-sm text-center" id="username" name="username" placeholder="Nama Pengguna" autofocus required>
-                    </div>
-                    <div class="form-group">
-                      <input type="password" class="form-control shadow-sm text-center" id="password" name="password" placeholder="Kata Sandi" required>
-                    </div>
-                    <button type="submit" class="btn btn-block btn-primary shadow-sm">Masuk <i class="fa fa-fw fa-sign-in-alt"></i></button>
-                  </form>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item text-center" href="#" data-toggle="modal" data-target="#daftarModal">Belum punya akun? Daftar Disini</a>
-                  <a class="dropdown-item text-center" href="#" data-toggle="modal" data-target="#lupasandiModal">Lupa Kata Sandi?</a>
-                </div>
-                <!-- Dropdown - Masuk End -->
+                <!-- Nav Item - User Information -->
+                <li class="nav-item dropdown no-arrow">
+                  <a class="nav-link dropdown-toggle" href="#" id="masukDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Masuk</span><i class="fa fa-fw fa-sign-in-alt"></i>
+                  </a>
+                  <!-- Dropdown - Masuk -->
+                  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="masukDropdown">
+                    <h5 class="text-center m-1 font-weight-bold text-primary text-uppercase text-shadow">Masuk Aplikasi</h5>
+                    <div class="dropdown-divider"></div>
+                    <form class="px-3 py-2" action="<?=base_url('auth/masuk') ?>" method="post">
+                      <div class="form-group">
+                        <input type="text" class="form-control shadow-sm text-center" id="username" name="username" placeholder="Nama Pengguna" autofocus required>
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control shadow-sm text-center" id="password" name="password" placeholder="Kata Sandi" required>
+                      </div>
+                      <button type="submit" class="btn btn-block btn-primary shadow-sm">Masuk <i class="fa fa-fw fa-sign-in-alt"></i></button>
+                    </form>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-center" href="#" data-toggle="modal" data-target="#daftarModal">Belum punya akun? Daftar Disini</a>
+                    <a class="dropdown-item text-center" href="#" data-toggle="modal" data-target="#lupasandiModal">Lupa Kata Sandi?</a>
+                  </div>
+                  <!-- Dropdown - Masuk End -->
+                </li>
               <?php } ?>
-            </li>
 
           </ul>
 

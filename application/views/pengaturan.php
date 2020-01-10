@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-2">
-    <div class="list-group shadow" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-app-list" data-toggle="list" href="#list-app" role="tab" aria-controls="app">Aplikasi</a>
-      <a class="list-group-item list-group-item-action" id="list-kontak-list" data-toggle="list" href="#list-kontak" role="tab" aria-controls="kontak">Kontak</a>
-      <a class="list-group-item list-group-item-action" id="list-sosmed-list" data-toggle="list" href="#list-sosmed" role="tab" aria-controls="sosmed">Sosial Media</a>
-      <a class="list-group-item list-group-item-action" id="list-informasi-list" data-toggle="list" href="#list-informasi" role="tab" aria-controls="informasi">Lokasi</a>
-      <a class="list-group-item list-group-item-action" id="list-logo-list" data-toggle="list" href="#list-logo" role="tab" aria-controls="logo">Logo & Icon</a>
+    <div class="list-group shadow-sm" id="list-tab" role="tablist">
+      <a class="list-group-item shadow-sm list-group-item-action active" id="list-app-list" data-toggle="list" href="#list-app" role="tab" aria-controls="app">Aplikasi</a>
+      <a class="list-group-item shadow-sm list-group-item-action" id="list-kontak-list" data-toggle="list" href="#list-kontak" role="tab" aria-controls="kontak">Kontak</a>
+      <a class="list-group-item shadow-sm list-group-item-action" id="list-sosmed-list" data-toggle="list" href="#list-sosmed" role="tab" aria-controls="sosmed">Sosial Media</a>
+      <a class="list-group-item shadow-sm list-group-item-action" id="list-informasi-list" data-toggle="list" href="#list-informasi" role="tab" aria-controls="informasi">Lokasi</a>
+      <a class="list-group-item shadow-sm list-group-item-action" id="list-logo-list" data-toggle="list" href="#list-logo" role="tab" aria-controls="logo">Logo & Icon</a>
     </div>
   </div>
   <div class="col-10">
@@ -78,7 +78,7 @@
           <div class="tab-pane fade" id="list-sosmed" role="tabpanel" aria-labelledby="list-sosmed-list">
             <h5 class="card-header bg-primary text-white">Sosial Media</h5>
             <div class="card-body row justify-content-md-center">
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label for="facebook">Facebook</label>
                   <input type="text" class="form-control shadow-sm" id="facebook" name="facebook" placeholder="Facebook" value="<?=$pengaturan['facebook'] ?>">
@@ -103,12 +103,14 @@
             <h5 class="card-header bg-primary text-white">Lokasi</h5>
             <div class="card-body">
               <div class="embed-responsive embed-responsive-21by9 mb-3 shadow-sm">
-                <iframe class="embed-responsive-item" src="<?=$pengaturan['map'] ?>" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item img-thumbnail" src="<?=$pengaturan['map'] ?>" allowfullscreen></iframe>
               </div>
-              <div class="form-group">
-                <label for="map">URL Google Map</label>
-                <input type="text" class="form-control shadow-sm" id="map" name="map" placeholder="URL Google Map" value="<?=$pengaturan['map'] ?>">
-                <?php echo form_error('map', '<small class="text-danger" style="font-style:italic;"><i class="fa fa-fw fa-exclamation"></i>', '</small>'); ?>
+              <div class="form-group row mb-0">
+                <label for="map" class="col-md-2 col-form-label">URL Google Map</label>
+                <div class="col-md-10">
+                  <input type="text" class="form-control shadow-sm" id="map" name="map" placeholder="URL Google Map" value="<?=$pengaturan['map'] ?>">
+                  <?php echo form_error('map', '<small class="text-danger" style="font-style:italic;"><i class="fa fa-fw fa-exclamation"></i>', '</small>'); ?>
+                </div>
               </div>
             </div>
           </div>
@@ -140,14 +142,14 @@
                     </div>
                   </div>
                 </div>
-                <div class="card shadow border-danger">
+                <div class="card shadow-sm">
                   <div class="card-body">
                     <div class="form-group">
                       <label for="logo">Logo</label>
                       <div class="custom-file">
                         <input type="file" class="custom-file-input shadow-sm" id="logo" name="logo">
                         <input type="hidden" class="custom-file-input shadow-sm" id="logolama" name="logolama" value="<?=$pengaturan['logo'] ?>">
-                        <label class="custom-file-label" for="logo" data-browse="Pilih Logo">Pilih Logo dengan format <strong>.png, .jpg, .jpeg</strong>!</label>
+                        <label class="custom-file-label shadow-sm" for="logo" data-browse="Pilih Logo">Pilih Logo dengan format <strong>.png, .jpg, .jpeg</strong>!</label>
                         <small class="form-text text-muted">Logo saat ini : <?=$pengaturan['logo'] ?></small>
                       </div>
                     </div>
@@ -156,7 +158,7 @@
                       <div class="custom-file">
                         <input type="file" class="custom-file-input shadow-sm" id="icon" name="icon">
                         <input type="hidden" class="custom-file-input shadow-sm" id="iconlama" name="iconlama" value="<?=$pengaturan['icon'] ?>">
-                        <label class="custom-file-label" for="icon" data-browse="Pilih Icon">Pilih Icon dengan format <strong>.png, .jpg, .jpeg</strong>!</label>
+                        <label class="custom-file-label shadow-sm" for="icon" data-browse="Pilih Icon">Pilih Icon dengan format <strong>.png, .jpg, .jpeg</strong>!</label>
                         <small class="form-text text-muted">Icon saat ini : <?=$pengaturan['icon'] ?></small>
                       </div>
                     </div>

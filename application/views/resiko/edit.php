@@ -1,15 +1,15 @@
 <form action="<?=base_url('resiko/ubah/').$sop_resiko['id'] ?>" method="post">
 	<div class="card shadow border-primary">
-		<div class="card-header bg-primary text-white">
+		<div class="card-header shadow-sm bg-primary text-white">
 			<?=$sop_resiko['nama'] ?>
-			<a href="<?=base_url('resiko') ?>" class="btn btn-sm btn-circle btn-danger float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
-			<button tipe="submit" class="btn btn-sm btn-circle btn-info mr-2 float-right" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+			<a href="<?=base_url('resiko') ?>" class="btn shadow-sm btn-sm btn-circle btn-danger float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
+			<button tipe="submit" class="btn shadow-sm btn-sm btn-circle btn-info mr-2 float-right" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
 		</div>
 		<div class="card-body">
 			<div class="form-group row">
 			    <label for="nama" class="col-sm-2 col-form-label">Nama SOP</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="nama" name="nama" value="<?=$sop_resiko['nama'] ?>" required>
+			      <input type="text" class="form-control shadow-sm" id="nama" name="nama" value="<?=$sop_resiko['nama'] ?>" required autofocus>
 			    </div>
 			  </div>
 			  <div class="form-group">

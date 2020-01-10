@@ -1,42 +1,48 @@
 <div class="card border-primary shadow">
-	<div class="card-header bg-primary text-white">
+	<div class="card-header shadow-sm bg-primary text-white">
 		Pencatatan Penggunaan Fasilitas & Akses Ruang Server
-		<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#formperangkatModal" title="Formulir Pencatatan Penggunaan Fasilitas & Akses Ruang Server"><i class="fa fa-fw fa-file"></i></button>
+		<button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#formperangkatModal" title="Formulir Pencatatan Penggunaan Fasilitas & Akses Ruang Server"><i class="fa fa-fw fa-file"></i></button>
 		<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-			<a href="<?=base_url('perangkat/form/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Pencatatan Penggunaan Fasilitas & Akses Ruang Server"><i class="fa fa-fw fa-print"></i></a>
-			<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah Pencatatan Penggunaan Fasilitas & Akses Ruang Server"><i class="fa fa-fw fa-plus"></i></button>
+			<a href="<?=base_url('perangkat/form/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary mx-2 float-right" target="_blank" title="Cetak Pencatatan Penggunaan Fasilitas & Akses Ruang Server"><i class="fa fa-fw fa-print"></i></a>
+			<button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah Pencatatan Penggunaan Fasilitas & Akses Ruang Server"><i class="fa fa-fw fa-plus"></i></button>
 		<?php } ?>
 	</div>
-	<div class="card-body">
-		<table class="table table-sm table-bordered table-striped table-hover m-0" width="100%" id="dataTable" cellspacing="0">
-			<thead class="bg-secondary text-white text-center">
+	<div class="card-body table-responsive small">
+		<table class="table shadow-sm table-sm table-bordered table-striped table-hover m-0" width="100%" id="dataTable" cellspacing="0">
+			<thead class="bg-primary text-white text-center">
 				<tr>
-					<th class="align-middle" colspan="2">NO</th>
+					<th class="align-middle" colspan="2">NOMOR</th>
 					<th class="align-middle" rowspan="2">NAMA LENGKAP</th>
 					<th class="align-middle" rowspan="2">INSTANSI</th>
-					<th class="align-middle" rowspan="2">ALAMAT</th>
+					<th class="align-middle" rowspan="2">TUJUAN</th>
 					<th class="align-middle" rowspan="2">JENIS PERIJINAN</th>
-					<th class="align-middle" rowspan="2" width="7%">OPSI</th>
+					<th class="align-middle" rowspan="2">OPSI</th>
 				</tr>
 				<tr>
-					<th class="align-middle" width="3%">URUT</th>
-					<th class="align-middle" width="5%">BADGE</th>
+					<th class="align-middle">URUT</th>
+					<th class="align-middle">BADGE</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php if($perangkat){ ?>
 					<?php $no=1; foreach ($perangkat as $prkt): ?>
 						<tr>
-							<td class="align-middle text-center"><?=$no++ ?></td>
-							<td class="align-middle text-center"><?=$prkt['no_badge'] ?></td>
-							<td class="align-middle text-center"><?=$prkt['nama'] ?><br><small><?=$prkt['jenis_identitas'] ?> : <?=$prkt['identitas'] ?></small></td>
-							<td class="align-middle"><?=$prkt['instansi'] ?></td>
-							<td class="align-middle"><?=$prkt['alamat'] ?></td>
-							<td class="align-middle text-center" width="15%"><?=$prkt['nama_jenis_perangkat'] ?></td>
-							<td class="align-middle text-center">
-								<button class="btn btn-sm btn-circle btn-warning"><i class="fa fa-fw fa-pencil-alt"></i></button>
-								<button class="btn btn-sm btn-circle btn-info"><i class="fa fa-fw fa-edit"></i></button>
-								<button class="btn btn-sm btn-circle btn-danger"><i class="fa fa-fw fa-trash"></i></button>
+							<td class="align-middle text-center" width="3%"><?=$no++ ?></td>
+							<td class="align-middle text-center" width="5%"><?=$prkt['no_badge'] ?></td>
+							<td class="align-middle text-center" width="17%"><strong><?=$prkt['nama'] ?></strong><br><small><?=$prkt['jenis_identitas'] ?> : <?=$prkt['identitas'] ?></small></td>
+							<td class="align-middle" width="28%"><?=$prkt['instansi'] ?></td>
+							<td class="align-middle" width="28%"><?=$prkt['tujuan'] ?></td>
+							<td class="align-middle text-center" width="12%"><?=$prkt['nama_jenis_perangkat'] ?></td>
+							<td class="align-middle text-center" width="7%">
+								<?php if($prkt['status_ijin']=="Tunda"){ ?>
+									<button class="btn shadow-sm btn-sm btn-circle btn-warning" id="persetujuan" title="Persetujuan" data-id="<?=$prkt['id_ijin_perangkat'] ?>" data-toggle="modal" data-target="#persetujuanModal"><i class="fa fa-fw fa-pencil-alt"></i></button>
+									<a href="<?=base_url('perangkat/form/ubah/').$prkt['id_ijin_perangkat'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
+									<button class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapus" data-id="<?=$prkt['id_ijin_perangkat'] ?>" data-toggle="modal" data-target="#hapusModal" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+								<?php }else if($prkt['status_ijin']=="Setuju"){ ?>
+									<a href="<?=base_url('perangkat/form/detail/').$prkt['id_ijin_perangkat'] ?>" class="btn shadow-sm btn-sm btn-circle btn-success" id="detail" title="Detail Perijinan"><i class="fa fa-fw fa-list"></i></a>
+								<?php }else{ ?>
+									<button class="btn shadow-sm btn-sm btn-circle btn-default" id="info" title="Info Perijinan" data-id="<?=$prkt['id_ijin_perangkat'] ?>" data-jenis="<?=$prkt['nama_jenis_perangkat'] ?>" data-nama="<?=$prkt['nama'] ?>" data-identitas="<?=$prkt['jenis_identitas'] ?> - <?=$prkt['identitas'] ?>" data-instansi="<?=$prkt['instansi'] ?>" data-alamat="<?=$prkt['alamat'] ?>" data-tujuan="<?=$prkt['tujuan'] ?>" data-status_ijin="<?=$prkt['status_ijin'] ?>" data-toggle="modal" data-target="#infoModal"><i class="fa fa-fw fa-info"></i></button>
+								<?php } ?>
 							</td>
 						</tr>
 					<?php endforeach ?>
@@ -64,12 +70,8 @@
 	      <div class="modal-body">
 	        <div class="form-group row">
 				    <label for="id_ijin_perangkat" class="col-sm-2 col-form-label">Nomor</label>
-				    <div class="col-sm-2">
+				    <div class="col-sm-5">
 				      <input type="text" readonly class="form-control-plaintext font-weight-bold" id="id_ijin_perangkat" name="id_ijin_perangkat" value="IP<?=time() ?>">
-				    </div>
-				    <label for="no_badge" class="col-sm-1 col-form-label text-right">No.Badge</label>
-				    <div class="col-sm-2">
-				      <input type="text" class="form-control shadow-sm font-weight-bold text-center" maxlength="6" id="no_badge" name="no_badge" placeholder="LPSE01" required>
 				    </div>
 				    <label for="id_perangkat_jenis" class="col-sm-2 col-form-label text-right">Jenis Perijinan</label>
 				    <div class="col-sm-3">
@@ -113,223 +115,136 @@
 				    	<textarea rows="3" class="form-control shadow-sm font-weight-bold" id="alamat" name="alamat" placeholder="Alamat Lengkap ..." required></textarea>
 				    </div>
 				  </div>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-	        <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
-	      </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Tangani -->
-<div class="modal fade" id="tanganiModal" tabindex="-1" role="dialog" aria-labelledby="tanganiModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="tanganiModalLabel">Tangani Penggunaan Fasilitas & Akses Ruang Server</h5>
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button> -->
-      </div>
-      <form id="formtangani" action="<?=base_url('perangkat/form/tangani/') ?>" method="post">
-	      <div class="modal-body">
-	      	<h6 class="font-weight-bold">PENGGUNA</h6>
-	        <div class="row">
-	        	<div class="col-sm-2">No. Tiket</div>
-	        	<div class="col-sm-10 font-weight-bold" id="nomortiket">NOMOR TIKET</div>
-	        	<input type="hidden" id="id_perangkat" name="id_perangkat">
-	        </div>
-	        <div class="row">
-	        	<div class="col-sm-2">Nama Pengguna</div>
-	        	<div class="col-sm-10 font-weight-bold" id="nama_pengguna">NAMA PENGGUNA</div>
-	        </div>
-	        <div class="row">
-	        	<div class="col-sm-2">Tanggal Pelaporan</div>
-	        	<div class="col-sm-10 font-weight-bold" id="tgl_pelaporan">TANGGAL PELAPORAN</div>
-	        </div>
-	        <div class="row">
-	        	<div class="col-sm-2">Deskripsi</div>
-	        	<div class="col-sm-10 font-weight-bold text-wrap" id="deskripsi_perangkat">DESKRIPSI</div>
-	        </div>
-	        <hr>
-	        <div class="form-group row">
-				    <label for="petugas_penanganan" class="col-sm-2 col-form-label">Nama Petugas</label>
-				    <div class="col-sm-6">
-				      <input type="text" class="form-control font-weight-bold" id="petugas_penanganan" name="petugas_penanganan" placeholder="Nama Petugas" required>
-				    </div>
-				    <label for="tgl_penanganan" class="col-sm-1 col-form-label text-right">Tanggal</label>
-				    <div class="col-sm-3">
-				      <input type="date" class="form-control font-weight-bold" id="tgl_penanganan" name="tgl_penanganan" value="<?=date('Y-m-d', time()) ?>">
-				    </div>
-				  </div>
 				  <div class="form-group row">
-				    <label for="ket_penanganan" class="col-sm-2 col-form-label">Keterangan</label>
-				    <div class="col-sm-6">
-				      <textarea class="form-control font-weight-bold" id="ket_penanganan" name="ket_penanganan" rows="3" required></textarea>
-				    </div>
-				    <label for="status_penanganan" class="col-sm-1 col-form-label text-right">Status</label>
-				    <div class="col-sm-3">
-				      <input type="text" class="form-control font-weight-bold" id="status_penanganan" name="status_penanganan" placeholder="Status Penanganan">
+				    <label for="tujuan" class="col-sm-2 col-form-label">Tujuan</label>
+				    <div class="col-sm-10">
+				    	<textarea rows="3" class="form-control shadow-sm font-weight-bold" id="tujuan" name="tujuan" placeholder="Tujuan Perijinan ..." required></textarea>
 				    </div>
 				  </div>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times"></i> Batal</button>
-	        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-save"></i> Tangani</button>
+	        <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+	        <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
 	      </div>
       </form>
     </div>
   </div>
 </div>
 
-<!-- Modal Selesaikan -->
-<div class="modal fade" id="selesaikanModal" tabindex="-1" role="dialog" aria-labelledby="selesaikanModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl" role="document">
+<!-- Modal Persetujuan -->
+<div class="modal fade" id="persetujuanModal" tabindex="-1" role="dialog" aria-labelledby="persetujuanModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="selesaikanModalLabel">Selesaikan Penggunaan Fasilitas & Akses Ruang Server</h5>
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button> -->
+        <h5 class="modal-title" id="persetujuanModalLabel">Persetujuan</h5>
       </div>
-      <form id="formselesaikan" action="<?=base_url('perangkat/form/selesaikan/') ?>" method="post" enctype="multipart/form-data">
+      <form id="formpersetujuanModal" action="" method="post" >
 	      <div class="modal-body">
-	      	<h6 class="font-weight-bold">PENGGUNA</h6>
-	        <div class="row">
-	        	<div class="col-sm-2">No. Tiket</div>
-	        	<div class="col-sm-10 font-weight-bold" id="nomortiket">NOMOR TIKET</div>
-	        	<input type="hidden" id="id_perangkat" name="id_perangkat">
-	        </div>
-	        <div class="row">
-	        	<div class="col-sm-2">Nama Pengguna</div>
-	        	<div class="col-sm-10 font-weight-bold" id="nama_pengguna">NAMA PENGGUNA</div>
-	        </div>
-	        <div class="row">
-	        	<div class="col-sm-2">Tanggal Pelaporan</div>
-	        	<div class="col-sm-10 font-weight-bold" id="tgl_pelaporan">TANGGAL PELAPORAN</div>
-	        </div>
-	        <div class="row">
-	        	<div class="col-sm-2">Deskripsi</div>
-	        	<div class="col-sm-10 font-weight-bold text-wrap" id="deskripsi_perangkat">DESKRIPSI</div>
-	        </div>
-	        <hr>
-	        <h6 class="font-weight-bold">PENANGANAN</h6>
-	        <div class="row">
-	        	<div class="col-sm-2">Nama Petugas</div>
-	        	<div class="col-sm-10 font-weight-bold" id="petugas_penanganan">nama_petugas</div>
-	        </div>
-	        <div class="row">
-	        	<div class="col-sm-2">Tanggal</div>
-	        	<div class="col-sm-10 font-weight-bold" id="tgl_penanganan">tgl_penanganan</div>
-	        </div>
-	        <div class="row">
-	        	<div class="col-sm-2">Keterangan</div>
-	        	<div class="col-sm-10 font-weight-bold" id="ket_penanganan">ket_penanganan</div>
-	        </div>
-	        <div class="row">
-	        	<div class="col-sm-2">Status</div>
-	        	<div class="col-sm-10 font-weight-bold text-wrap" id="status_penanganan">status_penanganan</div>
-	        </div>
-	        <hr>
-	        <div class="row">
-	        	<div class="col-sm-7">
-			        <div class="form-group row">
-						    <label for="solusi_penyelesaian" class="col-sm-2 col-form-label">Solusi</label>
-						    <div class="col-sm-10">
-						      <textarea class="form-control font-weight-bold" id="solusi_penyelesaian" name="solusi_penyelesaian" rows="4" required></textarea>
-						    </div>
-						  </div>
-	        	</div>
-	        	<div class="col-sm-5">
-			        <div class="form-group row">
-						    <label for="tgl_penyelesaian" class="col-sm-6 col-form-label text-right">Tanggal</label>
-						    <div class="col-sm-6">
-						      <input type="date" class="form-control font-weight-bold" id="tgl_penyelesaian" name="tgl_penyelesaian" value="<?=date('Y-m-d', time()) ?>">
-						    </div>
-	        		</div>
-	        		<div class="form-group row">
-						    <label for="status_konfirmasi" class="col-sm-6 col-form-label text-right">Status Konfirmasi Pengguna</label>
-						    <div class="col-sm-6">
-						      <select class="form-control font-weight-bold" id="status_konfirmasi" name="status_konfirmasi" required>
-							      <option value="">-- Pilih --</option>
-							      <option value="Telah Diinformasikan">Telah Diinformasikan</option>
-							      <option value="Belum Diinformasikan">Belum Diinformasikan</option>
-							    </select>
-						    </div>
-	        		</div>
-	        	</div>
-	        </div>
+				  <div class="form-group">
+			      <select class="form-control shadow-sm font-weight-bold" id="status_ijin" name="status_ijin" required onchange="fungsiijin()">
+				      <option value="">-- Pilih Status Persetujuan --</option>
+				      <option value="Setuju">Setuju</option>
+				      <option value="Tidak Setuju">Tidak Setuju</option>
+				    </select>
+				  </div>
+				  <div class="form-group row mb-0" id="badge">
+					  <label for="no_badge" class="col-sm-3 col-form-label">No.Badge</label>
+				    <div class="col-sm-9">
+				      <input type="text" class="form-control shadow-sm font-weight-bold text-center" maxlength="7" id="no_badge" name="no_badge" placeholder="LPSE01" required>
+				    </div>
+				  </div>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times"></i> Batal</button>
-	        <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-fw fa-save"></i> Selesaikan</button>
+	        <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+	        <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
 	      </div>
       </form>
     </div>
   </div>
 </div>
 
-<!-- Modal Klasifikasi -->
-<div class="modal fade" id="klasifikasiModal" tabindex="-1" role="dialog" aria-labelledby="klasifikasiModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl" role="document">
+<!-- Modal Info -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="klasifikasiModalLabel">Klasifikasi Gangguan/Permasalahan</h5>
+        <h5 class="modal-title" id="infoModalLabel">Informasi Ijin Penggunaan Perangkat</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <div class="row">
-        	<div class="col-sm-2">No. Tiket</div>
-        	<div class="col-sm-10 font-weight-bold" id="nomortiket">NOMOR TIKET</div>
-        </div>
-        <div class="row">
-        	<div class="col-sm-2">Nama Pengguna</div>
-        	<div class="col-sm-10 font-weight-bold" id="namapengguna">NAMA PENGGUNA</div>
-        </div>
-        <div class="row">
-        	<div class="col-sm-2">Tanggal Pelaporan</div>
-        	<div class="col-sm-10 font-weight-bold" id="tglpelaporan">TANGGAL PELAPORAN</div>
-        </div>
-        <div class="row">
-        	<div class="col-sm-2">Deskripsi</div>
-        	<div class="col-sm-10 font-weight-bold text-wrap" id="deskripsiperangkat">DESKRIPSI</div>
-        </div>
-        <div class="table-responsive mt-3">
-        	<table class="table table-sm table-bordered" width="100%" cellspacing="0">
-        		<thead class="bg-secondary text-white text-center small">
-        			<tr>
-        				<th>TIPE<br><small>Gangguan (G), Masalah (M), Permintaan Layanan (PL)</small></th>
-        				<th>KATEGORI<br><small>Teknis (T), Non Teknis (NT)</small></th>
-        				<th>USER<br><small>Panitia (Pt), Penyedia (Py), PPK, Auditor (Aud), Publik (Pub), Lainnya (L)</small></th>
-        				<th>JENIS<br><small>Hardware (Hw), Software (Sw), Prosedur (Ps), Lain-lain (L)</small></th>
-        				<th>URGENSI<br><small>Mendesak (M), Tidak Mendesak (TM)</small></th>
-        				<th>DAMPAK<br><small>Besar (B), Sedang (S), Kecil (K)</small></th>
-        				<th>PRIORITAS<br><small>Tinggi (T), Menengah (M), Rendah (R)</small></th>
-        			</tr>
-        		</thead>
-        		<tbody class="text-center font-weight-bold">
-        			<tr>
-        				<td class="align-middle" id="tipeperangkat">tipe</td>
-        				<td class="align-middle" id="kategoriperangkat">kategori</td>
-        				<td class="align-middle" id="userperangkat">user</td>
-        				<td class="align-middle" id="jenisperangkat">jenis</td>
-        				<td class="align-middle" id="urgensiperangkat">urgensi</td>
-        				<td class="align-middle" id="dampakperangkat">dampak</td>
-        				<td class="align-middle" id="prioritasperangkat">prioritas</td>
-        			</tr>
-        		</tbody>
-        	</table>
-        </div>
+      <div class="modal-body table-responsive">
+			  <table class="table table-sm table-borderless" width="100%" cellspacing="0">
+			  	<tbody>
+			  		<tr>
+			  			<td width="22%">ID Ijin Penggunaan</td>
+			  			<td width="3%">:</td>
+			  			<th id="id_ijin_perangkat"></th>
+			  		</tr>
+			  		<tr>
+			  			<td>Jenis Perijinan</td>
+			  			<td>:</td>
+			  			<th id="jenis_perijinan"></th>
+			  		</tr>
+			  		<tr>
+			  			<td>Nama</td>
+			  			<td>:</td>
+			  			<th id="nama"></th>
+			  		</tr>
+			  		<tr>
+			  			<td>Identitas</td>
+			  			<td>:</td>
+			  			<th id="identitas"></th>
+			  		</tr>
+			  		<tr>
+			  			<td>Instansi</td>
+			  			<td>:</td>
+			  			<th id="instansi"></th>
+			  		</tr>
+			  		<tr>
+			  			<td>Alamat</td>
+			  			<td>:</td>
+			  			<th id="alamat"></th>
+			  		</tr>
+			  		<tr>
+			  			<td>Tujuan Perijinan</td>
+			  			<td>:</td>
+			  			<th id="tujuan"></th>
+			  		</tr>
+			  		<tr>
+			  			<td>Status Perijinan</td>
+			  			<td>:</td>
+			  			<th id="status_ijin"></th>
+			  		</tr>
+			  	</tbody>
+			  </table>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modal Formulir Gangguan -->
+<!-- Modal Hapus -->
+<div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="hapusModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="hapusModalLabel">Hapus Ijin Akses</h5>
+      </div>
+      <form id="formhapusModal" action="" method="post">
+	      <div class="modal-body">
+				  <input type="hidden" name="id_ijin_perangkat" id="id_ijin_perangkat">
+				  <p id="ket" class="text-center">Anda yakin ingin menghapus permintaan ijin akses ini?</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+	        <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+	      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Formulir -->
 <div class="modal fade" id="formperangkatModal" tabindex="-1" role="dialog" aria-labelledby="formperangkatModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
@@ -349,63 +264,58 @@
 <script src="<?php echo base_url() ?>assets/js/jquery-1.10.2.js"></script>
 <script>
 
-    $(document).on("click", "#klasifikasi", function() {
-        var nomortiket = $(this).data('nomortiket');
-        var namapengguna = $(this).data('namapengguna');
-        var tglpelaporan = $(this).data('tglpelaporan');
-        var deskripsiperangkat = $(this).data('deskripsiperangkat');
-        var tipeperangkat = $(this).data('tipeperangkat');
-        var kategoriperangkat = $(this).data('kategoriperangkat');
-        var userperangkat = $(this).data('userperangkat');
-        var jenisperangkat = $(this).data('jenisperangkat');
-        var urgensiperangkat = $(this).data('urgensiperangkat');
-        var dampakperangkat = $(this).data('dampakperangkat');
-        var prioritasperangkat = $(this).data('prioritasperangkat');
-        $("#klasifikasiModal #nomortiket").html(nomortiket);
-        $("#klasifikasiModal #namapengguna").html(namapengguna);
-        $("#klasifikasiModal #tglpelaporan").html(tglpelaporan);
-        $("#klasifikasiModal #deskripsiperangkat").html(deskripsiperangkat);
-        $("#klasifikasiModal #tipeperangkat").html(tipeperangkat);
-        $("#klasifikasiModal #kategoriperangkat").html(kategoriperangkat);
-        $("#klasifikasiModal #userperangkat").html(userperangkat);
-        $("#klasifikasiModal #jenisperangkat").html(jenisperangkat);
-        $("#klasifikasiModal #urgensiperangkat").html(urgensiperangkat);
-        $("#klasifikasiModal #dampakperangkat").html(dampakperangkat);
-        $("#klasifikasiModal #prioritasperangkat").html(prioritasperangkat);
+    $(document).on("click", "#persetujuan", function() {
+        var id = $(this).data('id');
+        $("#badge").hide();
+        $("#no_badge").val('--');
+        $("#persetujuanModal #formpersetujuanModal").attr('action', '<?php echo base_url() ?>perangkat/form/persetujuan/'+id);
     });
 
-    $(document).on("click", "#tangani", function() {
-        var id_perangkat = $(this).data('id_perangkat');
-        var nama_pengguna = $(this).data('nama_pengguna');
-        var tgl_pelaporan = $(this).data('tgl_pelaporan');
-        var deskripsi_perangkat = $(this).data('deskripsi_perangkat');
-        $("#tanganiModal #nomortiket").html(id_perangkat);
-        $("#tanganiModal #id_perangkat").val(id_perangkat);
-        $("#tanganiModal #nama_pengguna").html(nama_pengguna);
-        $("#tanganiModal #tgl_pelaporan").html(tgl_pelaporan);
-        $("#tanganiModal #deskripsi_perangkat").html(deskripsi_perangkat);
-        $("#tanganiModal #formtangani").attr('action', '<?php echo base_url() ?>perangkat/form/tangani/'+id_perangkat);
+    function fungsiijin() {
+		  var status = document.getElementById("status_ijin").value;
+		  if(status=="Tidak Setuju"){
+			  $("#no_badge").val('--');
+			  $("#badge").hide();
+		  }else if(status=="Setuju"){
+			  $("#no_badge").val('');
+			  $("#badge").show();
+		  }
+		}
+
+		function validateFormpersetujuan() {
+		  var no_badge = document.forms["formpersetujuanModal"]["no_badge"].value;
+		  if (no_badge == "") {
+		    alert("No. Badge Harus Diisi");
+		    return false;
+		  }
+		}
+
+    $(document).on("click", "#hapus", function() {
+        var id = $(this).data('id');
+        $("#hapusModal #formhapusModal").attr('action', '<?php echo base_url() ?>perangkat/form/hapus/'+id);
     });
 
-    $(document).on("click", "#selesaikan", function() {
-        var id_perangkat = $(this).data('id_perangkat');
-        var nama_pengguna = $(this).data('nama_pengguna');
-        var tgl_pelaporan = $(this).data('tgl_pelaporan');
-        var deskripsi_perangkat = $(this).data('deskripsi_perangkat');
-        var petugas_penanganan = $(this).data('petugas_penanganan');
-        var status_penanganan = $(this).data('status_penanganan');
-        var ket_penanganan = $(this).data('ket_penanganan');
-        var tgl_penanganan = $(this).data('tgl_penanganan');
-        $("#selesaikanModal #nomortiket").html(id_perangkat);
-        $("#selesaikanModal #id_perangkat").val(id_perangkat);
-        $("#selesaikanModal #nama_pengguna").html(nama_pengguna);
-        $("#selesaikanModal #tgl_pelaporan").html(tgl_pelaporan);
-        $("#selesaikanModal #deskripsi_perangkat").html(deskripsi_perangkat);
-        $("#selesaikanModal #petugas_penanganan").html(petugas_penanganan);
-        $("#selesaikanModal #status_penanganan").html(status_penanganan);
-        $("#selesaikanModal #ket_penanganan").html(ket_penanganan);
-        $("#selesaikanModal #tgl_penanganan").html(tgl_penanganan);
-        $("#selesaikanModal #formselesaikan").attr('action', '<?php echo base_url() ?>perangkat/form/selesaikan/'+id_perangkat);
+    $(document).on("click", "#info", function() {
+        var id = $(this).data('id');
+        var jenis = $(this).data('jenis');
+        var nama = $(this).data('nama');
+        var identitas = $(this).data('identitas');
+        var instansi = $(this).data('instansi');
+        var alamat = $(this).data('alamat');
+        var tujuan = $(this).data('tujuan');
+        var status_ijin = $(this).data('status_ijin');
+        $("#infoModal #id_ijin_perangkat").html(id);
+        $("#infoModal #jenis_perijinan").html(jenis);
+        $("#infoModal #nama").html(nama);
+        $("#infoModal #identitas").html(identitas);
+        $("#infoModal #instansi").html(instansi);
+        $("#infoModal #alamat").html(alamat);
+        $("#infoModal #tujuan").html(tujuan);
+        if(status_ijin=="Setuju"){
+	        $("#infoModal #status_ijin").html('Diterima');
+        }else{
+	        $("#infoModal #status_ijin").html('Ditolak');
+        }
     });
 
 </script>

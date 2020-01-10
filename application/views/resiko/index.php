@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-3">
     <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-resiko-list" data-toggle="list" href="#list-resiko" role="tab" aria-controls="resiko">Resiko Layanan</a>
+      <a class="list-group-item shadow-sm list-group-item-action active" id="list-resiko-list" data-toggle="list" href="#list-resiko" role="tab" aria-controls="resiko">Resiko Layanan</a>
       <?php foreach ($sop_resiko as $sopr): ?>
-	      <a class="list-group-item list-group-item-action" id="list-<?=$sopr['id'] ?>-list" data-toggle="list" href="#list-<?=$sopr['id'] ?>" role="tab" aria-controls="<?=$sopr['id'] ?>"><?=$sopr['nama'] ?></a>
+	      <a class="list-group-item shadow-sm list-group-item-action" id="list-<?=$sopr['id'] ?>-list" data-toggle="list" href="#list-<?=$sopr['id'] ?>" role="tab" aria-controls="<?=$sopr['id'] ?>"><?=$sopr['nama'] ?></a>
       <?php endforeach ?>
     </div>
   </div>
@@ -11,10 +11,10 @@
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active mb-4" id="list-resiko" role="tabpanel" aria-labelledby="list-resiko-list">
       	<div class="card shadow border-primary">
-      		<div class="card-header bg-primary text-white">
+      		<div class="card-header shadow-sm bg-primary text-white">
       			Resiko Layanan
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-        			<button type="button" class="btn btn-sm btn-circle btn-primary float-right mr-2" id="editresiko" data-toggle="modal" data-target="#editresikoModal" title="Edit Daftar Istilah Pengelolaan Resiko Layanan"><i class="fa fa-fw fa-edit"></i></button>
+        			<button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right mr-2" id="editresiko" data-toggle="modal" data-target="#editresikoModal" title="Edit Daftar Istilah Pengelolaan Resiko Layanan"><i class="fa fa-fw fa-edit"></i></button>
             <?php } ?>
       		</div>
       		<div class="card-body">
@@ -25,10 +25,10 @@
       <?php foreach ($sop_resiko as $sopr): ?>
 	      <div class="tab-pane fade show mb-4" id="list-<?=$sopr['id'] ?>" role="tabpanel" aria-labelledby="list-<?=$sopr['id'] ?>-list">
 	      	<div class="card shadow border-primary">
-	      		<div class="card-header bg-primary text-white">
+	      		<div class="card-header shadow-sm bg-primary text-white">
 	      			<?=$sopr['nama'] ?>
               <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-  	      			<a href="<?=base_url('resiko/edit/').$sopr['id'] ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Edit <?=$sopr['nama'] ?>"><i class="fa fa-fw fa-edit"></i></a>
+  	      			<a href="<?=base_url('resiko/edit/').$sopr['id'] ?>" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" title="Edit <?=$sopr['nama'] ?>"><i class="fa fa-fw fa-edit"></i></a>
               <?php } ?>
 	      		</div>
 	      		<div class="card-body">
@@ -53,7 +53,7 @@
 				  <div class="form-group row">
 				    <label for="nama" class="col-sm-2 col-form-label">Nama SOP</label>
 				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="nama" name="nama" value="<?=$istilah['nama'] ?>" required>
+				      <input type="text" class="form-control shadow-sm" id="nama" name="nama" value="<?=$istilah['nama'] ?>" required>
 				    </div>
 				  </div>
 				  <div class="form-group">
@@ -62,8 +62,8 @@
 				  </div>
 				</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" id="tblubahstruktur" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" id="tblubahstruktur" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -80,11 +80,11 @@
       <form id="formhapussop" action="" method="post" enctype="multipart/form-data">
         <div class="modal-body">
 				  <p id="ket">Keterangan</p>
-          <input class="form-control" type="hidden" id="nama" name="nama">
+          <input class="form-control shadow-sm" type="hidden" id="nama" name="nama">
 				</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
     </div>

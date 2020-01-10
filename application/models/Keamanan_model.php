@@ -41,6 +41,11 @@ class Keamanan_model extends CI_Model {
         }
     }
 
+    // SEMUA PERANGKAT DETAIL
+    function perangkat_detail($id){
+        return $this->db->get_where('perangkat_detail', ['id_ijin_perangkat'=>$id])->row_array();
+    }
+
     // PENGGUNAAN FASILITAS
     function perangkat_fasilitas($id=null){
         if($id==null){

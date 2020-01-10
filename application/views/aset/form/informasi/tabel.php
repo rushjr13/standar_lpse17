@@ -1,17 +1,17 @@
 <div class="table-responsive">
-  <table class="table table-sm table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
-    <thead class="bg-dark text-white">
-      <tr>
-        <th class="align-middle text-center">KODE</th>
-        <th class="align-middle text-center">NAMA ASET</th>
-        <th class="align-middle text-center">SUB KLASIFIKASI</th>
-        <th class="align-middle text-center">FORMAT PENYIMPANAN</th>
-        <th class="align-middle text-center">PEMILIK ASET</th>
-        <th class="align-middle text-center">MASA BERLAKU</th>
-        <th class="align-middle text-center">KEAMANAN INFORMASI</th>
+  <table class="table shadow-sm table-sm table-striped table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+    <thead class="bg-primary text-white">
+      <tr class="text-center">
+        <th class="align-middle">KODE</th>
+        <th class="align-middle">NAMA ASET</th>
+        <th class="align-middle">SUB KLASIFIKASI</th>
+        <th class="align-middle">FORMAT PENYIMPANAN</th>
+        <th class="align-middle">PEMILIK ASET</th>
+        <th class="align-middle">MASA BERLAKU</th>
+        <th class="align-middle">KEAMANAN INFORMASI</th>
         <!-- <th class="align-middle text-center">KETERANGAN</th> -->
         <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-          <th class="align-middle text-center">OPSI</th>
+          <th class="align-middle text-center" width="6%">OPSI</th>
         <?php } ?>
       </tr>
     </thead>
@@ -32,7 +32,7 @@
           ?>
           <tr>
             <td class="align-middle text-center"><?=$ai['id'] ?></td>
-            <td class="align-middle"><?=$ai['nama'] ?></td>
+            <td class="align-middle text-center"><?=$ai['nama'] ?></td>
             <td class="align-middle text-center"><?=$ai['klasifikasi'] ?></td>
             <td class="align-middle text-center"><?=$ai['format'] ?></td>
             <td class="align-middle text-center"><?=$ai['pemilik'] ?></td>
@@ -46,8 +46,8 @@
             <!-- <td class="align-middle"><?=$ai['keterangan'] ?></td> -->
             <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
               <td class="align-middle text-center">
-                <a href="<?=base_url('aset/form/informasi/ubah/').$ai['id'] ?>" class="btn btn-sm btn-circle btn-info m-1" title="Ubah Aset Informasi <?=$ai['nama'] ?>"><i class="fa fa-fw fa-edit"></i></a>
-                <button type="button" class="btn btn-sm btn-circle btn-danger m-1" id="hapusasetinformasi" data-toggle="modal" data-target="#hapusasetinformasiModal" data-id="<?=$ai['id'] ?>" data-nama="<?=$ai['nama'] ?>" title="Hapus Aset Informasi <?=$ai['nama'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+                <a href="<?=base_url('aset/form/informasi/ubah/').$ai['id'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info" title="Ubah Aset Informasi <?=$ai['nama'] ?>"><i class="fa fa-fw fa-edit"></i></a>
+                <button type="button" class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapusasetinformasi" data-toggle="modal" data-target="#hapusasetinformasiModal" data-id="<?=$ai['id'] ?>" data-nama="<?=$ai['nama'] ?>" title="Hapus Aset Informasi <?=$ai['nama'] ?>"><i class="fa fa-fw fa-trash"></i></button>
               </td>
             <?php } ?>
           </tr>
@@ -77,12 +77,12 @@
       </div>
       <form id="formhapusasetinformasi" action="" method="post">
         <div class="modal-body">
-          <p id="ket">Keterangan</p>
+          <p id="ket" class="text-center">Keterangan</p>
           <input type="hidden" id="nama" name="nama">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" title="Batal" data-dismiss="modal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+          <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" title="Batal" data-dismiss="modal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
     </div>

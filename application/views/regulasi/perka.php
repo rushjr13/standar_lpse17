@@ -1,13 +1,13 @@
 <div class="card shadow border-primary">
-  <div class="card-header bg-primary text-white">
+  <div class="card-header shadow-sm bg-primary text-white">
     Regulasi Peraturan Kepala LPSE
     <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-        <button type="button" class="btn btn-sm btn-circle btn-primary mr-2 float-right" id="tambah" data-toggle="modal" data-target="#tambahModal" title="Tambah Regulasi"><i class="fa fa-fw fa-plus"></i></button>
+        <button type="button" class="btn btn-sm btn-circle btn-primary mr-2 shadow-sm float-right" id="tambah" data-toggle="modal" data-target="#tambahModal" title="Tambah Regulasi"><i class="fa fa-fw fa-plus"></i></button>
     <?php } ?>
   </div>
   <div class="card-body table-responsive">
     <?php if($perka){ ?>
-        <table class="table table-sm table-borderless table-hover" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-sm table-borderless table-hover shadow-sm" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr class="bg-primary text-white">
                     <th>
@@ -98,10 +98,10 @@
                             <div class="col-lg-2 p-2"><?=$tgl_berlaku ?></div>
                             <div class="col-lg-2 p-2"><?=$tgl_berakhir ?></div>
                             <div class="col-lg-1 p-2">
-                                <button type="button" class="btn btn-sm btn-circle btn-success" id="file" data-toggle="modal" data-target="#fileModal" data-nomor="<?=$pk['nomor'] ?>" data-tahun="<?=$pk['tahun'] ?>" data-nama="<?=$pk['nama'] ?>" data-file="<?=$pk['file'] ?>" title="Dokumen"><i class="fa fa-fw fa-file"></i></button>
+                                <button type="button" class="btn btn-sm btn-circle btn-success shadow-sm" id="file" data-toggle="modal" data-target="#fileModal" data-nomor="<?=$pk['nomor'] ?>" data-tahun="<?=$pk['tahun'] ?>" data-nama="<?=$pk['nama'] ?>" data-file="<?=$pk['file'] ?>" title="Dokumen"><i class="fa fa-fw fa-file"></i></button>
                                 <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-                                    <button type="button" class="btn btn-sm btn-circle btn-info" id="ubah" data-toggle="modal" data-target="#ubahModal" data-id="<?=$pk['id'] ?>" data-nomor="<?=$pk['nomor'] ?>" data-tahun="<?=$pk['tahun'] ?>" data-nama="<?=$pk['nama'] ?>" data-tentang="<?=$pk['tentang'] ?>" data-berlaku="<?=$pk['berlaku'] ?>" data-berakhir="<?=$pk['berakhir'] ?>" data-file="<?=$pk['file'] ?>" title="Ubah <?=$pk['nama'] ?>"><i class="fa fa-fw fa-edit"></i></button>
-                                    <button type="button" class="btn btn-sm btn-circle btn-danger" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$pk['id'] ?>" data-nomor="<?=$pk['nomor'] ?>" data-tahun="<?=$pk['tahun'] ?>" data-nama="<?=$pk['nama'] ?>" data-file="<?=$pk['file'] ?>" title="Hapus <?=$pk['nama'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+                                    <button type="button" class="btn btn-sm btn-circle btn-info shadow-sm" id="ubah" data-toggle="modal" data-target="#ubahModal" data-id="<?=$pk['id'] ?>" data-nomor="<?=$pk['nomor'] ?>" data-tahun="<?=$pk['tahun'] ?>" data-nama="<?=$pk['nama'] ?>" data-tentang="<?=$pk['tentang'] ?>" data-berlaku="<?=$pk['berlaku'] ?>" data-berakhir="<?=$pk['berakhir'] ?>" data-file="<?=$pk['file'] ?>" title="Ubah <?=$pk['nama'] ?>"><i class="fa fa-fw fa-edit"></i></button>
+                                    <button type="button" class="btn btn-sm btn-circle btn-danger shadow-sm" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$pk['id'] ?>" data-nomor="<?=$pk['nomor'] ?>" data-tahun="<?=$pk['tahun'] ?>" data-nama="<?=$pk['nama'] ?>" data-file="<?=$pk['file'] ?>" title="Hapus <?=$pk['nama'] ?>"><i class="fa fa-fw fa-trash"></i></button>
                                 <?php } ?>
                             </div>
                         </div>
@@ -127,40 +127,40 @@
             <div class="form-group row">
                 <div class="col-md-3">
                     <label for="nomor">Nomor Peraturan</label>
-                    <input type="text" class="form-control" id="nomor" name="nomor" placeholder="Nomor Peraturan" required>
+                    <input type="text" class="form-control shadow-sm" id="nomor" name="nomor" placeholder="Nomor Peraturan" required>
                 </div>
                 <div class="col-md-3">
                     <label for="tahun">Tahun Peraturan</label>
-                    <input type="number" maxlength="4" class="form-control" id="tahun" name="tahun" placeholder="Tahun Peraturan" required>
+                    <input type="number" maxlength="4" class="form-control shadow-sm" id="tahun" name="tahun" placeholder="Tahun Peraturan" required>
                 </div>
                 <div class="col-md-3">
                     <label for="berlaku">Tanggal Berlaku</label>
-                    <input type="date" class="form-control" id="berlaku" name="berlaku" placeholder="Tanggal Berlaku" required>
+                    <input type="date" class="form-control shadow-sm" id="berlaku" name="berlaku" placeholder="Tanggal Berlaku" required>
                 </div>
                 <div class="col-md-3">
                     <label for="berakhir">Tanggal Berakhir</label>
-                    <input type="date" class="form-control" id="berakhir" name="berakhir" placeholder="Tanggal Berakhir" required>
+                    <input type="date" class="form-control shadow-sm" id="berakhir" name="berakhir" placeholder="Tanggal Berakhir" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="nama">Nama Peraturan</label>
-                <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Peraturan" required>
+                <input type="text" class="form-control shadow-sm" id="nama" name="nama" placeholder="Nama Peraturan" required>
             </div>
             <div class="form-group">
                 <label for="tentang">Tentang</label>
-                <textarea class="form-control" id="tentang" name="tentang" placeholder="Tentang" required></textarea>
+                <textarea class="form-control shadow-sm" id="tentang" name="tentang" placeholder="Tentang" required></textarea>
             </div>
             <div class="form-group">
                 <label for="file">File Upload</label>
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="file" name="file" required>
-                  <label class="custom-file-label" for="file" data-browse="Pilih File">Pilih file dengan format <strong>.pdf</strong>!</label>
+                  <input type="file" class="custom-file-input shadow-sm" id="file" name="file" required>
+                  <label class="custom-file-label shadow-sm" for="file" data-browse="Pilih File">Pilih file dengan format <strong>.pdf</strong>!</label>
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-primary shadow-sm" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -177,14 +177,14 @@
       <form id="formhapus" action="" method="post">
         <div class="modal-body">
           <p id="ket">Keterangan</p>
-          <input class="form-control" type="hidden" id="nomor" name="nomor">
-          <input class="form-control" type="hidden" id="tahun" name="tahun">
-          <input class="form-control" type="hidden" id="nama" name="nama">
-          <input class="form-control" type="hidden" id="file" name="file">
+          <input class="form-control shadow-sm" type="hidden" id="nomor" name="nomor">
+          <input class="form-control shadow-sm" type="hidden" id="tahun" name="tahun">
+          <input class="form-control shadow-sm" type="hidden" id="nama" name="nama">
+          <input class="form-control shadow-sm" type="hidden" id="file" name="file">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-danger shadow-sm" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
     </div>
@@ -203,42 +203,42 @@
             <div class="form-group row">
                 <div class="col-md-3">
                     <label for="nomor">Nomor Peraturan</label>
-                    <input type="text" class="form-control" id="nomor" name="nomor" placeholder="Nomor Peraturan" required>
+                    <input type="text" class="form-control shadow-sm" id="nomor" name="nomor" placeholder="Nomor Peraturan" required>
                 </div>
                 <div class="col-md-3">
                     <label for="tahun">Tahun Peraturan</label>
-                    <input type="number" maxlength="4" class="form-control" id="tahun" name="tahun" placeholder="Tahun Peraturan" required>
+                    <input type="number" maxlength="4" class="form-control shadow-sm" id="tahun" name="tahun" placeholder="Tahun Peraturan" required>
                 </div>
                 <div class="col-md-3">
                     <label for="berlaku">Tanggal Berlaku</label>
-                    <input type="date" class="form-control" id="berlaku" name="berlaku" placeholder="Tanggal Berlaku" required>
+                    <input type="date" class="form-control shadow-sm" id="berlaku" name="berlaku" placeholder="Tanggal Berlaku" required>
                 </div>
                 <div class="col-md-3">
                     <label for="berakhir">Tanggal Berakhir</label>
-                    <input type="date" class="form-control" id="berakhir" name="berakhir" placeholder="Tanggal Berakhir" required>
+                    <input type="date" class="form-control shadow-sm" id="berakhir" name="berakhir" placeholder="Tanggal Berakhir" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="nama">Nama Peraturan</label>
-                <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Peraturan" required>
+                <input type="text" class="form-control shadow-sm" id="nama" name="nama" placeholder="Nama Peraturan" required>
             </div>
             <div class="form-group">
                 <label for="tentang">Tentang</label>
-                <textarea class="form-control" id="tentang" name="tentang" placeholder="Tentang" required></textarea>
+                <textarea class="form-control shadow-sm" id="tentang" name="tentang" placeholder="Tentang" required></textarea>
             </div>
             <div class="form-group">
                 <label for="file">File Upload</label>
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="file" name="file">
-                  <input type="hidden" class="custom-file-input" id="filelama" name="filelama">
-                  <label class="custom-file-label" for="file" data-browse="Pilih File">Pilih file dengan format <strong>.pdf</strong>!</label>
+                  <input type="file" class="custom-file-input shadow-sm" id="file" name="file">
+                  <input type="hidden" class="custom-file-input shadow-sm" id="filelama" name="filelama">
+                  <label class="custom-file-label shadow-sm" for="file" data-browse="Pilih File">Pilih file dengan format <strong>.pdf</strong>!</label>
                   <small class="text-muted">Kosongkan jika tidak ingin mengubah file!</small>
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-info" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-info shadow-sm" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>

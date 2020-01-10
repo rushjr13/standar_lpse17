@@ -1,9 +1,9 @@
 <div class="row">
 	<div class="col-lg-6">
-		<div class="card shadow border-primary">
-			<div class="card-header bg-primary text-white">
+		<div class="card shadow-sm">
+			<div class="card-header shadow-sm bg-primary text-white">
 				<?=$sdm['nama'].' - '.$sdm['jabatan'] ?>
-				<a href="<?=base_url('sdm/form') ?>" class="btn btn-sm btn-circle btn-danger float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
+				<a href="<?=base_url('sdm/form') ?>" class="btn shadow-sm btn-sm btn-circle btn-danger float-right" title="Kembali"><i class="fa fa-fw fa-times"></i></a>
 			</div>
 			<div class="card-body table-responsive">
 				<table class="table table-sm table-borderless m-0" width="100%">
@@ -54,16 +54,16 @@
 		</div>
 	</div>
 	<div class="col-lg-6">
-		<div class="card shadow border-primary mb-3">
-			<div class="card-header bg-primary text-white">
+		<div class="card shadow-sm mb-3">
+			<div class="card-header shadow-sm bg-primary text-white">
 				Pelatihan
 				<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-					<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahpelatihanModal" title="Tambah Pelatihan"><i class="fa fa-fw fa-plus"></i></button>
+					<button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahpelatihanModal" title="Tambah Pelatihan"><i class="fa fa-fw fa-plus"></i></button>
 				<?php } ?>
 			</div>
 			<div class="card-body table-responsive small">
-				<table class="table table-sm table-bordered table-hover table-striped m-0" width="100%">
-					<thead class="bg-secondary text-white text-center">
+				<table class="table shadow-sm table-sm table-bordered table-hover table-striped m-0" width="100%">
+					<thead class="bg-primary text-white text-center">
 						<tr>
 							<th class="align-middle" width="5%">NO</th>
 							<th class="align-middle">PELATIHAN</th>
@@ -84,8 +84,8 @@
 									<td class="align-middle text-center"><?=$slth['waktu']  ?></td>
 									<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
 										<td class="align-middle text-center">
-											<button type="button" class="btn btn-sm btn-circle btn-info" id="ubahpelatihan" data-id="<?=$slth['id_pelatihan'] ?>" data-idsdm="<?=$slth['id_sdm'] ?>" data-pelatihan="<?=$slth['pelatihan'] ?>" data-tingkatan="<?=$slth['tingkatan'] ?>" data-waktu="<?=$slth['waktu'] ?>" data-toggle="modal" data-target="#ubahpelatihanModal" title="Ubah"><i class="fa fa-fw fa-edit"></i></button>
-											<button type="button" class="btn btn-sm btn-circle btn-danger" id="hapuspelatihan" data-id="<?=$slth['id_pelatihan'] ?>" data-idsdm="<?=$slth['id_sdm'] ?>" data-pelatihan="<?=$slth['pelatihan'] ?>" data-toggle="modal" data-target="#hapuspelatihanModal" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+											<button type="button" class="btn shadow-sm btn-sm btn-circle btn-info" id="ubahpelatihan" data-id="<?=$slth['id_pelatihan'] ?>" data-idsdm="<?=$slth['id_sdm'] ?>" data-pelatihan="<?=$slth['pelatihan'] ?>" data-tingkatan="<?=$slth['tingkatan'] ?>" data-waktu="<?=$slth['waktu'] ?>" data-toggle="modal" data-target="#ubahpelatihanModal" title="Ubah"><i class="fa fa-fw fa-edit"></i></button>
+											<button type="button" class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapuspelatihan" data-id="<?=$slth['id_pelatihan'] ?>" data-idsdm="<?=$slth['id_sdm'] ?>" data-pelatihan="<?=$slth['pelatihan'] ?>" data-toggle="modal" data-target="#hapuspelatihanModal" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
 										</td>
 									<?php } ?>
 								</tr>
@@ -108,7 +108,7 @@
 		<!-- <div class="card shadow border-primary mb-3">
 			<div class="card-header bg-primary text-white">
 				Dokumen
-				<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahdokumenModal" title="Tambah Dokumen"><i class="fa fa-fw fa-plus"></i></button>
+				<button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahdokumenModal" title="Tambah Dokumen"><i class="fa fa-fw fa-plus"></i></button>
 			</div>
 			<div class="card-body table-responsive small">
 				<table class="table table-sm table-bordered table-hover table-striped m-0" width="100%">
@@ -126,8 +126,8 @@
 									<td class="align-middle text-center"><?=$no++  ?></td>
 									<td class="align-middle text-center"><?=$sdok['judul_dokumen']  ?></td>
 									<td class="align-middle text-center">
-										<button type="button" class="btn btn-sm btn-circle btn-info" id="ubahdokumen" data-id="<?=$sdok['id_dokumen'] ?>" data-idsdm="<?=$sdok['id_sdm'] ?>" data-judul="<?=$sdok['judul_dokumen'] ?>" data-file="<?=$sdok['file_dokumen'] ?>" data-toggle="modal" data-target="#ubahdokumenModal" title="Ubah"><i class="fa fa-fw fa-edit"></i></button>
-										<button type="button" class="btn btn-sm btn-circle btn-danger" id="hapusdokumen" data-id="<?=$sdok['id_dokumen'] ?>" data-idsdm="<?=$sdok['id_sdm'] ?>" data-judul="<?=$sdok['judul_dokumen'] ?>" data-toggle="modal" data-target="#hapusdokumenModal" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+										<button type="button" class="btn shadow-sm btn-sm btn-circle btn-info" id="ubahdokumen" data-id="<?=$sdok['id_dokumen'] ?>" data-idsdm="<?=$sdok['id_sdm'] ?>" data-judul="<?=$sdok['judul_dokumen'] ?>" data-file="<?=$sdok['file_dokumen'] ?>" data-toggle="modal" data-target="#ubahdokumenModal" title="Ubah"><i class="fa fa-fw fa-edit"></i></button>
+										<button type="button" class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapusdokumen" data-id="<?=$sdok['id_dokumen'] ?>" data-idsdm="<?=$sdok['id_sdm'] ?>" data-judul="<?=$sdok['judul_dokumen'] ?>" data-toggle="modal" data-target="#hapusdokumenModal" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
 									</td>
 								</tr>
 							<?php endforeach ?>
@@ -172,8 +172,8 @@
 			  </div>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-	        <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+	        <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+	        <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
 	      </div>
       </form>
     </div>
@@ -206,8 +206,8 @@
 				  </div>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-	        <button type="submit" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+	        <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+	        <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
 	      </div>
       </form>
     </div>
@@ -244,8 +244,8 @@
 				  </div>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-	        <button type="submit" class="btn btn-sm btn-circle btn-info" title="Perbarui"><i class="fa fa-fw fa-save"></i></button>
+	        <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+	        <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-info" title="Perbarui"><i class="fa fa-fw fa-save"></i></button>
 	      </div>
       </form>
     </div>
@@ -262,11 +262,11 @@
       <form id="form_hapuspelatihan" action="" method="post">
 	      <div class="modal-body">
 		      <input type="hidden" class="form-control shadow-sm shadow-sm" id="idsdm" name="idsdm" placeholder="Pelatihan"  required>
-		      <p id="kethapuspelatihan">keterangan</p>
+		      <p id="kethapuspelatihan" class="text-center">keterangan</p>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-	        <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+	        <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+	        <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
 	      </div>
       </form>
     </div>

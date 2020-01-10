@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-2">
-    <div class="list-group shadow" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-struktur-list" data-toggle="list" href="#list-struktur" role="tab" aria-controls="struktur">Struktur Organisasi</a>
-      <a class="list-group-item list-group-item-action" id="list-tujuan-list" data-toggle="list" href="#list-tujuan" role="tab" aria-controls="tujuan">Tujuan Organisasi</a>
+    <div class="list-group" id="list-tab" role="tablist">
+      <a class="list-group-item shadow-sm list-group-item-action active" id="list-struktur-list" data-toggle="list" href="#list-struktur" role="tab" aria-controls="struktur">Struktur Organisasi</a>
+      <a class="list-group-item shadow-sm list-group-item-action" id="list-tujuan-list" data-toggle="list" href="#list-tujuan" role="tab" aria-controls="tujuan">Tujuan Organisasi</a>
     	<?php foreach ($struktur_organisasi as $su): ?>
-	      <a class="list-group-item list-group-item-action" id="list-<?=$su['id_su'] ?>-list" data-toggle="list" href="#list-<?=$su['id_su'] ?>" role="tab" aria-controls="<?=$su['id_su'] ?>"><?=$su['jabatan_su'] ?></a>
+	      <a class="list-group-item shadow-sm list-group-item-action" id="list-<?=$su['id_su'] ?>-list" data-toggle="list" href="#list-<?=$su['id_su'] ?>" role="tab" aria-controls="<?=$su['id_su'] ?>"><?=$su['jabatan_su'] ?></a>
     	<?php endforeach ?>
     </div>
   </div>
@@ -12,33 +12,33 @@
     <div class="tab-content" id="nav-tabContent">
     	<div class="tab-pane fade show active" id="list-struktur" role="tabpanel" aria-labelledby="list-struktur-list">
     		<div class="card shadow border-primary mb-3">
-	      		<div class="card-header bg-primary text-white">
+	      		<div class="card-header shadow-sm bg-primary text-white">
 	      			Struktur Organisasi LPSE
               <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-  	      			<a href="<?=base_url('organisasi/tambah_tupoksi') ?>" class="btn btn-sm btn-circle btn-primary float-right" title="Tambah Jabatan"><i class="fa fa-fw fa-plus"></i></a>
-  	      			<button type="button" class="btn btn-sm btn-circle btn-primary float-right mr-2" data-toggle="modal" data-target="#ubahstrukturModal" title="Ubah Struktur Organisasi"><i class="fa fa-fw fa-edit"></i></button>
+  	      			<a href="<?=base_url('organisasi/tambah_tupoksi') ?>" class="btn btn-sm btn-circle shadow-sm btn-primary float-right" title="Tambah Jabatan"><i class="fa fa-fw fa-plus"></i></a>
+  	      			<button type="button" class="btn btn-sm btn-circle btn-primary shadow-sm float-right mr-2" data-toggle="modal" data-target="#ubahstrukturModal" title="Ubah Struktur Organisasi"><i class="fa fa-fw fa-edit"></i></button>
               <?php } ?>
 	      		</div>
 	      		<div class="card-body text-center">
-	      			<img src="<?=base_url('assets/img/').$gambar_organisasi['isi_ot'] ?>" class="img-fluid shadow img-thumbnail" width="100%" alt="Struktur Organisasi LPSE">
+	      			<img src="<?=base_url('assets/img/').$gambar_organisasi['isi_ot'] ?>" class="img-fluid shadow-sm img-thumbnail" width="100%" alt="Struktur Organisasi LPSE">
 	      		</div>
 	      	</div>
     	</div>
     	<div class="tab-pane fade show" id="list-tujuan" role="tabpanel" aria-labelledby="list-tujuan-list">
     		<div class="card shadow border-primary mb-3">
-	      		<div class="card-header bg-primary text-white">
+	      		<div class="card-header shadow-sm bg-primary text-white">
 	      			Tujuan Pengorganisasian
               <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-  	      			<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#ubahtujuanModal" title="Ubah Tujuan Organisasi"><i class="fa fa-fw fa-edit"></i></button>
+  	      			<button type="button" class="btn btn-sm btn-circle shadow-sm btn-primary float-right" data-toggle="modal" data-target="#ubahtujuanModal" title="Ubah Tujuan Organisasi"><i class="fa fa-fw fa-edit"></i></button>
               <?php } ?>
 	      		</div>
 	      		<div class="card-body">
 	      			<?php if($tujuan_organisasi['isi_ot']){ ?>
-	      				<div class="alert alert-success shadow mb-4" role="alert">
+	      				<div class="alert alert-success shadow-sm mb-4" role="alert">
 			      			<?=$tujuan_organisasi['isi_ot'] ?>
 			      		</div>
 			      	<?php }else{ ?>
-			      		<div class="alert alert-secondary text-center shadow" role="alert">Tidak Ada data yang tersedia</div>
+			      		<div class="alert alert-secondary text-center shadow-sm" role="alert">Tidak Ada data yang tersedia</div>
 			      	<?php } ?>
 	      		</div>
 	      	</div>
@@ -46,42 +46,42 @@
     	<?php foreach ($struktur_organisasi as $su): ?>
 	      <div class="tab-pane fade show" id="list-<?=$su['id_su'] ?>" role="tabpanel" aria-labelledby="list-<?=$su['id_su'] ?>-list">
 	      	<div class="card shadow border-primary mb-3">
-	      		<div class="card-header bg-primary text-white">
+	      		<div class="card-header shadow-sm bg-primary text-white">
 	      			<?=$su['jabatan_su'] ?>
               <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-                <button type="button" class="btn btn-sm btn-circle btn-primary float-right" id='hapussu' data-toggle="modal" data-target="#hapussuModal" data-idsu="<?=$su['id_su'] ?>" data-jabatansu="<?=$su['jabatan_su'] ?>" title="Hapus Jabatan Ini"><i class="fa fa-fw fa-trash"></i></button>
-  	      			<a href="<?=base_url('organisasi/tupoksi/').$su['id_su'] ?>" class="btn btn-sm btn-circle btn-primary float-right mr-2" title="Ubah Tupoksi <?=$su['jabatan_su'] ?>"><i class="fa fa-fw fa-edit"></i></a>
-  	      			<a href="<?=base_url('organisasi/tambah_tupoksitambahan/').$su['id_su'] ?>" class="btn btn-sm btn-circle btn-primary float-right mr-2" title="Tambah Tupoksi Tambahan <?=$su['jabatan_su'] ?>"><i class="fa fa-fw fa-plus"></i></a>
+                <button type="button" class="btn btn-sm btn-circle btn-danger shadow-sm float-right" id='hapussu' data-toggle="modal" data-target="#hapussuModal" data-idsu="<?=$su['id_su'] ?>" data-jabatansu="<?=$su['jabatan_su'] ?>" title="Hapus Jabatan <?=$su['jabatan_su'] ?>"><i class="fa fa-fw fa-trash"></i></button>
+  	      			<a href="<?=base_url('organisasi/tupoksi/').$su['id_su'] ?>" class="btn btn-sm shadow-sm btn-circle btn-info float-right mr-2" title="Ubah Tupoksi <?=$su['jabatan_su'] ?>"><i class="fa fa-fw fa-edit"></i></a>
+  	      			<a href="<?=base_url('organisasi/tambah_tupoksitambahan/').$su['id_su'] ?>" class="btn btn-sm shadow-sm btn-circle btn-success float-right mr-2" title="Tambah Tupoksi Tambahan <?=$su['jabatan_su'] ?>"><i class="fa fa-fw fa-plus"></i></a>
               <?php } ?>
 	      		</div>
 	      		<div class="card-body">
-	      			<div class="alert alert-success shadow mb-4" role="alert">
-					  <h4 class="alert-heading">Tugas Utama</h4>
-					  <?=$su['tugas_su'] ?>
-					</div>
-	      			<?php
-	      				$this->db->select('*');
-		            $this->db->from('organisasi_st');
-		            $this->db->where('id_su', $su['id_su']);
-		            $this->db->order_by('id_st', 'ASC');
-		            $subtugas = $this->db->get()->result_array();
-	      			?>
-	      			<?php if($subtugas){ ?>
-	      				<div class="alert alert-warning shadow" role="alert">
-						  <h4 class="alert-heading">Tugas Tambahan</h4>
+	      			<div class="alert alert-success shadow-sm mb-4" role="alert">
+    					  <h4 class="alert-heading">Tugas Utama</h4>
+    					  <?=$su['tugas_su'] ?>
+    					</div>
+  	      			<?php
+  	      				$this->db->select('*');
+  		            $this->db->from('organisasi_st');
+  		            $this->db->where('id_su', $su['id_su']);
+  		            $this->db->order_by('id_st', 'ASC');
+  		            $subtugas = $this->db->get()->result_array();
+  	      			?>
+  	      			<?php if($subtugas){ ?>
+	      				<div class="alert alert-warning shadow-sm" role="alert">
+    						  <h4 class="alert-heading">Tugas Tambahan</h4>
 		      				<?php foreach ($subtugas as $st): ?>
 		      					<div class="card shadow mb-3">
-		      						<div class="card-header font-weight-bold">
+		      						<div class="card-header shadow-sm font-weight-bold">
 		      							<?=$st['jabatan_st'] ?>
                         <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-  		      							<button type="button" class="btn btn-sm btn-circle btn-danger float-right" id="hapusst" data-toggle="modal" data-target="#hapusstModal" data-idsu="<?=$su['id_su'] ?>" data-idst="<?=$st['id_st'] ?>" data-jabatanst="<?=$st['jabatan_st'] ?>" title="Hapus Tugas Tambahan Ini"><i class="fa fa-fw fa-trash"></i></button>	
-  		      							<a href="<?=base_url('organisasi/tupoksitambahan/').$su['id_su'].'/'.$st['id_st'] ?>" class="btn btn-sm btn-circle btn-info float-right mr-2" title="Ubah Tugas Tambahan Ini"><i class="fa fa-fw fa-edit"></i></a>
+  		      							<button type="button" class="btn btn-sm btn-circle btn-danger shadow-sm float-right" id="hapusst" data-toggle="modal" data-target="#hapusstModal" data-idsu="<?=$su['id_su'] ?>" data-idst="<?=$st['id_st'] ?>" data-jabatanst="<?=$st['jabatan_st'] ?>" title="Hapus Tugas Tambahan <?=$su['jabatan_su'] ?> - <?=$st['jabatan_st'] ?>"><i class="fa fa-fw fa-trash"></i></button>	
+  		      							<a href="<?=base_url('organisasi/tupoksitambahan/').$su['id_su'].'/'.$st['id_st'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info float-right mr-2" title="Ubah Tugas Tambahan <?=$su['jabatan_su'] ?> - <?=$st['jabatan_st'] ?>"><i class="fa fa-fw fa-edit"></i></a>
                         <?php } ?>
 	      							</div>
-	      							<div class="card-body"><?=$st['tugas_st'] ?></div>
-		      					</div>
-		      				<?php endforeach ?>
-						</div>
+        							<div class="card-body"><?=$st['tugas_st'] ?></div>
+  	      					</div>
+  	      				<?php endforeach ?>
+    						</div>
       				<?php } ?>
 	      		</div>
 	      	</div>
@@ -100,11 +100,11 @@
       </div>
       <form id="formubahtujuan" action="<?=base_url('organisasi/tujuan_organisasi/tujuan') ?>" method="post">
         <div class="modal-body">
-          <textarea class="form-control ckeditor" id="isi_ot" name="isi_ot" required><?=$tujuan_organisasi['isi_ot'] ?></textarea>
+          <textarea class="form-control ckeditor shadow-sm" id="isi_ot" name="isi_ot" required><?=$tujuan_organisasi['isi_ot'] ?></textarea>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" id="tblubahtujuan" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" id="tblubahtujuan" class="btn btn-sm btn-circle btn-primary shadow-sm" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -120,15 +120,15 @@
       </div>
       <form id="formubahstruktur" action="<?=base_url('organisasi/tujuan_organisasi/gambar') ?>" method="post" enctype="multipart/form-data">
         <div class="modal-body">
-		  <input type="hidden" class="form-control" id="isi_ot_lama" name="isi_ot_lama" value="<?=$gambar_organisasi['isi_ot'] ?>">
+    		  <input type="hidden" class="form-control" id="isi_ot_lama" name="isi_ot_lama" value="<?=$gambar_organisasi['isi_ot'] ?>">
           <div class="custom-file">
-			  <input type="file" class="custom-file-input" id="isi_ot" name="isi_ot" required>
-			  <label class="custom-file-label" for="isi_ot" data-browse="Pilih Struktur Organisasi">Pilih file dengan format <strong>.jpg, .jpeg, .png</strong>!</label>
-			</div>
+    			  <input type="file" class="custom-file-input shadow-sm" id="isi_ot" name="isi_ot" required>
+    			  <label class="custom-file-label shadow-sm" for="isi_ot" data-browse="Pilih Struktur Organisasi">Pilih file dengan format <strong>.jpg, .jpeg, .png</strong>!</label>
+    			</div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" id="tblubahstruktur" class="btn btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" id="tblubahstruktur" class="btn btn-sm btn-circle btn-primary shadow-sm" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
         </div>
       </form>
     </div>
@@ -144,12 +144,12 @@
       </div>
       <form id="formhapusst" action="" method="post">
         <div class="modal-body">
-          <p id="ket">Keterangan</p>
+          <p id="ket" class="text-center">Keterangan</p>
           <input class="form-control" type="hidden" id="jabatan_st" name="jabatan_st">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-danger shadow-sm" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
     </div>
@@ -165,12 +165,12 @@
       </div>
       <form id="formhapussu" action="" method="post">
         <div class="modal-body">
-          <p id="ket">Keterangan</p>
+          <p id="ket" class="text-center">Keterangan</p>
           <input class="form-control" type="hidden" id="jabatan_su" name="jabatan_su">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
-          <button type="submit" class="btn btn-sm btn-circle btn-danger" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+          <button type="button" class="btn btn-sm btn-circle btn-secondary shadow-sm" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+          <button type="submit" class="btn btn-sm btn-circle btn-danger shadow-sm" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
         </div>
       </form>
     </div>

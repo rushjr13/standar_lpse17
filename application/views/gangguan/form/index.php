@@ -1,59 +1,27 @@
 <div class="card border-primary shadow">
-	<div class="card-header bg-primary text-white">
+	<div class="card-header shadow-sm bg-primary text-white">
 		Pencatatan Gangguan/Permasalahan dan Permintaan Layanan
-		<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#formgangguanModal" title="Formulir Pencatatan Gangguan/Permasalahan dan Permintaan Layanan"><i class="fa fa-fw fa-file"></i></button>
+		<button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#formgangguanModal" title="Formulir Pencatatan Gangguan/Permasalahan dan Permintaan Layanan"><i class="fa fa-fw fa-file"></i></button>
 		<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-			<a href="<?=base_url('gangguan/form/cetak') ?>" class="btn btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Pencatatan Gangguan/Permasalahan dan Permintaan Layanan"><i class="fa fa-fw fa-print"></i></a>
-			<button type="button" class="btn btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah Pencatatan Gangguan/Permasalahan dan Permintaan Layanan"><i class="fa fa-fw fa-plus"></i></button>
+			<a href="<?=base_url('gangguan/form/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary mx-2 float-right" target="_blank" title="Cetak Pencatatan Gangguan/Permasalahan dan Permintaan Layanan"><i class="fa fa-fw fa-print"></i></a>
+			<button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah Pencatatan Gangguan/Permasalahan dan Permintaan Layanan"><i class="fa fa-fw fa-plus"></i></button>
 		<?php } ?>
 	</div>
 	<div class="card-body">
-		<table class="table table-sm table-bordered table-striped table-hover m-0" width="100%" id="dataTable" cellspacing="0">
-			<thead>
-				<tr class="bg-dark text-center text-white small">
+		<table class="table shadow-sm table-sm table-bordered table-striped table-hover m-0" width="100%" id="dataTable" cellspacing="0">
+			<thead class="bg-primary text-center text-white small">
+				<tr>
 					<th rowspan="2" class="align-middle">NO. TIKET</th>
 					<th colspan="4" class="align-middle">INFORMASI PELAPORAN</th>
 					<th rowspan="2" class="align-middle">DESKRIPSI</th>
-					<th rowspan="2" class="align-middle">OPSI</th>
+					<th rowspan="2" class="align-middle" width="7%">OPSI</th>
 				</tr>
-				<tr class="bg-dark text-center text-white small">
+				<tr>
 					<th rowspan="3" class="align-middle">NAMA PENGGUNA</th>
 					<th rowspan="3" class="align-middle">KONTAK PENGGUNA</th>
 					<th rowspan="3" class="align-middle">MEDIA PELAPORAN<br><small>(E-Mail, Telepon, SMS, Surat, Lainnya)</small></th>
 					<th rowspan="3" class="align-middle">TANGGAL PELAPORAN</th>
-					<!-- <th class="align-middle">TIPE</th>
-					<th class="align-middle">KATEGORI</th>
-					<th class="align-middle">USER</th>
-					<th class="align-middle">JENIS</th>
-					<th class="align-middle">URGENSI</th>
-					<th class="align-middle">DAMPAK</th>
-					<th class="align-middle">PRIORITAS</th> -->
-					<!-- <th rowspan="3" class="align-middle">NAMA PETUGAS</th>
-					<th rowspan="3" class="align-middle">STATUS</th>
-					<th rowspan="3" class="align-middle">KETERANGAN</th>
-					<th rowspan="3" class="align-middle">TANGGAL PEMUTAKHIRAN</th>
-					<th rowspan="3" class="align-middle">SOLUSI</th>
-					<th rowspan="3" class="align-middle">TANGGAL PENYELESAIAN</th>
-					<th rowspan="3" class="align-middle">STATUS KONFIRMASI KEPADA PENGGUNA</th> -->
 				</tr>
-				<!-- <tr class="bg-dark text-center text-white small">
-					<th class="align-middle small">Gangguan, Masalah, Permintaan Layanan</th>
-					<th class="align-middle small">Teknis, Non Teknis</th>
-					<th class="align-middle small">Panitia, Penyedia, PPK, Auditor, Publik, Lainnya</th>
-					<th class="align-middle small">Hardware, Software, Prosedur, Lain-lain</th>
-					<th class="align-middle small">Mendesak, Tidak Mendesak</th>
-					<th class="align-middle small">Besar, Sedang, Kecil</th>
-					<th class="align-middle small">Tinggi, Menengah, Rendah</th>
-				</tr>
-				<tr class="bg-dark text-center text-white small">
-					<th class="align-middle small">G, M, PL</th>
-					<th class="align-middle small">T, NT</th>
-					<th class="align-middle small">Pt, Py, PPK, Aud, Pub, L</th>
-					<th class="align-middle small">Hw, Sw, Ps, L</th>
-					<th class="align-middle small">M, TM</th>
-					<th class="align-middle small">B, S, K</th>
-					<th class="align-middle small">T, M, R</th>
-				</tr> -->
 			</thead>
 			<tbody>
 				<?php if($gangguan){ ?>
@@ -135,14 +103,14 @@
 							<td class="align-middle"><?=$tgl_pelaporan ?></td>
 							<td class="align-middle"><?=$gg['deskripsi_gangguan'] ?></td>
 							<td class="align-middle">
-								<button class="btn btn-sm rounded-circle btn-secondary" title="Klasifikasi" id="klasifikasi" data-toggle="modal" data-target="#klasifikasiModal" data-nomortiket="<?=$gg['id_gangguan'] ?>" data-namapengguna="<?=$gg['nama_pengguna'] ?>" data-tglpelaporan="<?=$tgl_pelaporan ?>" data-deskripsigangguan="<?=$gg['deskripsi_gangguan'] ?>" data-tipegangguan="<?=$gg['nama_tipe']." (".$gg['kode_tipe'].")" ?>" data-kategorigangguan="<?=$gg['nama_kategori']." (".$gg['kode_kategori'].")" ?>" data-usergangguan="<?=$gg['nama_user']." (".$gg['kode_user'].")" ?>" data-jenisgangguan="<?=$gg['nama_jenis']." (".$gg['kode_jenis'].")" ?>" data-urgensigangguan="<?=$gg['nama_urgensi']." (".$gg['kode_urgensi'].")" ?>" data-dampakgangguan="<?=$gg['nama_dampak']." (".$gg['kode_dampak'].")" ?>" data-prioritasgangguan="<?=$gg['nama_prioritas']." (".$gg['kode_prioritas'].")" ?>"><i class="fa fa-fw fa-list"></i></button>
+								<button class="btn shadow-sm btn-sm btn-circle btn-secondary" title="Klasifikasi" id="klasifikasi" data-toggle="modal" data-target="#klasifikasiModal" data-nomortiket="<?=$gg['id_gangguan'] ?>" data-namapengguna="<?=$gg['nama_pengguna'] ?>" data-tglpelaporan="<?=$tgl_pelaporan ?>" data-deskripsigangguan="<?=$gg['deskripsi_gangguan'] ?>" data-tipegangguan="<?=$gg['nama_tipe']." (".$gg['kode_tipe'].")" ?>" data-kategorigangguan="<?=$gg['nama_kategori']." (".$gg['kode_kategori'].")" ?>" data-usergangguan="<?=$gg['nama_user']." (".$gg['kode_user'].")" ?>" data-jenisgangguan="<?=$gg['nama_jenis']." (".$gg['kode_jenis'].")" ?>" data-urgensigangguan="<?=$gg['nama_urgensi']." (".$gg['kode_urgensi'].")" ?>" data-dampakgangguan="<?=$gg['nama_dampak']." (".$gg['kode_dampak'].")" ?>" data-prioritasgangguan="<?=$gg['nama_prioritas']." (".$gg['kode_prioritas'].")" ?>"><i class="fa fa-fw fa-list"></i></button>
 								<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
 									<?php if($gg['status_gangguan']=='Tercatat'){ ?>
-										<button class="btn btn-sm rounded-circle btn-danger" id="tangani" title="Tangani" data-toggle="modal" data-target="#tanganiModal" data-id_gangguan="<?=$gg['id_gangguan'] ?>" data-nama_pengguna="<?=$gg['nama_pengguna'] ?>" data-tgl_pelaporan="<?=$tgl_pelaporan ?>" data-deskripsi_gangguan="<?=$gg['deskripsi_gangguan'] ?>"><i class="fa fa-fw fa-paper-plane"></i></button>
+										<button class="btn shadow-sm btn-sm btn-circle btn-danger" id="tangani" title="Tangani" data-toggle="modal" data-target="#tanganiModal" data-id_gangguan="<?=$gg['id_gangguan'] ?>" data-nama_pengguna="<?=$gg['nama_pengguna'] ?>" data-tgl_pelaporan="<?=$tgl_pelaporan ?>" data-deskripsi_gangguan="<?=$gg['deskripsi_gangguan'] ?>"><i class="fa fa-fw fa-paper-plane"></i></button>
 									<?php }else if($gg['status_gangguan']=='Penanganan'){ ?>
-										<button class="btn btn-sm rounded-circle btn-success"id="selesaikan" title="Selesaikan" data-toggle="modal" data-target="#selesaikanModal" data-id_gangguan="<?=$gg['id_gangguan'] ?>" data-nama_pengguna="<?=$gg['nama_pengguna'] ?>" data-tgl_pelaporan="<?=$tgl_pelaporan ?>" data-deskripsi_gangguan="<?=$gg['deskripsi_gangguan'] ?>" data-petugas_penanganan="<?=$gg['petugas_penanganan'] ?>" data-status_penanganan="<?=$gg['status_penanganan'] ?>" data-ket_penanganan="<?=$gg['ket_penanganan'] ?>" data-tgl_penanganan="<?=$tgl_penanganan ?>"><i class="fa fa-fw fa-paper-plane"></i></button>
+										<button class="btn shadow-sm btn-sm btn-circle btn-success"id="selesaikan" title="Selesaikan" data-toggle="modal" data-target="#selesaikanModal" data-id_gangguan="<?=$gg['id_gangguan'] ?>" data-nama_pengguna="<?=$gg['nama_pengguna'] ?>" data-tgl_pelaporan="<?=$tgl_pelaporan ?>" data-deskripsi_gangguan="<?=$gg['deskripsi_gangguan'] ?>" data-petugas_penanganan="<?=$gg['petugas_penanganan'] ?>" data-status_penanganan="<?=$gg['status_penanganan'] ?>" data-ket_penanganan="<?=$gg['ket_penanganan'] ?>" data-tgl_penanganan="<?=$tgl_penanganan ?>"><i class="fa fa-fw fa-paper-plane"></i></button>
 									<?php }else{ ?>
-										<a href="<?=base_url('gangguan/form/cetak/').$gg['id_gangguan'] ?>" target="_blank" class="btn btn-sm rounded-circle btn-primary" title="Rincian"><i class="fa fa-fw fa-eye"></i></button>
+										<a href="<?=base_url('gangguan/form/cetak/').$gg['id_gangguan'] ?>" target="_blank" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Rincian"><i class="fa fa-fw fa-eye"></i></button>
 									<?php } ?>
 								<?php } ?>
 							</td>
@@ -164,9 +132,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="tambahModalLabel">Pencatatan Gangguan/Permasalahan dan Permintaan Layanan</h5>
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button> -->
       </div>
       <form action="<?=base_url('gangguan/form/tambah/') ?>" method="post">
 	      <div class="modal-body">
@@ -179,18 +144,18 @@
 				  <div class="form-group row">
 				    <label for="nama_pengguna" class="col-sm-2 col-form-label">Nama Pengguna</label>
 				    <div class="col-sm-5">
-				      <input type="text" class="form-control font-weight-bold" id="nama_pengguna" name="nama_pengguna" placeholder="Nama Pengguna" required>
+				      <input type="text" class="form-control shadow-sm font-weight-bold" id="nama_pengguna" name="nama_pengguna" placeholder="Nama Pengguna" required>
 				    </div>
 				    <label for="kontak_pengguna" class="col-sm-2 col-form-label text-right">Kontak Pengguna</label>
 				    <div class="col-sm-3">
-				      <input type="text" class="form-control font-weight-bold" id="kontak_pengguna" name="kontak_pengguna" placeholder="Kontak Pengguna">
+				      <input type="text" class="form-control shadow-sm font-weight-bold" id="kontak_pengguna" name="kontak_pengguna" placeholder="Kontak Pengguna">
 				      <small class="ml-2 mt-0 small text-primary"><small><em>No. Telepon / HP / E-Mail / dll</em></small></small>
 				    </div>
 				  </div>
 				  <div class="form-group row">
 				    <label for="media_pelaporan" class="col-sm-2 col-form-label">Media Pelaporan</label>
 				    <div class="col-sm-5">
-				     <select class="form-control font-weight-bold" id="media_pelaporan" name="media_pelaporan" required>
+				     <select class="form-control shadow-sm font-weight-bold" id="media_pelaporan" name="media_pelaporan" required>
 					      <option value="">-- Pilih Media Pelaporan --</option>
 					      <option value="E-Mail">E-Mail</option>
 					      <option value="Telepon">Telepon</option>
@@ -201,20 +166,20 @@
 				    </div>
 				    <label for="tgl_pelaporan" class="col-sm-2 col-form-label text-right">Tanggal Pelaporan</label>
 				    <div class="col-sm-3">
-				      <input type="date" class="form-control font-weight-bold" id="tgl_pelaporan" name="tgl_pelaporan" value="<?=date('Y-m-d', time()) ?>" required>
+				      <input type="date" class="form-control shadow-sm font-weight-bold" id="tgl_pelaporan" name="tgl_pelaporan" value="<?=date('Y-m-d', time()) ?>" required>
 				    </div>
 				  </div>
 				  <div class="form-group row">
 				    <label for="deskripsi_gangguan" class="col-sm-2 col-form-label">Deskripsi</label>
 				    <div class="col-sm-10">
-				      <textarea class="form-control font-weight-bold" id="deskripsi_gangguan" name="deskripsi_gangguan" rows="3" required></textarea>
+				      <textarea class="form-control shadow-sm font-weight-bold" id="deskripsi_gangguan" name="deskripsi_gangguan" rows="3" required></textarea>
 				    </div>
 				  </div>
 				  <hr>
 			    <div class="text-center font-weight-bold mb-2 h6">K L A S I F I K A S I</div>
 				  <div class="form-group row">
 				    <div class="col-sm-3">
-				     <select class="form-control font-weight-bold" id="id_tipe" name="id_tipe" required>
+				     <select class="form-control shadow-sm font-weight-bold" id="id_tipe" name="id_tipe" required>
 					      <option value="">-- Tipe Gangguan --</option>
 					      <?php foreach ($gangguan_tipe as $gt): ?>
 						      <option value="<?=$gt['id_tipe'] ?>"><?=$gt['nama_tipe'] ?> (<?=$gt['kode_tipe'] ?>)</option>
@@ -222,7 +187,7 @@
 					    </select>
 				    </div>
 				    <div class="col-sm-3">
-				     <select class="form-control font-weight-bold" id="id_kategori" name="id_kategori" required>
+				     <select class="form-control shadow-sm font-weight-bold" id="id_kategori" name="id_kategori" required>
 					      <option value="">-- Kategori Gangguan --</option>
 					      <?php foreach ($gangguan_kategori as $gk): ?>
 						      <option value="<?=$gk['id_kategori'] ?>"><?=$gk['nama_kategori'] ?> (<?=$gk['kode_kategori'] ?>)</option>
@@ -230,7 +195,7 @@
 					    </select>
 				    </div>
 				    <div class="col-sm-3">
-				     <select class="form-control font-weight-bold" id="id_user" name="id_user" required>
+				     <select class="form-control shadow-sm font-weight-bold" id="id_user" name="id_user" required>
 					      <option value="">-- User --</option>
 					      <?php foreach ($gangguan_user as $gus): ?>
 						      <option value="<?=$gus['id_user'] ?>"><?=$gus['nama_user'] ?> (<?=$gus['kode_user'] ?>)</option>
@@ -238,7 +203,7 @@
 					    </select>
 				    </div>
 				    <div class="col-sm-3">
-				     <select class="form-control font-weight-bold" id="id_jenis" name="id_jenis" required>
+				     <select class="form-control shadow-sm font-weight-bold" id="id_jenis" name="id_jenis" required>
 					      <option value="">-- Jenis Gangguan --</option>
 					      <?php foreach ($gangguan_jenis as $gj): ?>
 						      <option value="<?=$gj['id_jenis'] ?>"><?=$gj['nama_jenis'] ?> (<?=$gj['kode_jenis'] ?>)</option>
@@ -248,7 +213,7 @@
 				  </div>
 				  <div class="form-group row">
 				    <div class="col-sm-4">
-				     <select class="form-control font-weight-bold" id="id_urgensi" name="id_urgensi" required>
+				     <select class="form-control shadow-sm font-weight-bold" id="id_urgensi" name="id_urgensi" required>
 					      <option value="">-- Urgensi Gangguan --</option>
 					      <?php foreach ($gangguan_urgensi as $gur): ?>
 						      <option value="<?=$gur['id_urgensi'] ?>"><?=$gur['nama_urgensi'] ?> (<?=$gur['kode_urgensi'] ?>)</option>
@@ -256,7 +221,7 @@
 					    </select>
 				    </div>
 				    <div class="col-sm-4">
-				     <select class="form-control font-weight-bold" id="id_dampak" name="id_dampak" required>
+				     <select class="form-control shadow-sm font-weight-bold" id="id_dampak" name="id_dampak" required>
 					      <option value="">-- Dampak Gangguan --</option>
 					      <?php foreach ($gangguan_dampak as $gd): ?>
 						      <option value="<?=$gd['id_dampak'] ?>"><?=$gd['nama_dampak'] ?> (<?=$gd['kode_dampak'] ?>)</option>
@@ -264,7 +229,7 @@
 					    </select>
 				    </div>
 				    <div class="col-sm-4">
-				     <select class="form-control font-weight-bold" id="id_prioritas" name="id_prioritas" required>
+				     <select class="form-control shadow-sm font-weight-bold" id="id_prioritas" name="id_prioritas" required>
 					      <option value="">-- Prioritas Gangguan --</option>
 					      <?php foreach ($gangguan_prioritas as $gp): ?>
 						      <option value="<?=$gp['id_prioritas'] ?>"><?=$gp['nama_prioritas'] ?> (<?=$gp['kode_prioritas'] ?>)</option>
@@ -275,8 +240,8 @@
 				  <hr>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times"></i> Batal</button>
-	        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-fw fa-save"></i> Simpan</button>
+	        <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+	        <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-primary" title="Simpan"><i class="fa fa-fw fa-save"></i></button>
 	      </div>
       </form>
     </div>
@@ -289,9 +254,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="tanganiModalLabel">Tangani Gangguan/Permasalahan dan Permintaan Layanan</h5>
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button> -->
       </div>
       <form id="formtangani" action="<?=base_url('gangguan/form/tangani/') ?>" method="post">
 	      <div class="modal-body">
@@ -317,27 +279,27 @@
 	        <div class="form-group row">
 				    <label for="petugas_penanganan" class="col-sm-2 col-form-label">Nama Petugas</label>
 				    <div class="col-sm-6">
-				      <input type="text" class="form-control font-weight-bold" id="petugas_penanganan" name="petugas_penanganan" placeholder="Nama Petugas" required>
+				      <input type="text" class="form-control shadow-sm font-weight-bold" id="petugas_penanganan" name="petugas_penanganan" placeholder="Nama Petugas" required>
 				    </div>
 				    <label for="tgl_penanganan" class="col-sm-1 col-form-label text-right">Tanggal</label>
 				    <div class="col-sm-3">
-				      <input type="date" class="form-control font-weight-bold" id="tgl_penanganan" name="tgl_penanganan" value="<?=date('Y-m-d', time()) ?>">
+				      <input type="date" class="form-control shadow-sm font-weight-bold" id="tgl_penanganan" name="tgl_penanganan" value="<?=date('Y-m-d', time()) ?>">
 				    </div>
 				  </div>
 				  <div class="form-group row">
 				    <label for="ket_penanganan" class="col-sm-2 col-form-label">Keterangan</label>
 				    <div class="col-sm-6">
-				      <textarea class="form-control font-weight-bold" id="ket_penanganan" name="ket_penanganan" rows="3" required></textarea>
+				      <textarea class="form-control shadow-sm font-weight-bold" id="ket_penanganan" name="ket_penanganan" rows="3" required></textarea>
 				    </div>
 				    <label for="status_penanganan" class="col-sm-1 col-form-label text-right">Status</label>
 				    <div class="col-sm-3">
-				      <input type="text" class="form-control font-weight-bold" id="status_penanganan" name="status_penanganan" placeholder="Status Penanganan">
+				      <input type="text" class="form-control shadow-sm font-weight-bold" id="status_penanganan" name="status_penanganan" placeholder="Status Penanganan">
 				    </div>
 				  </div>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times"></i> Batal</button>
-	        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-save"></i> Tangani</button>
+	        <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+	        <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-danger" title="Tangani"><i class="fa fa-fw fa-save"></i></button>
 	      </div>
       </form>
     </div>
@@ -350,9 +312,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="selesaikanModalLabel">Selesaikan Gangguan/Permasalahan dan Permintaan Layanan</h5>
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button> -->
       </div>
       <form id="formselesaikan" action="<?=base_url('gangguan/form/selesaikan/') ?>" method="post" enctype="multipart/form-data">
 	      <div class="modal-body">
@@ -398,7 +357,7 @@
 			        <div class="form-group row">
 						    <label for="solusi_penyelesaian" class="col-sm-2 col-form-label">Solusi</label>
 						    <div class="col-sm-10">
-						      <textarea class="form-control font-weight-bold" id="solusi_penyelesaian" name="solusi_penyelesaian" rows="4" required></textarea>
+						      <textarea class="form-control shadow-sm font-weight-bold" id="solusi_penyelesaian" name="solusi_penyelesaian" rows="4" required></textarea>
 						    </div>
 						  </div>
 	        	</div>
@@ -406,13 +365,13 @@
 			        <div class="form-group row">
 						    <label for="tgl_penyelesaian" class="col-sm-6 col-form-label text-right">Tanggal</label>
 						    <div class="col-sm-6">
-						      <input type="date" class="form-control font-weight-bold" id="tgl_penyelesaian" name="tgl_penyelesaian" value="<?=date('Y-m-d', time()) ?>">
+						      <input type="date" class="form-control shadow-sm font-weight-bold" id="tgl_penyelesaian" name="tgl_penyelesaian" value="<?=date('Y-m-d', time()) ?>">
 						    </div>
 	        		</div>
 	        		<div class="form-group row">
 						    <label for="status_konfirmasi" class="col-sm-6 col-form-label text-right">Status Konfirmasi Pengguna</label>
 						    <div class="col-sm-6">
-						      <select class="form-control font-weight-bold" id="status_konfirmasi" name="status_konfirmasi" required>
+						      <select class="form-control shadow-sm font-weight-bold" id="status_konfirmasi" name="status_konfirmasi" required>
 							      <option value="">-- Pilih --</option>
 							      <option value="Telah Diinformasikan">Telah Diinformasikan</option>
 							      <option value="Belum Diinformasikan">Belum Diinformasikan</option>
@@ -423,8 +382,8 @@
 	        </div>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times"></i> Batal</button>
-	        <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-fw fa-save"></i> Selesaikan</button>
+	        <button type="button" class="btn shadow-sm btn-sm btn-circle btn-secondary" data-dismiss="modal" title="Batal"><i class="fa fa-fw fa-times"></i></button>
+	        <button type="submit" class="btn shadow-sm btn-sm btn-circle btn-success" title="Selesaikan"><i class="fa fa-fw fa-save"></i></button>
 	      </div>
       </form>
     </div>
@@ -500,7 +459,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <iframe src="<?=base_url('uploads/pdf/gangguan/form_gangguan.pdf') ?>" width="100%" height="750"></iframe>
+        <iframe src="<?=base_url('uploads/pdf/gangguan/form_gangguan.pdf') ?>" width="100%" height="750px"></iframe>
       </div>
     </div>
   </div>
