@@ -160,29 +160,169 @@
 
     <!-- Project Card Example -->
     <div class="card shadow-sm mb-4">
-      <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+      <div class="card-header bg-primary shadow-sm py-3">
+        <h6 class="m-0 font-weight-bold text-white">Kontrol Input SOP</h6>
       </div>
       <div class="card-body">
-        <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
-        <div class="progress mb-4">
-          <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
-        <div class="progress mb-4">
-          <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
-        <div class="progress mb-4">
-          <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
-        <div class="progress mb-4">
-          <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
-        <div class="progress">
-          <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="list-group shadow-sm">
+          <a href="#" class="list-group-item shadow-sm list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1 font-weight-bold">01. Kebijakan Layanan</h5>
+            </div>
+            <table class="table table-sm table-hover table-borderless m-0">
+              <tbody>
+                <tr>
+                  <?php
+                    if($regulasi_update){
+                      $hariregup = round((time()-$tglregup)/86400,0);
+                      if($hariregup<=15){
+                        $warna = "text-dark";
+                      }else if($hariregup>15 && $hariregup<=30){
+                        $warna = "text-warning";
+                      }else if($hariregup>30){
+                        $warna = "text-danger";
+                      }
+                    }else{
+                      $warna = "text-success";
+                    }
+                  ?>
+                  <td class="<?=$warna ?>"><i class="fa fa-fw fa-list"></i> Informasi <small class="float-right"><?php if($regulasi_update){ ?>Terakhir diperbarui pada tanggal <?=$tglregupindo ?> - <?=$hariregup; ?> Hari Yang lalu<?php }else{echo "Belum ada data";} ?></small></td>
+                </tr>
+                <tr>
+                  <?php
+                    if($regulasi_perka_update){
+                      $hariregperkaup = round((time()-$tglregperkaup)/86400,0);
+                      if($hariregperkaup<=15){
+                        $warna = "text-dark";
+                      }else if($hariregperkaup>15 && $hariregperkaup<=30){
+                        $warna = "text-warning";
+                      }else if($hariregperkaup>30){
+                        $warna = "text-danger";
+                      }
+                    }else{
+                      $warna = "text-success";
+                    }
+                  ?>
+                  <td class="<?=$warna ?>"><i class="fa fa-fw fa-list"></i> Regulasi <small class="float-right"><?php if($regulasi_perka_update){ ?>Terakhir diperbarui pada tanggal <?=$tglregperkaupindo ?> - <?=$hariregperkaup; ?> Hari Yang lalu<?php }else{echo "Belum ada data";} ?></small></td>
+                </tr>
+              </tbody>
+            </table>
+          </a>
+          <a href="#" class="list-group-item shadow-sm list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1 font-weight-bold">02. Pengorganisasian Layanan</h5>
+            </div>
+            <table class="table table-sm table-hover table-borderless m-0">
+              <tbody>
+                <tr>
+                  <?php
+                    if($organisasi_tujuan_update){
+                      $hariortu = round((time()-$tglortu)/86400,0);
+                      if($hariortu<=15){
+                        $warna = "text-dark";
+                      }else if($hariortu>15 && $hariortu<=30){
+                        $warna = "text-warning";
+                      }else if($hariortu>30){
+                        $warna = "text-danger";
+                      }
+                    }else{
+                      $warna = "text-success";
+                    }
+                  ?>
+                  <td class="<?=$warna ?>"><i class="fa fa-fw fa-list"></i> Struktur Organisasi <small class="float-right"><?php if($organisasi_tujuan_update){ ?>Terakhir diperbarui pada tanggal <?=$tglortuindo ?> - <?=$hariortu; ?> Hari Yang lalu<?php }else{echo "Belum ada data";} ?></small></td>
+                </tr>
+                <!-- <tr>
+                  <td class="text-dark"><i class="fa fa-fw fa-list"></i> SOP Organisasi</td>
+                </tr> -->
+                <tr>
+                  <?php
+                    if($organisasi_sk_update){
+                      $hariosk = round((time()-$tglosk)/86400,0);
+                      if($hariosk<=15){
+                        $warna = "text-dark";
+                      }else if($hariosk>15 && $hariosk<=30){
+                        $warna = "text-warning";
+                      }else if($hariosk>30){
+                        $warna = "text-danger";
+                      }
+                    }else{
+                      $warna = "text-success";
+                    }
+                  ?>
+                  <td class="<?=$warna ?>"><i class="fa fa-fw fa-list"></i> SK Organisasi <small class="float-right"><?php if($organisasi_sk_update){ ?>Terakhir diperbarui pada tanggal <?=$tgloskindo ?> - <?=$hariosk; ?> Hari Yang lalu<?php }else{echo "Belum ada data";} ?></small></td>
+                </tr>
+              </tbody>
+            </table>
+          </a>
+          <a href="#" class="list-group-item shadow-sm list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1 font-weight-bold">03. Pengelolaan Aset Layanan</h5>
+            </div>
+            <table class="table table-sm table-hover table-borderless m-0">
+              <tbody>
+                <tr>
+                  <?php
+                    if($sop_aset_update){
+                      $harisopset = round((time()-$tglsopset)/86400,0);
+                      if($harisopset<=15){
+                        $warna = "text-dark";
+                      }else if($harisopset>15 && $harisopset<=30){
+                        $warna = "text-warning";
+                      }else if($harisopset>30){
+                        $warna = "text-danger";
+                      }
+                    }else{
+                      $warna = "text-success";
+                    }
+                  ?>
+                  <td class="<?=$warna ?>"><i class="fa fa-fw fa-list"></i> Struktur Organisasi <small class="float-right"><?php if($sop_aset_update){ ?>Terakhir diperbarui pada tanggal <?=$tglsopsetindo ?> - <?=$harisopset; ?> Hari Yang lalu<?php }else{echo "Belum ada data";} ?></small></td>
+                </tr>
+                <tr>
+                  <?php
+                    if($aset_sk_update){
+                      $hariskset = round((time()-$tglskset)/86400,0);
+                      if($hariskset<=15){
+                        $warna = "text-dark";
+                      }else if($hariskset>15 && $hariskset<=30){
+                        $warna = "text-warning";
+                      }else if($hariskset>30){
+                        $warna = "text-danger";
+                      }
+                    }else{
+                      $warna = "text-success";
+                    }
+                  ?>
+                  <td class="<?=$warna ?>"><i class="fa fa-fw fa-list"></i> SK Organisasi <small class="float-right"><?php if($aset_sk_update){ ?>Terakhir diperbarui pada tanggal <?=$tglsksetindo ?> - <?=$hariskset; ?> Hari Yang lalu<?php }else{echo "Belum ada data";} ?></small></td>
+                </tr>
+                <tr>
+                  <td class="text-dark"><i class="fa fa-fw fa-list"></i> Pencatatan Aset Layanan
+                    <table class="table table-sm table-borderless table-hover text-dark small">
+                      <tbody>
+                        <tr>
+                          <td><i class="fa fa-fw fa-angle-double-right"></i> Informasi <span class="float-right">1 Hari yang lalu</span></td>
+                        </tr>
+                        <tr>
+                          <td><i class="fa fa-fw fa-angle-double-right"></i> Sumber Daya Manusia (SDM) <span class="float-right">1 Hari yang lalu</span></td>
+                        </tr>
+                        <tr>
+                          <td><i class="fa fa-fw fa-angle-double-right"></i> Fisik <span class="float-right">1 Hari yang lalu</span></td>
+                        </tr>
+                        <tr>
+                          <td><i class="fa fa-fw fa-angle-double-right"></i> Software <span class="float-right">1 Hari yang lalu</span></td>
+                        </tr>
+                        <tr>
+                          <td><i class="fa fa-fw fa-angle-double-right"></i> Layanan <span class="float-right">1 Hari yang lalu</span></td>
+                        </tr>
+                        <tr>
+                          <td><i class="fa fa-fw fa-angle-double-right"></i> Intangible <span class="float-right">1 Hari yang lalu</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </a>
         </div>
       </div>
     </div>

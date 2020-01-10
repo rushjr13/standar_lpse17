@@ -291,10 +291,28 @@ class Admin_model extends CI_Model {
         }
     }
 
+    // PERKA UPDATE
+    function regulasi_perka_update(){
+        $this->db->select('*');
+        $this->db->from('regulasi_perka');
+        $this->db->order_by('tgl_ubah', 'desc');
+        $this->db->limit(1);
+        return $this->db->get()->result_array();
+    }
+
     // REGULASI
     function regulasi(){
         $this->db->select('*');
         $this->db->from('regulasi');
+        return $this->db->get()->result_array();
+    }
+
+    // REGULASI UPDATE
+    function regulasi_update(){
+        $this->db->select('*');
+        $this->db->from('regulasi');
+        $this->db->order_by('tgl_update', 'desc');
+        $this->db->limit(1);
         return $this->db->get()->result_array();
     }
 
@@ -319,6 +337,15 @@ class Admin_model extends CI_Model {
             $this->db->where('id_su', $id_su);
             return $this->db->get()->row_array();
         }
+    }
+
+    // STRUKTUR ORGANISASI UPDATE
+    function organisasi_tujuan_update(){
+        $this->db->select('*');
+        $this->db->from('organisasi_tujuan');
+        $this->db->order_by('tgl_update', 'desc');
+        $this->db->limit(1);
+        return $this->db->get()->result_array();
     }
 
     // STRUKTUR ORGANISASI
@@ -377,6 +404,15 @@ class Admin_model extends CI_Model {
         }
     }
 
+    // STRUKTUR ORGANISASI SK UPDATE
+    function organisasi_sk_update(){
+        $this->db->select('*');
+        $this->db->from('organisasi_sk');
+        $this->db->order_by('tgl_update', 'desc');
+        $this->db->limit(1);
+        return $this->db->get()->result_array();
+    }
+
     // ISTILAH ASET
     function istilah(){
         $this->db->where('id', 'istilah');
@@ -394,6 +430,15 @@ class Admin_model extends CI_Model {
         }
     }
 
+    // SOP ASET UPDATE
+    function sop_aset_update(){
+        $this->db->select('*');
+        $this->db->from('aset_sop');
+        $this->db->order_by('tgl_update', 'desc');
+        $this->db->limit(1);
+        return $this->db->get()->result_array();
+    }
+
     // ASET SK
     function aset_sk($id=null){
         if($id==null){
@@ -402,6 +447,15 @@ class Admin_model extends CI_Model {
         } else {
             return $this->db->get_where('aset_sk', ['id'=>$id])->row_array();
         }
+    }
+
+    // ASET SK UPDATE
+    function aset_sk_update(){
+        $this->db->select('*');
+        $this->db->from('aset_sk');
+        $this->db->order_by('tgl_update', 'desc');
+        $this->db->limit(1);
+        return $this->db->get()->result_array();
     }
 
     // ASET KERAHASIAAN
@@ -533,266 +587,6 @@ class Admin_model extends CI_Model {
             return $this->db->get('aset_intangible')->result_array();
         } else {
             return $this->db->get_where('aset_intangible', ['idi'=>$id])->row_array();
-        }
-    }
-
-	// PEMBERITAHUAN
-	function pemberitahuan($id_pemberitahuan=null){
-		if($id_pemberitahuan==null){
-			$this->db->select('*');
-			$this->db->from('pemberitahuan');
-            $this->db->join('pengguna', 'pengguna.id_pengguna = pemberitahuan.id_pengguna');
-			$this->db->order_by('pemberitahuan.id_pemberitahuan', 'DESC');
-			return $this->db->get()->result_array();
-		} else {
-			$this->db->select('*');
-			$this->db->from('pemberitahuan');
-			$this->db->join('pengguna', 'pengguna.id_pengguna = pemberitahuan.id_pengguna');
-			$this->db->where('pemberitahuan.id_pemberitahuan', $id_pemberitahuan);
-			return $this->db->get()->row_array();
-		}
-	}
-
-    // PROGRAM
-    function program($id_program=null){
-        if($id_program==null){
-            $this->db->select('*');
-            $this->db->from('program');
-            $this->db->order_by('id_program', 'ASC');
-            return $this->db->get()->result_array();
-        } else {
-            $this->db->select('*');
-            $this->db->from('program');
-            $this->db->where('id_program', $id_program);
-            return $this->db->get()->row_array();
-        }
-    }
-
-    // KEGIATAN
-    function kegiatan($id_kegiatan=null){
-        if($id_kegiatan==null){
-            $this->db->select('*');
-            $this->db->from('kegiatan');
-            $this->db->join('program', 'program.id_program = kegiatan.id_program');
-            $this->db->order_by('kegiatan.id_program', 'ASC');
-            $this->db->order_by('kegiatan.id_kegiatan', 'ASC');
-            return $this->db->get()->result_array();
-        } else {
-            $this->db->select('*');
-            $this->db->from('kegiatan');
-            $this->db->join('program', 'program.id_program = kegiatan.id_program');
-            $this->db->where('kegiatan.id_kegiatan', $id_kegiatan);
-            return $this->db->get()->row_array();
-        }
-    }
-
-    // MENU LANDING
-    function menulanding($id_ml=null){
-        if($id_ml==null){
-            $this->db->select('*');
-            $this->db->from('menu_landing');
-            $this->db->order_by('id_ml', 'ASC');
-            $this->db->where('status_ml', 1);
-            return $this->db->get()->result_array();
-        } else {
-            $this->db->select('*');
-            $this->db->from('menu_landing');
-            $this->db->where('menu_landing.id_ml', $id_ml);
-            return $this->db->get()->row_array();
-        }
-    }
-
-    // MENU LANDING
-    function menulandingaktif(){
-        $this->db->select('*');
-        $this->db->from('menu_landing');
-        $this->db->where('status_ml', 1);
-        $this->db->order_by('id_ml', 'ASC');
-        return $this->db->get()->result_array();
-    }
-
-    // PROFIL
-    function profil($id_profil=null){
-        if($id_profil==null){
-            $this->db->select('*');
-            $this->db->from('profil');
-            $this->db->order_by('id_profil', 'ASC');
-            return $this->db->get()->result_array();
-        } else {
-            $this->db->select('*');
-            $this->db->from('profil');
-            $this->db->where('id_profil', $id_profil);
-            return $this->db->get()->row_array();
-        }
-    }
-
-    // LAYANAN UTAMA
-    function layanan_utama(){
-        $this->db->select('*');
-        $this->db->from('layanan');
-        $this->db->order_by('id_layanan', 'ASC');
-        $this->db->where('kategori', 1);
-        return $this->db->get()->result_array();
-    }
-
-    // LAYANAN PENDUKUNG
-    function layanan_pendukung(){
-        $this->db->select('*');
-        $this->db->from('layanan');
-        $this->db->order_by('id_layanan', 'ASC');
-        $this->db->where('kategori', 2);
-        return $this->db->get()->result_array();
-    }
-
-    // LAYANAN DETAIL
-    function layanan_detail($id_layanan){
-        $this->db->select('*');
-        $this->db->from('layanan');
-        $this->db->where('id_layanan', $id_layanan);
-        return $this->db->get()->row_array();
-    }
-
-    // PENGADUAN
-    function pengaduan($id=null){
-        if($id==null){
-            $this->db->select('*');
-            $this->db->from('pengaduan');
-            $this->db->join('layanan', 'layanan.id_layanan = pengaduan.id_layanan');
-            $this->db->order_by('pengaduan.tanggal', 'DESC');
-            return $this->db->get()->result_array();
-        } else {
-            $this->db->select('*');
-            $this->db->from('pengaduan');
-            $this->db->join('layanan', 'layanan.id_layanan = pengaduan.id_layanan');
-            $this->db->where('pengaduan.id', $id);
-            return $this->db->get()->row_array();
-        }
-    }
-
-    // KRITIK & SARAN
-    function kds($id=null){
-        if($id==null){
-            $this->db->select('*');
-            $this->db->from('kds');
-            $this->db->order_by('tanggal', 'DESC');
-            return $this->db->get()->result_array();
-        } else {
-            $this->db->select('*');
-            $this->db->from('kds');
-            $this->db->where('id', $id);
-            return $this->db->get()->row_array();
-        }
-    }
-
-    // KOMENTAR GALERI
-    function komentar_galeri($id){
-        $this->db->select('*');
-        $this->db->from('komentar_galeri');
-        $this->db->where('id_gk', $id);
-        $this->db->order_by('tgl_komentar', 'DESC');
-        return $this->db->get()->result_array();
-    }
-
-    // JUMLAH KOMENTAR GALERI
-    function jlh_komentar_galeri($id){
-        $this->db->where('id_gk', $id);
-        return $this->db->get('komentar_galeri')->num_rows();
-    }
-
-    // GALERI KEGIATAN
-    function galeri_kegiatan($id_gk=null){
-        if($id_gk==null){
-            $this->db->select('*');
-            $this->db->from('galeri_kegiatan');
-            $this->db->order_by('tgl_gk', 'DESC');
-            return $this->db->get()->result_array();
-        } else {
-            $this->db->select('*');
-            $this->db->from('galeri_kegiatan');
-            $this->db->where('id_gk', $id_gk);
-            return $this->db->get()->row_array();
-        }
-    }
-
-    // JUMLAH DOKUMENTASI GALERI
-    function jlh_dk($id){
-        $this->db->where('id_gk', $id);
-        return $this->db->get('dok_kegiatan')->num_rows();
-    }
-
-    // DOKUMENTASI GALERI
-    function dok_kegiatan($id){
-        $this->db->select('*');
-        $this->db->from('dok_kegiatan');
-        $this->db->where('dok_kegiatan.id_gk', $id);
-        $this->db->order_by('dok_kegiatan.id_dk', 'ASC');
-        return $this->db->get()->result_array();
-    }
-
-    // MONEV
-    function monev(){
-        $this->db->where('id', 'ksi');
-        return $this->db->get('monev')->row_array();
-    }
-
-    // OBROLAN
-    function obrolan_pengguna($id=null){
-        $this->db->select('*');
-        $this->db->from('obrolan');
-        $this->db->join('pengguna', 'pengguna.id_pengguna = obrolan.id_pengirim');
-        $this->db->order_by('obrolan.id_obrolan', 'ASC');
-        $this->db->where('obrolan.id_pengirim !=', $id);
-        return $this->db->get()->result_array();
-    }
-
-    function obrolan_id($id=null){
-        $this->db->select('*');
-        $this->db->from('obrolan');
-        $this->db->join('pengguna', 'pengguna.id_pengguna = obrolan.id_pengirim');
-        $this->db->order_by('obrolan.id_obrolan', 'DESC');
-        $this->db->where('obrolan.id_obrolan', $id);
-        return $this->db->get()->row_array();
-    }
-
-    // MISI
-    function misi($id_misi=null){
-        if($id_misi==null){
-            $this->db->select('*');
-            $this->db->from('misi');
-            $this->db->order_by('misi.id_misi', 'ASC');
-            return $this->db->get()->result_array();
-        } else {
-            $this->db->select('*');
-            $this->db->from('misi');
-            $this->db->where('misi.id_misi', $id_misi);
-            return $this->db->get()->row_array();
-        }
-    }
-
-    // SIAPA KAMI
-    function siapa_kami(){
-        $this->db->where('id', 'siapa');
-        return $this->db->get('siapa_kami')->row_array();
-    }
-
-    // VISI
-    function visi(){
-        $this->db->where('id', 'visi');
-        return $this->db->get('visi')->row_array();
-    }
-
-    // PEGAWAI
-    function pegawai($id_pegawai=null){
-        if($id_pegawai==null){
-            $this->db->select('*');
-            $this->db->from('pegawai');
-            $this->db->order_by('pegawai.id_pegawai', 'ASC');
-            return $this->db->get()->result_array();
-        } else {
-            $this->db->select('*');
-            $this->db->from('pegawai');
-            $this->db->where('pegawai.id_pegawai', $id_pegawai);
-            return $this->db->get()->row_array();
         }
     }
 

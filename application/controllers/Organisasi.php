@@ -364,7 +364,8 @@ class Organisasi extends CI_Controller {
 			redirect('organisasi');
 		}else if($id=='tujuan'){
 			$data = [
-				'isi_ot'=>$this->input->post('isi_ot')
+				'isi_ot'=>$this->input->post('isi_ot'),
+				'tgl_update'=>time()
 			];
 			$this->db->set($data);
 			$this->db->where('id_ot', 'tujuan');
@@ -390,7 +391,11 @@ class Organisasi extends CI_Controller {
 						unlink(FCPATH.'assets/img/'.$isi_ot_lama);
 					}
 					$isi_ot_baru = $this->upload->data('file_name');
-					$this->db->set('isi_ot', $isi_ot_baru);
+					$data = [
+						'isi_ot'=>$isi_ot_baru,
+						'tgl_update'=>time()
+					];
+					$this->db->set($data);
 					$this->db->where('id_ot', 'gambar');
 					$this->db->update('organisasi_tujuan');
 					$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">

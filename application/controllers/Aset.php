@@ -41,7 +41,8 @@ class Aset extends CI_Controller {
 		$data = [
 			'id'=>time(),
 			'nama'=>$nama,
-			'isi'=>$isi
+			'isi'=>$isi,
+			'tgl_update'=>time()
 		];
 
 		$this->db->insert('aset_sop', $data);
@@ -58,11 +59,13 @@ class Aset extends CI_Controller {
 	public function tambah_klasifikasi(){
 
 		$this->db->insert('klasifikasi_aset_fisik', ['nama_klasifikasi'=>$this->input->post('nama_klasifikasi')]);
+		redirect('aset/form/fisik/tambah');
 	}
 
 	public function tambah_jenisaset(){
 
 		$this->db->insert('jenis_aset_fisik', ['nama_jenisaset'=>$this->input->post('nama_jenisaset')]);
+		redirect('aset/form/fisik/tambah');
 	}
 
 	public function edit($id=null){
@@ -113,7 +116,8 @@ class Aset extends CI_Controller {
 
 			$data = [
 				'nama'=>$nama,
-				'isi'=>$isi
+				'isi'=>$isi,
+				'tgl_update'=>time()
 			];
 
 			$this->db->set($data);
