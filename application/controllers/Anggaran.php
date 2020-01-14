@@ -20,7 +20,9 @@ class Anggaran extends CI_Controller {
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
 		$id_menu = $menu_segmen['id_menu'];
-		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
+		if($id_menu!=''){
+			$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
+		}
 
 		// KHUSUS
 		$data['judul'] = "SOP Anggaran Layanan";
@@ -42,7 +44,9 @@ class Anggaran extends CI_Controller {
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
 		$id_menu = $menu_segmen['id_menu'];
-		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
+		if($id_menu!=''){
+			$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
+		}
 
 		// KHUSUS
 		$data['judul'] = "SK Koordinator Anggaran";
@@ -64,7 +68,9 @@ class Anggaran extends CI_Controller {
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
 		$id_menu = $menu_segmen['id_menu'];
-		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
+		if($id_menu!=''){
+			$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
+		}
 
 		// KHUSUS
 		$data['judul'] = "Pencatatan Anggaran Layanan";

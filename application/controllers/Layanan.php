@@ -17,10 +17,13 @@ class Layanan extends CI_Controller {
 		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
 		$data['menu'] = $this->admin->menu();
+		$data['pengumuman'] = $this->admin->pengumuman5();
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
 		$id_menu = $menu_segmen['id_menu'];
-		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
+		if($id_menu!=''){
+			$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
+		}
 
 		// KHUSUS
 		$data['judul'] = "SOP Keamanan Layanan";
@@ -39,10 +42,13 @@ class Layanan extends CI_Controller {
 		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
 		$data['menu'] = $this->admin->menu();
+		$data['pengumuman'] = $this->admin->pengumuman5();
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
 		$id_menu = $menu_segmen['id_menu'];
-		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
+		if($id_menu!=''){
+			$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
+		}
 
 		// KHUSUS
 		$data['judul'] = "SK Koordinator Layanan";
@@ -61,10 +67,13 @@ class Layanan extends CI_Controller {
 		$data['tgl_sekarang'] = $this->admin->tgl_indo(date('Y-m-d'));
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
 		$data['menu'] = $this->admin->menu();
+		$data['pengumuman'] = $this->admin->pengumuman5();
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
 		$id_menu = $menu_segmen['id_menu'];
-		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
+		if($id_menu!=''){
+			$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
+		}
 
 		// KHUSUS
 		$data['judul'] = "Form Keamanan Layanan";
