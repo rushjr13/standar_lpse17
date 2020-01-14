@@ -15,6 +15,7 @@ class Beranda extends CI_Controller {
 		$data['pengumuman'] = $this->admin->pengumuman5();
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
+		echo $menu_segmen; die;
 		$id_menu = $menu_segmen['id_menu'];
 		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
 
