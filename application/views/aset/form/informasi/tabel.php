@@ -10,7 +10,7 @@
         <th class="align-middle">MASA BERLAKU</th>
         <th class="align-middle">KEAMANAN INFORMASI</th>
         <!-- <th class="align-middle text-center">KETERANGAN</th> -->
-        <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+        <?php if($akses_menu>0){ ?>
           <th class="align-middle text-center" width="6%">OPSI</th>
         <?php } ?>
       </tr>
@@ -44,7 +44,7 @@
               Nilai : <strong><?=number_format($nilai, 0, ',','.'); ?></strong> <small>(<?=$nl ?>)</small>
             </td>
             <!-- <td class="align-middle"><?=$ai['keterangan'] ?></td> -->
-            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <?php if($akses_menu>0){ ?>
               <td class="align-middle text-center">
                 <a href="<?=base_url('aset/form/informasi/ubah/').$ai['id'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info" title="Ubah Aset Informasi <?=$ai['nama'] ?>"><i class="fa fa-fw fa-edit"></i></a>
                 <button type="button" class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapusasetinformasi" data-toggle="modal" data-target="#hapusasetinformasiModal" data-id="<?=$ai['id'] ?>" data-nama="<?=$ai['nama'] ?>" title="Hapus Aset Informasi <?=$ai['nama'] ?>"><i class="fa fa-fw fa-trash"></i></button>
@@ -54,7 +54,7 @@
         <?php endforeach ?>
       <?php }else{ ?>
         <tr>
-          <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+          <?php if($akses_menu>0){ ?>
             <td colspan="8" class="text-center">Tidak ada data yang tersedia!</td>
           <?php }else{ ?>
             <td colspan="7" class="text-center">Tidak ada data yang tersedia!</td>

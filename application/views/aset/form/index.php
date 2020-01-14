@@ -16,7 +16,7 @@
       	<div class="card shadow border-primary">
       		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Aset Informasi
-            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <?php if($akses_menu>0){ ?>
               <a href="<?=base_url('aset/form/informasi/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Informasi"><i class="fa fa-fw fa-print"></i></a>
               <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_informasiModal" title="Tambah Aset Informasi"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
@@ -32,7 +32,7 @@
       	<div class="card shadow border-primary">
       		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Aset Sumber Daya Manusia (SDM)
-            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <?php if($akses_menu>0){ ?>
               <a href="<?=base_url('aset/form/sdm/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset SDM"><i class="fa fa-fw fa-print"></i></a>
               <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_sdmModal" title="Tambah Aset Sumber Daya Manusia (SDM)"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
@@ -48,7 +48,7 @@
       	<div class="card shadow border-primary">
       		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Aset Fisik
-            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <?php if($akses_menu>0){ ?>
               <a href="<?=base_url('aset/form/fisik/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Fisik"><i class="fa fa-fw fa-print"></i></a>
               <a href="<?=base_url('aset/form/fisik/tambah') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" title="Tambah Aset Fisik"><i class="fa fa-fw fa-plus"></i></a>
             <?php } ?>
@@ -64,7 +64,7 @@
       	<div class="card shadow border-primary">
       		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Aset Software
-            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <?php if($akses_menu>0){ ?>
               <a href="<?=base_url('aset/form/software/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Perangkat Lunak (Software)"><i class="fa fa-fw fa-print"></i></a>
               <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_softwareModal" title="Tambah Aset Perangkat Lunak (Software)"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
@@ -80,7 +80,7 @@
       	<div class="card shadow border-primary">
       		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Aset Layanan
-            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <?php if($akses_menu>0){ ?>
               <a href="<?=base_url('aset/form/layanan/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Layanan"><i class="fa fa-fw fa-print"></i></a>
               <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_layananModal" title="Tambah Aset Layanan"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>
@@ -96,7 +96,7 @@
       	<div class="card shadow border-primary">
       		<div class="card-header shadow-sm bg-primary text-white">
       			Form Pencatatan Aset Intagible
-            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <?php if($akses_menu>0){ ?>
               <a href="<?=base_url('aset/form/intangible/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary ml-2 float-right" target="_blank" title="Cetak Aset Layanan"><i class="fa fa-fw fa-print"></i></a>
               <button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahaset_intangibleModal" title="Tambah Aset Layanan"><i class="fa fa-fw fa-plus"></i></button>
             <?php } ?>

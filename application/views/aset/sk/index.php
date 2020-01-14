@@ -1,7 +1,7 @@
 <div class="card shadow border-primary">
 	<div class="card-header shadow-sm bg-primary text-white">
 		SK Koordinator Aset
-    <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+    <?php if($akses_menu>0){ ?>
   		<button type="button" class="btn btn-sm btn-circle btn-primary shadow-sm float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah SK Koordinator Aset"><i class="fa fa-fw fa-plus"></i></button>
     <?php } ?>
 	</div>
@@ -14,7 +14,7 @@
           <th class="align-middle text-center">NAMA</th>
           <th class="align-middle text-center">TENTANG</th>
           <th class="align-middle text-center">MASA BERLAKU</th>
-          <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+          <?php if($akses_menu>0){ ?>
             <th class="align-middle text-center" width="6%">OPSI</th>
           <?php } ?>
         </tr>
@@ -130,7 +130,7 @@
               <td class="align-middle text-center"><button id="file" class="btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#fileModal" title="Lihat File <?=$sk['file'] ?>" data-nomor="<?=$sk['nomor'] ?>" data-tanggal="<?=$tanggal_sk ?>" data-nama="<?=$sk['nama'] ?>" data-file="<?=$sk['file'] ?>"><i class="fa fa-w fa-file-pdf"></i> <?=$sk['nama'] ?></button></td>
               <td class="align-middle text-center"><?=$sk['tentang'] ?></td>
               <td class="align-middle text-center"><?=$tanggal_berlaku ?><br>s.d.<br><?=$tanggal_berakhir ?></td>
-              <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <?php if($akses_menu>0){ ?>
                 <td class="align-middle text-center">
                   <button tipe="button" class="btn btn-sm btn-circle btn-info shadow-sm" id="ubah" data-toggle="modal" data-target="#ubahModal" title="Ubah" data-id="<?=$sk['id'] ?>" data-nomor="<?=$sk['nomor'] ?>" data-tanggal="<?=$sk['tanggal'] ?>" data-nama="<?=$sk['nama'] ?>" data-tentang="<?=$sk['tentang'] ?>" data-berlaku="<?=$sk['berlaku'] ?>" data-berakhir="<?=$sk['berakhir'] ?>" data-file="<?=$sk['file'] ?>"><i class="fa fa-fw fa-edit"></i></button>
                   <button tipe="button" class="btn btn-sm btn-circle btn-danger shadow-sm" id="hapus" data-toggle="modal" data-target="#hapusModal" title="Hapus" data-id="<?=$sk['id'] ?>" data-nomor="<?=$sk['nomor'] ?>" data-tanggal="<?=$tanggal_sk ?>" data-nama="<?=$sk['nama'] ?>" data-file="<?=$sk['file'] ?>"><i class="fa fa-fw fa-trash"></i></button>
@@ -140,7 +140,7 @@
           <?php endforeach ?>
         <?php }else{ ?>
           <tr>
-            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <?php if($akses_menu>0){ ?>
             <td colspan="7" class="align-middle text-center">Tidak ada data yang tersedia!</td>
             <?php }else{ ?>
             <td colspan="6" class="align-middle text-center">Tidak ada data yang tersedia!</td>

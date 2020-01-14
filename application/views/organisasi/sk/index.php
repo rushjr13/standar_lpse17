@@ -3,7 +3,7 @@
 		<div class="card shadow border-primary">
 			<div class="card-header bg-primary text-white">
 				Daftar SK Organisasi LPSE
-				<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+				<?php if($akses_menu>0){ ?>
 					<a href="<?=base_url('organisasi/sk/tambah') ?>" class="btn btn-sm btn-circle btn-primary shadow-sm float-right" title="Tambah SK Organisasi"><i class="fa fa-fw fa-plus"></i></a>
         <?php } ?>
 			</div>
@@ -68,7 +68,7 @@
 										<div class="col-lg-4"><?=$sko['tentang_sko'] ?></div>
 										<div class="col-lg-1">
 											<button type="button" class="btn btn-sm btn-circle btn-success shadow-sm" id="files" data-toggle="modal" data-target="#filesModal" data-nama="<?=$sko['nama_sko'] ?>" data-file="<?=$sko['file_sko'] ?>" title="File <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-file"></i></button>
-											<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+											<?php if($akses_menu>0){ ?>
 												<a href="<?=base_url('organisasi/sk/ubah/').$sko['id_sko'] ?>" class="btn btn-sm btn-circle btn-info shadow-sm" title="Ubah <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-edit"></i></a>
 												<button type="button" class="btn btn-sm btn-circle btn-danger shadow-sm" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$sko['id_sko'] ?>" data-nama="<?=$sko['nama_sko'] ?>" data-file="<?=$sko['file_sko'] ?>" title="Hapus <?=$sko['nama_sko'] ?>"><i class="fa fa-fw fa-trash"></i></button>
 				              <?php } ?>

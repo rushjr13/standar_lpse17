@@ -1,7 +1,7 @@
 <div class="card shadow border-primary">
   <div class="card-header shadow-sm bg-primary text-white">
     Regulasi Peraturan Kepala LPSE
-    <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+    <?php if($akses_menu>0){ ?>
         <button type="button" class="btn btn-sm btn-circle btn-primary mr-2 shadow-sm float-right" id="tambah" data-toggle="modal" data-target="#tambahModal" title="Tambah Regulasi"><i class="fa fa-fw fa-plus"></i></button>
     <?php } ?>
   </div>
@@ -99,7 +99,7 @@
                             <div class="col-lg-2 p-2"><?=$tgl_berakhir ?></div>
                             <div class="col-lg-1 p-2">
                                 <button type="button" class="btn btn-sm btn-circle btn-success shadow-sm" id="file" data-toggle="modal" data-target="#fileModal" data-nomor="<?=$pk['nomor'] ?>" data-tahun="<?=$pk['tahun'] ?>" data-nama="<?=$pk['nama'] ?>" data-file="<?=$pk['file'] ?>" title="Dokumen"><i class="fa fa-fw fa-file"></i></button>
-                                <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+                                <?php if($akses_menu>0){ ?>
                                     <button type="button" class="btn btn-sm btn-circle btn-info shadow-sm" id="ubah" data-toggle="modal" data-target="#ubahModal" data-id="<?=$pk['id'] ?>" data-nomor="<?=$pk['nomor'] ?>" data-tahun="<?=$pk['tahun'] ?>" data-nama="<?=$pk['nama'] ?>" data-tentang="<?=$pk['tentang'] ?>" data-berlaku="<?=$pk['berlaku'] ?>" data-berakhir="<?=$pk['berakhir'] ?>" data-file="<?=$pk['file'] ?>" title="Ubah <?=$pk['nama'] ?>"><i class="fa fa-fw fa-edit"></i></button>
                                     <button type="button" class="btn btn-sm btn-circle btn-danger shadow-sm" id="hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$pk['id'] ?>" data-nomor="<?=$pk['nomor'] ?>" data-tahun="<?=$pk['tahun'] ?>" data-nama="<?=$pk['nama'] ?>" data-file="<?=$pk['file'] ?>" title="Hapus <?=$pk['nama'] ?>"><i class="fa fa-fw fa-trash"></i></button>
                                 <?php } ?>

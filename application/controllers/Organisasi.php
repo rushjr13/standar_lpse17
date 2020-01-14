@@ -309,33 +309,43 @@ class Organisasi extends CI_Controller {
 		}
 
 		// KHUSUS
-		$this->form_validation->set_rules('jabatan_su', 'Nama Jabatan', 'required',[
-			'required' => 'Nama Jabatan Harus Diisi!'
-		]);
-		$this->form_validation->set_rules('tugas_su', 'Tugas & Tanggung Jawab', 'required',[
-			'required' => 'Tugas & Tanggung Jawab Harus Diisi!'
-		]);
+		if($data['akses_menu']>0){
+			$this->form_validation->set_rules('jabatan_su', 'Nama Jabatan', 'required',[
+				'required' => 'Nama Jabatan Harus Diisi!'
+			]);
+			$this->form_validation->set_rules('tugas_su', 'Tugas & Tanggung Jawab', 'required',[
+				'required' => 'Tugas & Tanggung Jawab Harus Diisi!'
+			]);
 
-		if ($this->form_validation->run() == FALSE){
-			$data['judul'] = "Struktur Organisasi";
-			$this->load->view('templates/header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
-			$this->load->view('organisasi/tambah_su', $data);
-			$this->load->view('templates/footer', $data);
+			if ($this->form_validation->run() == FALSE){
+				$data['judul'] = "Struktur Organisasi";
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('organisasi/tambah_su', $data);
+				$this->load->view('templates/footer', $data);
+			}else{
+				$jabatan_su = $this->input->post('jabatan_su');
+				$tugas_su = $this->input->post('tugas_su');
+
+				$data = [
+					'id_su'=>time(),
+					'jabatan_su'=>$jabatan_su,
+					'tugas_su'=>$tugas_su
+				];
+
+				$this->db->insert('organisasi_struktur', $data);
+				$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+														  <i class="fa fa-fw fa-check"></i> Tugas & Tanggung Jawab <strong>'.$jabatan_su.'</strong> telah ditambahkan!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('organisasi');
+			}
 		}else{
-			$jabatan_su = $this->input->post('jabatan_su');
-			$tugas_su = $this->input->post('tugas_su');
-
-			$data = [
-				'id_su'=>time(),
-				'jabatan_su'=>$jabatan_su,
-				'tugas_su'=>$tugas_su
-			];
-
-			$this->db->insert('organisasi_struktur', $data);
-			$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-													  <i class="fa fa-fw fa-check"></i> Tugas & Tanggung Jawab <strong>'.$jabatan_su.'</strong> telah ditambahkan!
+			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+													  <i class="fa fa-fw fa-ban"></i> Maaf. Anda bukan koordinator menu ini!
 													  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 													    <span aria-hidden="true">&times;</span>
 													  </button>
@@ -483,73 +493,7 @@ class Organisasi extends CI_Controller {
 			$this->load->view('organisasi/sk/index', $data);
 			$this->load->view('templates/footer', $data);
 		}else if($opsi=='tambah'){
-			$this->form_validation->set_rules('nomor_sko', 'Nomor SK', 'required',[
-				'required' => 'Nomor SK Harus Diisi!'
-			]);
-			$this->form_validation->set_rules('tanggal_sko', 'Tanggal SK', 'required',[
-				'required' => 'Tanggal SK Harus Diisi!'
-			]);
-			$this->form_validation->set_rules('nama_sko', 'Nama SK', 'required',[
-				'required' => 'Nama SK Harus Diisi!'
-			]);
-			$this->form_validation->set_rules('tentang_sko', 'SK Tentang', 'required',[
-				'required' => 'SK Tentang Harus Diisi!'
-			]);
-
-			if ($this->form_validation->run() == FALSE){
-				$data['judul'] = "SK Organisasi";
-				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
-				$this->load->view('templates/topbar', $data);
-				$this->load->view('organisasi/sk/tambah', $data);
-				$this->load->view('templates/footer', $data);
-			}else{
-				$nomor_sko = $this->input->post('nomor_sko');
-				$tanggal_sko = $this->input->post('tanggal_sko');
-				$nama_sko = $this->input->post('nama_sko');
-				$tentang_sko = $this->input->post('tentang_sko');
-
-				// Cek foto_calon yang diupload
-				$file_sko_upload = $_FILES['file_sko']['name'];
-
-				if($file_sko_upload){
-					$config['allowed_types']	= 'pdf';
-					$config['upload_path']		= './uploads/pdf/sk_organisasi/';
-					$this->load->library('upload', $config);
-					if($this->upload->do_upload('file_sko')){
-						$file_sko = $this->upload->data('file_name');
-						$data = [
-							'id_sko'=>time(),
-							'nomor_sko'=>$nomor_sko,
-							'tanggal_sko'=>$tanggal_sko,
-							'nama_sko'=>$nama_sko,
-							'tentang_sko'=>$tentang_sko,
-							'file_sko'=>$file_sko,
-							'tgl_update'=>time()
-						];
-					} else {
-						echo $this->upload->display_errors();
-					}
-				}
-				$this->db->insert('organisasi_sk', $data);
-				$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-														  <i class="fa fa-fw fa-info-circle"></i> <strong>'.$nama_sko.'</strong> telah ditambahkan!
-														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-														    <span aria-hidden="true">&times;</span>
-														  </button>
-														</div>');
-				redirect('organisasi/sk');
-			}
-		}else if($opsi=='ubah'){
-			if($id==null){
-				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-														  <i class="fa fa-fw fa-ban"></i> Tidak SK yang dipilih!
-														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-														    <span aria-hidden="true">&times;</span>
-														  </button>
-														</div>');
-				redirect('organisasi/sk');
-			}else{
+			if($data['akses_menu']>0){
 				$this->form_validation->set_rules('nomor_sko', 'Nomor SK', 'required',[
 					'required' => 'Nomor SK Harus Diisi!'
 				]);
@@ -565,19 +509,18 @@ class Organisasi extends CI_Controller {
 
 				if ($this->form_validation->run() == FALSE){
 					$data['judul'] = "SK Organisasi";
-					$data['sk_organisasi'] = $this->admin->sk_organisasi($id);
 					$this->load->view('templates/header', $data);
 					$this->load->view('templates/sidebar', $data);
 					$this->load->view('templates/topbar', $data);
-					$this->load->view('organisasi/sk/ubah', $data);
+					$this->load->view('organisasi/sk/tambah', $data);
 					$this->load->view('templates/footer', $data);
 				}else{
 					$nomor_sko = $this->input->post('nomor_sko');
 					$tanggal_sko = $this->input->post('tanggal_sko');
 					$nama_sko = $this->input->post('nama_sko');
 					$tentang_sko = $this->input->post('tentang_sko');
-					$file_lama_sko = $this->input->post('file_lama_sko');
 
+					// Cek foto_calon yang diupload
 					$file_sko_upload = $_FILES['file_sko']['name'];
 
 					if($file_sko_upload){
@@ -586,8 +529,8 @@ class Organisasi extends CI_Controller {
 						$this->load->library('upload', $config);
 						if($this->upload->do_upload('file_sko')){
 							$file_sko = $this->upload->data('file_name');
-							unlink(FCPATH.'uploads/pdf/sk_organisasi/'.$file_lama_sko);
 							$data = [
+								'id_sko'=>time(),
 								'nomor_sko'=>$nomor_sko,
 								'tanggal_sko'=>$tanggal_sko,
 								'nama_sko'=>$nama_sko,
@@ -598,18 +541,132 @@ class Organisasi extends CI_Controller {
 						} else {
 							echo $this->upload->display_errors();
 						}
-					}else{
-						$data = [
-							'nomor_sko'=>$nomor_sko,
-							'tanggal_sko'=>$tanggal_sko,
-							'nama_sko'=>$nama_sko,
-							'tentang_sko'=>$tentang_sko,
-							'tgl_update'=>time()
-						];
 					}
-					$this->db->set($data);
+					$this->db->insert('organisasi_sk', $data);
+					$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+															  <i class="fa fa-fw fa-info-circle"></i> <strong>'.$nama_sko.'</strong> telah ditambahkan!
+															  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+															    <span aria-hidden="true">&times;</span>
+															  </button>
+															</div>');
+					redirect('organisasi/sk');
+				}
+			}else{
+				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+														  <i class="fa fa-fw fa-ban"></i> Maaf. Anda bukan koordinator menu ini!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('organisasi/sk');
+			}
+		}else if($opsi=='ubah'){
+			if($data['akses_menu']>0){
+				if($id==null){
+					$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+															  <i class="fa fa-fw fa-ban"></i> Tidak SK yang dipilih!
+															  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+															    <span aria-hidden="true">&times;</span>
+															  </button>
+															</div>');
+					redirect('organisasi/sk');
+				}else{
+					$this->form_validation->set_rules('nomor_sko', 'Nomor SK', 'required',[
+						'required' => 'Nomor SK Harus Diisi!'
+					]);
+					$this->form_validation->set_rules('tanggal_sko', 'Tanggal SK', 'required',[
+						'required' => 'Tanggal SK Harus Diisi!'
+					]);
+					$this->form_validation->set_rules('nama_sko', 'Nama SK', 'required',[
+						'required' => 'Nama SK Harus Diisi!'
+					]);
+					$this->form_validation->set_rules('tentang_sko', 'SK Tentang', 'required',[
+						'required' => 'SK Tentang Harus Diisi!'
+					]);
+
+					if ($this->form_validation->run() == FALSE){
+						$data['judul'] = "SK Organisasi";
+						$data['sk_organisasi'] = $this->admin->sk_organisasi($id);
+						$this->load->view('templates/header', $data);
+						$this->load->view('templates/sidebar', $data);
+						$this->load->view('templates/topbar', $data);
+						$this->load->view('organisasi/sk/ubah', $data);
+						$this->load->view('templates/footer', $data);
+					}else{
+						$nomor_sko = $this->input->post('nomor_sko');
+						$tanggal_sko = $this->input->post('tanggal_sko');
+						$nama_sko = $this->input->post('nama_sko');
+						$tentang_sko = $this->input->post('tentang_sko');
+						$file_lama_sko = $this->input->post('file_lama_sko');
+
+						$file_sko_upload = $_FILES['file_sko']['name'];
+
+						if($file_sko_upload){
+							$config['allowed_types']	= 'pdf';
+							$config['upload_path']		= './uploads/pdf/sk_organisasi/';
+							$this->load->library('upload', $config);
+							if($this->upload->do_upload('file_sko')){
+								$file_sko = $this->upload->data('file_name');
+								unlink(FCPATH.'uploads/pdf/sk_organisasi/'.$file_lama_sko);
+								$data = [
+									'nomor_sko'=>$nomor_sko,
+									'tanggal_sko'=>$tanggal_sko,
+									'nama_sko'=>$nama_sko,
+									'tentang_sko'=>$tentang_sko,
+									'file_sko'=>$file_sko,
+									'tgl_update'=>time()
+								];
+							} else {
+								echo $this->upload->display_errors();
+							}
+						}else{
+							$data = [
+								'nomor_sko'=>$nomor_sko,
+								'tanggal_sko'=>$tanggal_sko,
+								'nama_sko'=>$nama_sko,
+								'tentang_sko'=>$tentang_sko,
+								'tgl_update'=>time()
+							];
+						}
+						$this->db->set($data);
+						$this->db->where('id_sko', $id);
+						$this->db->update('organisasi_sk');
+						$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+																  <i class="fa fa-fw fa-info-circle"></i> <strong>'.$nama_sko.'</strong> telah diperbarui!
+																  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+																    <span aria-hidden="true">&times;</span>
+																  </button>
+																</div>');
+						redirect('organisasi/sk');
+					}
+				}
+			}else{
+				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+														  <i class="fa fa-fw fa-ban"></i> Maaf. Anda bukan koordinator menu ini!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('organisasi/sk');
+			}
+		} else if($opsi=='hapus'){
+			if($data['akses_menu']>0){
+				if($id==null){
+					$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+															  <i class="fa fa-fw fa-ban"></i> Tidak SK yang dipilih!
+															  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+															    <span aria-hidden="true">&times;</span>
+															  </button>
+															</div>');
+					redirect('organisasi/sk');
+				}else{
+					$nama_sko = $this->input->post('nama_sko');
+					$file_sko = $this->input->post('file_sko');
+
+					unlink(FCPATH.'uploads/pdf/sk_organisasi/'.$file_sko);
+
 					$this->db->where('id_sko', $id);
-					$this->db->update('organisasi_sk');
+					$this->db->delete('organisasi_sk');
 					$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
 															  <i class="fa fa-fw fa-info-circle"></i> <strong>'.$nama_sko.'</strong> telah diperbarui!
 															  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -618,26 +675,9 @@ class Organisasi extends CI_Controller {
 															</div>');
 					redirect('organisasi/sk');
 				}
-			}
-		} else if($opsi=='hapus'){
-			if($id==null){
-				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-														  <i class="fa fa-fw fa-ban"></i> Tidak SK yang dipilih!
-														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-														    <span aria-hidden="true">&times;</span>
-														  </button>
-														</div>');
-				redirect('organisasi/sk');
 			}else{
-				$nama_sko = $this->input->post('nama_sko');
-				$file_sko = $this->input->post('file_sko');
-
-				unlink(FCPATH.'uploads/pdf/sk_organisasi/'.$file_sko);
-
-				$this->db->where('id_sko', $id);
-				$this->db->delete('organisasi_sk');
-				$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-														  <i class="fa fa-fw fa-info-circle"></i> <strong>'.$nama_sko.'</strong> telah diperbarui!
+				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+														  <i class="fa fa-fw fa-ban"></i> Maaf. Anda bukan koordinator menu ini!
 														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 														    <span aria-hidden="true">&times;</span>
 														  </button>

@@ -54,43 +54,53 @@ class Regulasi extends CI_Controller {
 		}
 
 		// KHUSUS
-		if($id_regulasi==null){
-			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-													  <i class="fa fa-fw fa-ban"></i> Tidak ada regulasi yang dipilih!
-													  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-													    <span aria-hidden="true">&times;</span>
-													  </button>
-													</div>');
-			redirect('regulasi');
-		}else{
-			$this->form_validation->set_rules('isi_regulasi', 'Isi Regulasi', 'required',[
-				'required' => 'Isi Regulasi Harus Diisi!'
-			]);
-
-			if ($this->form_validation->run() == FALSE){
-				$data['judul'] = "Informasi";
-				$data['regulasi'] = $this->admin->regulasiid($id_regulasi);
-				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
-				$this->load->view('templates/topbar', $data);
-				$this->load->view('regulasi/ubah', $data);
-				$this->load->view('templates/footer', $data);
-			}else{
-				$nama_regulasi = $this->input->post('nama_regulasi');
-				$isi_regulasi = $this->input->post('isi_regulasi');
-
-				$this->db->set('isi_regulasi', $isi_regulasi);
-				$this->db->where('id_regulasi', $id_regulasi);
-				$this->db->update('regulasi');
-
-				$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-														  <i class="fa fa-fw fa-check"></i> Regulasi <strong>'.$nama_regulasi.'</strong> telah diperbarui!
+		if($data['akses_menu']>0){
+			if($id_regulasi==null){
+				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+														  <i class="fa fa-fw fa-ban"></i> Tidak ada regulasi yang dipilih!
 														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 														    <span aria-hidden="true">&times;</span>
 														  </button>
 														</div>');
 				redirect('regulasi');
+			}else{
+				$this->form_validation->set_rules('isi_regulasi', 'Isi Regulasi', 'required',[
+					'required' => 'Isi Regulasi Harus Diisi!'
+				]);
+
+				if ($this->form_validation->run() == FALSE){
+					$data['judul'] = "Informasi";
+					$data['regulasi'] = $this->admin->regulasiid($id_regulasi);
+					$this->load->view('templates/header', $data);
+					$this->load->view('templates/sidebar', $data);
+					$this->load->view('templates/topbar', $data);
+					$this->load->view('regulasi/ubah', $data);
+					$this->load->view('templates/footer', $data);
+				}else{
+					$nama_regulasi = $this->input->post('nama_regulasi');
+					$isi_regulasi = $this->input->post('isi_regulasi');
+
+					$this->db->set('isi_regulasi', $isi_regulasi);
+					$this->db->where('id_regulasi', $id_regulasi);
+					$this->db->update('regulasi');
+
+					$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+															  <i class="fa fa-fw fa-check"></i> Regulasi <strong>'.$nama_regulasi.'</strong> telah diperbarui!
+															  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+															    <span aria-hidden="true">&times;</span>
+															  </button>
+															</div>');
+					redirect('regulasi');
+				}
 			}
+		}else{
+			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+													  <i class="fa fa-fw fa-ban"></i> Maaf. Anda bukan koordinator menu ini!
+													  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+													    <span aria-hidden="true">&times;</span>
+													  </button>
+													</div>');
+			redirect('regulasi');
 		}
 	}
 

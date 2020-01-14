@@ -14,7 +14,7 @@
     		<div class="card shadow border-primary mb-3">
 	      		<div class="card-header shadow-sm bg-primary text-white">
 	      			Struktur Organisasi LPSE
-              <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <?php if($akses_menu>0){ ?>
   	      			<a href="<?=base_url('organisasi/tambah_tupoksi') ?>" class="btn btn-sm btn-circle shadow-sm btn-primary float-right" title="Tambah Jabatan"><i class="fa fa-fw fa-plus"></i></a>
   	      			<button type="button" class="btn btn-sm btn-circle btn-primary shadow-sm float-right mr-2" data-toggle="modal" data-target="#ubahstrukturModal" title="Ubah Struktur Organisasi"><i class="fa fa-fw fa-edit"></i></button>
               <?php } ?>
@@ -28,7 +28,7 @@
     		<div class="card shadow border-primary mb-3">
 	      		<div class="card-header shadow-sm bg-primary text-white">
 	      			Tujuan Pengorganisasian
-              <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <?php if($akses_menu>0){ ?>
   	      			<button type="button" class="btn btn-sm btn-circle shadow-sm btn-primary float-right" data-toggle="modal" data-target="#ubahtujuanModal" title="Ubah Tujuan Organisasi"><i class="fa fa-fw fa-edit"></i></button>
               <?php } ?>
 	      		</div>
@@ -48,7 +48,7 @@
 	      	<div class="card shadow border-primary mb-3">
 	      		<div class="card-header shadow-sm bg-primary text-white">
 	      			<?=$su['jabatan_su'] ?>
-              <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <?php if($akses_menu>0){ ?>
                 <button type="button" class="btn btn-sm btn-circle btn-danger shadow-sm float-right" id='hapussu' data-toggle="modal" data-target="#hapussuModal" data-idsu="<?=$su['id_su'] ?>" data-jabatansu="<?=$su['jabatan_su'] ?>" title="Hapus Jabatan <?=$su['jabatan_su'] ?>"><i class="fa fa-fw fa-trash"></i></button>
   	      			<a href="<?=base_url('organisasi/tupoksi/').$su['id_su'] ?>" class="btn btn-sm shadow-sm btn-circle btn-info float-right mr-2" title="Ubah Tupoksi <?=$su['jabatan_su'] ?>"><i class="fa fa-fw fa-edit"></i></a>
   	      			<a href="<?=base_url('organisasi/tambah_tupoksitambahan/').$su['id_su'] ?>" class="btn btn-sm shadow-sm btn-circle btn-success float-right mr-2" title="Tambah Tupoksi Tambahan <?=$su['jabatan_su'] ?>"><i class="fa fa-fw fa-plus"></i></a>
@@ -73,7 +73,7 @@
 		      					<div class="card shadow mb-3">
 		      						<div class="card-header shadow-sm font-weight-bold">
 		      							<?=$st['jabatan_st'] ?>
-                        <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+                        <?php if($akses_menu>0){ ?>
   		      							<button type="button" class="btn btn-sm btn-circle btn-danger shadow-sm float-right" id="hapusst" data-toggle="modal" data-target="#hapusstModal" data-idsu="<?=$su['id_su'] ?>" data-idst="<?=$st['id_st'] ?>" data-jabatanst="<?=$st['jabatan_st'] ?>" title="Hapus Tugas Tambahan <?=$su['jabatan_su'] ?> - <?=$st['jabatan_st'] ?>"><i class="fa fa-fw fa-trash"></i></button>	
   		      							<a href="<?=base_url('organisasi/tupoksitambahan/').$su['id_su'].'/'.$st['id_st'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info float-right mr-2" title="Ubah Tugas Tambahan <?=$su['jabatan_su'] ?> - <?=$st['jabatan_st'] ?>"><i class="fa fa-fw fa-edit"></i></a>
                         <?php } ?>

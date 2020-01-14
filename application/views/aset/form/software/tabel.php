@@ -8,7 +8,7 @@
         <th colspan="2" class="align-middle text-center">ASET</th>
         <th class="align-middle text-center">KEAMANAN<br>INFORMASI</th>
         <!-- <th class="align-middle text-center">KETERANGAN</th> -->
-        <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+        <?php if($akses_menu>0){ ?>
           <th class="align-middle text-center" width="6%">OPSI</th>
         <?php } ?>
       </tr>
@@ -48,7 +48,7 @@
               Nilai : <strong><?=number_format($nilai, 0, ',','.'); ?></strong> <small>(<?=$nl ?>)</small>
             </td>
             <!-- <td class="align-middle"><?=$as['keterangan'] ?></td> -->
-            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <?php if($akses_menu>0){ ?>
               <td class="align-middle text-center">
                 <a href="<?=base_url('aset/form/software/ubah/').$as['ids'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
                 <button type="button" class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapusasetsoftware" data-toggle="modal" data-target="#hapusasetsoftwareModal" data-id="<?=$as['ids'] ?>" data-nama="<?=$as['nama'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
@@ -58,7 +58,7 @@
         <?php endforeach ?>
       <?php }else{ ?>
         <tr>
-          <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+          <?php if($akses_menu>0){ ?>
             <td colspan="7" class="text-center">Tidak ada data yang tersedia!</td>
           <?php }else{ ?>
             <td colspan="6" class="text-center">Tidak ada data yang tersedia!</td>

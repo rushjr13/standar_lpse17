@@ -13,7 +13,7 @@
       	<div class="card shadow border-primary">
       		<div class="card-header shadow-sm bg-primary text-white">
       			Resiko Layanan
-            <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+            <?php if($akses_menu>0){ ?>
         			<button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right mr-2" id="editresiko" data-toggle="modal" data-target="#editresikoModal" title="Edit Daftar Istilah Pengelolaan Resiko Layanan"><i class="fa fa-fw fa-edit"></i></button>
             <?php } ?>
       		</div>
@@ -27,7 +27,7 @@
 	      	<div class="card shadow border-primary">
 	      		<div class="card-header shadow-sm bg-primary text-white">
 	      			<?=$sopr['nama'] ?>
-              <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <?php if($akses_menu>0){ ?>
   	      			<a href="<?=base_url('resiko/edit/').$sopr['id'] ?>" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" title="Edit <?=$sopr['nama'] ?>"><i class="fa fa-fw fa-edit"></i></a>
               <?php } ?>
 	      		</div>

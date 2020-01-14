@@ -61,7 +61,7 @@
                 title="Detail">
                 <i class="fa fa-fw fa-eye"></i>
               </button>
-              <?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+              <?php if($akses_menu>0){ ?>
                 <a href="<?=base_url('resiko/form/fisik/ubah/').$rfisik['id_rfisik'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
                 <button type="button" class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapusresikofisik" data-toggle="modal" data-target="#hapusresikofisikModal" data-id="<?=$rfisik['id_rfisik'] ?>" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
               <?php } ?>
