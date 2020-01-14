@@ -19,7 +19,7 @@ class Resiko extends CI_Controller {
 		$data['menu'] = $this->admin->menu();
 		$data['pengumuman'] = $this->admin->pengumuman5();
 		$link = $this->uri->segment('1');
-		$menu_segmen = $this->admin->menu_segmen($link);
+		$menu_segmen = $this->admin->menu_segmen($link)->row_array();
 		$id_menu = $menu_segmen['id_menu'];
 		if($id_menu!=''){
 			$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
@@ -54,7 +54,7 @@ class Resiko extends CI_Controller {
 			$data['hari_sekarang'] = $this->admin->hari(date('l'));
 			$data['menu'] = $this->admin->menu();
 			$link = $this->uri->segment('1');
-			$menu_segmen = $this->admin->menu_segmen($link);
+			$menu_segmen = $this->admin->menu_segmen($link)->row_array();
 			$id_menu = $menu_segmen['id_menu'];
 			$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
 
@@ -111,7 +111,7 @@ class Resiko extends CI_Controller {
 		$data['menu'] = $this->admin->menu();
 		$data['pengumuman'] = $this->admin->pengumuman5();
 		$link = $this->uri->segment('1');
-		$menu_segmen = $this->admin->menu_segmen($link);
+		$menu_segmen = $this->admin->menu_segmen($link)->row_array();
 		$id_menu = $menu_segmen['id_menu'];
 		if($id_menu!=''){
 			$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
@@ -246,7 +246,7 @@ class Resiko extends CI_Controller {
 		$data['menu'] = $this->admin->menu();
 		$data['pengumuman'] = $this->admin->pengumuman5();
 		$link = $this->uri->segment('1');
-		$menu_segmen = $this->admin->menu_segmen($link);
+		$menu_segmen = $this->admin->menu_segmen($link)->row_array();
 		$id_menu = $menu_segmen['id_menu'];
 		if($id_menu!=''){
 			$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();

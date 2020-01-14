@@ -248,7 +248,7 @@ class Admin_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('submenu');
         $this->db->where('link', $link);
-        return $this->db->get()->row_array();
+        return $this->db->get();
     }
 
     // PENGUMUMAN
