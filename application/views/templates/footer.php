@@ -117,15 +117,14 @@
   <script src="<?=base_url('assets/')?>js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="<?=base_url('assets/')?>vendor/chart.js/Chart.min.js"></script>
+  <!-- <script src="<?=base_url('assets/')?>vendor/chart.js/Chart.min.js"></script>
   <script src="<?=base_url('assets/')?>vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="<?=base_url('assets/')?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-  <!-- Page level custom scripts -->
   <script src="<?=base_url('assets/')?>js/demo/chart-area-demo.js"></script>
   <script src="<?=base_url('assets/')?>js/demo/chart-pie-demo.js"></script>
   <script src="<?=base_url('assets/')?>js/demo/datatables-demo.js"></script>
-  <script src="<?=base_url('assets/')?>js/select2.min.js"></script>
+  <script src="<?=base_url('assets/')?>js/select2.min.js"></script> -->
   <script src="<?=base_url('assets/') ?>js/jquery-1.10.2.js"></script>
 
 <script>
@@ -150,19 +149,6 @@
     $('.file-input').on('change', function(){
       let fileName = $(this).val().split('\\').pop();
       $(this).next('.file-label').addClass("selected").html(fileName);
-    });
-
-    $('select').select2();
-
-    $(function () {
-      $('select').each(function () {
-        $(this).select2({
-          theme: 'bootstrap4',
-          width: 'style',
-          placeholder: $(this).attr('placeholder'),
-          allowClear: Boolean($(this).data('allow-clear')),
-        });
-      });
     });
 
   </script>

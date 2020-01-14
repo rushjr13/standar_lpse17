@@ -20,7 +20,7 @@ class Pengguna extends CI_Controller {
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
 		$id_menu = $menu_segmen['id_menu'];
-		$data['akses_menu'] = $this->admin->akses_menu($id_menu);
+		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
 
 		// KHUSUS
 		$data['judul'] = "Pengguna";
@@ -43,7 +43,7 @@ class Pengguna extends CI_Controller {
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
 		$id_menu = $menu_segmen['id_menu'];
-		$data['akses_menu'] = $this->admin->akses_menu($id_menu);
+		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
 
 		// KHUSUS
 		$this->form_validation->set_rules('username', 'Nama Pengguna', 'required|is_unique[pengguna.username]',[
@@ -145,7 +145,7 @@ class Pengguna extends CI_Controller {
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
 		$id_menu = $menu_segmen['id_menu'];
-		$data['akses_menu'] = $this->admin->akses_menu($id_menu);
+		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
 
 		// KHUSUS
 		if($username==null){
@@ -326,7 +326,7 @@ class Pengguna extends CI_Controller {
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
 		$id_menu = $menu_segmen['id_menu'];
-		$data['akses_menu'] = $this->admin->akses_menu($id_menu);
+		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
 
 		// KHUSUS
 		if($username==null){
@@ -364,7 +364,7 @@ class Pengguna extends CI_Controller {
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
 		$id_menu = $menu_segmen['id_menu'];
-		$data['akses_menu'] = $this->admin->akses_menu($id_menu);
+		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
 
 		// KHUSUS
 		if($username==null){

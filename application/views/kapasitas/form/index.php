@@ -70,7 +70,7 @@
 											<a href="<?=base_url('kapasitas/form/ubah/').$kp['id_kapasitas'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
 											<button type="button" class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapus" title="Hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$kp['id_kapasitas'] ?>" data-item="<?=$kp['item'] ?>"><i class="fa fa-fw fa-trash"></i></button>
 										<?php }else{ ?>
-											<a href="<?=base_url('kapasitas/form/cetak/').$kp['id_kapasitas'] ?>" class="btn shadow-sm btn-sm btn-circle btn-success" title="Laporan"><i class="fa fa-fw fa-print"></i></a>
+											<a href="<?=base_url('kapasitas/form/cetak/').$kp['id_kapasitas'] ?>" target="_blank" class="btn shadow-sm btn-sm btn-circle btn-success" title="Laporan"><i class="fa fa-fw fa-print"></i></a>
 										<?php } ?>
 									</td>
 								</tr>

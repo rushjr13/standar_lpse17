@@ -20,7 +20,7 @@ class Regulasi extends CI_Controller {
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
 		$id_menu = $menu_segmen['id_menu'];
-		$data['akses_menu'] = $this->admin->akses_menu($id_menu);
+		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
 
 		// KHUSUS
 		$data['judul'] = "Informasi";
@@ -45,7 +45,7 @@ class Regulasi extends CI_Controller {
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
 		$id_menu = $menu_segmen['id_menu'];
-		$data['akses_menu'] = $this->admin->akses_menu($id_menu);
+		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
 
 		// KHUSUS
 		if($id_regulasi==null){
@@ -99,7 +99,7 @@ class Regulasi extends CI_Controller {
 		$link = $this->uri->segment('1');
 		$menu_segmen = $this->admin->menu_segmen($link);
 		$id_menu = $menu_segmen['id_menu'];
-		$data['akses_menu'] = $this->admin->akses_menu($id_menu);
+		$data['akses_menu'] = $this->admin->akses_menu($id_menu, $user)->num_rows();
 
 		// KHUSUS
 		$data['judul'] = "Regulasi";

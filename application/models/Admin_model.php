@@ -218,11 +218,12 @@ class Admin_model extends CI_Model {
     }
 
     // AKSES MENU
-    function akses_menu($id_menu){
+    function akses_menu($id_menu, $username){
         $this->db->select('*');
         $this->db->from('akses_menu');
         $this->db->where('id_menu', $id_menu);
-        return $this->db->get()->row_array();
+        $this->db->where('username', $username);
+        return $this->db->get();
     }
 
     // SUB MENU BY MENU

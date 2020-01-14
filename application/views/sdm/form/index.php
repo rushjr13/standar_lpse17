@@ -41,8 +41,10 @@
 							<td class="align-middle"><?=$sd['kebutuhan_pelatihan'] ?></td>
 							<td class="align-middle text-center">
 								<a href="<?=base_url('sdm/form/detail/').$sd['id_sdm'] ?>" class="btn shadow-sm btn-sm btn-circle btn-success" title="Pelatihan & Dokumen"><i class="fa fa-fw fa-user-tie"></i></a>
-								<button type="button" class="btn btn-sm shadow-sm btn-circle btn-info" id="ubah" data-id="<?=$sd['id_sdm'] ?>" data-nama="<?=$sd['nama'] ?>" data-jabatan="<?=$sd['jabatan'] ?>" data-komtuh="<?=$sd['kompetensi_kebutuhan'] ?>" data-tkttuh="<?=$sd['tingkatan_kebutuhan'] ?>" data-komini="<?=$sd['kompetensi_saat_ini'] ?>" data-tktini="<?=$sd['tingkatan_saat_ini'] ?>" data-tuhtih="<?=$sd['kebutuhan_pelatihan'] ?>" data-toggle="modal" data-target="#ubahModal" title="Ubah Data SDM a.n <?=$sd['nama'] ?>"><i class="fa fa-fw fa-user-edit"></i></button>
-								<button type="button" class="btn btn-sm shadow-sm btn-circle btn-danger" id="hapus" data-id="<?=$sd['id_sdm'] ?>" data-nama="<?=$sd['nama'] ?>" data-jabatan="<?=$sd['jabatan'] ?>" data-toggle="modal" data-target="#hapusModal" title="Hapus Data SDM a.n <?=$sd['nama'] ?>"><i class="fa fa-fw fa-user-times"></i></button>
+								<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+									<button type="button" class="btn btn-sm shadow-sm btn-circle btn-info" id="ubah" data-id="<?=$sd['id_sdm'] ?>" data-nama="<?=$sd['nama'] ?>" data-jabatan="<?=$sd['jabatan'] ?>" data-komtuh="<?=$sd['kompetensi_kebutuhan'] ?>" data-tkttuh="<?=$sd['tingkatan_kebutuhan'] ?>" data-komini="<?=$sd['kompetensi_saat_ini'] ?>" data-tktini="<?=$sd['tingkatan_saat_ini'] ?>" data-tuhtih="<?=$sd['kebutuhan_pelatihan'] ?>" data-toggle="modal" data-target="#ubahModal" title="Ubah Data SDM a.n <?=$sd['nama'] ?>"><i class="fa fa-fw fa-user-edit"></i></button>
+									<button type="button" class="btn btn-sm shadow-sm btn-circle btn-danger" id="hapus" data-id="<?=$sd['id_sdm'] ?>" data-nama="<?=$sd['nama'] ?>" data-jabatan="<?=$sd['jabatan'] ?>" data-toggle="modal" data-target="#hapusModal" title="Hapus Data SDM a.n <?=$sd['nama'] ?>"><i class="fa fa-fw fa-user-times"></i></button>
+								<?php } ?>
 							</td>
 						</tr>
 					<?php endforeach ?>

@@ -16,7 +16,9 @@
 					<th class="align-middle" rowspan="2">INSTANSI</th>
 					<th class="align-middle" rowspan="2">TUJUAN</th>
 					<th class="align-middle" rowspan="2">JENIS PERIJINAN</th>
-					<th class="align-middle" rowspan="2">OPSI</th>
+					<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+						<th class="align-middle" rowspan="2">OPSI</th>
+					<?php } ?>
 				</tr>
 				<tr>
 					<th class="align-middle">URUT</th>
@@ -33,17 +35,19 @@
 							<td class="align-middle" width="28%"><?=$prkt['instansi'] ?></td>
 							<td class="align-middle" width="28%"><?=$prkt['tujuan'] ?></td>
 							<td class="align-middle text-center" width="12%"><?=$prkt['nama_jenis_perangkat'] ?></td>
-							<td class="align-middle text-center" width="7%">
-								<?php if($prkt['status_ijin']=="Tunda"){ ?>
-									<button class="btn shadow-sm btn-sm btn-circle btn-warning" id="persetujuan" title="Persetujuan" data-id="<?=$prkt['id_ijin_perangkat'] ?>" data-toggle="modal" data-target="#persetujuanModal"><i class="fa fa-fw fa-pencil-alt"></i></button>
-									<a href="<?=base_url('perangkat/form/ubah/').$prkt['id_ijin_perangkat'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
-									<button class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapus" data-id="<?=$prkt['id_ijin_perangkat'] ?>" data-toggle="modal" data-target="#hapusModal" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
-								<?php }else if($prkt['status_ijin']=="Setuju"){ ?>
-									<a href="<?=base_url('perangkat/form/detail/').$prkt['id_ijin_perangkat'] ?>" class="btn shadow-sm btn-sm btn-circle btn-success" id="detail" title="Detail Perijinan"><i class="fa fa-fw fa-list"></i></a>
-								<?php }else{ ?>
-									<button class="btn shadow-sm btn-sm btn-circle btn-default" id="info" title="Info Perijinan" data-id="<?=$prkt['id_ijin_perangkat'] ?>" data-jenis="<?=$prkt['nama_jenis_perangkat'] ?>" data-nama="<?=$prkt['nama'] ?>" data-identitas="<?=$prkt['jenis_identitas'] ?> - <?=$prkt['identitas'] ?>" data-instansi="<?=$prkt['instansi'] ?>" data-alamat="<?=$prkt['alamat'] ?>" data-tujuan="<?=$prkt['tujuan'] ?>" data-status_ijin="<?=$prkt['status_ijin'] ?>" data-toggle="modal" data-target="#infoModal"><i class="fa fa-fw fa-info"></i></button>
-								<?php } ?>
-							</td>
+							<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+								<td class="align-middle text-center" width="7%">
+									<?php if($prkt['status_ijin']=="Tunda"){ ?>
+										<button class="btn shadow-sm btn-sm btn-circle btn-warning" id="persetujuan" title="Persetujuan" data-id="<?=$prkt['id_ijin_perangkat'] ?>" data-toggle="modal" data-target="#persetujuanModal"><i class="fa fa-fw fa-pencil-alt"></i></button>
+										<a href="<?=base_url('perangkat/form/ubah/').$prkt['id_ijin_perangkat'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
+										<button class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapus" data-id="<?=$prkt['id_ijin_perangkat'] ?>" data-toggle="modal" data-target="#hapusModal" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+									<?php }else if($prkt['status_ijin']=="Setuju"){ ?>
+										<a href="<?=base_url('perangkat/form/detail/').$prkt['id_ijin_perangkat'] ?>" class="btn shadow-sm btn-sm btn-circle btn-success" id="detail" title="Detail Perijinan"><i class="fa fa-fw fa-list"></i></a>
+									<?php }else{ ?>
+										<button class="btn shadow-sm btn-sm btn-circle btn-default" id="info" title="Info Perijinan" data-id="<?=$prkt['id_ijin_perangkat'] ?>" data-jenis="<?=$prkt['nama_jenis_perangkat'] ?>" data-nama="<?=$prkt['nama'] ?>" data-identitas="<?=$prkt['jenis_identitas'] ?> - <?=$prkt['identitas'] ?>" data-instansi="<?=$prkt['instansi'] ?>" data-alamat="<?=$prkt['alamat'] ?>" data-tujuan="<?=$prkt['tujuan'] ?>" data-status_ijin="<?=$prkt['status_ijin'] ?>" data-toggle="modal" data-target="#infoModal"><i class="fa fa-fw fa-info"></i></button>
+									<?php } ?>
+								</td>
+							<?php } ?>
 						</tr>
 					<?php endforeach ?>
 				<?php }else{ ?>
