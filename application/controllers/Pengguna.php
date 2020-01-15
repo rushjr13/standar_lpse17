@@ -18,13 +18,10 @@ class Pengguna extends CI_Controller {
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
 		$data['menu'] = $this->admin->menu();
 		$data['pengumuman'] = $this->admin->pengumuman5();
-		$link = $this->uri->segment('1');
-		if($link!=''){
-			$data['akses_menu'] = $this->admin->akses_menu($link, $user)->num_rows();
-		}
+		$level_pengguna = $data['pengguna_masuk']['id_level'];
 
 		// KHUSUS
-		if($data['akses_menu']>0){
+		if($level_pengguna==1){
 			$data['judul'] = "Pengguna";
 			$data['daftarpengguna'] = $this->admin->daftarpengguna($user);
 			$this->load->view('templates/header', $data);
@@ -52,13 +49,10 @@ class Pengguna extends CI_Controller {
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
 		$data['menu'] = $this->admin->menu();
 		$data['pengumuman'] = $this->admin->pengumuman5();
-		$link = $this->uri->segment('1');
-		if($link!=''){
-			$data['akses_menu'] = $this->admin->akses_menu($link, $user)->num_rows();
-		}
+		$level_pengguna = $data['pengguna_masuk']['id_level'];
 
 		// KHUSUS
-		if($data['akses_menu']>0){
+		if($level_pengguna==1){
 			$this->form_validation->set_rules('username', 'Nama Pengguna', 'required|is_unique[pengguna.username]',[
 				'required' => 'Nama Pengguna Harus Diisi!',
 				'is_unique' => 'Nama Pengguna Sudah Ada!'
@@ -165,13 +159,10 @@ class Pengguna extends CI_Controller {
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
 		$data['menu'] = $this->admin->menu();
 		$data['pengumuman'] = $this->admin->pengumuman5();
-		$link = $this->uri->segment('1');
-		if($link!=''){
-			$data['akses_menu'] = $this->admin->akses_menu($link, $user)->num_rows();
-		}
+		$level_pengguna = $data['pengguna_masuk']['id_level'];
 
 		// KHUSUS
-		if($data['akses_menu']>0){
+		if($level_pengguna==1){
 			if($username==null){
 				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 														  <i class="fa fa-fw fa-ban"></i> Tidak ada pengguna yang dipilih!
@@ -290,7 +281,7 @@ class Pengguna extends CI_Controller {
 	}
 
 	public function status($username=null){
-		if($data['akses_menu']>0){
+		if($level_pengguna==1){
 			if($username==null){
 				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 														  <i class="fa fa-fw fa-ban"></i> Tidak ada pengguna yang dipilih!
@@ -328,7 +319,7 @@ class Pengguna extends CI_Controller {
 	}
 
 	public function hapus($username=null){
-		if($data['akses_menu']>0){
+		if($level_pengguna==1){
 			if($username==null){
 				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 														  <i class="fa fa-fw fa-ban"></i> Tidak ada pengguna yang dipilih!
@@ -376,13 +367,10 @@ class Pengguna extends CI_Controller {
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
 		$data['menu'] = $this->admin->menu();
 		$data['pengumuman'] = $this->admin->pengumuman5();
-		$link = $this->uri->segment('1');
-		if($link!=''){
-			$data['akses_menu'] = $this->admin->akses_menu($link, $user)->num_rows();
-		}
+		$level_pengguna = $data['pengguna_masuk']['id_level'];
 
 		// KHUSUS
-		if($data['akses_menu']>0){
+		if($level_pengguna==1){
 			if($username==null){
 				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 														  <i class="fa fa-fw fa-ban"></i> Tidak ada pengguna yang dipilih!

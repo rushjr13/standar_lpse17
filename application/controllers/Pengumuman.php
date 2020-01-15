@@ -19,114 +19,185 @@ class Pengumuman extends CI_Controller {
 		$data['hari_sekarang'] = $this->admin->hari(date('l'));
 		$data['menu'] = $this->admin->menu();
 		$data['pengumuman'] = $this->admin->pengumuman5();
-		$link = $this->uri->segment('1');
-		if($link!=''){
-			$data['akses_menu'] = $this->admin->akses_menu($link, $user)->num_rows();
-		}
+		$level_pengguna = $data['pengguna_masuk']['id_level'];
 
 		// KHUSUS
-		$data['judul'] = "Pengumuman";
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
-		$this->load->view('pengumuman', $data);
-		$this->load->view('templates/footer', $data);
+		if($level_pengguna==1){
+			$data['judul'] = "Pengumuman";
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('pengumuman', $data);
+			$this->load->view('templates/footer', $data);
+		}else{
+			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+													  <i class="fa fa-fw fa-ban"></i> Akses Ditolak. Hanya Admnistrator yang dapat mengakses halaman ini!
+													  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+													    <span aria-hidden="true">&times;</span>
+													  </button>
+													</div>');
+			redirect('beranda');
+		}
 	}
 
 	public function tambah(){
-		$isi_pengumuman = $this->input->post('isi_pengumuman');
-		$data = [
-			'id_pengumuman'=>time(),
-			'isi_pengumuman'=>$isi_pengumuman,
-			'penulis'=>$this->input->post('penulis'),
-			'tgl_pengumuman'=>time(),
-			'status_pengumuman'=>0
-		];
-		$this->db->insert('pengumuman', $data);
-		$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
-												  <i class="fa fa-fw fa-info-circle"></i> Pengumuman telah ditambahkan!
-												  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-												    <span aria-hidden="true">&times;</span>
-												  </button>
-												</div>');
-		redirect('pengumuman');
-	}
+		// UMUM
+		$user = $this->session->userdata('user_masuk');
+		$data['pengguna_masuk'] = $this->admin->pengguna($user);
+		$level_pengguna = $data['pengguna_masuk']['id_level'];
 
-	public function status($id=null){
-		if($id==null){
-			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
-													  <i class="fa fa-fw fa-ban"></i> Tidak ada pengumuman yang dipilih!
+		// KHUSUS
+		if($level_pengguna==1){
+			$isi_pengumuman = $this->input->post('isi_pengumuman');
+			$data = [
+				'id_pengumuman'=>time(),
+				'isi_pengumuman'=>$isi_pengumuman,
+				'penulis'=>$this->input->post('penulis'),
+				'tgl_pengumuman'=>time(),
+				'status_pengumuman'=>0
+			];
+			$this->db->insert('pengumuman', $data);
+			$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+													  <i class="fa fa-fw fa-info-circle"></i> Pengumuman telah ditambahkan!
 													  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 													    <span aria-hidden="true">&times;</span>
 													  </button>
 													</div>');
 			redirect('pengumuman');
 		}else{
-			$id_pengumuman = $this->input->post('id_pengumuman');
-			$ket_pengumuman = $this->input->post('ket_pengumuman');
-			$status_pengumuman = $this->input->post('status_pengumuman');
-
-			$this->db->set('status_pengumuman', $status_pengumuman);
-			$this->db->where('id_pengumuman', $id_pengumuman);
-			$this->db->update('pengumuman');
-			$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
-													  <i class="fa fa-fw fa-info-circle"></i> Pengumuman telah di-<strong>'.$ket_pengumuman.'</strong>!
+			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+													  <i class="fa fa-fw fa-ban"></i> Akses Ditolak. Hanya Admnistrator yang dapat mengakses halaman ini!
 													  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 													    <span aria-hidden="true">&times;</span>
 													  </button>
 													</div>');
-			redirect('pengumuman');
+			redirect('beranda');
+		}
+	}
+
+	public function status($id=null){
+		// UMUM
+		$user = $this->session->userdata('user_masuk');
+		$data['pengguna_masuk'] = $this->admin->pengguna($user);
+		$level_pengguna = $data['pengguna_masuk']['id_level'];
+
+		// KHUSUS
+		if($level_pengguna==1){
+			if($id==null){
+				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+														  <i class="fa fa-fw fa-ban"></i> Tidak ada pengumuman yang dipilih!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('pengumuman');
+			}else{
+				$id_pengumuman = $this->input->post('id_pengumuman');
+				$ket_pengumuman = $this->input->post('ket_pengumuman');
+				$status_pengumuman = $this->input->post('status_pengumuman');
+
+				$this->db->set('status_pengumuman', $status_pengumuman);
+				$this->db->where('id_pengumuman', $id_pengumuman);
+				$this->db->update('pengumuman');
+				$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+														  <i class="fa fa-fw fa-info-circle"></i> Pengumuman telah di-<strong>'.$ket_pengumuman.'</strong>!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('pengumuman');
+			}
+		}else{
+			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+													  <i class="fa fa-fw fa-ban"></i> Akses Ditolak. Hanya Admnistrator yang dapat mengakses halaman ini!
+													  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+													    <span aria-hidden="true">&times;</span>
+													  </button>
+													</div>');
+			redirect('beranda');
 		}
 	}
 
 	public function ubah($id=null){
-		if($id==null){
-			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
-													  <i class="fa fa-fw fa-ban"></i> Tidak ada pengumuman yang dipilih!
-													  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-													    <span aria-hidden="true">&times;</span>
-													  </button>
-													</div>');
-			redirect('pengumuman');
+		// UMUM
+		$user = $this->session->userdata('user_masuk');
+		$data['pengguna_masuk'] = $this->admin->pengguna($user);
+		$level_pengguna = $data['pengguna_masuk']['id_level'];
+
+		// KHUSUS
+		if($level_pengguna==1){
+			if($id==null){
+				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+														  <i class="fa fa-fw fa-ban"></i> Tidak ada pengumuman yang dipilih!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('pengumuman');
+			}else{
+				$isi_pengumuman = $this->input->post('isi_pengumuman');
+				$data = [
+					'isi_pengumuman'=>$isi_pengumuman,
+					'penulis'=>$this->input->post('penulis'),
+					'tgl_pengumuman'=>time()
+				];
+				$this->db->set($data);
+				$this->db->where('id_pengumuman', $id);
+				$this->db->update('pengumuman');
+				$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+														  <i class="fa fa-fw fa-info-circle"></i> Pengumuman telah diperbarui!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('pengumuman');
+			}
 		}else{
-			$isi_pengumuman = $this->input->post('isi_pengumuman');
-			$data = [
-				'isi_pengumuman'=>$isi_pengumuman,
-				'penulis'=>$this->input->post('penulis'),
-				'tgl_pengumuman'=>time()
-			];
-			$this->db->set($data);
-			$this->db->where('id_pengumuman', $id);
-			$this->db->update('pengumuman');
-			$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
-													  <i class="fa fa-fw fa-info-circle"></i> Pengumuman telah diperbarui!
+			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+													  <i class="fa fa-fw fa-ban"></i> Akses Ditolak. Hanya Admnistrator yang dapat mengakses halaman ini!
 													  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 													    <span aria-hidden="true">&times;</span>
 													  </button>
 													</div>');
-			redirect('pengumuman');
+			redirect('beranda');
 		}
 	}
 
 	public function hapus($id=null){
-		if($id==null){
-			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
-													  <i class="fa fa-fw fa-ban"></i> Tidak ada pengumuman yang dipilih!
-													  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-													    <span aria-hidden="true">&times;</span>
-													  </button>
-													</div>');
-			redirect('pengumuman');
+		// UMUM
+		$user = $this->session->userdata('user_masuk');
+		$data['pengguna_masuk'] = $this->admin->pengguna($user);
+		$level_pengguna = $data['pengguna_masuk']['id_level'];
+
+		// KHUSUS
+		if($level_pengguna==1){
+			if($id==null){
+				$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+														  <i class="fa fa-fw fa-ban"></i> Tidak ada pengumuman yang dipilih!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('pengumuman');
+			}else{
+				$this->db->where('id_pengumuman', $id);
+				$this->db->delete('pengumuman');
+				$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+														  <i class="fa fa-fw fa-info-circle"></i> Pengumuman telah dihapus!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('pengumuman');
+			}
 		}else{
-			$this->db->where('id_pengumuman', $id);
-			$this->db->delete('pengumuman');
-			$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
-													  <i class="fa fa-fw fa-info-circle"></i> Pengumuman telah dihapus!
+			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+													  <i class="fa fa-fw fa-ban"></i> Akses Ditolak. Hanya Admnistrator yang dapat mengakses halaman ini!
 													  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 													    <span aria-hidden="true">&times;</span>
 													  </button>
 													</div>');
-			redirect('pengumuman');
+			redirect('beranda');
 		}
 	}
 }
