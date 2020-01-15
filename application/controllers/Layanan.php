@@ -59,7 +59,7 @@ class Layanan extends CI_Controller {
 		$this->load->view('templates/footer', $data);
 	}
 
-	public function form(){
+	public function form($opsi=null, $id=null){
 		// UMUM
 		$user = $this->session->userdata('user_masuk');
 		$data['pengguna_masuk'] = $this->admin->pengguna($user);
@@ -76,11 +76,31 @@ class Layanan extends CI_Controller {
 		}
 
 		// KHUSUS
-		$data['judul'] = "Form Keamanan Layanan";
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
-		$this->load->view('layanan/form/index', $data);
-		$this->load->view('templates/footer', $data);
+		if($opsi==null){
+			$data['judul'] = "Form Keamanan Layanan";
+			$data['layanan'] = $this->layanan->layanan();
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('layanan/form/index', $data);
+			$this->load->view('templates/footer', $data);
+		}else if($opsi=='tambah'){
+			if($data['akses_menu']>0){
+				$data['judul'] = "Form Keamanan Layanan";
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('layanan/form/tambah', $data);
+				$this->load->view('templates/footer', $data);
+			}else{
+				$this->session->set_flashdata('info', '<div class="alert alert-danger shadow-sm alert-dismissible fade show" role="alert">
+														  <i class="fa fa-fw fa-ban"></i> Maaf. Anda bukan koordinator menu ini!
+														  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														    <span aria-hidden="true">&times;</span>
+														  </button>
+														</div>');
+				redirect('layanan/form');
+			}
+		}
 	}
 }
