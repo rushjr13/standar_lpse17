@@ -2,8 +2,8 @@
 	<div class="card-header shadow-sm bg-primary text-white">
 		Pencatatan Gangguan/Permasalahan dan Permintaan Layanan
 		<button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#formgangguanModal" title="Formulir Pencatatan Gangguan/Permasalahan dan Permintaan Layanan"><i class="fa fa-fw fa-file"></i></button>
-		<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-			<a href="<?=base_url('gangguan/form/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary mx-2 float-right" target="_blank" title="Cetak Pencatatan Gangguan/Permasalahan dan Permintaan Layanan"><i class="fa fa-fw fa-print"></i></a>
+		<a href="<?=base_url('gangguan/form/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary mx-2 float-right" target="_blank" title="Cetak Pencatatan Gangguan/Permasalahan dan Permintaan Layanan"><i class="fa fa-fw fa-print"></i></a>
+		<?php if($akses_menu>0){ ?>
 			<button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah Pencatatan Gangguan/Permasalahan dan Permintaan Layanan"><i class="fa fa-fw fa-plus"></i></button>
 		<?php } ?>
 	</div>
@@ -104,7 +104,7 @@
 							<td class="align-middle"><?=$gg['deskripsi_gangguan'] ?></td>
 							<td class="align-middle">
 								<button class="btn shadow-sm btn-sm btn-circle btn-secondary" title="Klasifikasi" id="klasifikasi" data-toggle="modal" data-target="#klasifikasiModal" data-nomortiket="<?=$gg['id_gangguan'] ?>" data-namapengguna="<?=$gg['nama_pengguna'] ?>" data-tglpelaporan="<?=$tgl_pelaporan ?>" data-deskripsigangguan="<?=$gg['deskripsi_gangguan'] ?>" data-tipegangguan="<?=$gg['nama_tipe']." (".$gg['kode_tipe'].")" ?>" data-kategorigangguan="<?=$gg['nama_kategori']." (".$gg['kode_kategori'].")" ?>" data-usergangguan="<?=$gg['nama_user']." (".$gg['kode_user'].")" ?>" data-jenisgangguan="<?=$gg['nama_jenis']." (".$gg['kode_jenis'].")" ?>" data-urgensigangguan="<?=$gg['nama_urgensi']." (".$gg['kode_urgensi'].")" ?>" data-dampakgangguan="<?=$gg['nama_dampak']." (".$gg['kode_dampak'].")" ?>" data-prioritasgangguan="<?=$gg['nama_prioritas']." (".$gg['kode_prioritas'].")" ?>"><i class="fa fa-fw fa-list"></i></button>
-								<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+								<?php if($akses_menu>0){ ?>
 									<?php if($gg['status_gangguan']=='Tercatat'){ ?>
 										<button class="btn shadow-sm btn-sm btn-circle btn-danger" id="tangani" title="Tangani" data-toggle="modal" data-target="#tanganiModal" data-id_gangguan="<?=$gg['id_gangguan'] ?>" data-nama_pengguna="<?=$gg['nama_pengguna'] ?>" data-tgl_pelaporan="<?=$tgl_pelaporan ?>" data-deskripsi_gangguan="<?=$gg['deskripsi_gangguan'] ?>"><i class="fa fa-fw fa-paper-plane"></i></button>
 									<?php }else if($gg['status_gangguan']=='Penanganan'){ ?>

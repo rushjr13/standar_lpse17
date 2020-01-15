@@ -1,7 +1,7 @@
 <div class="card border-primary shadow">
 	<div class="card-header shadow-sm bg-primary text-white">
 		Pencatatan Kapasitas Layanan
-		<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+		<?php if($akses_menu>0){ ?>
 			<a href="<?=base_url('kapasitas/form/tambah') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" title="Tambah Pencatatan Kapasitas Layanan"><i class="fa fa-fw fa-plus"></i></a>
 		<?php } ?>
 	</div>
@@ -65,7 +65,7 @@
 									<td class="align-middle text-center"><?=$kp['perkiraan_resource'] ?></td>
 									<td class="align-middle"><?=$kp['tindak_lanjut'] ?></td>
 									<td class="align-middle text-center" width="7%">
-										<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+										<?php if($akses_menu>0){ ?>
 											<a href="<?=base_url('kapasitas/form/laporan/').$kp['id_kapasitas'] ?>" class="btn shadow-sm btn-sm btn-circle btn-success" title="Laporan"><i class="fa fa-fw fa-file"></i></a>
 											<a href="<?=base_url('kapasitas/form/ubah/').$kp['id_kapasitas'] ?>" class="btn shadow-sm btn-sm btn-circle btn-info" title="Ubah"><i class="fa fa-fw fa-edit"></i></a>
 											<button type="button" class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapus" title="Hapus" data-toggle="modal" data-target="#hapusModal" data-id="<?=$kp['id_kapasitas'] ?>" data-item="<?=$kp['item'] ?>"><i class="fa fa-fw fa-trash"></i></button>

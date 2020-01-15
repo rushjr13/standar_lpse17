@@ -517,8 +517,6 @@ class Aset extends CI_Controller {
 					redirect('aset/form');
 				}
 			}else if($opsi=='cetak'){
-
-				// CARA 1
 				$data['judul'] = "Pencatatan Aset Informasi";
 				$data['aset_informasi'] = $this->admin->aset_informasi();
 				$this->load->view('aset/form/informasi/cetak', $data);

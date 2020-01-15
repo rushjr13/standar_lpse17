@@ -57,7 +57,7 @@
 		<div class="card shadow-sm mb-3">
 			<div class="card-header shadow-sm bg-primary text-white">
 				Pelatihan
-				<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+				<?php if($akses_menu>0){ ?>
 					<button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahpelatihanModal" title="Tambah Pelatihan"><i class="fa fa-fw fa-plus"></i></button>
 				<?php } ?>
 			</div>
@@ -69,7 +69,7 @@
 							<th class="align-middle">PELATIHAN</th>
 							<th class="align-middle">TINGKATAN</th>
 							<th class="align-middle">WAKTU</th>
-							<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+							<?php if($akses_menu>0){ ?>
 								<th class="align-middle" width="10%">OPSI</th>
 							<?php } ?>
 						</tr>
@@ -82,7 +82,7 @@
 									<td class="align-middle text-center"><?=$slth['pelatihan']  ?></td>
 									<td class="align-middle text-center"><?=$slth['tingkatan']  ?></td>
 									<td class="align-middle text-center"><?=$slth['waktu']  ?></td>
-									<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+									<?php if($akses_menu>0){ ?>
 										<td class="align-middle text-center">
 											<button type="button" class="btn shadow-sm btn-sm btn-circle btn-info" id="ubahpelatihan" data-id="<?=$slth['id_pelatihan'] ?>" data-idsdm="<?=$slth['id_sdm'] ?>" data-pelatihan="<?=$slth['pelatihan'] ?>" data-tingkatan="<?=$slth['tingkatan'] ?>" data-waktu="<?=$slth['waktu'] ?>" data-toggle="modal" data-target="#ubahpelatihanModal" title="Ubah"><i class="fa fa-fw fa-edit"></i></button>
 											<button type="button" class="btn shadow-sm btn-sm btn-circle btn-danger" id="hapuspelatihan" data-id="<?=$slth['id_pelatihan'] ?>" data-idsdm="<?=$slth['id_sdm'] ?>" data-pelatihan="<?=$slth['pelatihan'] ?>" data-toggle="modal" data-target="#hapuspelatihanModal" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
@@ -92,7 +92,7 @@
 							<?php endforeach ?>
 						<?php }else{ ?>
 							<tr>
-								<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+								<?php if($akses_menu>0){ ?>
 									<td class="align-middle text-center" colspan="5">Tidak Ada Data Tersedia!</td>
 								<?php }else{ ?>
 									<td class="align-middle text-center" colspan="4">Tidak Ada Data Tersedia!</td>

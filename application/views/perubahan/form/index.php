@@ -2,7 +2,7 @@
 	<div class="card-header shadow-sm bg-primary text-white">
 		Pencatatan Perubahan
 		<button class="btn shadow-sm btn-sm btn-circle btn-primary float-right ml-2" title="Formulir Pencatatan Perubahan" data-toggle="modal" data-target="#formulirModal"><i class="fa fa-fw fa-file"></i></button>
-		<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+		<?php if($akses_menu>0){ ?>
 			<button class="btn shadow-sm btn-sm btn-circle btn-primary float-right" title="Tambah Catatan Perubahan" data-toggle="modal" data-target="#tambahModal"><i class="fa fa-fw fa-plus"></i></button>
 		<?php } ?>
 	</div>
@@ -16,7 +16,7 @@
 					<th class="align-middle">NAMA PEMOHON</th>
 					<th class="align-middle">INSTANSI</th>
 					<th class="align-middle">DESKRIPSI PERUBAHAN</th>
-					<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+					<?php if($akses_menu>0){ ?>
 						<th class="align-middle" width="7%">OPSI</th>
 					<?php } ?>
 				</tr>
@@ -65,7 +65,7 @@
 							<td class="align-middle"><?=$ubah['nama_pemohon']  ?><br><small><?=$ubah['kontak_pemohon']  ?></small></td>
 							<td class="align-middle"><?=$ubah['instansi_pemohon']  ?></td>
 							<td class="align-middle"><?=$ubah['deskripsi_perubahan']  ?></td>
-							<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+							<?php if($akses_menu>0){ ?>
 								<td class="align-middle">
 									<?php if($ubah['status_perubahan']=='Tercatat'){ ?>
 										<a href="<?=base_url('perubahan/form/evaluasi/').$ubah['id_perubahan'] ?>" class="btn shadow-sm btn-sm btn-circle btn-warning" title="Evaluasi"><i class="fa fa-fw fa-pencil-alt"></i></a>
@@ -87,7 +87,7 @@
 					<?php endforeach ?>
 				<?php }else{ ?>
 					<tr>
-						<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+						<?php if($akses_menu>0){ ?>
 							<td class="align-middle text-center" colspan="7">Tidak ada data yang tersedia!</td>
 						<?php }else{ ?>
 							<td class="align-middle text-center" colspan="6">Tidak ada data yang tersedia!</td>

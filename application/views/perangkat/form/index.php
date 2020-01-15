@@ -2,8 +2,8 @@
 	<div class="card-header shadow-sm bg-primary text-white">
 		Pencatatan Penggunaan Fasilitas & Akses Ruang Server
 		<button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#formperangkatModal" title="Formulir Pencatatan Penggunaan Fasilitas & Akses Ruang Server"><i class="fa fa-fw fa-file"></i></button>
-		<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
-			<a href="<?=base_url('perangkat/form/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary mx-2 float-right" target="_blank" title="Cetak Pencatatan Penggunaan Fasilitas & Akses Ruang Server"><i class="fa fa-fw fa-print"></i></a>
+		<a href="<?=base_url('perangkat/form/cetak') ?>" class="btn shadow-sm btn-sm btn-circle btn-primary mx-2 float-right" target="_blank" title="Cetak Pencatatan Penggunaan Fasilitas & Akses Ruang Server"><i class="fa fa-fw fa-print"></i></a>
+		<?php if($akses_menu>0){ ?>
 			<button type="button" class="btn shadow-sm btn-sm btn-circle btn-primary float-right" data-toggle="modal" data-target="#tambahModal" title="Tambah Pencatatan Penggunaan Fasilitas & Akses Ruang Server"><i class="fa fa-fw fa-plus"></i></button>
 		<?php } ?>
 	</div>
@@ -16,7 +16,7 @@
 					<th class="align-middle" rowspan="2">INSTANSI</th>
 					<th class="align-middle" rowspan="2">TUJUAN</th>
 					<th class="align-middle" rowspan="2">JENIS PERIJINAN</th>
-					<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+					<?php if($akses_menu>0){ ?>
 						<th class="align-middle" rowspan="2">OPSI</th>
 					<?php } ?>
 				</tr>
@@ -35,7 +35,7 @@
 							<td class="align-middle" width="28%"><?=$prkt['instansi'] ?></td>
 							<td class="align-middle" width="28%"><?=$prkt['tujuan'] ?></td>
 							<td class="align-middle text-center" width="12%"><?=$prkt['nama_jenis_perangkat'] ?></td>
-							<?php if($akses_menu['username']==$pengguna_masuk['username']){ ?>
+							<?php if($akses_menu>0){ ?>
 								<td class="align-middle text-center" width="7%">
 									<?php if($prkt['status_ijin']=="Tunda"){ ?>
 										<button class="btn shadow-sm btn-sm btn-circle btn-warning" id="persetujuan" title="Persetujuan" data-id="<?=$prkt['id_ijin_perangkat'] ?>" data-toggle="modal" data-target="#persetujuanModal"><i class="fa fa-fw fa-pencil-alt"></i></button>
