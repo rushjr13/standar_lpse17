@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2019 at 04:26 AM
+-- Generation Time: Feb 14, 2020 at 06:16 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -40,7 +40,6 @@ CREATE TABLE `akses_menu` (
 
 INSERT INTO `akses_menu` (`id_am`, `username`, `id_menu`) VALUES
 (1568620426, 'admin', '1568618910'),
-(1568620428, 'admin', '1568618926'),
 (1568620431, 'admin', '1568618936'),
 (1568620433, 'admin', '1568618967'),
 (1568620434, 'admin', '1568618946'),
@@ -55,7 +54,8 @@ INSERT INTO `akses_menu` (`id_am`, `username`, `id_menu`) VALUES
 (1568620450, 'admin', '1568619036'),
 (1568620451, 'admin', '1568619052'),
 (1568620453, 'admin', '1568619029'),
-(1568620454, 'admin', '1568619060');
+(1568620454, 'admin', '1568619060'),
+(1578977557, 'admin', '1568618926');
 
 -- --------------------------------------------------------
 
@@ -113,13 +113,6 @@ CREATE TABLE `aset_informasi` (
   `tgl_update` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `aset_informasi`
---
-
-INSERT INTO `aset_informasi` (`id`, `nama`, `klasifikasi`, `format`, `pemilik`, `berlaku`, `kerahasiaan`, `integritas`, `ketersediaan`, `keterangan`, `username`, `tgl_update`) VALUES
-('i1568860821', 'Pencatatan Permasalahan', 'Dokumen Tertulis Internal', 'Dokumen Elektronik', 'Unit Pelatihan dan Helpdesk', '-', '2', '2', '3', '', 'admin', 1568862259);
-
 -- --------------------------------------------------------
 
 --
@@ -138,13 +131,6 @@ CREATE TABLE `aset_intangible` (
   `username` varchar(255) NOT NULL,
   `tgl_update` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `aset_intangible`
---
-
-INSERT INTO `aset_intangible` (`idi`, `nama`, `klasifikasi`, `pemilik`, `kerahasiaan`, `integritas`, `ketersediaan`, `keterangan`, `username`, `tgl_update`) VALUES
-('IT1569992822', 'Kualitas Penyelesaian Masalah', 'Layanan-Layanan', 'Unit Pelatihan dan Helpdesk', '1', '3', '2', '', 'admin', 1569992942);
 
 -- --------------------------------------------------------
 
@@ -229,13 +215,6 @@ CREATE TABLE `aset_layanan` (
   `username` varchar(255) NOT NULL,
   `tgl_update` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `aset_layanan`
---
-
-INSERT INTO `aset_layanan` (`idl`, `nama`, `klasifikasi`, `pemilik`, `pemegang`, `penyedia`, `kontrak_no`, `kontrak_deskripsi`, `kontrak_berlaku`, `kerahasiaan`, `integritas`, `ketersediaan`, `keterangan`, `username`, `tgl_update`) VALUES
-('LY1569988223', 'Jaringan Internet Utama', 'Jaringan Internet Khusus', 'Kepala LPSE', 'Administrator System', 'PT. Telkom Indonesia', '-', 'Uptime 100 %', '2019-10-02', '1', '2', '3', 'Astinet', 'admin', 1569989317);
 
 -- --------------------------------------------------------
 
@@ -325,13 +304,6 @@ CREATE TABLE `aset_software` (
   `tgl_update` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `aset_software`
---
-
-INSERT INTO `aset_software` (`ids`, `nama`, `klasifikasi`, `pemilik`, `pemegang`, `lokasi`, `berlaku`, `hapus`, `kerahasiaan`, `integritas`, `ketersediaan`, `keterangan`, `username`, `tgl_update`) VALUES
-('SW1569908399', 'Windows 7', 'Operating System', 'Kepala LPSE', 'Dr. Wahyudin A. Katili, S.STP, MT', 'Laptop Helpdesk', '2019-10-01', 'Delete Normal', '1', '2', '3', '', 'admin', 1569909324);
-
 -- --------------------------------------------------------
 
 --
@@ -342,21 +314,22 @@ CREATE TABLE `aset_sop` (
   `id` varchar(10) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `isi` text NOT NULL,
-  `tabel` varchar(255) DEFAULT NULL
+  `tabel` varchar(255) DEFAULT NULL,
+  `tgl_update` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `aset_sop`
 --
 
-INSERT INTO `aset_sop` (`id`, `nama`, `isi`, `tabel`) VALUES
-('1568774849', 'Informasi', '<p>Aset Informasi dikelola dengan cara didaftarkan dengan menggunakan daftar yang terus diperbaharui, adapun isi daftar aset informasi sebagai berikut ini :</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\"><strong>Kode</strong>, adalah kode identifikasi aset informasi yang dapat diisi dengan <u>nomor urut</u> atau dengan <u>gabungan huruf dan angka</u>;</li>\r\n	<li style=\"text-align:justify\"><strong>Nama Aset</strong>, adalah nama dari aset informasi;</li>\r\n	<li style=\"text-align:justify\"><strong>Sub Klasifikasi</strong>, merupakan pengelompokan aset informasi, yang memiliki sifat, ciri atau jenis yang serupa untuk memudahkan dalam pengelolaan risiko;</li>\r\n	<li style=\"text-align:justify\"><strong>Format Penyimpanan</strong>, merupakan informasi bagaimana aset tersebut disimpan;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemilik Aset</strong>, merupakan pihak yang bertanggung jawab terhadap aset informasi dan bertanggung jawab dalam penentuan nilai dan risiko dari aset tersebut;</li>\r\n	<li style=\"text-align:justify\"><strong>Masa Berlaku</strong>, merupakan rentang waktu atau batas akhir aset informasi digunakan;</li>\r\n	<li style=\"text-align:justify\">Klasifikasi Keamanan Informasi :\r\n	<ol style=\"list-style-type:lower-alpha\">\r\n		<li style=\"text-align:justify\"><strong>Kerahasiaan</strong>, adalah tingkat kerahasian dari aset informasi yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya apakah aset tersebut boleh diketahui umum atau tidak;</li>\r\n		<li style=\"text-align:justify\"><strong>Integritas</strong>, adalah tingkat keakurasian dan ketepatan (integritas) dari aset informasi yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3). misalnya daftar gaji, tingkat keakurasian dan ketepatan penggolongan atau pemberian isi dari gaji tidak boleh dapat diubah sembarangan oleh orang yang tidak berhak;</li>\r\n		<li style=\"text-align:justify\"><strong>Ketersediaan</strong>, adalah tingkat kebutuhan akan ketersediaan dari aset informasi yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya data yang sering dipergunakan maka memiliki tingkat ketersediaan lebih tinggi dibandingkan data yang diakses hanya setahun sekali;</li>\r\n	</ol>\r\n	</li>\r\n	<li style=\"text-align:justify\"><strong>Nilai Aset Informasi</strong>, merupakan nilai dari aset informasi terhadap ketiga aspek (kerahasiaan, integritas dan ketersediaan) yang didapatkan dengan merata-ratakan nilai ketiganya;</li>\r\n	<li style=\"text-align:justify\"><strong>Keterangan </strong>merupakan status/informasi tambahan atas aset informasi.</li>\r\n</ol>\r\n', 'aset_informasi'),
-('1568775826', 'Sumber Daya Manusia (SDM)', '<p>Aset Orang dikelola dengan cara didaftarkan dengan menggunakan daftar yang terus diperbaharui, adapun isi daftar aset orang sebagai berikut:</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\"><strong>Kode</strong>, adalah kode identifikasi aset yang dapat diisi dengan nomor urut atau dengan gabungan huruf dan angka;</li>\r\n	<li style=\"text-align:justify\"><strong>Nama Aset</strong>, adalah nama dari personil LPSE yang dimasukkan sebagai aset;</li>\r\n	<li style=\"text-align:justify\"><strong>Sub Klasifikasi</strong>, merupakan pengelompokan aset informasi, yang memiliki sifat, ciri atau jenis yang serupa untuk memudahkan dalam pengelolaan risiko, misalnya: <u>Pengambil Keputusan, Pegawai Tetap, Pegawai Tidak Tetap</u>, dll;</li>\r\n	<li style=\"text-align:justify\"><strong>No. Identitas/NIP</strong>, merupakan nomor identitas personil LPSE yang dimasukkan sebagai aset;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemilik Aset</strong>, merupakan bagian dari struktur organisasi tempat personil LPSE yang dimasukkan sebagai aset bekerja, setiap aset harus diberi keterangan fungsinya, sub-fungsi (jika ada) dan unit kerjanya;</li>\r\n	<li style=\"text-align:justify\"><strong>Jabatan</strong>, merupakan posisi/kedudukan dari pegawai yang dimasukkan sebagai aset;</li>\r\n	<li style=\"text-align:justify\"><strong>No. Kontrak/NDA</strong> (<em>Non-Disclosure Agreement</em>), adalah nomor kontrak bagi personil LPSE yang bekerja berdasarkan kontrak kerja dengan organisasi dan atau nomor perjanjian penjagaan kerahasiaan (NDA);</li>\r\n	<li style=\"text-align:justify\"><strong>Atasan Langsung</strong>, merupakan posisi/jabatan tepat di atas SDM sebagai personil LPSE dimaksud, dimana hasil pekerjaan disampaikan/dilaporkan kepadanya.</li>\r\n	<li style=\"text-align:justify\">Klasifikasi Keamanan Informasi:\r\n	<ol style=\"list-style-type:lower-alpha\">\r\n		<li style=\"text-align:justify\"><strong>Kerahasiaan</strong>, adalah tingkat kerahasian dari aset SDM yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya admin system yang memiliki akses kepada system lebih tinggi nilai kerahasiaannya dari pada helpdesk yang bertugas melayani pengguna;</li>\r\n		<li style=\"text-align:justify\"><strong>Integritas</strong>, adalah tingkat kebutuhan integritas dari aset SDM yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya verifikator yang melakukan verifikasi pendaftaran pengguna lebih tinggi kebutuhan integritasnya dari pada pelatih (trainer) aplikasi;</li>\r\n		<li style=\"text-align:justify\"><strong>Ketersediaan</strong>, adalah tingkat kebutuhan ketersediaan dari aset SDM yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya helpdesk yang melayani pengguna lebih tinggi kebutuhan ketersediaannya dibandingkan dengan pelatih (trainer).</li>\r\n	</ol>\r\n	</li>\r\n	<li style=\"text-align:justify\"><strong>Nilai</strong>, merupakan nilai dari aset SDM terhadap ketiga aspek (kerahasiaan, integritas dan ketersediaan) yang didapatkan dengan merata-ratakan nilai ketiganya;</li>\r\n	<li style=\"text-align:justify\"><strong>Keterangan</strong> merupakan status/informasi tambahan atas aset SDM.</li>\r\n</ol>\r\n', 'aset_sdm'),
-('1568776152', 'Fisik', '<p>Aset Fisik dikelola dengan cara didaftarkan dengan menggunakan daftar yang terus diperbaharui, adapun isi daftar aset fisik sebagai berikut :</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\"><strong>Nomor Aset Kode</strong>, adalah kode identifikasi aset fisik yang dapat diisi dengan <u>nomor urut</u> atau dengan <u>gabungan huruf dan angka</u>;</li>\r\n	<li style=\"text-align:justify\"><strong>Nama Aset</strong>, adalah nama dari aset fisik;</li>\r\n	<li style=\"text-align:justify\"><strong>Sub Klasifikasi</strong>, merupakan pengelompokan aset fisik, yang memiliki sifat, ciri atau jenis yang serupa untuk memudahkan dalam pengelolaan risiko, misalnya: <u>Perangkat Server, Terminal Pengguna, Perangkat Pendukung Elektronik, Perangkat Pendukung Non-Elektronik</u>, dll;</li>\r\n	<li style=\"text-align:justify\"><strong>Jenis Aset</strong>, merupakan jenis dari aset fisik, misal <u>Server, Media Penyimpanan, Komputer Kerja</u>, dll;</li>\r\n	<li style=\"text-align:justify\"><strong>Spesifikasi</strong> merupakan informasi teknis dari aset fisik;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemilik Aset</strong>, merupakan pihak yang bertanggung jawab terhadap aset fisik dan bertanggung jawab dalam penentuan nilai dan risiko dari aset tersebut;</li>\r\n	<li style=\"text-align:justify\"><strong>Penyedia Aset</strong>, merupakan nama pihak yang menyediakan aset fisik;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemegang Aset</strong>, merupakan nama pegawai yang diberi wewenang untuk membawa atau menggunakan aset fisik, misalnya <u>pegawai yang ditugaskan untuk menyimpan media backup</u>;</li>\r\n	<li style=\"text-align:justify\"><strong>Lokasi Aset</strong>, merupakan nama tempat dimana aset fisik diletakkan;</li>\r\n	<li style=\"text-align:justify\"><strong>Masa Berlaku</strong>, merupakan informasi batasan masa berlaku penggunaan aset fisik (jika ada), misalnya masa berlaku Alat Pemadam Api Ringan (APAR)</li>\r\n	<li style=\"text-align:justify\">Klasifikasi Keamanan Informasi:\r\n	<ol style=\"list-style-type:lower-alpha\">\r\n		<li style=\"text-align:justify\"><strong>Kerahasiaan</strong>, adalah tingkat kerahasian dari aset fisik yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya lemari brankas (safe deposit box) yang memiliki tingkat kerahasiaan lebih tinggi dibandingkan dengan lemari perpustakaan;</li>\r\n		<li style=\"text-align:justify\"><strong>Integritas</strong>, adalah tingkat keakurasian dan ketepatan (integritas) dari aset fisik yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya kabel-kabel yang harus diamankan dari gangguan kerusakan memiliki nilai integritas yang tinggi dibandingkan dengan aset fisik habis pakai;</li>\r\n		<li style=\"text-align:justify\"><strong>Ketersediaan</strong>, adalah tingkat kebutuhan akan ketersediaan dari aset fisik yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya kebutuhan ketersediaan komputer kerja admin system yang lebih tinggi dibandingkan dengan komputer diruangan pelatihan;</li>\r\n	</ol>\r\n	</li>\r\n	<li style=\"text-align:justify\"><strong>Nilai Aset Fisik</strong> merupakan nilai dari aset fisik terhadap ketiga aspek (kerahasiaan, integritas dan ketersediaan) yang didapatkan dengan merata-ratakan nilai ketiganya;</li>\r\n	<li style=\"text-align:justify\"><strong>Keterangan</strong> merupakan status/informasi tambahan atas aset fisik.</li>\r\n</ol>\r\n', 'aset_fisik'),
-('1568776450', 'Software', '<p>Aset Software Perangkat Lunak dikelola dengan cara didaftarkan dengan menggunakan daftar yang terus diperbaharui, adapun isi daftar aset software perangkat lunak sebagai berikut :</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\"><strong>Nomor Aset Kode</strong>, adalah kode identifikasi aset software perangkat lunak yang dapat diisi dengan <u>nomor urut</u> atau dengan <u>gabungan huruf dan angka</u>;</li>\r\n	<li style=\"text-align:justify\"><strong>Nama Aset</strong>, adalah nama dari aset software perangkat lunak;</li>\r\n	<li style=\"text-align:justify\"><strong>Sub Klasifikasi</strong>, merupakan pengelompokan aset software, yang memiliki sifat, ciri atau jenis yang serupa untuk memudahkan dalam pengelolaan risiko, misalnya: <u>Operating System, Aplikasi Pendukung Helpdesk, Aplikasi Perkantoran</u>, dll;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemilik Aset</strong>, merupakan pihak yang bertanggung jawab terhadap aset software dan bertanggung jawab dalam penentuan nilai dan risiko dari aset tersebut;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemegang Aset</strong>, merupakan nama pegawai yang diberi wewenang untuk membawa atau menggunakan aset software;</li>\r\n	<li style=\"text-align:justify\"><strong>Lokasi Aset</strong>, merupakan nama tempat dimana aset software diletakkan atau diinstall;</li>\r\n	<li style=\"text-align:justify\"><strong>Masa Berlaku</strong>, merupakan informasi batasan masa berlaku penggunaan aset software (jika ada), misalnya masa berlaku lisensi aplikasi perkantoran.</li>\r\n	<li style=\"text-align:justify\"><strong>Metode Penghapusan</strong>, merupakan cara/mekanisme penghapusan aset software, informasi ini erat kaitannya dengan keamanan informasi yang melekat pada aset software tersebut;</li>\r\n	<li style=\"text-align:justify\"><strong>Kerahasiaan</strong>, adalah tingkat kerahasian dari aset software yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3);</li>\r\n	<li style=\"text-align:justify\"><strong>Integritas</strong>, adalah tingkat keakurasian dan ketepatan (integritas) dari aset software yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya kebutuhan integritas aplikasi email client lebih tinggi daripada aplikasi internet browser;</li>\r\n	<li style=\"text-align:justify\"><strong>Ketersediaan</strong>, adalah tingkat kebutuhan akan ketersediaan dari aset software yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya kebutuhan ketersediaan aplikasi perkantoran lebih tinggi dibandingkan dengan aplikasi pendukung layanan (trouble ticketing system, dll);</li>\r\n	<li style=\"text-align:justify\"><strong>Nilai Aset Software</strong>, merupakan nilai dari aset software terhadap ketiga aspek (kerahasiaan, integritas dan ketersediaan) yang didapatkan dengan merata-ratakan nilai ketiganya;</li>\r\n	<li style=\"text-align:justify\"><strong>Keterangan</strong> merupakan status/informasi tambahan atas aset software.</li>\r\n</ol>\r\n', 'aset_software'),
-('1568776664', 'Layanan', '<p>Aset Layanan dikelola dengan cara didaftarkan dengan menggunakan daftar yang terus diperbaharui, adapun isi daftar aset layanan sebagai berikut :</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\"><strong>Nomor Aset</strong>, adalah kode identifikasi aset layanan yang dapat diisi dengan <u>nomor urut</u> atau dengan <u>gabungan huruf dan angka</u>;</li>\r\n	<li style=\"text-align:justify\"><strong>Nama Aset</strong>, adalah nama dari aset layanan;</li>\r\n	<li style=\"text-align:justify\"><strong>Sub Klasifikasi</strong>, merupakan pengelompokan aset layanan, yang memiliki sifat, ciri atau jenis yang serupa untuk memudahkan dalam pengelolaan risiko, misalnya: <u>Jaringan Internet, Layanan Pendukung</u>, dll;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemilik Aset</strong>, merupakan pihak yang bertanggung jawab terhadap aset layanan dan bertanggung jawab dalam penentuan nilai dan risiko dari aset tersebut;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemegang Aset</strong>, merupakan unit atau pegawai yang diberi wewenang untuk penggunaan aset layanan, misalnya layanan internet dipegang oleh tim IT Operation;</li>\r\n	<li style=\"text-align:justify\"><strong>Penyedia Aset</strong>, merupakan nama pihak yang menyediakan aset layanan;</li>\r\n	<li style=\"text-align:justify\"><strong>No. Kontrak/SLA</strong> (<em>Service Level Agreement</em>), adalah nomor kontrak kerja pemberi layanan dan atau nomor perjanjian tingkat layanan (SLA);</li>\r\n	<li style=\"text-align:justify\"><strong>Deskripsi</strong>, merupakan penjelasan singkat atas isi dokumen kontrak atau SLA;</li>\r\n	<li style=\"text-align:justify\"><strong>Masa Berlaku</strong>, merupakan batasan waktu akhir atas berlakunya kontrak/SLA dengan pihak Penyedia Aset Layanan;</li>\r\n	<li style=\"text-align:justify\"><strong>Kerahasiaan</strong>, adalah tingkat kerahasian dari aset layanan yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya layanan call centre yang dipihak ketigakan lebih tinggi nilai kerahasiannya untuk menjaga citra organisasi dibandingkan dengan layanan internet yang umumnya memang dipihak ketigakan;</li>\r\n	<li style=\"text-align:justify\"><strong>Integritas</strong>, adalah tingkat keakurasian dan ketepatan (integritas) dari aset layanan yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya layanan call centre yang dipihak ketigakan lebih tinggi kebutuhan integritasnya dibandingkan dengan layanan pengelolaan air conditioner (AC);</li>\r\n	<li style=\"text-align:justify\"><strong>Ketersediaan</strong>, adalah tingkat kebutuhan akan ketersediaan dari aset layanan yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya kebutuhan ketersediaan layanan internet untuk server lebih tinggi dibandingkan ketersediaan layanan internet untuk bidding room yang sudah terhubung ke server secara lokal;</li>\r\n	<li style=\"text-align:justify\"><strong>Nilai Aset Layanan</strong>, merupakan nilai dari aset layanan terhadap ketiga aspek (kerahasiaan, integritas dan ketersediaan) yang didapatkan dengan merata-ratakan nilai ketiganya;</li>\r\n	<li style=\"text-align:justify\"><strong>Keterangan</strong> merupakan status/informasi tambahan atas aset layanan.</li>\r\n</ol>\r\n', 'aset_layanan'),
-('1568776864', 'Intangible', '<p>Aset Intangible dikelola dengan cara didaftarkan dengan menggunakan daftar yang terus diperbaharui, adapun isi daftar aset intangible sebagai berikut :</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\"><strong>Nomor Aset</strong>, adalah kode identifikasi aset intangible yang dapat diisi dengan <u>nomor urut</u> atau dengan <u>gabungan huruf dan angka</u>;</li>\r\n	<li style=\"text-align:justify\"><strong>Nama Aset</strong>, adalah nama dari aset intangible;</li>\r\n	<li style=\"text-align:justify\"><strong>Sub Klasifikasi</strong>, merupakan pengelompokan aset intangible, yang memiliki sifat, ciri atau jenis yang serupa untuk memudahkan dalam pengelolaan risiko, misalnya: <u>Citra Organisasi, Kualitas Layanan</u>, dll;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemilik Aset</strong>, merupakan pihak yang bertanggung jawab terhadap aset intangible dan bertanggung jawab dalam penentuan nilai dan risiko dari aset tersebut;</li>\r\n	<li style=\"text-align:justify\"><strong>Kerahasiaan</strong>, adalah tingkat kerahasian dari aset intangible yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya kenyamanan pegawai dalam bekerja lebih tinggi kerahasiaannya dibandingkan dengan penghargaan yang didapatkan dari LKPP sebagai LPSE terbaik;</li>\r\n	<li style=\"text-align:justify\"><strong>Integritas</strong>, adalah tingkat keakurasian dan ketepatan (integritas) dari aset intangible yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya untuk mendapatkan penghargaan sebagai LPSE terbaik lagi ditahun yang akan datang, maka kualitas layanan tidak boleh menurun;</li>\r\n	<li style=\"text-align:justify\"><strong>Ketersediaan</strong>, adalah tingkat kebutuhan akan ketersediaan dari aset intangible yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya kebutuhan kenyamanan pegawai dalam bekerja perlu ditingkatkan dibanding dengan kebutuhan mendapatkan penghargaan;</li>\r\n	<li style=\"text-align:justify\"><strong>Nilai Aset Intangible</strong>, merupakan nilai dari aset intangible terhadap ketiga aspek (kerahasiaan, integritas dan ketersediaan) yang didapatkan dengan merata-ratakan nilai ketiganya;</li>\r\n	<li style=\"text-align:justify\"><strong>Keterangan</strong> merupakan status/informasi tambahan atas aset intangible.</li>\r\n</ol>\r\n', 'aset_intangible'),
-('istilah', 'Daftar Istilah', '<p>Aset adalah segala sesuatu yang berguna bagi organisasi, perusahaan, instansi atau lembaga. Aset terbagi menjadi beberapa dan umumnya diklasifikasikan sebagai berikut:</p>\r\n\r\n<table cellspacing=\"0\" class=\"table table-bordered border-dark\" id=\"dataTable\" style=\"width:100%\">\r\n	<thead>\r\n		<tr>\r\n			<th style=\"width:25%\">Klasifikasi Aset</th>\r\n			<th>Contoh</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody>\r\n		<tr>\r\n			<td>Informasi</td>\r\n			<td>Basis Data (database) atau file, kontrak, perjanjian, dokumentasi sistem, dokumentasi hasil penelitian, buku petunjuk, bahan pelatihan, dokumen pendukung operasional, rencana kelangsungan bisnis, audit trail/log, dan informasi yang diarsipkan.</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Sumber Daya Manusia</td>\r\n			<td>Kualifikasi, keterampilan, dan pengalaman.</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Fisik</td>\r\n			<td>Peralatan komputer, peralatan komunikasi, removable media, dan peralatan lainnya.</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Perangkat Lunak</td>\r\n			<td>Perangkat lunak aplikasi, perangkat lunak sistem, perangkat pengembangan, dan utilitas.</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Layanan</td>\r\n			<td>Komputasi dan komunikasi, utilitas umum seperti penerangan, listrik, telepon, air, pelayanan genset, fotokopi.</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Tak Berwujud (Intangible)</td>\r\n			<td>Reputasi dan citra organisasi, kualitas layanan.</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', NULL);
+INSERT INTO `aset_sop` (`id`, `nama`, `isi`, `tabel`, `tgl_update`) VALUES
+('1568774849', 'Informasi', '<p>Aset Informasi dikelola dengan cara didaftarkan dengan menggunakan daftar yang terus diperbaharui, adapun isi daftar aset informasi sebagai berikut ini :</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\"><strong>Kode</strong>, adalah kode identifikasi aset informasi yang dapat diisi dengan <u>nomor urut</u> atau dengan <u>gabungan huruf dan angka</u>;</li>\r\n	<li style=\"text-align:justify\"><strong>Nama Aset</strong>, adalah nama dari aset informasi;</li>\r\n	<li style=\"text-align:justify\"><strong>Sub Klasifikasi</strong>, merupakan pengelompokan aset informasi, yang memiliki sifat, ciri atau jenis yang serupa untuk memudahkan dalam pengelolaan risiko;</li>\r\n	<li style=\"text-align:justify\"><strong>Format Penyimpanan</strong>, merupakan informasi bagaimana aset tersebut disimpan;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemilik Aset</strong>, merupakan pihak yang bertanggung jawab terhadap aset informasi dan bertanggung jawab dalam penentuan nilai dan risiko dari aset tersebut;</li>\r\n	<li style=\"text-align:justify\"><strong>Masa Berlaku</strong>, merupakan rentang waktu atau batas akhir aset informasi digunakan;</li>\r\n	<li style=\"text-align:justify\">Klasifikasi Keamanan Informasi :\r\n	<ol style=\"list-style-type:lower-alpha\">\r\n		<li style=\"text-align:justify\"><strong>Kerahasiaan</strong>, adalah tingkat kerahasian dari aset informasi yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya apakah aset tersebut boleh diketahui umum atau tidak;</li>\r\n		<li style=\"text-align:justify\"><strong>Integritas</strong>, adalah tingkat keakurasian dan ketepatan (integritas) dari aset informasi yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3). misalnya daftar gaji, tingkat keakurasian dan ketepatan penggolongan atau pemberian isi dari gaji tidak boleh dapat diubah sembarangan oleh orang yang tidak berhak;</li>\r\n		<li style=\"text-align:justify\"><strong>Ketersediaan</strong>, adalah tingkat kebutuhan akan ketersediaan dari aset informasi yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya data yang sering dipergunakan maka memiliki tingkat ketersediaan lebih tinggi dibandingkan data yang diakses hanya setahun sekali;</li>\r\n	</ol>\r\n	</li>\r\n	<li style=\"text-align:justify\"><strong>Nilai Aset Informasi</strong>, merupakan nilai dari aset informasi terhadap ketiga aspek (kerahasiaan, integritas dan ketersediaan) yang didapatkan dengan merata-ratakan nilai ketiganya;</li>\r\n	<li style=\"text-align:justify\"><strong>Keterangan </strong>merupakan status/informasi tambahan atas aset informasi.</li>\r\n</ol>\r\n', 'aset_informasi', 1568774849),
+('1568775826', 'Sumber Daya Manusia (SDM)', '<p>Aset Orang dikelola dengan cara didaftarkan dengan menggunakan daftar yang terus diperbaharui, adapun isi daftar aset orang sebagai berikut:</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\"><strong>Kode</strong>, adalah kode identifikasi aset yang dapat diisi dengan nomor urut atau dengan gabungan huruf dan angka;</li>\r\n	<li style=\"text-align:justify\"><strong>Nama Aset</strong>, adalah nama dari personil LPSE yang dimasukkan sebagai aset;</li>\r\n	<li style=\"text-align:justify\"><strong>Sub Klasifikasi</strong>, merupakan pengelompokan aset informasi, yang memiliki sifat, ciri atau jenis yang serupa untuk memudahkan dalam pengelolaan risiko, misalnya: <u>Pengambil Keputusan, Pegawai Tetap, Pegawai Tidak Tetap</u>, dll;</li>\r\n	<li style=\"text-align:justify\"><strong>No. Identitas/NIP</strong>, merupakan nomor identitas personil LPSE yang dimasukkan sebagai aset;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemilik Aset</strong>, merupakan bagian dari struktur organisasi tempat personil LPSE yang dimasukkan sebagai aset bekerja, setiap aset harus diberi keterangan fungsinya, sub-fungsi (jika ada) dan unit kerjanya;</li>\r\n	<li style=\"text-align:justify\"><strong>Jabatan</strong>, merupakan posisi/kedudukan dari pegawai yang dimasukkan sebagai aset;</li>\r\n	<li style=\"text-align:justify\"><strong>No. Kontrak/NDA</strong> (<em>Non-Disclosure Agreement</em>), adalah nomor kontrak bagi personil LPSE yang bekerja berdasarkan kontrak kerja dengan organisasi dan atau nomor perjanjian penjagaan kerahasiaan (NDA);</li>\r\n	<li style=\"text-align:justify\"><strong>Atasan Langsung</strong>, merupakan posisi/jabatan tepat di atas SDM sebagai personil LPSE dimaksud, dimana hasil pekerjaan disampaikan/dilaporkan kepadanya.</li>\r\n	<li style=\"text-align:justify\">Klasifikasi Keamanan Informasi:\r\n	<ol style=\"list-style-type:lower-alpha\">\r\n		<li style=\"text-align:justify\"><strong>Kerahasiaan</strong>, adalah tingkat kerahasian dari aset SDM yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya admin system yang memiliki akses kepada system lebih tinggi nilai kerahasiaannya dari pada helpdesk yang bertugas melayani pengguna;</li>\r\n		<li style=\"text-align:justify\"><strong>Integritas</strong>, adalah tingkat kebutuhan integritas dari aset SDM yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya verifikator yang melakukan verifikasi pendaftaran pengguna lebih tinggi kebutuhan integritasnya dari pada pelatih (trainer) aplikasi;</li>\r\n		<li style=\"text-align:justify\"><strong>Ketersediaan</strong>, adalah tingkat kebutuhan ketersediaan dari aset SDM yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya helpdesk yang melayani pengguna lebih tinggi kebutuhan ketersediaannya dibandingkan dengan pelatih (trainer).</li>\r\n	</ol>\r\n	</li>\r\n	<li style=\"text-align:justify\"><strong>Nilai</strong>, merupakan nilai dari aset SDM terhadap ketiga aspek (kerahasiaan, integritas dan ketersediaan) yang didapatkan dengan merata-ratakan nilai ketiganya;</li>\r\n	<li style=\"text-align:justify\"><strong>Keterangan</strong> merupakan status/informasi tambahan atas aset SDM.</li>\r\n</ol>\r\n', 'aset_sdm', 1568775826),
+('1568776152', 'Fisik', '<p>Aset Fisik dikelola dengan cara didaftarkan dengan menggunakan daftar yang terus diperbaharui, adapun isi daftar aset fisik sebagai berikut :</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\"><strong>Nomor Aset Kode</strong>, adalah kode identifikasi aset fisik yang dapat diisi dengan <u>nomor urut</u> atau dengan <u>gabungan huruf dan angka</u>;</li>\r\n	<li style=\"text-align:justify\"><strong>Nama Aset</strong>, adalah nama dari aset fisik;</li>\r\n	<li style=\"text-align:justify\"><strong>Sub Klasifikasi</strong>, merupakan pengelompokan aset fisik, yang memiliki sifat, ciri atau jenis yang serupa untuk memudahkan dalam pengelolaan risiko, misalnya: <u>Perangkat Server, Terminal Pengguna, Perangkat Pendukung Elektronik, Perangkat Pendukung Non-Elektronik</u>, dll;</li>\r\n	<li style=\"text-align:justify\"><strong>Jenis Aset</strong>, merupakan jenis dari aset fisik, misal <u>Server, Media Penyimpanan, Komputer Kerja</u>, dll;</li>\r\n	<li style=\"text-align:justify\"><strong>Spesifikasi</strong> merupakan informasi teknis dari aset fisik;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemilik Aset</strong>, merupakan pihak yang bertanggung jawab terhadap aset fisik dan bertanggung jawab dalam penentuan nilai dan risiko dari aset tersebut;</li>\r\n	<li style=\"text-align:justify\"><strong>Penyedia Aset</strong>, merupakan nama pihak yang menyediakan aset fisik;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemegang Aset</strong>, merupakan nama pegawai yang diberi wewenang untuk membawa atau menggunakan aset fisik, misalnya <u>pegawai yang ditugaskan untuk menyimpan media backup</u>;</li>\r\n	<li style=\"text-align:justify\"><strong>Lokasi Aset</strong>, merupakan nama tempat dimana aset fisik diletakkan;</li>\r\n	<li style=\"text-align:justify\"><strong>Masa Berlaku</strong>, merupakan informasi batasan masa berlaku penggunaan aset fisik (jika ada), misalnya masa berlaku Alat Pemadam Api Ringan (APAR)</li>\r\n	<li style=\"text-align:justify\">Klasifikasi Keamanan Informasi:\r\n	<ol style=\"list-style-type:lower-alpha\">\r\n		<li style=\"text-align:justify\"><strong>Kerahasiaan</strong>, adalah tingkat kerahasian dari aset fisik yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya lemari brankas (safe deposit box) yang memiliki tingkat kerahasiaan lebih tinggi dibandingkan dengan lemari perpustakaan;</li>\r\n		<li style=\"text-align:justify\"><strong>Integritas</strong>, adalah tingkat keakurasian dan ketepatan (integritas) dari aset fisik yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya kabel-kabel yang harus diamankan dari gangguan kerusakan memiliki nilai integritas yang tinggi dibandingkan dengan aset fisik habis pakai;</li>\r\n		<li style=\"text-align:justify\"><strong>Ketersediaan</strong>, adalah tingkat kebutuhan akan ketersediaan dari aset fisik yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya kebutuhan ketersediaan komputer kerja admin system yang lebih tinggi dibandingkan dengan komputer diruangan pelatihan;</li>\r\n	</ol>\r\n	</li>\r\n	<li style=\"text-align:justify\"><strong>Nilai Aset Fisik</strong> merupakan nilai dari aset fisik terhadap ketiga aspek (kerahasiaan, integritas dan ketersediaan) yang didapatkan dengan merata-ratakan nilai ketiganya;</li>\r\n	<li style=\"text-align:justify\"><strong>Keterangan</strong> merupakan status/informasi tambahan atas aset fisik.</li>\r\n</ol>\r\n', 'aset_fisik', 1568776152),
+('1568776450', 'Software', '<p>Aset Software Perangkat Lunak dikelola dengan cara didaftarkan dengan menggunakan daftar yang terus diperbaharui, adapun isi daftar aset software perangkat lunak sebagai berikut :</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\"><strong>Nomor Aset Kode</strong>, adalah kode identifikasi aset software perangkat lunak yang dapat diisi dengan <u>nomor urut</u> atau dengan <u>gabungan huruf dan angka</u>;</li>\r\n	<li style=\"text-align:justify\"><strong>Nama Aset</strong>, adalah nama dari aset software perangkat lunak;</li>\r\n	<li style=\"text-align:justify\"><strong>Sub Klasifikasi</strong>, merupakan pengelompokan aset software, yang memiliki sifat, ciri atau jenis yang serupa untuk memudahkan dalam pengelolaan risiko, misalnya: <u>Operating System, Aplikasi Pendukung Helpdesk, Aplikasi Perkantoran</u>, dll;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemilik Aset</strong>, merupakan pihak yang bertanggung jawab terhadap aset software dan bertanggung jawab dalam penentuan nilai dan risiko dari aset tersebut;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemegang Aset</strong>, merupakan nama pegawai yang diberi wewenang untuk membawa atau menggunakan aset software;</li>\r\n	<li style=\"text-align:justify\"><strong>Lokasi Aset</strong>, merupakan nama tempat dimana aset software diletakkan atau diinstall;</li>\r\n	<li style=\"text-align:justify\"><strong>Masa Berlaku</strong>, merupakan informasi batasan masa berlaku penggunaan aset software (jika ada), misalnya masa berlaku lisensi aplikasi perkantoran.</li>\r\n	<li style=\"text-align:justify\"><strong>Metode Penghapusan</strong>, merupakan cara/mekanisme penghapusan aset software, informasi ini erat kaitannya dengan keamanan informasi yang melekat pada aset software tersebut;</li>\r\n	<li style=\"text-align:justify\"><strong>Kerahasiaan</strong>, adalah tingkat kerahasian dari aset software yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3);</li>\r\n	<li style=\"text-align:justify\"><strong>Integritas</strong>, adalah tingkat keakurasian dan ketepatan (integritas) dari aset software yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya kebutuhan integritas aplikasi email client lebih tinggi daripada aplikasi internet browser;</li>\r\n	<li style=\"text-align:justify\"><strong>Ketersediaan</strong>, adalah tingkat kebutuhan akan ketersediaan dari aset software yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya kebutuhan ketersediaan aplikasi perkantoran lebih tinggi dibandingkan dengan aplikasi pendukung layanan (trouble ticketing system, dll);</li>\r\n	<li style=\"text-align:justify\"><strong>Nilai Aset Software</strong>, merupakan nilai dari aset software terhadap ketiga aspek (kerahasiaan, integritas dan ketersediaan) yang didapatkan dengan merata-ratakan nilai ketiganya;</li>\r\n	<li style=\"text-align:justify\"><strong>Keterangan</strong> merupakan status/informasi tambahan atas aset software.</li>\r\n</ol>\r\n', 'aset_software', 1568776450),
+('1568776664', 'Layanan', '<p>Aset Layanan dikelola dengan cara didaftarkan dengan menggunakan daftar yang terus diperbaharui, adapun isi daftar aset layanan sebagai berikut :</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\"><strong>Nomor Aset</strong>, adalah kode identifikasi aset layanan yang dapat diisi dengan <u>nomor urut</u> atau dengan <u>gabungan huruf dan angka</u>;</li>\r\n	<li style=\"text-align:justify\"><strong>Nama Aset</strong>, adalah nama dari aset layanan;</li>\r\n	<li style=\"text-align:justify\"><strong>Sub Klasifikasi</strong>, merupakan pengelompokan aset layanan, yang memiliki sifat, ciri atau jenis yang serupa untuk memudahkan dalam pengelolaan risiko, misalnya: <u>Jaringan Internet, Layanan Pendukung</u>, dll;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemilik Aset</strong>, merupakan pihak yang bertanggung jawab terhadap aset layanan dan bertanggung jawab dalam penentuan nilai dan risiko dari aset tersebut;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemegang Aset</strong>, merupakan unit atau pegawai yang diberi wewenang untuk penggunaan aset layanan, misalnya layanan internet dipegang oleh tim IT Operation;</li>\r\n	<li style=\"text-align:justify\"><strong>Penyedia Aset</strong>, merupakan nama pihak yang menyediakan aset layanan;</li>\r\n	<li style=\"text-align:justify\"><strong>No. Kontrak/SLA</strong> (<em>Service Level Agreement</em>), adalah nomor kontrak kerja pemberi layanan dan atau nomor perjanjian tingkat layanan (SLA);</li>\r\n	<li style=\"text-align:justify\"><strong>Deskripsi</strong>, merupakan penjelasan singkat atas isi dokumen kontrak atau SLA;</li>\r\n	<li style=\"text-align:justify\"><strong>Masa Berlaku</strong>, merupakan batasan waktu akhir atas berlakunya kontrak/SLA dengan pihak Penyedia Aset Layanan;</li>\r\n	<li style=\"text-align:justify\"><strong>Kerahasiaan</strong>, adalah tingkat kerahasian dari aset layanan yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya layanan call centre yang dipihak ketigakan lebih tinggi nilai kerahasiannya untuk menjaga citra organisasi dibandingkan dengan layanan internet yang umumnya memang dipihak ketigakan;</li>\r\n	<li style=\"text-align:justify\"><strong>Integritas</strong>, adalah tingkat keakurasian dan ketepatan (integritas) dari aset layanan yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya layanan call centre yang dipihak ketigakan lebih tinggi kebutuhan integritasnya dibandingkan dengan layanan pengelolaan air conditioner (AC);</li>\r\n	<li style=\"text-align:justify\"><strong>Ketersediaan</strong>, adalah tingkat kebutuhan akan ketersediaan dari aset layanan yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya kebutuhan ketersediaan layanan internet untuk server lebih tinggi dibandingkan ketersediaan layanan internet untuk bidding room yang sudah terhubung ke server secara lokal;</li>\r\n	<li style=\"text-align:justify\"><strong>Nilai Aset Layanan</strong>, merupakan nilai dari aset layanan terhadap ketiga aspek (kerahasiaan, integritas dan ketersediaan) yang didapatkan dengan merata-ratakan nilai ketiganya;</li>\r\n	<li style=\"text-align:justify\"><strong>Keterangan</strong> merupakan status/informasi tambahan atas aset layanan.</li>\r\n</ol>\r\n', 'aset_layanan', 1568776664),
+('1568776864', 'Intangible', '<p>Aset Intangible dikelola dengan cara didaftarkan dengan menggunakan daftar yang terus diperbaharui, adapun isi daftar aset intangible sebagai berikut :</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\"><strong>Nomor Aset</strong>, adalah kode identifikasi aset intangible yang dapat diisi dengan <u>nomor urut</u> atau dengan <u>gabungan huruf dan angka</u>;</li>\r\n	<li style=\"text-align:justify\"><strong>Nama Aset</strong>, adalah nama dari aset intangible;</li>\r\n	<li style=\"text-align:justify\"><strong>Sub Klasifikasi</strong>, merupakan pengelompokan aset intangible, yang memiliki sifat, ciri atau jenis yang serupa untuk memudahkan dalam pengelolaan risiko, misalnya: <u>Citra Organisasi, Kualitas Layanan</u>, dll;</li>\r\n	<li style=\"text-align:justify\"><strong>Pemilik Aset</strong>, merupakan pihak yang bertanggung jawab terhadap aset intangible dan bertanggung jawab dalam penentuan nilai dan risiko dari aset tersebut;</li>\r\n	<li style=\"text-align:justify\"><strong>Kerahasiaan</strong>, adalah tingkat kerahasian dari aset intangible yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya kenyamanan pegawai dalam bekerja lebih tinggi kerahasiaannya dibandingkan dengan penghargaan yang didapatkan dari LKPP sebagai LPSE terbaik;</li>\r\n	<li style=\"text-align:justify\"><strong>Integritas</strong>, adalah tingkat keakurasian dan ketepatan (integritas) dari aset intangible yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya untuk mendapatkan penghargaan sebagai LPSE terbaik lagi ditahun yang akan datang, maka kualitas layanan tidak boleh menurun;</li>\r\n	<li style=\"text-align:justify\"><strong>Ketersediaan</strong>, adalah tingkat kebutuhan akan ketersediaan dari aset intangible yang direpresentasikan dalam angka (rendah=1; sedang=2; tinggi=3), misalnya kebutuhan kenyamanan pegawai dalam bekerja perlu ditingkatkan dibanding dengan kebutuhan mendapatkan penghargaan;</li>\r\n	<li style=\"text-align:justify\"><strong>Nilai Aset Intangible</strong>, merupakan nilai dari aset intangible terhadap ketiga aspek (kerahasiaan, integritas dan ketersediaan) yang didapatkan dengan merata-ratakan nilai ketiganya;</li>\r\n	<li style=\"text-align:justify\"><strong>Keterangan</strong> merupakan status/informasi tambahan atas aset intangible.</li>\r\n</ol>\r\n', 'aset_intangible', 1568776864),
+('istilah', 'Daftar Istilah', '<p>Aset adalah segala sesuatu yang berguna bagi organisasi, perusahaan, instansi atau lembaga. Aset terbagi menjadi beberapa dan umumnya diklasifikasikan sebagai berikut:</p>\r\n\r\n<table cellspacing=\"0\" class=\"table table-bordered border-dark\" id=\"dataTable\" style=\"width:100%\">\r\n	<thead>\r\n		<tr>\r\n			<th style=\"width:25%\">Klasifikasi Aset</th>\r\n			<th>Contoh</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody>\r\n		<tr>\r\n			<td>Informasi</td>\r\n			<td>Basis Data (database) atau file, kontrak, perjanjian, dokumentasi sistem, dokumentasi hasil penelitian, buku petunjuk, bahan pelatihan, dokumen pendukung operasional, rencana kelangsungan bisnis, audit trail/log, dan informasi yang diarsipkan.</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Sumber Daya Manusia</td>\r\n			<td>Kualifikasi, keterampilan, dan pengalaman.</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Fisik</td>\r\n			<td>Peralatan komputer, peralatan komunikasi, removable media, dan peralatan lainnya.</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Perangkat Lunak</td>\r\n			<td>Perangkat lunak aplikasi, perangkat lunak sistem, perangkat pengembangan, dan utilitas.</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Layanan</td>\r\n			<td>Komputasi dan komunikasi, utilitas umum seperti penerangan, listrik, telepon, air, pelayanan genset, fotokopi.</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Tak Berwujud (Intangible)</td>\r\n			<td>Reputasi dan citra organisasi, kualitas layanan.</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', NULL, 1568777864);
 
 -- --------------------------------------------------------
 
@@ -381,19 +354,20 @@ CREATE TABLE `gangguan` (
   `petugas_penanganan` varchar(150) NOT NULL,
   `status_penanganan` varchar(50) NOT NULL,
   `ket_penanganan` text NOT NULL,
-  `tgl_penanganan` int(11) NOT NULL,
+  `tgl_penanganan` date NOT NULL,
   `solusi_penyelesaian` text NOT NULL,
-  `tgl_penyelesaian` int(11) NOT NULL,
+  `tgl_penyelesaian` date NOT NULL,
   `status_konfirmasi` enum('Telah Diinformasikan','Belum Diinformasikan','','') NOT NULL,
-  `status_gangguan` enum('Tercatat','Penanganan','Penyelesaian','') NOT NULL
+  `status_gangguan` enum('Tercatat','Penanganan','Penyelesaian','') NOT NULL,
+  `file_gangguan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gangguan`
 --
 
-INSERT INTO `gangguan` (`id_gangguan`, `nama_pengguna`, `kontak_pengguna`, `media_pelaporan`, `tgl_pelaporan`, `deskripsi_gangguan`, `id_tipe`, `id_kategori`, `id_user`, `id_jenis`, `id_urgensi`, `id_dampak`, `id_prioritas`, `petugas_penanganan`, `status_penanganan`, `ket_penanganan`, `tgl_penanganan`, `solusi_penyelesaian`, `tgl_penyelesaian`, `status_konfirmasi`, `status_gangguan`) VALUES
-('GG1575356899', 'PT. Alliessan', '', 'E-Mail', '2019-12-03', 'Penyedia tidak dapat melakukan recovery password karena mail server sedang dalam maintenance', 2, 1, 2, 2, 1, 2, 2, 'Admin', '-', '-', 1575357489, '-', 1575357489, 'Belum Diinformasikan', 'Tercatat');
+INSERT INTO `gangguan` (`id_gangguan`, `nama_pengguna`, `kontak_pengguna`, `media_pelaporan`, `tgl_pelaporan`, `deskripsi_gangguan`, `id_tipe`, `id_kategori`, `id_user`, `id_jenis`, `id_urgensi`, `id_dampak`, `id_prioritas`, `petugas_penanganan`, `status_penanganan`, `ket_penanganan`, `tgl_penanganan`, `solusi_penyelesaian`, `tgl_penyelesaian`, `status_konfirmasi`, `status_gangguan`, `file_gangguan`) VALUES
+('GG1575356899', 'PT. Alliessan', '', 'E-Mail', '2019-12-03', 'Penyedia tidak dapat melakukan recovery password karena mail server sedang dalam maintenance', 2, 1, 2, 2, 1, 2, 2, 'TM', 'T', 'Eskalasi ke LKPP', '2019-12-04', 'Telah difasilitasi perbaikan oleh LKPP', '2019-12-05', 'Telah Diinformasikan', 'Penyelesaian', '');
 
 -- --------------------------------------------------------
 
@@ -581,6 +555,87 @@ INSERT INTO `jenis_aset_fisik` (`id`, `nama_jenisaset`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `kapasitas`
+--
+
+CREATE TABLE `kapasitas` (
+  `id_kapasitas` varchar(20) NOT NULL,
+  `item` varchar(255) NOT NULL,
+  `id_kk` int(11) NOT NULL,
+  `batasan` text NOT NULL,
+  `waktu_pantau` date NOT NULL,
+  `utilitas` text NOT NULL,
+  `kondisi_p1` text NOT NULL,
+  `kondisi_p2` text NOT NULL,
+  `kondisi_p3` text NOT NULL,
+  `kondisi_p4` text NOT NULL,
+  `perkiraan_p1` text NOT NULL,
+  `perkiraan_p2` text NOT NULL,
+  `perkiraan_p3` text NOT NULL,
+  `perkiraan_p4` text NOT NULL,
+  `perkiraan_resource` text NOT NULL,
+  `tindak_lanjut` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kapasitas`
+--
+
+INSERT INTO `kapasitas` (`id_kapasitas`, `item`, `id_kk`, `batasan`, `waktu_pantau`, `utilitas`, `kondisi_p1`, `kondisi_p2`, `kondisi_p3`, `kondisi_p4`, `perkiraan_p1`, `perkiraan_p2`, `perkiraan_p3`, `perkiraan_p4`, `perkiraan_resource`, `tindak_lanjut`) VALUES
+('KL1578966222', 'asd', 1, 'ads', '2020-01-14', 'asdas', 'asdas', '', '', '', 'asdas', '', '', '', 'asdas', 'adas');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kapasitas_kategori`
+--
+
+CREATE TABLE `kapasitas_kategori` (
+  `id_kk` int(11) NOT NULL,
+  `nama_kk` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kapasitas_kategori`
+--
+
+INSERT INTO `kapasitas_kategori` (`id_kk`, `nama_kk`) VALUES
+(1, 'Server'),
+(2, 'Personil'),
+(3, 'Jaringan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kapasitas_laporan`
+--
+
+CREATE TABLE `kapasitas_laporan` (
+  `id_kapasitas` varchar(20) NOT NULL,
+  `latar_belakang` text DEFAULT 'Belum Ada Data',
+  `ruang_lingkup` text DEFAULT 'Belum Ada Data',
+  `metode` text DEFAULT 'Belum Ada Data',
+  `asumsi` text DEFAULT 'Belum Ada Data',
+  `laporan_saat_ini` text DEFAULT 'Belum Ada Data',
+  `prediksi_akan_datang` text DEFAULT 'Belum Ada Data',
+  `laporan_pakai_komponen` text DEFAULT 'Belum Ada Data',
+  `analisis_trend` text DEFAULT 'Belum Ada Data',
+  `prediksi_kebutuhan` text DEFAULT 'Belum Ada Data',
+  `pilihan_peningkatan_layanan` text DEFAULT 'Belum Ada Data',
+  `prediksi_pembiayaan` text DEFAULT 'Belum Ada Data',
+  `rekomendasi_kapasitas` text DEFAULT 'Belum Ada Data'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kapasitas_laporan`
+--
+
+INSERT INTO `kapasitas_laporan` (`id_kapasitas`, `latar_belakang`, `ruang_lingkup`, `metode`, `asumsi`, `laporan_saat_ini`, `prediksi_akan_datang`, `laporan_pakai_komponen`, `analisis_trend`, `prediksi_kebutuhan`, `pilihan_peningkatan_layanan`, `prediksi_pembiayaan`, `rekomendasi_kapasitas`) VALUES
+('KL1578966222', 'Belum Ada Data', 'Belum Ada Data', 'Belum Ada Data', 'Belum Ada Data', 'Belum Ada Data', 'Belum Ada Data', 'Belum Ada Data', 'Belum Ada Data', 'Belum Ada Data', 'Belum Ada Data', 'Belum Ada Data', 'Belum Ada Data');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `klasifikasi_aset_fisik`
 --
 
@@ -714,6 +769,39 @@ INSERT INTO `klasifikasi_software` (`id_ksw`, `kla_sw`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `layanan`
+--
+
+CREATE TABLE `layanan` (
+  `id_layanan` varchar(20) NOT NULL,
+  `no_surat` varchar(100) NOT NULL,
+  `tgl_surat` date NOT NULL,
+  `asal_surat` varchar(200) NOT NULL,
+  `perihal_surat` varchar(200) NOT NULL,
+  `dokumen_surat` varchar(200) NOT NULL,
+  `nama_pemohon` varchar(200) NOT NULL,
+  `instansi_pemohon` varchar(200) NOT NULL,
+  `tujuan_pemohon` text NOT NULL,
+  `user_akses` varchar(100) DEFAULT NULL,
+  `hak_akses` enum('Admin','User') DEFAULT NULL,
+  `tgl_buka` date DEFAULT NULL,
+  `jam_buka` varchar(5) DEFAULT '00:00',
+  `tgl_tutup` date DEFAULT NULL,
+  `jam_tutup` varchar(5) DEFAULT '00:00',
+  `status_layanan` enum('Tunda','Setuju','Tidak Setuju') NOT NULL,
+  `tgl_update` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `layanan`
+--
+
+INSERT INTO `layanan` (`id_layanan`, `no_surat`, `tgl_surat`, `asal_surat`, `perihal_surat`, `dokumen_surat`, `nama_pemohon`, `instansi_pemohon`, `tujuan_pemohon`, `user_akses`, `hak_akses`, `tgl_buka`, `jam_buka`, `tgl_tutup`, `jam_tutup`, `status_layanan`, `tgl_update`) VALUES
+('LYN1580173643', 'as', '2020-01-28', 'asd', 'asd', '7501194903900001_kartuAkun.pdf', 'asd', 'asdas', 'asda', NULL, NULL, '2020-01-28', '09:07', '2020-01-28', '09:07', 'Tunda', 1580173643);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `level`
 --
 
@@ -780,6 +868,13 @@ CREATE TABLE `organisasi_sk` (
   `tgl_update` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `organisasi_sk`
+--
+
+INSERT INTO `organisasi_sk` (`id_sko`, `nomor_sko`, `tanggal_sko`, `nama_sko`, `tentang_sko`, `file_sko`, `tgl_update`) VALUES
+(1578978015, '0027/sk', '2020-01-14', 'sk pengangkatan', 'asa', 'Daftar_Paket_2019_-_Non_Tender_(Perikanan_PUPR).pdf', 1578978015);
+
 -- --------------------------------------------------------
 
 --
@@ -805,6 +900,13 @@ CREATE TABLE `organisasi_struktur` (
   `tugas_su` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `organisasi_struktur`
+--
+
+INSERT INTO `organisasi_struktur` (`id_su`, `jabatan_su`, `tugas_su`) VALUES
+(1578977436, 'asd', '<p>asd</p>\r\n');
+
 -- --------------------------------------------------------
 
 --
@@ -813,16 +915,17 @@ CREATE TABLE `organisasi_struktur` (
 
 CREATE TABLE `organisasi_tujuan` (
   `id_ot` varchar(6) NOT NULL,
-  `isi_ot` text NOT NULL
+  `isi_ot` text NOT NULL,
+  `tgl_update` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `organisasi_tujuan`
 --
 
-INSERT INTO `organisasi_tujuan` (`id_ot`, `isi_ot`) VALUES
-('gambar', 'strukturorganisasi.png'),
-('tujuan', '<p style=\"text-align:justify\">Dalam rangka pelaksanaan pengelolaan Layanan Pengadaan Secara Elektronik (LPSE) diperlukan optimalisasi peran yang bertanggungjawab dalam penerapan pengelolaan layanan. Untuk itu dipandang perlu membentuk tim yang selaras dengan kerangka kerja LPSE, yang bertujuan:</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Memastikan bahwa setiap personil LPSE mengambil peran melaksanakan tugas dan tanggungjawabnya dengan baik;</li>\r\n	<li style=\"text-align:justify\">Mensinergikan proses di seluruh area LPSE guna mewujudkan tata kelola IT Service Management (ITSM) yang baik, efektif dan efisien;</li>\r\n	<li style=\"text-align:justify\">Untuk memudahkan evaluasi dan monitoring sebagai bahan perbaikan agar LPSE dapat mewujudkan layanan TIK yang prima;</li>\r\n	<li style=\"text-align:justify\">Mendukung dan mewujudkan integritas Layanan Pengadaan Secara Elektronik yang handal;</li>\r\n	<li style=\"text-align:justify\">Memberikan perbaikan dan pelaksanaan ITSM yang sesuai denganstandardisasi layanan.</li>\r\n</ol>\r\n');
+INSERT INTO `organisasi_tujuan` (`id_ot`, `isi_ot`, `tgl_update`) VALUES
+('gambar', 'strukturorganisasi.png', 1578639091),
+('tujuan', '<p style=\"text-align:justify\">Dalam rangka pelaksanaan pengelolaan Layanan Pengadaan Secara Elektronik (LPSE) diperlukan optimalisasi peran yang bertanggungjawab dalam penerapan pengelolaan layanan. Untuk itu dipandang perlu membentuk tim yang selaras dengan kerangka kerja LPSE, yang bertujuan:</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Memastikan bahwa setiap personil LPSE mengambil peran melaksanakan tugas dan tanggungjawabnya dengan baik;</li>\r\n	<li style=\"text-align:justify\">Mensinergikan proses di seluruh area LPSE guna mewujudkan tata kelola IT Service Management (ITSM) yang baik, efektif dan efisien;</li>\r\n	<li style=\"text-align:justify\">Untuk memudahkan evaluasi dan monitoring sebagai bahan perbaikan agar LPSE dapat mewujudkan layanan TIK yang prima;</li>\r\n	<li style=\"text-align:justify\">Mendukung dan mewujudkan integritas Layanan Pengadaan Secara Elektronik yang handal;</li>\r\n	<li style=\"text-align:justify\">Memberikan perbaikan dan pelaksanaan ITSM yang sesuai denganstandardisasi layanan.</li>\r\n</ol>\r\n', 1578639105);
 
 -- --------------------------------------------------------
 
@@ -853,7 +956,7 @@ CREATE TABLE `pengaturan` (
 --
 
 INSERT INTO `pengaturan` (`id`, `nama_web`, `alias`, `url`, `alamat`, `telpon`, `email`, `jam_kerja`, `facebook`, `instagram`, `twitter`, `logo`, `icon`, `map`, `info`) VALUES
-('atur', 'Standard Operasional Sistem LPSE', 'SOS', 'http://118.97.133.51/', '<p>Biro Pengadaan Setda Provinsi Gorontalo<br />\r\nJl. Sapta Marga Kel. Botu Kec. Dumbo Raya Kota Gorontalo 96118</p>\r\n', '(0435) 821277', 'lpse_gtloprov@gmail.com', 'Senin - Jumat | 08.00 - 16.30 WITA', 'lpsecoe_gtloprov', 'lpsecoe_gtloprov', 'lpsecoe_gtloprov', 'logo.png', 'icon2.png', 'https://maps.google.com/maps?q=kantor%20gubernur%20gorontalo&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed', '<p>17 Standar LPSE untuk menjadi&nbsp;<em>Center Of Excellent</em> (COE)</p>\r\n');
+('atur', 'Standard Operasional Sistem LPSE', 'SOS', 'http://118.97.133.51/', '<p>Biro Pengadaan Setda Provinsi Gorontalo<br />\r\nJl. Sapta Marga Kel. Botu Kec. Dumbo Raya Kota Gorontalo 96118</p>\r\n', '(0435) 821277', 'lpse_gtloprov@gmail.com', 'Senin - Jumat | 08.00 - 16.30 WITA', '', '', '', 'logo.png', 'icon2.png', 'https://maps.google.com/maps?q=kantor%20gubernur%20gorontalo&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed', '<p>17 Standar LPSE untuk menjadi&nbsp;<em>Center Of Excellent</em> (COE)</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -878,12 +981,121 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`username`, `password`, `email`, `nama_lengkap`, `id_level`, `status`, `foto`, `tgl_daftar`, `tgl_update`) VALUES
-('admin', 'admin', 'admin@email.com', 'Administrator', '1', 'Aktif', 'user.png', 1567485251, 1567485260),
+('admin', 'admin', 'admin@email.com', 'Administrator', '1', 'Aktif', 'user.png', 1567485251, 1575948171),
 ('helmy', '123456', 'helmy@email.com', 'Helmy Lacuba', '2', 'Aktif', 'user.png', 1567733032, 1567733032),
 ('lucy', '123456', 'lucy@email.com', 'Lucy Latief', '2', 'Aktif', 'user.png', 1567733136, 1567733136),
 ('manto', '123456', 'manto@email.com', 'Rahmanto Gani', '2', 'Aktif', 'user.png', 1567732824, 1567732824),
-('rushjr', 'samuel93', 'ruslansamuel11@gmail.com', 'Rush Jr.', '1', 'Aktif', 'user.png', 1567491061, 1567491071),
+('rushjr', '123456', 'ruslansamuel11@gmail.com', 'Ruslan Samuel', '2', 'Aktif', 'user.png', 1575947382, 1575947440),
 ('yenny', '123456', 'yenny@email.com', 'Yenny Kaluku', '2', 'Aktif', 'user.png', 1567732967, 1567732967);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengumuman`
+--
+
+CREATE TABLE `pengumuman` (
+  `id_pengumuman` varchar(20) NOT NULL,
+  `isi_pengumuman` text NOT NULL,
+  `penulis` varchar(255) NOT NULL,
+  `tgl_pengumuman` int(11) NOT NULL,
+  `status_pengumuman` int(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `perangkat`
+--
+
+CREATE TABLE `perangkat` (
+  `id_ijin_perangkat` varchar(20) NOT NULL,
+  `id_perangkat_jenis` int(1) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `identitas` varchar(25) NOT NULL,
+  `jenis_identitas` varchar(20) NOT NULL,
+  `instansi` varchar(255) NOT NULL,
+  `alamat` text NOT NULL,
+  `no_badge` varchar(10) NOT NULL,
+  `tujuan` text NOT NULL,
+  `status_ijin` enum('Tunda','Setuju','Tidak Setuju') NOT NULL DEFAULT 'Tunda',
+  `updated` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `perangkat`
+--
+
+INSERT INTO `perangkat` (`id_ijin_perangkat`, `id_perangkat_jenis`, `nama`, `identitas`, `jenis_identitas`, `instansi`, `alamat`, `no_badge`, `tujuan`, `status_ijin`, `updated`) VALUES
+('IP1578967037', 1, 'Abdulrizal M. Pauweni, S.SI', '19790929 200802 1 002', 'KTP', 'Biro Pengadaan', 'dfasds', '--', 'sdf', 'Tunda', 1578967050);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `perangkat_detail`
+--
+
+CREATE TABLE `perangkat_detail` (
+  `id_perangkat_detail` varchar(20) NOT NULL,
+  `id_ijin_perangkat` varchar(20) NOT NULL,
+  `tanggal_pelaksanaan` date DEFAULT current_timestamp(),
+  `jam_masuk` varchar(8) DEFAULT NULL,
+  `jam_keluar` varchar(8) DEFAULT NULL,
+  `jenis_fasilitas` varchar(255) DEFAULT NULL,
+  `seri_fasilitas` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `perangkat_jenis`
+--
+
+CREATE TABLE `perangkat_jenis` (
+  `id_perangkat_jenis` int(11) NOT NULL,
+  `nama_jenis_perangkat` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `perangkat_jenis`
+--
+
+INSERT INTO `perangkat_jenis` (`id_perangkat_jenis`, `nama_jenis_perangkat`) VALUES
+(1, 'Penggunaan Fasilitas LPSE'),
+(2, 'Akses Ruang Server LPSE');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `perubahan`
+--
+
+CREATE TABLE `perubahan` (
+  `id_perubahan` varchar(20) NOT NULL,
+  `tgl_permohonanperubahan` date NOT NULL,
+  `nama_pemohon` varchar(150) NOT NULL,
+  `kontak_pemohon` varchar(25) NOT NULL,
+  `instansi_pemohon` varchar(255) NOT NULL,
+  `deskripsi_perubahan` text NOT NULL,
+  `tgl_berlakuperubahan` date NOT NULL,
+  `mt_perubahan` text NOT NULL,
+  `jenis_perubahan` text DEFAULT NULL,
+  `kategori_perubahan` enum('Emergency','Normal') DEFAULT NULL,
+  `dampak_lingkungan` text DEFAULT NULL,
+  `sumber` text DEFAULT NULL,
+  `deskripsi_ujicoba` text DEFAULT NULL,
+  `deskripsi_rollback` text DEFAULT NULL,
+  `status_permintaan` enum('Setuju','Tidak Setuju') DEFAULT NULL,
+  `ket_statuspermintaan` text DEFAULT NULL,
+  `jadwal_perubahan` date NOT NULL,
+  `petugas_implementasi` varchar(255) DEFAULT NULL,
+  `test_perubahan` text DEFAULT NULL,
+  `implementasi_perubahan` text DEFAULT NULL,
+  `tgl_implementasi` date NOT NULL,
+  `status_perubahan` enum('Tercatat','Evaluasi','Persetujuan','Implementasi') NOT NULL,
+  `pengelola_perubahan` varchar(150) NOT NULL,
+  `tgl_update` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -921,9 +1133,16 @@ CREATE TABLE `regulasi_perka` (
   `tentang` varchar(255) NOT NULL,
   `berlaku` date DEFAULT NULL,
   `berakhir` date DEFAULT NULL,
-  `file` varchar(255) NOT NULL,
+  `file` varchar(255) DEFAULT NULL,
   `tgl_ubah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `regulasi_perka`
+--
+
+INSERT INTO `regulasi_perka` (`id`, `nomor`, `tahun`, `nama`, `tentang`, `berlaku`, `berakhir`, `file`, `tgl_ubah`) VALUES
+('105de9c45a', '47', '2012', 'Abdulrizal M. Pauweni, S.SI', 'zasfsdf', '2019-11-27', '2020-01-02', '7501194903900001_kartuAkun.pdf', 1575601242);
 
 -- --------------------------------------------------------
 
@@ -1266,6 +1485,64 @@ INSERT INTO `resiko_sop` (`id`, `nama`, `isi`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sdm`
+--
+
+CREATE TABLE `sdm` (
+  `id_sdm` varchar(20) NOT NULL,
+  `nama` text NOT NULL,
+  `jabatan` text NOT NULL,
+  `kompetensi_kebutuhan` text NOT NULL,
+  `tingkatan_kebutuhan` text NOT NULL,
+  `kompetensi_saat_ini` text NOT NULL,
+  `tingkatan_saat_ini` text NOT NULL,
+  `kebutuhan_pelatihan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sdm`
+--
+
+INSERT INTO `sdm` (`id_sdm`, `nama`, `jabatan`, `kompetensi_kebutuhan`, `tingkatan_kebutuhan`, `kompetensi_saat_ini`, `tingkatan_saat_ini`, `kebutuhan_pelatihan`) VALUES
+('SDM1578966538', 'Abdulrizal M. Pauweni, S.SI', 'Staf LPSE', 'asd', 'asd', 'asd', 'asd', 'SPSE V 4, SIRUP, e-Katalog');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sdm_dokumen`
+--
+
+CREATE TABLE `sdm_dokumen` (
+  `id_dokumen` varchar(20) NOT NULL,
+  `id_sdm` varchar(20) NOT NULL,
+  `judul_dokumen` text DEFAULT NULL,
+  `file_dokumen` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sdm_pelatihan`
+--
+
+CREATE TABLE `sdm_pelatihan` (
+  `id_pelatihan` varchar(20) NOT NULL,
+  `id_sdm` varchar(20) NOT NULL,
+  `pelatihan` text NOT NULL,
+  `tingkatan` text NOT NULL,
+  `waktu` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sdm_pelatihan`
+--
+
+INSERT INTO `sdm_pelatihan` (`id_pelatihan`, `id_sdm`, `pelatihan`, `tingkatan`, `waktu`) VALUES
+('SL1578966570', 'SDM1578966538', 'Sirup', '-', 'T2 2015');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `submenu`
 --
 
@@ -1468,6 +1745,24 @@ ALTER TABLE `jenis_aset_fisik`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `kapasitas`
+--
+ALTER TABLE `kapasitas`
+  ADD PRIMARY KEY (`id_kapasitas`);
+
+--
+-- Indexes for table `kapasitas_kategori`
+--
+ALTER TABLE `kapasitas_kategori`
+  ADD PRIMARY KEY (`id_kk`);
+
+--
+-- Indexes for table `kapasitas_laporan`
+--
+ALTER TABLE `kapasitas_laporan`
+  ADD PRIMARY KEY (`id_kapasitas`);
+
+--
 -- Indexes for table `klasifikasi_aset_fisik`
 --
 ALTER TABLE `klasifikasi_aset_fisik`
@@ -1502,6 +1797,12 @@ ALTER TABLE `klasifikasi_sdm`
 --
 ALTER TABLE `klasifikasi_software`
   ADD PRIMARY KEY (`id_ksw`);
+
+--
+-- Indexes for table `layanan`
+--
+ALTER TABLE `layanan`
+  ADD PRIMARY KEY (`id_layanan`);
 
 --
 -- Indexes for table `level`
@@ -1550,6 +1851,36 @@ ALTER TABLE `pengaturan`
 --
 ALTER TABLE `pengguna`
   ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `pengumuman`
+--
+ALTER TABLE `pengumuman`
+  ADD PRIMARY KEY (`id_pengumuman`);
+
+--
+-- Indexes for table `perangkat`
+--
+ALTER TABLE `perangkat`
+  ADD PRIMARY KEY (`id_ijin_perangkat`);
+
+--
+-- Indexes for table `perangkat_detail`
+--
+ALTER TABLE `perangkat_detail`
+  ADD PRIMARY KEY (`id_perangkat_detail`);
+
+--
+-- Indexes for table `perangkat_jenis`
+--
+ALTER TABLE `perangkat_jenis`
+  ADD PRIMARY KEY (`id_perangkat_jenis`);
+
+--
+-- Indexes for table `perubahan`
+--
+ALTER TABLE `perubahan`
+  ADD PRIMARY KEY (`id_perubahan`);
 
 --
 -- Indexes for table `regulasi`
@@ -1654,6 +1985,18 @@ ALTER TABLE `resiko_sop`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sdm`
+--
+ALTER TABLE `sdm`
+  ADD PRIMARY KEY (`id_sdm`);
+
+--
+-- Indexes for table `sdm_pelatihan`
+--
+ALTER TABLE `sdm_pelatihan`
+  ADD PRIMARY KEY (`id_pelatihan`);
+
+--
 -- Indexes for table `submenu`
 --
 ALTER TABLE `submenu`
@@ -1727,13 +2070,19 @@ ALTER TABLE `gangguan_user`
 -- AUTO_INCREMENT for table `jenis_aset_fisik`
 --
 ALTER TABLE `jenis_aset_fisik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `kapasitas_kategori`
+--
+ALTER TABLE `kapasitas_kategori`
+  MODIFY `id_kk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `klasifikasi_aset_fisik`
 --
 ALTER TABLE `klasifikasi_aset_fisik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `klasifikasi_informasi`
@@ -1770,6 +2119,12 @@ ALTER TABLE `klasifikasi_software`
 --
 ALTER TABLE `level`
   MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `perangkat_jenis`
+--
+ALTER TABLE `perangkat_jenis`
+  MODIFY `id_perangkat_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `resiko_rentan`

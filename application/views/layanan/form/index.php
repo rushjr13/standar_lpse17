@@ -6,22 +6,16 @@
 		<?php } ?>
 	</div>
 	<div class="card-body table-responsive small">
-		<table class="table table-sm table-bordered table-striped table-hover shadow-sm" width="100%" cellspacing="0">
+		<table class="table table-sm table-bordered table-striped table-hover shadow-sm mb-0" width="100%" cellspacing="0">
 			<thead class="bg-primary text-white text-center">
 				<tr>
-					<th class="align-middle" rowspan="2">NO</th>
-					<th class="align-middle" rowspan="2">NAMA</th>
-					<th class="align-middle" rowspan="2">INSTANSI</th>
-					<th class="align-middle" rowspan="2">TUJUAN</th>
-					<th class="align-middle" colspan="2">REMOTE AKSES</th>
-					<th class="align-middle" colspan="2">WAKTU</th>
-					<th class="align-middle" rowspan="2">OPSI</th>
-				</tr>
-				<tr>
-					<th class="align-middle">USERNAME</th>
-					<th class="align-middle">HAK AKSES</th>
-					<th class="align-middle">PEMBERIAN</th>
-					<th class="align-middle">PENUTUPAN</th>
+					<th class="align-middle" width="3%">NO</th>
+					<th class="align-middle">NAMA</th>
+					<th class="align-middle">INSTANSI</th>
+					<th class="align-middle">TUJUAN</th>
+					<th class="align-middle">SURAT</th>
+					<th class="align-middle" width="6%">STATUS</th>
+					<th class="align-middle" width="8%">OPSI</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,19 +26,27 @@
 							<td class="align-middle text-center"><?=$lyn['nama_pemohon'] ?></td>
 							<td class="align-middle text-center"><?=$lyn['instansi_pemohon'] ?></td>
 							<td class="align-middle text-center"><?=$lyn['tujuan_pemohon'] ?></td>
-							<td class="align-middle text-center"><?=$lyn['user_akses'] ?></td>
-							<td class="align-middle text-center"><?=$lyn['hak_akses'] ?></td>
-							<td class="align-middle text-center"><?=$lyn['tgl_buka'] ?></td>
-							<td class="align-middle text-center"><?=$lyn['tgl_tutup'] ?></td>
 							<td class="align-middle text-center">
-								<button class="btn btn-sm btn-circle btn-info shadow-sm" title="Ubah"><i class="fa fa-fw fa-edit"></i></button>
-								<button class="btn btn-sm btn-circle btn-danger shadow-sm" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+								<a href="<?=base_url('layanan/form/surat/'.$lyn['id_layanan']) ?>" class="btn btn-sm btn-primary shadow-sm"><i class="fa fa-fw fa-file-alt"></i> <?=$lyn['no_surat'] ?> - <?=$lyn['tgl_surat'] ?></a>
+							</td>
+							<td class="align-middle text-center"><?=$lyn['status_layanan'] ?></td>
+							<td class="align-middle text-center">
+								<?php if($lyn['status_layanan']=='Tunda'){ ?>
+									<button class="btn btn-sm btn-circle btn-default shadow-sm" title="Status Layanan"><i class="fa fa-fw fa-pencil-alt"></i></button>
+									<button class="btn btn-sm btn-circle btn-info shadow-sm" title="Ubah"><i class="fa fa-fw fa-edit"></i></button>
+									<button class="btn btn-sm btn-circle btn-danger shadow-sm" title="Hapus"><i class="fa fa-fw fa-trash"></i></button>
+								<?php }else if($lyn['status_layanan']=='Setuju'){ ?>
+									<button class="btn btn-sm btn-circle btn-success shadow-sm" title="Data Akses"><i class="fa fa-fw fa-pencil-alt"></i></button>
+									<button class="btn btn-sm btn-circle btn-info shadow-sm" title="Ubah"><i class="fa fa-fw fa-edit"></i></button>
+								<?php }else{ ?>
+									<button class="btn btn-sm btn-circle btn-warning shadow-sm" title="Rincian"><i class="fa fa-fw fa-list"></i></button>
+								<?php } ?>
 							</td>
 						</tr>
 					<?php endforeach ?>
 				<?php }else{ ?>
 					<tr>
-						<td class="align-middle text-center" colspan="9">Tidak ada data yang tersedia</td>
+						<td class="align-middle text-center" colspan="7">Tidak ada data yang tersedia</td>
 					</tr>
 				<?php } ?>
 			</tbody>

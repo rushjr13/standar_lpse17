@@ -29,4 +29,28 @@ class Layanan_model extends CI_Model {
             return $this->db->get_where('layanan', ['id_layanan'=>$id])->row_array();
         }
     }
+
+    function tambah_form($post)
+    {
+        $data = [
+            'id_layanan'=>"LYN".time(),
+            'no_surat'=>$post['no_surat'],
+            'tgl_surat'=>$post['tgl_surat'],
+            'asal_surat'=>$post['asal_surat'],
+            'perihal_surat'=>$post['perihal_surat'],
+            'dokumen_surat'=>$post['dokumen_surat'],
+            'nama_pemohon'=>$post['nama_pemohon'],
+            'instansi_pemohon'=>$post['instansi_pemohon'],
+            'tujuan_pemohon'=>$post['tujuan_pemohon'],
+            'user_akses'=>null,
+            'hak_akses'=>null,
+            'tgl_buka'=>date('Y-m-d', time()),
+            'jam_buka'=>date('H:i', time()),
+            'tgl_tutup'=>date('Y-m-d', time()),
+            'jam_tutup'=>date('H:i', time()),
+            'status_layanan'=>$post['status_layanan'],
+            'tgl_update'=>time(),
+        ];
+        return $this->db->insert('layanan', $data);
+    }
 }
